@@ -1,0 +1,53 @@
+@use './../mixins' as *;
+
+html {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  --refRes: 1920;
+  font-size: calc(100vw / var(--refRes) * 10);
+
+  @media (max-width: 768px) {
+    font-size: 62.5%;
+  }
+
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+
+  background-color: var(--page-bg);
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 130%;
+  color: var(--black);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
+
+section {
+  height: 100dvh;
+  min-height: 93rem;
+  padding: 7rem 0 6rem;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+
+  transition: all 0.3s ease;
+}

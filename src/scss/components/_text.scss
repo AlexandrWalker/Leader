@@ -1,0 +1,68 @@
+@use './../mixins' as *;
+
+h1 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 6rem;
+  line-height: 120%;
+  color: var(--white);
+
+  span {
+    color: var(--accent);
+  }
+}
+
+h2 {
+  display: flex;
+  gap: 2rem;
+
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 4.5rem;
+  line-height: 120%;
+
+  &::before {
+    content: "";
+    width: 12.5rem;
+    height: 0.2rem;
+    background-color: var(--accent);
+    position: relative;
+    top: 2.5rem;
+  }
+}
+
+h3 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 120%;
+}
+
+h4 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 120%;
+}
+
+h5 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 120%;
+}
+
+p {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+}
+
+.suptitle {
+
+  p {
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+  }
+}

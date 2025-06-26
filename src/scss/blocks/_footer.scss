@@ -1,0 +1,17 @@
+@use './../mixins' as *;
+
+.footer {
+  padding: 50px 0;
+  background-color: #505050;
+  color: #fff;
+
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+}
+
+@include md {
+  .footer {
+    padding: 20px 0;
+  }
+}

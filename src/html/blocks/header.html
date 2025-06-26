@@ -1,0 +1,53 @@
+<header class="header" id="header">
+  <div class="container container-fluid">
+    <div class="header__inner">
+      <div class="header__wrap accordion-parent">
+        <button class="burger-btn">
+          <div class="burger-icon"></div>
+        </button>
+
+        <a class="logo" href="/">
+          <img src="./../../images/logo/logo.svg" alt="">
+        </a>
+
+        <fieldset class="header__drop accordion">
+          <legend align="left">свяжитесь с нами</legend>
+          <div class="header__drop-head">
+            <a class="header__drop-link" href="tel:+71234567890">
+              +7 123 456-78-90
+            </a>
+            <i class="icon-chevron"></i>
+          </div>
+          <div class="header__drop-body accordion-body">
+            <ul>
+              <li>
+                <i class="icon-telegram"></i>
+                <a href="/">
+                  в Телеграм
+                </a>
+              </li>
+              <li>
+                <i class="icon-whatsapp"></i>
+                <a href="/">
+                  в WhatsApp
+                </a>
+              </li>
+              <li>
+                <i class="icon-pochta"></i>
+                <a href="/">
+                  Напишите на почту
+                </a>
+              </li>
+            </ul>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="header__btn btn btn--accent">
+        <i class="icon-pochta"></i>
+        Оставить заявку
+      </button>
+    </div>
+  </div>
+</header>
+@@include('./burger-menu.html')

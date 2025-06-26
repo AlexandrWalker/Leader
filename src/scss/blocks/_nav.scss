@@ -1,0 +1,23 @@
+@use './../mixins' as *;
+
+.nav {
+  &__list {
+    display: flex;
+    gap: 0 30px;
+
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  &__item {
+  }
+
+  &__link {
+  }
+
+  &__link {
+    &._active {
+      color: var(--accent);
+    }
+  }
+}

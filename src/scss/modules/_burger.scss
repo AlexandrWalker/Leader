@@ -1,0 +1,139 @@
+@use './../mixins' as *;
+
+.burger-btn {
+  --time: 0.3s;
+  --width: 10rem;
+  --height: 10rem;
+  --background-color: var(--white);
+  --hover-background-color: var(--accent);
+
+  /* Fixed height and width */
+  height: var(--height);
+  width: var(--width);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--background-color);
+  transition: all var(--time) ease;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &:hover {
+    --background-color: var(--accent);
+
+    .burger-icon {
+      --background-color: var(--white);
+    }
+  }
+}
+
+@include md {
+
+  .burger-btn {
+    --width: 6rem;
+    --height: 6rem;
+  }
+}
+
+.burger-icon {
+  --width: 2rem;
+  --height: 0.1rem;
+  --background-color: var(--black);
+
+  width: var(--width);
+  height: var(--height);
+  background-color: var(--background-color);
+  position: relative;
+  margin-right: 1rem;
+  transition: all var(--time) ease;
+
+  &::before,
+  &::after {
+    --width: 3rem;
+
+    content: '';
+    display: block;
+
+    position: absolute;
+    left: 0;
+
+    width: var(--width);
+    height: var(--height);
+
+    background-color: var(--background-color);
+    transition: all var(--time) ease;
+  }
+
+  &::before {
+    top: -1rem;
+  }
+
+  &::after {
+    top: 1rem;
+  }
+
+  &.burger-icon--active {
+    background-color: transparent;
+  }
+
+  &.burger-icon--active::before,
+  &.burger-icon--active::after {
+    top: 0;
+    transition: top var(--time) linear, transform var(--time) ease-in var(--time);
+  }
+
+  &.burger-icon--active::before {
+    transform: rotate(45deg);
+  }
+
+  &.burger-icon--active::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.burger-menu {
+  width: 100%;
+  height: 100%;
+  padding: 40px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: -100%;
+  z-index: 99;
+
+  background-color: #505050;
+  transition: all 0.2s ease-in;
+
+  &--open {
+    top: 0;
+  }
+
+  a {
+    color: #fff;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px 0;
+
+    font-size: 28px;
+  }
+
+  &__item {}
+
+  &__link {
+    &._active {
+      color: var(--accent);
+    }
+  }
+}
