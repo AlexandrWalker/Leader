@@ -1,17 +1,134 @@
 @use './../mixins' as *;
 
 .footer {
-  padding: 50px 0;
-  background-color: #505050;
-  color: #fff;
+  position: relative;
+  overflow: hidden;
 
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 100%;
-}
+  &::before {
+    content: "";
+    position: absolute;
+    right: -26.2rem;
+    bottom: -2.3rem;
+    display: block;
+    width: 89.5rem;
+    height: 67.8rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODk1IiBoZWlnaHQ9IjY3OSIgdmlld0JveD0iMCAwIDg5NSA2NzkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIG9wYWNpdHk9IjAuNSIgZD0iTTM3Mi4yODggNjc4LjU2NUgyOTcuNjE5TDUwNC4xNzMgNDcyLjAxMkg1NzguODQyTDM3Mi4yODggNjc4LjU2NVpNNzQuNjY4OSA2NzQuMjE5SDBMMjAyLjIwOCA0NzIuMDEySDI3Ni44NzZMNzQuNjY4OSA2NzQuMjE5Wk0zNTMuNTE5IDQ3Mi4wMTJINDI3Ljg3MUwyMjUuNzY4IDY3NC4xMTVIMTUxLjA5OUwzNTIuODExIDQ3Mi40MDNIMjc4LjQ1OEw3NTAuODYyIDBIODI1LjUzMUwzNTMuNTE5IDQ3Mi4wMTJaTTY1My45MDMgNDcyLjAxMkg3MjguMjU2TDUyNy41NDQgNjcyLjcyNUg0NTIuODc1TDY1My4xOTUgNDcyLjQwM0g1NzguODQzTDgyMC4wODQgMjMxLjE2Mkg4OTQuNzUzTDY1My45MDMgNDcyLjAxMlpNNTAyLjU0MSA0NzIuNDAzSDQyNy44NzJMODE3Ljc4NyA4Mi40ODgzSDg5Mi40NTVMNTAyLjU0MSA0NzIuNDAzWiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzIwNDNfMTY5KSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzIwNDNfMTY5IiB4MT0iNjI4LjI5MSIgeTE9IjMzLjAwNTkiIHgyPSItMTUuNzYzMyIgeTI9IjYzNy45MTkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0VBMEMwQyIvPgo8c3RvcCBvZmZzZXQ9IjAuNDk1MTkyIiBzdG9wLWNvbG9yPSIjRkYzRTI1IiBzdG9wLW9wYWNpdHk9IjAuNyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRjkzNDUiIHN0b3Atb3BhY2l0eT0iMCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
 
-@include md {
-  .footer {
-    padding: 20px 0;
+    @include md {
+      display: none;
+    }
+  }
+
+  .burger-menu__inner {
+    gap: 10rem;
+    max-width: unset;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+
+    @include md {
+      gap: 1rem;
+    }
+  }
+
+  .burger-menu__head {
+    width: fit-content;
+
+    @include md {
+      width: 50%;
+    }
+
+    @include sm {
+      width: 100%;
+    }
+  }
+
+  .burger-menu__title {
+
+    @include md {
+      display: none;
+    }
+  }
+
+  .burger-menu__list {
+    padding-left: 14.5rem;
+    width: max-content;
+
+    @include md {
+      padding-left: 0;
+      width: auto;
+    }
+  }
+
+  .burger-menu__list a {}
+
+  .burger-menu__foot {
+
+    @include md {
+      width: 50%;
+    }
+
+    @include sm {
+      width: 100%;
+    }
+  }
+
+  .burger-menu__foot h2::before {
+    display: none;
+  }
+
+  &__body {
+    padding-bottom: 3rem;
+
+    @include md {
+      padding-bottom: 4rem;
+    }
+
+    @include sm {
+      padding-bottom: 1.5rem;
+    }
+
+    &-link {
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 120%;
+      color: var(--gray);
+      text-decoration: underline !important;
+
+      &:hover {
+        color: var(--black);
+      }
+
+      @include md {
+        font-size: 1.4rem;
+      }
+
+      @include sm {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 114rem;
+    width: 100%;
+    padding: 2.5rem 0;
+    border-top: 0.1rem solid var(--gray-50);
+
+    @include md {
+      padding: 5rem 0 4rem;
+    }
+
+    @include sm {
+      padding: 0.6rem 0 0.7rem;
+    }
   }
 }
+
+@include md {}

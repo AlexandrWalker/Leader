@@ -6,7 +6,7 @@ html {
   --refRes: 1920;
   font-size: calc(100vw / var(--refRes) * 10);
 
-  @media (max-width: 768px) {
+  @include md {
     font-size: 62.5%;
   }
 
@@ -44,6 +44,11 @@ section {
   min-height: 93rem;
   padding: 7rem 0 6rem;
   overflow-x: hidden;
+
+  @include md {
+    min-height: unset;
+    padding: 4rem 0 3rem;
+  }
 }
 
 a {

@@ -10,18 +10,29 @@
   overflow: hidden;
   height: 100dvh;
 
-  &__container {
-    // padding: var(--header-heigth) var(--container-padding) 0 var(--container-padding);
+  @include md {
+    background-image: url('./../../images/hero/bg-planshet.png');
+
+    padding: 10rem 0;
+  }
+
+  @include sm {
+    background-image: url('./../../images/hero/bg-mob.png');
   }
 
   &__inner {
     display: flex;
     align-items: center;
     height: 100%;
+
+    @include md {
+      align-items: flex-start;
+    }
   }
 
   &__content {
     max-width: 78rem;
+    max-width: 45.35%;
     width: 100%;
 
     display: flex;
@@ -30,7 +41,16 @@
     position: relative;
     z-index: 2;
 
-    @include lg {}
+    @include md {
+      max-width: 52rem;
+      max-width: 71.43%;
+      gap: 3rem;
+    }
+
+    @include esm {
+      max-width: unset;
+      gap: 3rem;
+    }
   }
 
   &__info {
@@ -40,7 +60,13 @@
 
     color: var(--white);
 
-    @include lg {}
+    @include md {
+      gap: 2rem;
+    }
+
+    @include sm {
+      gap: 1.5rem;
+    }
   }
 
   &__img {
@@ -54,6 +80,16 @@
     bottom: 0;
     z-index: 1;
 
+    @include md {
+      width: 62.76%;
+      right: -6.64%;
+    }
+
+    @include sm {
+      width: 93.64%;
+      right: -31.55%;
+    }
+
     img {
       width: 100%;
     }
@@ -61,5 +97,13 @@
 
   .subtitle {
     max-width: 53.5rem;
+
+    @include md {
+      max-width: 69.04%;
+    }
+
+    @include sm {
+      max-width: 67.04%;
+    }
   }
 }

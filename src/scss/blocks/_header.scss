@@ -6,7 +6,7 @@
   right: 0;
   left: 0;
   z-index: 100;
-  height: var(--header-heigth);
+  height: var(--header-height);
 
   &__inner {
     display: flex;
@@ -18,6 +18,12 @@
     display: flex;
     align-items: flex-end;
     gap: 10rem;
+
+    @include md {
+      justify-content: center;
+      width: calc(100% - 12rem);
+      margin-left: 6rem;
+    }
   }
 
   &__drop {
@@ -31,7 +37,6 @@
     padding: 0 0.8rem;
     position: relative;
     transition: all 0.3s ease;
-
     cursor: pointer;
 
     &.accordion-active {
@@ -157,50 +162,36 @@
         }
       }
     }
+
+    @include md {
+      display: none;
+    }
   }
 
   &__btn {
-    --width: fit-content;
-    --heigth: 100%;
+    --height: 100%;
 
     min-width: 37rem;
 
     i {
       display: none;
-      font-size: 3.6rem;
+      font-size: 4.2rem;
       color: var(--white);
-    }
-  }
 
-  @include md {
-
-    --header-heigth: 6rem;
-
-    .header__wrap {
-      width: 100%;
-      margin-left: 6rem;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .header__drop {
-      display: none;
-    }
-
-    .header__btn {
-      --width: 6rem;
-      --height: 6rem;
-
-      justify-content: center;
-      gap: 0;
-      min-width: unset;
-      padding: 0;
-      font-size: 0;
-      letter-spacing: unset;
-
-      i {
+      @include md {
         display: flex;
       }
+    }
+
+    @include md {
+      --width: 6rem;
+      --height: 100%;
+
+      min-width: unset;
+      gap: 0;
+      padding: 0;
+      font-size: 0;
+      letter-spacing: 0;
     }
   }
 }
