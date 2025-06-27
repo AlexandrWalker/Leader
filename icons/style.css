@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'LeaderIcons';
+  src:  url('./fonts/LeaderIcons.eot?bdj2ke');
+  src:  url('./fonts/LeaderIcons.eot?bdj2ke#iefix') format('embedded-opentype'),
+    url('./fonts/LeaderIcons.ttf?bdj2ke') format('truetype'),
+    url('./fonts/LeaderIcons.woff?bdj2ke') format('woff'),
+    url('./fonts/LeaderIcons.svg?bdj2ke#LeaderIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'LeaderIcons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow:before {
+  content: "\e911";
+}
+.icon-arrow-slider:before {
+  content: "\e912";
+}
+.icon-chevron:before {
+  content: "\e913";
+}
+.icon-download:before {
+  content: "\e914";
+}
+.icon-play:before {
+  content: "\e915";
+}
+.icon-pochta:before {
+  content: "\e916";
+}
+.icon-strelka:before {
+  content: "\e917";
+}
+.icon-telegram:before {
+  content: "\e918";
+}
+.icon-whatsapp:before {
+  content: "\e919";
+}
+.icon-advan-1:before {
+  content: "\e900";
+}
+.icon-advan-2:before {
+  content: "\e901";
+}
+.icon-advan-3:before {
+  content: "\e902";
+}
+.icon-advan-4:before {
+  content: "\e903";
+}
+.icon-advan-5:before {
+  content: "\e904";
+}
+.icon-services-1:before {
+  content: "\e905";
+}
+.icon-services-2:before {
+  content: "\e906";
+}
+.icon-services-3:before {
+  content: "\e907";
+}
+.icon-services-4:before {
+  content: "\e908";
+}
+.icon-services-5:before {
+  content: "\e909";
+}
+.icon-services-6:before {
+  content: "\e90a";
+}
+.icon-services-7:before {
+  content: "\e90b";
+}
+.icon-services-8:before {
+  content: "\e90c";
+}
+.icon-services-9:before {
+  content: "\e90d";
+}
+.icon-services-10:before {
+  content: "\e90e";
+}
+.icon-services-11:before {
+  content: "\e90f";
+}
+.icon-services-12:before {
+  content: "\e910";
+}
