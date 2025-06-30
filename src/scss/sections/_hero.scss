@@ -35,6 +35,8 @@
     max-width: 45.35%;
     width: 100%;
 
+    margin-left: 14.5rem;
+
     display: flex;
     flex-direction: column;
     gap: 6rem;
@@ -44,6 +46,7 @@
     @include md {
       max-width: 52rem;
       max-width: 71.43%;
+      margin-left: 0;
       gap: 3rem;
     }
 
@@ -62,6 +65,10 @@
 
     @include md {
       gap: 2rem;
+
+      .suptitle {
+        max-width: 30rem;
+      }
     }
 
     @include sm {

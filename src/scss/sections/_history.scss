@@ -1,0 +1,54 @@
+@use './../mixins' as *;
+
+.swiper-slide {
+  width: fit-content;
+}
+
+.history {
+  background-image: url(./../images/history/bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+
+  color: var(--white);
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    max-width: 42rem;
+    width: 100%;
+
+    &-head {
+      display: block;
+      width: 27rem;
+      height: 27rem;
+      background-color: var(--gray);
+
+      position: relative;
+    }
+
+    &-year {
+      font-family: var(--second-family);
+      font-weight: 700;
+      font-size: 10rem;
+      line-height: 120%;
+      white-space: nowrap;
+
+      position: absolute;
+      left: -0.8rem;
+      bottom: -2.3rem;
+
+      span {
+        color: var(--accent);
+      }
+    }
+  }
+}

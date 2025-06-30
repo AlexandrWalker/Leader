@@ -3,6 +3,11 @@
 .footer {
   position: relative;
   overflow: hidden;
+  padding-top: 7rem;
+
+  @include md {
+    padding-top: 4rem;
+  }
 
   &::before {
     content: "";

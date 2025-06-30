@@ -14,3 +14,21 @@
   font-size: var(--font-size);
   color: var(--accent);
 }
+
+.icon {
+
+  &-play {
+
+    font-size: 1.6rem;
+
+    width: 1.6rem;
+    height: 1.6rem;
+
+    @include sm {
+      font-size: 1.2rem;
+
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+}

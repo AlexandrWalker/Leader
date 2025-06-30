@@ -7,8 +7,25 @@ h1 {
   line-height: 120%;
   color: var(--white);
 
+  position: relative;
+
   span {
     color: var(--accent);
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 12.5rem;
+    height: 0.2rem;
+    background-color: var(--accent);
+    position: absolute;
+    top: 3.5rem;
+    right: calc(100% + 2rem);
+
+    @include md {
+      display: none;
+    }
   }
 
   @include md {
@@ -29,13 +46,27 @@ h2 {
   font-size: 4.5rem;
   line-height: 120%;
 
+  @include md {
+    gap: 1rem;
+
+    font-size: 3rem;
+  }
+
   &::before {
     content: "";
+    display: block;
     width: 12.5rem;
     height: 0.2rem;
     background-color: var(--accent);
     position: relative;
     top: 2.5rem;
+    flex-shrink: 0;
+
+    @include md {
+      width: 3rem;
+
+      top: 1.6rem;
+    }
   }
 }
 
@@ -55,6 +86,10 @@ h4 {
   font-weight: 400;
   font-size: 2.5rem;
   line-height: 120%;
+
+  @include md {
+    font-size: 2rem;
+  }
 }
 
 h5 {

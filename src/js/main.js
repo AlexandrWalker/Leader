@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     elements.forEach((element) => element.addEventListener('click', closeMenu));
   }
-  
+
   burgerNav();
 
 
@@ -103,5 +103,68 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  const storySlider = new Swiper(".history__slider", {
+    slidesPerView: 'auto',
+    slidesPerGroup: 1,
+    spaceBetween: 10,
+    speed: 600,
+    mousewheel: {
+      forceToAxis: true,
+    },
+    breakpoints: {
+      600: {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+      },
+    },
+  });
+
+  const timelineWrapper = document.querySelector('.timeline-wrapper');
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const timelineWidth = timelineWrapper.scrollWidth - window.innerWidth;
+
+  // const header = document.querySelector('.header');
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".history",
+      start: `top 120px`,
+      endTrigger: ".footer",
+      end: `+=${timelineWidth}`,
+      scrub: 1,
+      pin: true,
+      anticipatePin: 1,
+      onUpdate: self => {
+
+        const progress = self.progress;
+        const itemIndex = Math.floor(progress * (timelineItems.length - 1));
+
+        timelineItems.forEach(item => item.classList.remove('swiper-slide-active'));
+
+        if (timelineItems[itemIndex]) {
+          timelineItems[itemIndex].classList.add('swiper-slide-active');
+        }
+      }
+    }
+  });
+
+  tl.to(timelineWrapper, {
+    x: -timelineWidth,
+    ease: "none"
+  });
+
+  document.querySelector('.button-next')?.addEventListener('click', () => {
+    const currentScroll = Math.abs(gsap.getProperty(timelineWrapper, "x"));
+    const nextScroll = Math.min(currentScroll + window.innerWidth * 0.8, timelineWidth);
+    gsap.to(timelineWrapper, { x: -nextScroll, duration: 0.5 });
+  });
+
+  document.querySelector('.button-prev')?.addEventListener('click', () => {
+    const currentScroll = Math.abs(gsap.getProperty(timelineWrapper, "x"));
+    const prevScroll = Math.max(currentScroll - window.innerWidth * 0.8, 0);
+    gsap.to(timelineWrapper, { x: -prevScroll, duration: 0.5 });
+  });
+
 
 });
