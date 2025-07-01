@@ -40,10 +40,12 @@ body {
 }
 
 section {
-  height: 100dvh;
-  min-height: 93rem;
+  // min-height: 93rem;
+  height: fit-content;
+  min-height: 100dvh;
   padding: 7rem 0 6rem;
   overflow-x: hidden;
+  overflow-y: hidden;
 
   @include md {
     min-height: unset;

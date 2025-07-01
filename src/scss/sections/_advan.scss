@@ -1,0 +1,188 @@
+@use './../mixins' as *;
+
+.advan {
+  padding: 0;
+  background-color: var(--white);
+
+  min-height: fit-content;
+
+  &__container {}
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include md {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
+
+    padding: 7.6rem var(--container-padding) 4.5rem 2rem;
+    width: calc((var(--container-width) + (var(--container-padding) * 2)) / 2);
+
+    .general__head-title {
+      display: none;
+    }
+
+    .general__head-text {
+      color: var(--accent);
+      margin-left: 0;
+    }
+
+    @include md {
+      gap: 2rem;
+
+      padding: 4rem 2rem 3rem;
+      width: 100%;
+
+      .general__head-title {
+        display: flex;
+      }
+
+      .general__head-text {
+
+        h4 {
+          font-size: 1.5rem;
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    height: 100%;
+
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+
+    @include sm {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    // width: calc((100% / 3) - (4rem / 3));
+    padding: 2rem;
+    border: 0.1rem solid var(--accent-30);
+
+    position: relative;
+
+    @include md {
+      padding: 2rem 2rem 2.5rem 9rem;
+    }
+
+    &:first-child {
+      grid-column: 1/2;
+      grid-row: 1/3;
+
+      @include md {
+        grid-row: 1/2;
+      }
+    }
+
+    &-icon {
+      width: 8rem;
+      height: 7rem;
+      padding: 1rem;
+      margin-top: -3rem;
+      margin-left: -1rem;
+      margin-bottom: 3rem;
+      background-color: var(--white);
+
+      @include md {
+        width: 6rem;
+        height: 5.5rem;
+        padding: 0.5rem;
+        margin: 0;
+
+        position: absolute;
+        top: -0.5rem;
+        left: 0.5rem;
+      }
+
+      i {
+        --font-size: 6rem;
+
+        color: var(--white);
+        background-color: var(--accent);
+
+        @include md {
+          --font-size: 5rem;
+        }
+      }
+    }
+
+    &-title {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+
+      margin-bottom: 2rem;
+
+      @include md {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    padding: 7rem 14.5rem 6rem var(--container-padding);
+    width: calc((var(--container-width) + (var(--container-padding) * 2)) / 2);
+    background-color: var(--black);
+    color: var(--white);
+
+    @include md {
+      padding: 3rem 2rem;
+      width: 100%;
+
+      .general__head {
+        display: none;
+      }
+    }
+
+    &-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+
+      @include md {
+        gap: 1rem;
+      }
+    }
+
+    &-item {
+
+      &:first-child {
+        grid-column: 1/3;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

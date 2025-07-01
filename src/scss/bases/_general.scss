@@ -1,0 +1,19 @@
+@use './../mixins' as *;
+
+.general {
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    @include md {
+      gap: 2rem;
+    }
+
+    &-text {
+      margin-left: var(--title-margin-left);
+      max-width: 57.5rem;
+    }
+  }
+}

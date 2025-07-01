@@ -1,0 +1,58 @@
+@use './../mixins' as *;
+
+.quiz {
+  padding: 0;
+  min-height: fit-content;
+  color: var(--white);
+
+  background-image: url(./../../images/quiz/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  @include md {
+    --title-margin-left: 4rem;
+
+    background-image: url(./../../images/quiz/bg-planshet.png);
+
+    h3 {
+      font-size: 3rem;
+    }
+  }
+
+  @include sm {
+    background-image: url(./../../images/quiz/bg-mob.png);
+  }
+
+  .general__head {
+    gap: 2rem;
+  }
+
+  h3::before {
+    background-color: var(--white);
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 0;
+    max-width: 110rem;
+
+    @include md {
+      gap: 3rem;
+
+      max-width: 53.5rem;
+    }
+
+    @include sm {
+      gap: 4rem;
+
+      padding: 4rem 0 6rem;
+    }
+  }
+
+  &__btn {
+    margin-left: var(--title-margin-left);
+  }
+}

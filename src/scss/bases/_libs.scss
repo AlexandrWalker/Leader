@@ -1,0 +1,46 @@
+@use './../mixins' as *;
+
+.swiper {
+
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    @include md {
+      order: 3;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &--prev {
+      transform: scale(-1, 1);
+    }
+
+    i {
+      width: 6rem;
+      height: 6rem;
+      font-size: 6rem;
+      color: var(--gray);
+    }
+
+    &:hover {
+      background-color: var(--accent);
+
+      i {
+        color: var(--white);
+      }
+    }
+  }
+}
