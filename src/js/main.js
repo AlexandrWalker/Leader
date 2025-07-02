@@ -132,6 +132,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   })
 
+  const inputElements = document.querySelectorAll('.form-input');
+  const className = 'filled';
+
+  inputElements.forEach(element => {
+    element.addEventListener('input', function () {
+      if (this.value.trim() !== '') {
+        element.classList.add(className);
+      }
+    });
+  });
+
+
   const timelineWrapper = document.querySelector('.timeline-wrapper');
   const timelineItems = document.querySelectorAll('.timeline-item');
   const timelineWidth = timelineWrapper.scrollWidth - window.innerWidth;

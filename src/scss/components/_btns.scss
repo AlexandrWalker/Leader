@@ -33,6 +33,11 @@
     gap: 0.5rem;
   }
 
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
   &--outline {
     --padding: 2rem 4rem;
     --button-color: var(--white);
