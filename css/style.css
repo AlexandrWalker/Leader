@@ -73,31 +73,15 @@ a {
 @font-face {
   font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Micra-Bold.woff2") format("woff2"), url("../fonts/Micra-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Micra;
-  font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Montserrat;
+  font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  src: url("../fonts/Micra-Bold.woff2") format("woff2"), url("../fonts/Micra-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -147,6 +131,22 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
   font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -377,10 +377,12 @@ body {
   --container-width: 172rem;
   --white: #ffffff;
   --white-30: rgba(255, 255, 255, 0.3);
+  --white-50: rgba(255, 255, 255, 0.5);
   --white-80: rgba(255, 255, 255, 0.8);
   --black: #161616;
   --black-90: rgba(22, 22, 22, 0.9);
   --gray: #C0C6CA;
+  --gray-20: rgba(192, 198, 202, 0.2);
   --gray-30: rgba(192, 198, 202, 0.3);
   --gray-50: rgba(192, 198, 202, 0.5);
   --accent: #EA0C0C;
@@ -425,6 +427,11 @@ body {
   transition: all 0.3s ease;
 }
 
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .btn--outline {
   --padding: 2rem 4rem;
   --button-color: var(--white);
@@ -451,6 +458,200 @@ body {
 .btn i {
   font-size: 2.4rem;
   color: var(--accent);
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 5rem;
+  width: 100%;
+  position: relative;
+}
+
+.form-group:last-child {
+  margin-bottom: 3rem;
+}
+
+.form-input {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: transparent;
+  width: 100%;
+  padding: 0 1rem 3rem 0;
+  border-bottom: 0.1rem solid var(--gray-20);
+}
+
+.form-input.filled + .form-label,
+.form-input:active + .form-label,
+.form-input:focus + .form-label,
+.form-input:target + .form-label,
+.form-input:hover + .form-label {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.form-label {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-50);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form-label span {
+  color: var(--accent);
+}
+
+.form-textarea {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: transparent;
+  resize: none;
+  width: 100%;
+  padding: 0 1rem 3rem 0;
+  border-bottom: 0.1rem solid var(--gray-20);
+}
+
+.form-textarea::-webkit-input-placeholder {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-50);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.form-textarea::-moz-placeholder {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-50);
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.form-textarea:-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-50);
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.form-textarea::-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-50);
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.form-textarea::placeholder {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-50);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.form-textarea:active::-webkit-input-placeholder, .form-textarea:focus::-webkit-input-placeholder, .form-textarea:target::-webkit-input-placeholder, .form-textarea:hover::-webkit-input-placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.form-textarea:active::-moz-placeholder, .form-textarea:focus::-moz-placeholder, .form-textarea:target::-moz-placeholder, .form-textarea:hover::-moz-placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.form-textarea:active:-ms-input-placeholder, .form-textarea:focus:-ms-input-placeholder, .form-textarea:target:-ms-input-placeholder, .form-textarea:hover:-ms-input-placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.form-textarea:active::-ms-input-placeholder, .form-textarea:focus::-ms-input-placeholder, .form-textarea:target::-ms-input-placeholder, .form-textarea:hover::-ms-input-placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.form-textarea:active::placeholder,
+.form-textarea:focus::placeholder,
+.form-textarea:target::placeholder,
+.form-textarea:hover::placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-btn {
+  --button-color: var(--white);
+  --button-background: var(--gradient);
+  width: 100%;
+}
+
+.form-btn i {
+  color: var(--white);
+}
+
+.form-text {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 120%;
+  color: var(--white-30);
+}
+
+.form-text a {
+  text-decoration: underline;
+}
+
+.form-text a:hover {
+  color: var(--white);
 }
 
 [class^=icon-],
@@ -502,14 +703,12 @@ h1::before {
 }
 
 h2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 2rem;
   font-family: var(--second-family);
   font-weight: 400;
   font-size: 4.5rem;
   line-height: 120%;
+  margin-left: var(--title-margin-left);
+  position: relative;
   /* для блока advan */
 }
 
@@ -519,8 +718,9 @@ h2::before {
   width: 12.5rem;
   height: 0.2rem;
   background-color: var(--accent);
-  position: relative;
+  position: absolute;
   top: 2.5rem;
+  right: calc(100% + 2rem);
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
@@ -534,6 +734,8 @@ h3 {
   font-weight: 400;
   font-size: 3.5rem;
   line-height: 120%;
+  margin-left: var(--title-margin-left);
+  position: relative;
 }
 
 h3::before {
@@ -542,8 +744,9 @@ h3::before {
   width: 12.5rem;
   height: 0.2rem;
   background-color: var(--accent);
-  position: relative;
+  position: absolute;
   top: 2.5rem;
+  right: calc(100% + 2rem);
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
@@ -567,6 +770,15 @@ p {
   font-weight: 500;
   font-size: 1.6rem;
   line-height: 130%;
+}
+
+h1 span,
+h2 span,
+h3 span,
+h4 span,
+h5 span,
+h6 span {
+  color: var(--accent);
 }
 
 .suptitle p {
@@ -1679,6 +1891,195 @@ p {
   object-fit: cover;
 }
 
+.callback {
+  color: var(--white);
+  background-color: var(--black);
+  padding: 0;
+}
+
+.callback .general__head-text {
+  color: var(--white-50);
+}
+
+.callback__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  gap: 16.5rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 100dvh;
+}
+
+.callback__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 7rem;
+  padding: 7rem 0;
+}
+
+.callback__body {
+  margin-left: var(--title-margin-left);
+}
+
+.callback__img {
+  max-width: 80.5rem;
+  width: 100%;
+  height: calc(100% + var(--container-padding));
+  margin-right: calc(var(--container-padding) * -1);
+}
+
+.callback__img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.faq__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.faq__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.faq__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-bottom: 0.1rem solid var(--gray-50);
+}
+
+.faq__item-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq__item-head i {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
+}
+
+.faq__item-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 6.5rem;
+}
+
+.faq__item-count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 8rem;
+  height: 8rem;
+  background-color: var(--gray);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.faq__item-head:hover .faq__item-count {
+  color: var(--white);
+  background-color: var(--accent);
+}
+
+.faq__item-count span {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 120%;
+}
+
+.faq__item-title {
+  color: var(--accent);
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.faq__item-head:hover .faq__item-title {
+  color: var(--black);
+}
+
+.faq__item-body {
+  padding: 0 var(--title-margin-left);
+  background-color: var(--gray-30);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.faq__item-wrap {
+  overflow: hidden;
+}
+
+.faq .accordion-active .faq__item-body {
+  padding: 4rem var(--title-margin-left);
+}
+
+.faq .accordion-active .faq__item-count {
+  color: var(--white);
+  background-color: var(--accent);
+}
+
+.faq .accordion-active .faq__item-head {
+  color: var(--black);
+}
+
+.faq .accordion-active .faq__item-head i {
+  -webkit-transform: unset;
+  -ms-transform: unset;
+  transform: unset;
+}
+
 .hero {
   position: relative;
   z-index: 1;
@@ -2128,6 +2529,66 @@ p {
     gap: 0.5rem;
   }
 
+  .form-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 0 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 3rem;
+  }
+
+  .form-group:nth-child(1),
+  .form-group:nth-child(2) {
+    width: calc(50% - 0.5rem);
+  }
+
+  .form-input {
+    font-size: 1.4rem;
+    padding: 0 1rem 2rem 0;
+  }
+
+  .form-label {
+    font-size: 1.4rem;
+  }
+
+  .form-textarea {
+    font-size: 1.4rem;
+    padding: 0 1rem 2rem 0;
+  }
+
+  .form-textarea::-webkit-input-placeholder {
+    font-size: 1.4rem;
+  }
+
+  .form-textarea::-moz-placeholder {
+    font-size: 1.4rem;
+  }
+
+  .form-textarea:-ms-input-placeholder {
+    font-size: 1.4rem;
+  }
+
+  .form-textarea::-ms-input-placeholder {
+    font-size: 1.4rem;
+  }
+
+  .form-textarea::placeholder {
+    font-size: 1.4rem;
+  }
+
+  .form-wrap {
+    gap: 1.5rem;
+  }
+
   h1::before {
     display: none;
   }
@@ -2139,20 +2600,24 @@ p {
   h2 {
     gap: 1rem;
     font-size: 3rem;
+    margin-left: 4rem;
   }
 
   h2::before {
     width: 3rem;
+    right: calc(100% + 1rem);
     top: 1.6rem;
   }
 
   h3 {
     gap: 1rem;
     font-size: 2.5rem;
+    margin-left: 4rem;
   }
 
   h3::before {
     width: 3rem;
+    right: calc(100% + 1rem);
     top: 1.6rem;
   }
 
@@ -2476,6 +2941,27 @@ p {
     gap: 1rem;
   }
 
+  .callback {
+    min-height: unset;
+  }
+
+  .callback .general__head-text {
+    max-width: unset;
+  }
+
+  .callback__inner {
+    min-height: unset;
+  }
+
+  .callback__content {
+    gap: 3rem;
+    padding: 4rem 0 7rem;
+  }
+
+  .callback__img {
+    display: none;
+  }
+
   .hero {
     background-image: url("./../images/hero/bg-planshet.png");
     padding: 10rem 0;
@@ -2626,6 +3112,52 @@ p {
 }
 
 @media (max-width: 576px) {
+  .form-group {
+    margin-bottom: 4rem;
+  }
+
+  .form-group:nth-child(1),
+  .form-group:nth-child(2) {
+    width: 100%;
+  }
+
+  .form-group:last-child {
+    margin-bottom: 2rem;
+  }
+
+  .form-input {
+    font-size: 1.2rem;
+    padding: 0 1rem 1.5rem 0;
+  }
+
+  .form-label {
+    font-size: 1.2rem;
+  }
+
+  .form-textarea {
+    font-size: 1.2rem;
+  }
+
+  .form-textarea::-webkit-input-placeholder {
+    font-size: 1.2rem;
+  }
+
+  .form-textarea::-moz-placeholder {
+    font-size: 1.2rem;
+  }
+
+  .form-textarea:-ms-input-placeholder {
+    font-size: 1.2rem;
+  }
+
+  .form-textarea::-ms-input-placeholder {
+    font-size: 1.2rem;
+  }
+
+  .form-textarea::placeholder {
+    font-size: 1.2rem;
+  }
+
   .icon-play {
     --font-size: 1.2rem;
   }
@@ -2802,6 +3334,10 @@ p {
   .advan__items {
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
+  }
+
+  .callback__content {
+    padding: 4rem 0 16.5rem;
   }
 
   .hero {
