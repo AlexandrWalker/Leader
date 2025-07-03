@@ -1,0 +1,84 @@
+@use './../mixins' as *;
+
+.join {
+
+  background-color: var(--black);
+  color: var(--white);
+  padding: 7rem 0 10rem;
+
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 88.3rem;
+    height: 67rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODg0IiBoZWlnaHQ9IjY3MCIgdmlld0JveD0iMCAwIDg4NCA2NzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBvcGFjaXR5PSIwLjUiIGQ9Ik0zNjcuNTg1IDY2OS45OTRIMjkzLjg1OUw0OTcuODA0IDQ2Ni4wNUg1NzEuNTI5TDM2Ny41ODUgNjY5Ljk5NFpNNzMuNzI1NiA2NjUuNzAySDBMMTk5LjY1MyA0NjYuMDVIMjczLjM3OUw3My43MjU2IDY2NS43MDJaTTM0OS4wNTEgNDY2LjA1MUg0MjIuNDY2TDIyMi45MTUgNjY1LjYwMUgxNDkuMTg5TDM0OC4zNTUgNDY2LjQzNkgyNzQuOTRMNzQxLjM3NiAwSDgxNS4xMDJMMzQ5LjA1MSA0NjYuMDUxWk02NDUuNjQxIDQ2Ni4wNTFINzE5LjA1Nkw1MjAuODc5IDY2NC4yMjhINDQ3LjE1M0w2NDQuOTQ1IDQ2Ni40MzZINTcxLjUzTDgwOS43MjQgMjI4LjI0Mkg4ODMuNDQ5TDY0NS42NDEgNDY2LjA1MVpNNDk2LjE5MiA0NjYuNDM2SDQyMi40NjdMODA3LjQ1NSA4MS40NDYzSDg4MS4xODFMNDk2LjE5MiA0NjYuNDM2WiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzIwNzdfMTM3KSIvPg0KPGRlZnM+DQo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MF9saW5lYXJfMjA3N18xMzciIHgxPSI2MjAuMzU0IiB5MT0iMzIuNTg5IiB4Mj0iLTE1LjU2NTMiIHkyPSI2MjkuODYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4NCjxzdG9wIHN0b3AtY29sb3I9IiNFQTBDMEMiLz4NCjxzdG9wIG9mZnNldD0iMC40OTUxOTIiIHN0b3AtY29sb3I9IiNGRjNFMjUiIHN0b3Atb3BhY2l0eT0iMC43Ii8+DQo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRjkzNDUiIHN0b3Atb3BhY2l0eT0iMCIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjwvZGVmcz4NCjwvc3ZnPg0K);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    position: absolute;
+    right: -25.2rem;
+    bottom: -0.2rem;
+
+    @include md {
+      display: none;
+    }
+  }
+
+  .general__head {
+    max-width: 57rem;
+  }
+
+  .general__head-text {
+    color: var(--white-50);
+  }
+
+  .form-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2rem;
+
+    @include md {
+      gap: 0 1rem;
+    }
+  }
+
+  .form-group {
+
+    &:nth-child(1):not(.form-group--file),
+    &:nth-child(2):not(.form-group--file) {
+      width: calc(50% - 1rem);
+
+      @include md {
+        width: calc(50% - 0.5rem);
+      }
+
+      @include sm {
+        width: 100%;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 2rem;
+
+      @include md {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    @include md {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+  }
+
+  &__body {
+    margin-left: var(--title-margin-left);
+    max-width: 114rem;
+  }
+}

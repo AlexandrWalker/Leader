@@ -53,6 +53,11 @@
     &:hover {
       border-color: var(--black);
       color: var(--white);
+
+      @include md {
+        border-color: var(--accent);
+        color: inherit;
+      }
     }
 
     &:nth-last-child(-n+6) {
@@ -81,6 +86,11 @@
         background-color: var(--black);
         border-color: var(--black);
         z-index: 1;
+
+        @include md {
+          background-color: transparent;
+          border-color: var(--accent-20);
+        }
       }
 
       @include md {
@@ -89,10 +99,11 @@
         display: grid;
         grid-template-columns: auto auto auto;
         grid-template-rows: 1fr 0fr;
-        gap: 2rem 3rem;
+        gap: 0 3rem;
 
         &.accordion-active {
           grid-template-rows: 1fr auto;
+          gap: 2rem 3rem;
         }
       }
     }
@@ -108,6 +119,8 @@
       margin-bottom: 3rem;
       background-color: var(--white);
 
+      position: relative;
+
       @include md {
         width: 5rem;
         height: 5rem;
@@ -117,6 +130,17 @@
 
         grid-column: 1/2;
         grid-row: 1/2;
+
+        /* */
+        justify-content: flex-start;
+        align-items: flex-start;
+        background: var(--gray-30);
+
+        transition: all 0.3s ease;
+
+        .services__item:hover & {
+          background: var(--accent);
+        }
       }
 
       i {
@@ -129,10 +153,42 @@
         .services__item:hover & {
           color: var(--white);
           background: var(--gradient);
+
+          @include md {
+            background: transparent;
+          }
         }
 
         @include md {
           --font-size: 5rem;
+          --font-size: 3rem;
+
+          background: transparent;
+          transition: all 0.3s ease;
+        }
+      }
+
+      span {
+        display: none;
+
+        position: absolute;
+        bottom: 0.3rem;
+        right: 0.5rem;
+
+        font-family: var(--second-family);
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 120%;
+        color: var(--accent);
+
+        transition: all 0.3s ease;
+
+        .services__item:hover & {
+          color: var(--white);
+        }
+
+        @include md {
+          display: block;
         }
       }
     }
@@ -148,6 +204,12 @@
 
         .services__item:hover & {
           font-weight: 700;
+
+          @include md {
+            font-weight: 400;
+
+            color: var(--accent);
+          }
         }
       }
 
@@ -175,6 +237,11 @@
         grid-template-rows: 1fr;
       }
 
+      @include md {
+        grid-template-rows: 1fr;
+        padding-left: 8rem;
+      }
+
       p {
         overflow: hidden;
       }
@@ -184,6 +251,8 @@
         grid-row: 2/3;
 
         margin-bottom: 0;
+
+        color: inherit;
       }
     }
 
