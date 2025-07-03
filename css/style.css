@@ -73,71 +73,7 @@ a {
 @font-face {
   font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Micra;
-  font-display: swap;
   src: url("../fonts/Micra-Bold.woff2") format("woff2"), url("../fonts/Micra-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -153,8 +89,72 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
   src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
   font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -376,6 +376,7 @@ body {
   --container-padding: 10rem;
   --container-width: 172rem;
   --white: #ffffff;
+  --white-10: rgba(255, 255, 255, 0.1);
   --white-30: rgba(255, 255, 255, 0.3);
   --white-50: rgba(255, 255, 255, 0.5);
   --white-80: rgba(255, 255, 255, 0.8);
@@ -388,6 +389,7 @@ body {
   --accent: #EA0C0C;
   --accent-20: rgba(234, 12, 12, 0.2);
   --accent-30: rgba(234, 12, 12, 0.3);
+  --accent-50: rgba(234, 12, 12, 0.5);
   --gradient: linear-gradient(82.49deg, #FF9345 0.02%, #FF6625 25.52%, #EA0C0C 63.54%);
   --page-bg: #EAEDEF;
   --page-bg-90: rgba(234, 237, 239, 0.9);
@@ -478,6 +480,48 @@ body {
 
 .form-group:last-child {
   margin-bottom: 3rem;
+}
+
+.form-group--file {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-group--file label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-group--file label i {
+  --font-size: 3.4rem;
+  border-radius: 50%;
+  background-color: var(--white-10);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHZpZXdCb3g9IjAgMCAzNCAzNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxnIG9wYWNpdHk9IjAuNSI+DQo8cGF0aCBkPSJNMTYuNjAyMiAxMy4wMjI5TDE3Ljk5NDQgMTEuNjMwOEMxOC4yODE2IDExLjM0MzMgMTguNjIyNyAxMS4xMTUyIDE4Ljk5ODEgMTAuOTU5NUMxOS4zNzM1IDEwLjgwMzkgMTkuNzc1OSAxMC43MjM3IDIwLjE4MjMgMTAuNzIzNkMyMC41ODg3IDEwLjcyMzUgMjAuOTkxMSAxMC44MDM1IDIxLjM2NjYgMTAuOTU5QzIxLjc0MjEgMTEuMTE0NSAyMi4wODMyIDExLjM0MjQgMjIuMzcwNiAxMS42Mjk4QzIyLjY1OCAxMS45MTcxIDIyLjg4NTkgMTIuMjU4MyAyMy4wNDE0IDEyLjYzMzhDMjMuMTk2OSAxMy4wMDkzIDIzLjI3NjggMTMuNDExNyAyMy4yNzY3IDEzLjgxODFDMjMuMjc2NiAxNC4yMjQ1IDIzLjE5NjUgMTQuNjI2OSAyMy4wNDA4IDE1LjAwMjNDMjIuODg1MiAxNS4zNzc3IDIyLjY1NzEgMTUuNzE4OCAyMi4zNjk2IDE2LjAwNkwyMC4zODA4IDE3Ljk5NDhDMjAuMDkzNiAxOC4yODIgMTkuNzUyNSAxOC41MDk5IDE5LjM3NzIgMTguNjY1NEMxOS4wMDE4IDE4LjgyMDkgMTguNTk5NSAxOC45MDA5IDE4LjE5MzIgMTguOTAwOUMxNy43ODY5IDE4LjkwMDkgMTcuMzg0NyAxOC44MjA5IDE3LjAwOTMgMTguNjY1NEMxNi42MzM5IDE4LjUwOTkgMTYuMjkyOSAxOC4yODIgMTYuMDA1NiAxNy45OTQ4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPg0KPHBhdGggZD0iTTE3LjM5NzYgMjAuOTc3NkwxNi4wMDU1IDIyLjM2OTdDMTUuNzE4MyAyMi42NTcyIDE1LjM3NzIgMjIuODg1MyAxNS4wMDE4IDIzLjA0MUMxNC42MjY0IDIzLjE5NjYgMTQuMjI0IDIzLjI3NjggMTMuODE3NiAyMy4yNzY5QzEzLjQxMTIgMjMuMjc3IDEzLjAwODggMjMuMTk3IDEyLjYzMzMgMjMuMDQxNUMxMi4yNTc4IDIyLjg4NiAxMS45MTY2IDIyLjY1ODEgMTEuNjI5MyAyMi4zNzA3QzExLjM0MTkgMjIuMDgzNCAxMS4xMTQgMjEuNzQyMiAxMC45NTg1IDIxLjM2NjdDMTAuODAzIDIwLjk5MTIgMTAuNzIzMSAyMC41ODg4IDEwLjcyMzEgMjAuMTgyNEMxMC43MjMyIDE5Ljc3NiAxMC44MDM0IDE5LjM3MzYgMTAuOTU5MSAxOC45OTgyQzExLjExNDcgMTguNjIyOCAxMS4zNDI4IDE4LjI4MTcgMTEuNjMwMyAxNy45OTQ1TDEzLjYxOSAxNi4wMDU3QzEzLjkwNjMgMTUuNzE4NSAxNC4yNDc0IDE1LjQ5MDYgMTQuNjIyNyAxNS4zMzUxQzE0Ljk5ODEgMTUuMTc5NiAxNS40MDA0IDE1LjA5OTYgMTUuODA2NyAxNS4wOTk2QzE2LjIxMjkgMTUuMDk5NiAxNi42MTUyIDE1LjE3OTYgMTYuOTkwNiAxNS4zMzUxQzE3LjM2NTkgMTUuNDkwNiAxNy43MDcgMTUuNzE4NSAxNy45OTQzIDE2LjAwNTciIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+DQo8L2c+DQo8L3N2Zz4NCg==);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: var(--white);
+}
+
+.form-group--file label p {
+  color: var(--accent-50);
+  text-decoration: underline;
+}
+
+.form-group--file label:hover p {
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .form-input {
@@ -652,6 +696,30 @@ body {
 
 .form-text a:hover {
   color: var(--white);
+  text-decoration: none;
+}
+
+.form-file {
+  display: none;
+}
+
+.form-file--text {
+  color: var(--white-50);
+}
+
+.form-file--text p {
+  font-weight: 300;
+}
+
+.form-file--clear {
+  font-weight: 700;
+  color: var(--white-50);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.form-file--clear:hover {
+  color: var(--white);
 }
 
 [class^=icon-],
@@ -670,6 +738,8 @@ body {
   height: var(--font-size);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   font-size: var(--font-size);
   color: var(--accent);
 }
@@ -1893,8 +1963,9 @@ h6 span {
 
 .callback {
   color: var(--white);
-  background-color: var(--black);
   padding: 0;
+  background-color: var(--black);
+  position: relative;
 }
 
 .callback .general__head-text {
@@ -1995,9 +2066,6 @@ h6 span {
 .faq__item-head i {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  -webkit-transform: scale(-1, -1);
-  -ms-transform: scale(-1, -1);
-  transform: scale(-1, -1);
 }
 
 .faq__item-wrap {
@@ -2025,6 +2093,8 @@ h6 span {
   background-color: var(--gray);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .faq__item-head:hover .faq__item-count {
@@ -2075,9 +2145,9 @@ h6 span {
 }
 
 .faq .accordion-active .faq__item-head i {
-  -webkit-transform: unset;
-  -ms-transform: unset;
-  transform: unset;
+  -webkit-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
 }
 
 .hero {
@@ -2270,6 +2340,67 @@ h6 span {
   font-weight: 400;
 }
 
+.join {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 7rem 0 10rem;
+  position: relative;
+}
+
+.join::before {
+  content: "";
+  width: 88.3rem;
+  height: 67rem;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODg0IiBoZWlnaHQ9IjY3MCIgdmlld0JveD0iMCAwIDg4NCA2NzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBvcGFjaXR5PSIwLjUiIGQ9Ik0zNjcuNTg1IDY2OS45OTRIMjkzLjg1OUw0OTcuODA0IDQ2Ni4wNUg1NzEuNTI5TDM2Ny41ODUgNjY5Ljk5NFpNNzMuNzI1NiA2NjUuNzAySDBMMTk5LjY1MyA0NjYuMDVIMjczLjM3OUw3My43MjU2IDY2NS43MDJaTTM0OS4wNTEgNDY2LjA1MUg0MjIuNDY2TDIyMi45MTUgNjY1LjYwMUgxNDkuMTg5TDM0OC4zNTUgNDY2LjQzNkgyNzQuOTRMNzQxLjM3NiAwSDgxNS4xMDJMMzQ5LjA1MSA0NjYuMDUxWk02NDUuNjQxIDQ2Ni4wNTFINzE5LjA1Nkw1MjAuODc5IDY2NC4yMjhINDQ3LjE1M0w2NDQuOTQ1IDQ2Ni40MzZINTcxLjUzTDgwOS43MjQgMjI4LjI0Mkg4ODMuNDQ5TDY0NS42NDEgNDY2LjA1MVpNNDk2LjE5MiA0NjYuNDM2SDQyMi40NjdMODA3LjQ1NSA4MS40NDYzSDg4MS4xODFMNDk2LjE5MiA0NjYuNDM2WiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzIwNzdfMTM3KSIvPg0KPGRlZnM+DQo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MF9saW5lYXJfMjA3N18xMzciIHgxPSI2MjAuMzU0IiB5MT0iMzIuNTg5IiB4Mj0iLTE1LjU2NTMiIHkyPSI2MjkuODYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4NCjxzdG9wIHN0b3AtY29sb3I9IiNFQTBDMEMiLz4NCjxzdG9wIG9mZnNldD0iMC40OTUxOTIiIHN0b3AtY29sb3I9IiNGRjNFMjUiIHN0b3Atb3BhY2l0eT0iMC43Ii8+DQo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRjkzNDUiIHN0b3Atb3BhY2l0eT0iMCIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjwvZGVmcz4NCjwvc3ZnPg0K);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  right: -25.2rem;
+  bottom: -0.2rem;
+}
+
+.join .general__head {
+  max-width: 57rem;
+}
+
+.join .general__head-text {
+  color: var(--white-50);
+}
+
+.join .form-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 0 2rem;
+}
+
+.join .form-group:nth-child(1):not(.form-group--file),
+.join .form-group:nth-child(2):not(.form-group--file) {
+  width: calc(50% - 1rem);
+}
+
+.join .form-group:last-child {
+  margin-bottom: 2rem;
+}
+
+.join__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.join__body {
+  margin-left: var(--title-margin-left);
+  max-width: 114rem;
+}
+
 .quiz {
   padding: 0;
   min-height: -webkit-fit-content;
@@ -2402,6 +2533,7 @@ h6 span {
   margin-top: calc(-1 * var(--services-item-top));
   margin-bottom: 3rem;
   background-color: var(--white);
+  position: relative;
 }
 
 .services__item-icon i {
@@ -2415,6 +2547,24 @@ h6 span {
 .services__item:hover .services__item-icon i {
   color: var(--white);
   background: var(--gradient);
+}
+
+.services__item-icon span {
+  display: none;
+  position: absolute;
+  bottom: 0.3rem;
+  right: 0.5rem;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 120%;
+  color: var(--accent);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.services__item:hover .services__item-icon span {
+  color: var(--white);
 }
 
 .services__item-title {
@@ -2546,9 +2696,25 @@ h6 span {
     margin-bottom: 3rem;
   }
 
-  .form-group:nth-child(1),
-  .form-group:nth-child(2) {
+  .form-group:nth-child(1):not(.form-group--file),
+  .form-group:nth-child(2):not(.form-group--file) {
     width: calc(50% - 0.5rem);
+  }
+
+  .form-group--file {
+    gap: 0.5rem;
+  }
+
+  .form-group--file label {
+    gap: 0.5rem;
+  }
+
+  .form-group--file label i {
+    --font-size: 2.4rem;
+  }
+
+  .form-group--file label p {
+    font-size: 1.2rem;
   }
 
   .form-input {
@@ -2587,6 +2753,14 @@ h6 span {
 
   .form-wrap {
     gap: 1.5rem;
+  }
+
+  .form-file--text p {
+    font-size: 1.2rem;
+  }
+
+  .form-file--clear {
+    font-size: 1.2rem;
   }
 
   h1::before {
@@ -2962,6 +3136,39 @@ h6 span {
     display: none;
   }
 
+  .faq__inner {
+    gap: 3rem;
+  }
+
+  .faq__items {
+    gap: 3rem;
+  }
+
+  .faq__item {
+    padding-bottom: 1rem;
+  }
+
+  .faq__item-wrap {
+    gap: 1.7rem;
+  }
+
+  .faq__item-count {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .faq__item-count span {
+    font-size: 2rem;
+  }
+
+  .faq__item-body {
+    --title-margin-left: 6.7rem;
+  }
+
+  .faq .accordion-active .faq__item-body {
+    padding: 2rem 2rem 2rem var(--title-margin-left);
+  }
+
   .hero {
     background-image: url("./../images/hero/bg-planshet.png");
     padding: 10rem 0;
@@ -3029,6 +3236,27 @@ h6 span {
     padding-right: 4rem;
   }
 
+  .join::before {
+    display: none;
+  }
+
+  .join .form-content {
+    gap: 0 1rem;
+  }
+
+  .join .form-group:nth-child(1):not(.form-group--file),
+  .join .form-group:nth-child(2):not(.form-group--file) {
+    width: calc(50% - 0.5rem);
+  }
+
+  .join .form-group:last-child {
+    margin-bottom: 1.5rem;
+  }
+
+  .join .form-group {
+    margin-bottom: 3rem;
+  }
+
   .quiz {
     --title-margin-left: 4rem;
     background-image: url(./../images/quiz/bg-planshet.png);
@@ -3062,16 +3290,27 @@ h6 span {
     height: auto;
   }
 
+  .services__item:hover {
+    border-color: var(--accent);
+    color: inherit;
+  }
+
+  .services__item:hover .services__item-wrap {
+    background-color: transparent;
+    border-color: var(--accent-20);
+  }
+
   .services__item-wrap {
     position: static;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: 1fr 0fr;
-    gap: 2rem 3rem;
+    gap: 0 3rem;
   }
 
   .services__item-wrap.accordion-active {
     grid-template-rows: 1fr auto;
+    gap: 2rem 3rem;
   }
 
   .services__item-icon {
@@ -3082,10 +3321,41 @@ h6 span {
     margin-bottom: 0;
     grid-column: 1/2;
     grid-row: 1/2;
+    /* */
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    background: var(--gray-30);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+
+  .services__item:hover .services__item-icon {
+    background: var(--accent);
+  }
+
+  .services__item:hover .services__item-icon i {
+    background: transparent;
   }
 
   .services__item-icon i {
     --font-size: 5rem;
+    --font-size: 3rem;
+    background: transparent;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+
+  .services__item-icon span {
+    display: block;
+  }
+
+  .services__item:hover .services__item-title p {
+    font-weight: 400;
+    color: var(--accent);
   }
 
   .services__item-title {
@@ -3101,9 +3371,15 @@ h6 span {
   }
 
   .services__item-text {
+    grid-template-rows: 1fr;
+    padding-left: 8rem;
+  }
+
+  .services__item-text {
     grid-column: 1/4;
     grid-row: 2/3;
     margin-bottom: 0;
+    color: inherit;
   }
 
   .services__item-foot {
@@ -3336,8 +3612,28 @@ h6 span {
     gap: 1rem;
   }
 
+  .callback::before {
+    content: "";
+    width: 24.2rem;
+    height: 18.3rem;
+    position: absolute;
+    right: -5.7rem;
+    bottom: 0;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQzIiBoZWlnaHQ9IjE4NCIgdmlld0JveD0iMCAwIDI0MyAxODQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBvcGFjaXR5PSIwLjUiIGQ9Ik0xNTYuOTUzIDEyNy45ODdMMTAxLjg2IDE4My4wOEw4MS43NzkzIDE4Mi45MTVMMTM2Ljg3MiAxMjcuODIyTDE1Ni45NTMgMTI3Ljk4N1pNMjAuMjQ2MSAxODIuODE1SDBMNTQuODI5MSAxMjcuOTg2SDc1LjA3NTJMMjAuMjQ2MSAxODIuODE1Wk05NS44NTc0IDEyNy45ODZIMTE2LjAxOEw2MS4yMTY4IDE4Mi43ODdINDAuOTcwN0w5NS42NjUgMTI4LjA5M0g3NS41MDM5TDIwMy41OTcgMEgyMjMuODQ0TDk1Ljg1NzQgMTI3Ljk4NlpNMTc3LjMwNyAxMjcuOTg2SDE5Ny40NjhMMTQzLjA0NCAxODIuNDFIMTIyLjc5OEwxNzcuMTE0IDEyOC4wOTNIMTU2Ljk1NEwyMjIuMzY2IDYyLjY3OTdIMjQyLjYxM0wxNzcuMzA3IDEyNy45ODZaTTEzNi4yNjUgMTI4LjA5M0gxMTYuMDE4TDIyMS43NDQgMjIuMzY3MkgyNDEuOTlMMTM2LjI2NSAxMjguMDkzWiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzIwNzVfMTI5KSIvPg0KPGRlZnM+DQo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MF9saW5lYXJfMjA3NV8xMjkiIHgxPSIxNzAuMzYyIiB5MT0iOC45NDk2MSIgeDI9Ii00LjI3NDU1IiB5Mj0iMTcyLjk3MyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KPHN0b3Agc3RvcC1jb2xvcj0iI0VBMEMwQyIvPg0KPHN0b3Agb2Zmc2V0PSIwLjQ5NTE5MiIgc3RvcC1jb2xvcj0iI0ZGM0UyNSIgc3RvcC1vcGFjaXR5PSIwLjciLz4NCjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGOTM0NSIgc3RvcC1vcGFjaXR5PSIwIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPC9kZWZzPg0KPC9zdmc+DQo=);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
   .callback__content {
     padding: 4rem 0 16.5rem;
+  }
+
+  .faq__inner {
+    gap: 2rem;
+  }
+
+  .faq__items {
+    gap: 2rem;
   }
 
   .hero {
@@ -3355,6 +3651,11 @@ h6 span {
 
   .hero .subtitle {
     max-width: 67.04%;
+  }
+
+  .join .form-group:nth-child(1):not(.form-group--file),
+  .join .form-group:nth-child(2):not(.form-group--file) {
+    width: 100%;
   }
 
   .quiz {
