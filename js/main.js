@@ -120,6 +120,86 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
+  const workSlider = new Swiper(".work__slider", {
+    slidesPerGroup: 1,
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    speed: 600,
+    mousewheel: {
+      forceToAxis: true,
+    },
+    breakpoints: {
+      769: {
+        slidesPerView: 5,
+        spaceBetween: 20,
+      },
+    },
+  });
+
+  const customersSlider = new Swiper(".customers__slider", {
+    slidesPerGroup: 1,
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    loop: true,
+    speed: 600,
+    mousewheel: {
+      forceToAxis: true,
+    },
+    navigation: {
+      nextEl: ".clients__slider-btn--next",
+      prevEl: ".clients__slider-btn--prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    breakpoints: {
+      567: {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        pagination: {
+          el: ".swiper-pagination",
+        },
+      },
+      769: {
+        slidesPerView: 6,
+        spaceBetween: 20,
+        pagination: false,
+      },
+    },
+  });
+
+  const clientsSlider = new Swiper(".clients__slider", {
+    slidesPerGroup: 1,
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    loop: true,
+    speed: 600,
+    mousewheel: {
+      forceToAxis: true,
+    },
+    navigation: {
+      nextEl: ".clients__slider-btn--next",
+      prevEl: ".clients__slider-btn--prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    breakpoints: {
+      567: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        pagination: {
+          el: ".swiper-pagination",
+        },
+      },
+      769: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        pagination: false,
+      },
+    },
+  });
+
   $(window).on('resize load', function () {
 
     if (window.innerWidth <= 768) {
@@ -133,16 +213,86 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   const inputElements = document.querySelectorAll('.form-input');
+  const textareaElements = document.querySelectorAll('.form-textarea');
   const className = 'filled';
 
   inputElements.forEach(element => {
     element.addEventListener('input', function () {
       if (this.value.trim() !== '') {
         element.classList.add(className);
+      } else {
+        element.classList.remove(className);
       }
     });
   });
 
+  textareaElements.forEach(element => {
+    element.addEventListener('input', function () {
+      if (this.value.trim() !== '') {
+        element.classList.add(className);
+      } else {
+        element.classList.remove(className);
+      }
+    });
+  });
+
+  /**
+ * Управляет переключением вкладок на странице.
+ * Добавляет и удаляет классы активности для кнопок и панелей вкладок.
+ * Поддерживает вложенные табы любой глубины и сохраняет активное состояние у вложенных табов при переключении внешних.
+ */
+  if (document.querySelector('.tabs')) {
+    document.querySelectorAll('.tabs').forEach((tabsContainer) => {
+      tabsContainer.addEventListener('click', (event) => {
+        const tabsBtn = event.target.closest('.tabs__btn');
+        if (!tabsBtn || !tabsContainer.contains(tabsBtn)) return;
+
+        // Останавливаем всплытие, чтобы вложенные табы не влияли на родительские
+        event.stopPropagation();
+
+        // Ищем ближайший контейнер, к которому принадлежит нажатая кнопка
+        const currentTabsContainer = tabsBtn.closest('.tabs');
+        if (!currentTabsContainer) return;
+
+        // Сбрасываем активные состояния кнопок и панелей только внутри текущего уровня
+        const tabsBtns = Array.from(currentTabsContainer.querySelectorAll('.tabs__btn'));
+        const tabsPanels = Array.from(currentTabsContainer.querySelectorAll('.tabs__panel'));
+
+        tabsBtns.forEach((btn) => {
+          if (btn.closest('.tabs') === currentTabsContainer) {
+            btn.classList.remove('tabs__btn--active');
+          }
+        });
+
+        tabsPanels.forEach((panel) => {
+          if (panel.closest('.tabs') === currentTabsContainer) {
+            panel.classList.remove('tabs__panel--active');
+          }
+        });
+
+        // Устанавливаем активное состояние для выбранной вкладки
+        tabsBtn.classList.add('tabs__btn--active');
+
+        const targetPanel = currentTabsContainer.querySelector(
+          `.tabs__panel[data-tab="${tabsBtn.dataset.tab}"]`,
+        );
+        if (targetPanel) {
+          targetPanel.classList.add('tabs__panel--active');
+        }
+      });
+    });
+  };
+
+  /**
+   * Кнопка куки
+   */
+  if (('; ' + document.cookie).split(`; COOKIE_ACCEPT=`).pop().split(';')[0] !== '1') {
+    const cookiesNotify = document.getElementById('plate-cookie');
+
+    if (cookiesNotify) {
+      cookiesNotify.style.display = 'block';
+    }
+  }
 
   const timelineWrapper = document.querySelector('.timeline-wrapper');
   const timelineItems = document.querySelectorAll('.timeline-item');
@@ -189,3 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+function checkCookies() {
+  document.cookie = 'COOKIE_ACCEPT=1;path=\'/\';expires:' + (new Date(new Date().getTime() + 86400e3 * 365).toUTCString());
+  document.getElementById('warning-plate').remove();
+}
