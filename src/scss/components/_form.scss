@@ -113,6 +113,7 @@
     width: 100%;
     padding: 0 1rem 3rem 0;
     border-bottom: 0.1rem solid var(--gray-20);
+    transition: all 0.2s ease;
 
     @include md {
       font-size: 1.4rem;
@@ -129,8 +130,10 @@
     &.filled,
     &:active,
     &:focus,
-    &:target,
+    // &:target,
     &:hover {
+
+      border-color: var(--gray);
 
       &+.form-label {
         opacity: 0;
@@ -181,6 +184,7 @@
     width: 100%;
     padding: 0 1rem 3rem 0;
     border-bottom: 0.1rem solid var(--gray-20);
+    transition: all 0.2s ease;
 
     @include md {
       font-size: 1.4rem;
@@ -211,10 +215,12 @@
       }
     }
 
+    &.filled,
     &:active,
     &:focus,
     &:target,
     &:hover {
+      border-color: var(--gray);
 
       &::placeholder {
         opacity: 0;

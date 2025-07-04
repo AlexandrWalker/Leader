@@ -269,6 +269,14 @@
   &__title {
     text-transform: uppercase;
 
+    h3 {
+      margin-left: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
     @include sm {
       display: none;
     }
@@ -357,7 +365,6 @@
       font-size: 5rem;
       line-height: 120%;
       text-transform: uppercase;
-      /* Градиент */
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;

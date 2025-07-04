@@ -67,6 +67,16 @@
     }
   }
 
+  &--black {
+    --button-color: var(--white);
+    --button-background: var(--black);
+
+    &:hover {
+      --button-color: var(--black);
+      --button-background: var(--white);
+    }
+  }
+
   i {
     font-size: 2.4rem;
     color: var(--accent);

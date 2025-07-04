@@ -1,0 +1,48 @@
+@use './../mixins' as *;
+
+.plate {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 90;
+  pointer-events: none;
+
+  &__body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+    width: fit-content;
+    padding: 1.5rem 2rem 1.5rem 3rem;
+    background-color: var(--gray);
+    pointer-events: all;
+
+    @include md {
+      gap: 1.5rem;
+      padding: 0.8rem 2rem 0.8rem 2rem;
+    }
+  }
+
+  &__text {
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
+  &__btn {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+
+    @include md {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+}

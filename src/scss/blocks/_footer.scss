@@ -81,8 +81,12 @@
     }
   }
 
-  .burger-menu__foot h2::before {
-    display: none;
+  .burger-menu__foot h2 {
+    margin-left: 0;
+
+    &::before {
+      display: none;
+    }
   }
 
   &__body {
