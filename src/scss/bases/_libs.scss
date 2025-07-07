@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
+    z-index: 10;
 
     @include md {
       order: 3;
@@ -61,11 +62,13 @@
 
 [class^="swiper-button-"],
 [class*=" swiper-button-"] {
+  --swiper-button-size: 6rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 6rem;
-  height: 6rem;
+  width: var(--swiper-button-size);
+  height: var(--swiper-button-size);
   border-radius: 50%;
   overflow: hidden;
   background-color: var(--white);
@@ -74,10 +77,14 @@
   cursor: pointer;
   opacity: 1;
 
+  @include md {
+    --swiper-button-size: 5rem;
+  }
+
   i {
-    width: 6rem;
-    height: 6rem;
-    font-size: 6rem;
+    width: var(--swiper-button-size);
+    height: var(--swiper-button-size);
+    font-size: var(--swiper-button-size);
     color: var(--gray);
     transition: all 0.3s ease;
   }
@@ -96,69 +103,170 @@
   }
 }
 
-.objects__slider {
+.objects {
 
-  [class^="swiper-button-"],
-  [class*=" swiper-button-"] {
-    background-color: var(--gray);
+  &__slider {
 
-    i {
-      color: var(--black);
-    }
-
-    @include md {
-      display: none;
-    }
-  }
-
-  .swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    left: 4.5rem;
-    transform: scale(-1, 1) translateY(-50%);
-
-    &:hover {
-      background-color: var(--accent);
+    [class^="swiper-button-"],
+    [class*=" swiper-button-"] {
+      background-color: var(--gray);
 
       i {
-        color: var(--white);
+        color: var(--black);
+      }
+
+      @include md {
+        display: none;
+      }
+    }
+
+    .swiper-button-prev {
+      position: absolute;
+      top: 50%;
+      left: 4.5rem;
+      transform: scale(-1, 1) translateY(-50%);
+
+      &:hover {
+        background-color: var(--accent);
+
+        i {
+          color: var(--white);
+        }
+      }
+    }
+
+    .swiper-button-next {
+      position: absolute;
+      top: 50%;
+      right: 4.5rem;
+      transform: translateY(-50%);
+
+      &:hover {
+        background-color: var(--accent);
+
+        i {
+          color: var(--white);
+        }
       }
     }
   }
 
-  .swiper-button-next {
+  &__slider--step {
+
+    &.swiper-fade .swiper-slide-active .swiper-slide,
+    &.swiper-fade .swiper-slide-active .swiper-slide-active {
+      pointer-events: all;
+    }
+  }
+
+  &__gallery {
+
+    .swiper-pagination {
+      position: absolute;
+      bottom: 1rem;
+      margin: 0;
+    }
+
+    .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+      background-color: var(--white);
+    }
+  }
+}
+
+.command {
+
+  .swiper__btns {
+    flex-direction: column;
+
     position: absolute;
     top: 50%;
-    right: 4.5rem;
+    right: 0;
     transform: translateY(-50%);
 
-    &:hover {
-      background-color: var(--accent);
+    @include md {
+      flex-direction: row;
+      margin-top: 3rem;
 
-      i {
-        color: var(--white);
-      }
+      position: static;
+      transform: unset;
+    }
+
+    @include sm {
+      flex-direction: column-reverse;
+      margin-top: 9rem;
     }
   }
-}
 
-.objects__slider--step {
+  .swiper-slide.swiper-slide-prev {
 
-  &.swiper-fade .swiper-slide-active .swiper-slide,
-  &.swiper-fade .swiper-slide-active .swiper-slide-active {
-    pointer-events: all;
+    .command__item-head {
+      opacity: 0;
+      transform: translateX(-40rem);
+      transition: all 1s ease;
+    }
+
+    .command__item-body {
+      opacity: 0;
+      transform: translateX(-50%);
+      transition: all 1s ease;
+    }
+
+    .command__item-photo {
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: all 1.5s ease;
+    }
   }
-}
 
-.objects__gallery {
+  .swiper-slide {
 
-  .swiper-pagination {
-    position: absolute;
-    bottom: 1rem;
-    margin: 0;
+    .command__item-head {
+      opacity: 0;
+      transform: translateX(40rem);
+      transition: all 1s ease;
+    }
+
+    .command__item-body {
+      opacity: 0;
+      transform: translateX(50%);
+      transition-delay: 0.4s;
+      transition: all 1.5s ease, opacity 0.5s ease;
+      position: relative;
+      z-index: 0;
+
+      @include md {
+        transition-delay: 0.2s;
+      }
+    }
+
+    .command__item-photo {
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 1.5s ease;
+    }
   }
 
-  .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
-    background-color: var(--white);
+  .swiper-slide-active {
+
+    .command__item-head {
+      opacity: 1;
+      transition-delay: 0.3s;
+      transform: translateX(0);
+    }
+
+    .command__item-body {
+      opacity: 1;
+      transition-delay: 0.4s;
+      transform: translateX(0);
+
+      @include md {
+        transition-delay: 0.2s;
+      }
+    }
+
+    .command__item-photo {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }

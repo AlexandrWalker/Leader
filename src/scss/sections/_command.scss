@@ -6,4 +6,184 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center center;
+  padding: 8.5rem 0 14rem;
+
+  position: relative;
+
+  @include md {
+    background-image: none;
+    padding: 4rem 0 3rem;
+  }
+
+  @include sm {
+    padding: 3rem 0 5rem;
+  }
+
+  .general__head {
+    position: relative;
+    z-index: 2;
+    width: fit-content;
+    padding: 0 3rem 3rem 0;
+
+    @include md {
+      gap: 3rem;
+    }
+
+    @include sm {
+      gap: 1.5rem;
+    }
+
+    &-text {
+
+      @include md {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__slider {
+    overflow: visible;
+  }
+
+  &__slide {
+    height: auto;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding-top: 9rem;
+
+    @include md {
+      gap: 6rem;
+      padding-top: 5rem;
+    }
+
+    @include sm {
+      gap: 4.5rem;
+      padding-top: 2rem;
+    }
+
+    &-head {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+
+      margin-left: var(--title-margin-left);
+
+      @include md {
+        gap: 2rem;
+      }
+
+      @include sm {
+        gap: 1.5rem;
+      }
+
+      h6 {
+        width: min-content;
+
+        font-family: var(--second-family);
+        font-weight: 400;
+        font-size: 6rem;
+        line-height: 120%;
+        text-transform: uppercase;
+        color: var(--accent);
+
+        @include md {
+          font-size: 4rem;
+        }
+
+        @include sm {
+          font-size: 3rem;
+        }
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    &-body {
+
+      fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 1ch;
+        max-width: 88rem;
+        width: 100%;
+        padding: 5rem 18rem 3.5rem 4rem;
+        border: 0.1rem solid var(--accent-30);
+
+        @include md {
+          max-width: calc(50% - 0.5rem);
+          padding: 2rem 5rem 2rem 2rem;
+        }
+
+        @include sm {
+          max-width: 75%;
+          padding: 1.2rem 3rem 3rem 2rem;
+        }
+      }
+
+      legend {
+        --flang-padding: 1.6rem;
+        --width: 6.9rem;
+        --height: 5.8rem;
+
+        width: calc(var(--width) + (var(--flang-padding) * 2));
+        height: var(--height);
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjkiIGhlaWdodD0iNTgiIHZpZXdCb3g9IjAgMCA2OSA1OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik02OSAzMy41NjE4VjU4SDQ0LjY3ODVWMTcuNTk1NUM0NC42Nzg1IDE0LjExOTggNDUuNDI1MiAxMC44NjE0IDQ2LjkxODcgNy44MjAyMkM0OC42MjU0IDQuNTYxNzkgNTAuODY1NiAxLjk1NTA0IDUzLjYzOTEgMEg2NC41MTk3QzYyLjM4NjMgMS45NTUwNCA2MC40NjYyIDQuNTYxNzkgNTguNzU5NCA3LjgyMDIyQzU3LjI2NiAxMS4wNzg2IDU2LjUxOTIgMTQuNDQ1NyA1Ni41MTkyIDE3LjkyMTNWMzMuNTYxOEg2OVpNMjQuMzIxNSAzMy41NjE4VjU4SDBWMTcuNTk1NUMwIDE0LjExOTggMC43NDY3MTIgMTAuODYxNCAyLjI0MDE0IDcuODIwMjJDMy45NDY5MSA0Ljc3OTAyIDYuMDgwMzcgMi4xNzIyOCA4LjY0MDUyIDBIMjAuNDgxMkMxOC4xMzQ0IDEuOTU1MDQgMTYuMTA3NiA0LjU2MTc5IDE0LjQwMDkgNy44MjAyMkMxMi42OTQxIDEwLjg2MTQgMTEuODQwNyAxNC4xMTk4IDExLjg0MDcgMTcuNTk1NVYzMy41NjE4SDI0LjMyMTVaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfNDJfMzM5KSIvPg0KPGRlZnM+DQo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MF9saW5lYXJfNDJfMzM5IiB4MT0iMi40MDM0NWUtMDciIHkxPSI1Ny45MjE4IiB4Mj0iNzYuMjk0IiB5Mj0iNDUuOTUxOCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGOTM0NSIvPg0KPHN0b3Agb2Zmc2V0PSIwLjI1NDgwOCIgc3RvcC1jb2xvcj0iI0ZGNjYyNSIvPg0KPHN0b3Agb2Zmc2V0PSIwLjYzNDYxNSIgc3RvcC1jb2xvcj0iI0VBMEMwQyIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjwvZGVmcz4NCjwvc3ZnPg0K);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        padding: 0 var(--flang-padding);
+        margin-left: -2rem;
+
+        @include md {
+          --flang-padding: 0.5rem;
+          --width: 3.5rem;
+          --height: 3rem;
+
+          margin-left: 0;
+
+          position: relative;
+          top: calc((var(--height) / 2 - 0.1rem) * -1);
+        }
+      }
+    }
+
+    &-photo {
+      // width: 62.4rem;
+      width: auto;
+      height: 93.6rem;
+
+      position: absolute;
+      // top: -41%;
+      bottom: -14rem;
+      right: 20.76%;
+      z-index: 1;
+
+      @include md {
+        width: 37.6rem;
+        height: auto;
+
+        right: unset;
+        left: 46.7%;
+        bottom: -11rem;
+      }
+
+      @include sm {
+        width: 30.3rem;
+        right: -29.18%;
+        left: unset;
+        bottom: -26rem;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }
