@@ -8,7 +8,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
-  height: 100dvh;
+  // height: 100dvh;
+
+  padding: 22rem 0 6rem;
 
   @include md {
     background-image: url('./../../images/hero/bg-planshet.png');

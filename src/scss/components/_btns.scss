@@ -25,6 +25,20 @@
 
   transition: all 0.3s ease;
 
+  i {
+    font-size: 2.4rem;
+    color: var(--accent);
+  }
+
+  &:hover {
+    --button-color: var(--white);
+    --button-background: var(--accent);
+
+    i {
+      color: var(--white);
+    }
+  }
+
   @include md {
     --height: 5rem;
     --padding: 1.5rem;
@@ -75,10 +89,5 @@
       --button-color: var(--black);
       --button-background: var(--white);
     }
-  }
-
-  i {
-    font-size: 2.4rem;
-    color: var(--accent);
   }
 }

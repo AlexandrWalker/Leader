@@ -45,6 +45,18 @@
       }
     }
   }
+
+  &-thumbs {
+
+    .swiper-slide {
+      border: 0.1rem solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .swiper-slide-thumb-active {
+      border-color: var(--accent);
+    }
+  }
 }
 
 [class^="swiper-button-"],
@@ -67,6 +79,7 @@
     height: 6rem;
     font-size: 6rem;
     color: var(--gray);
+    transition: all 0.3s ease;
   }
 
   &:hover {
@@ -80,5 +93,72 @@
   &::before,
   &::after {
     display: none;
+  }
+}
+
+.objects__slider {
+
+  [class^="swiper-button-"],
+  [class*=" swiper-button-"] {
+    background-color: var(--gray);
+
+    i {
+      color: var(--black);
+    }
+
+    @include md {
+      display: none;
+    }
+  }
+
+  .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    left: 4.5rem;
+    transform: scale(-1, 1) translateY(-50%);
+
+    &:hover {
+      background-color: var(--accent);
+
+      i {
+        color: var(--white);
+      }
+    }
+  }
+
+  .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    right: 4.5rem;
+    transform: translateY(-50%);
+
+    &:hover {
+      background-color: var(--accent);
+
+      i {
+        color: var(--white);
+      }
+    }
+  }
+}
+
+.objects__slider--step {
+
+  &.swiper-fade .swiper-slide-active .swiper-slide,
+  &.swiper-fade .swiper-slide-active .swiper-slide-active {
+    pointer-events: all;
+  }
+}
+
+.objects__gallery {
+
+  .swiper-pagination {
+    position: absolute;
+    bottom: 1rem;
+    margin: 0;
+  }
+
+  .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+    background-color: var(--white);
   }
 }

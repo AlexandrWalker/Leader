@@ -34,6 +34,7 @@
   --gradient: linear-gradient(82.49deg, #FF9345 0.02%, #FF6625 25.52%, #EA0C0C 63.54%);
 
   --page-bg: #EAEDEF;
+  --page-bg-50: rgba(234, 237, 239, 0.5);
   --page-bg-90: rgba(234, 237, 239, 0.9);
 
   --header-height: 10rem;
@@ -41,7 +42,6 @@
   --title-margin-left: 14.5rem;
 
   @include md {
-
     --container-padding: 2rem;
     --header-height: 6rem;
     --title-margin-left: 0;

@@ -200,6 +200,85 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
+  const objectsSlider = new Swiper(".objects__slider", {
+    slidesPerGroup: 1,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    speed: 600,
+    grabCursor: true,
+    autoHeight: true,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    // navigation: false,
+    breakpoints: {
+      769: {
+        navigation: {
+          nextEl: ".objects__slider-btn--next",
+          prevEl: ".objects__slider-btn--prev",
+        },
+      },
+    },
+  });
+
+  const objectsSliderStep = new Swiper(".objects__slider--step", {
+    slidesPerGroup: 1,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    speed: 600,
+    grabCursor: false,
+    autoHeight: true,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    mousewheel: false,
+  });
+
+  objectsSlider.controller.control = objectsSliderStep;
+  objectsSliderStep.controller.control = objectsSlider;
+
+  const objects__gallerys = document.querySelectorAll('.objects__gallery');
+  objects__gallerys.forEach(objects__gallery => {
+
+    const objectsGalleryMini = new Swiper(objects__gallery.parentNode.querySelector('.objects__gallery--mini'), {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      speed: 600,
+      grabCursor: false,
+      mousewheel: false,
+      watchSlidesProgress: true,
+      breakpoints: {
+        769: {
+          spaceBetween: 20,
+        },
+      },
+    });
+
+    const objectsGallery = new Swiper(objects__gallery, {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      speed: 600,
+      grabCursor: false,
+      mousewheel: false,
+      thumbs: {
+        swiper: objectsGalleryMini,
+      },
+      breakpoints: {
+        769: {
+          spaceBetween: 20,
+        },
+      },
+    });
+  });
+
+
   $(window).on('resize load', function () {
 
     if (window.innerWidth <= 768) {
@@ -294,6 +373,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /**
+   * Инициализация TransferElements
+   */
+  if (document.querySelector('.transfer-pos-1')) {
+    new TransferElements(
+      {
+        sourceElement: document.querySelector('.transfer-elem-1'),
+        breakpoints: {
+          768: {
+            targetElement: document.querySelector('.transfer-pos-1')
+          }
+        },
+      }
+    );
+  }
+  // if (document.querySelector('.transfer-pos-2')) {
+  //   const transferElem2 = document.querySelectorAll('.transfer-elem-2');
+  //   const transferPos2 = document.querySelectorAll('.transfer-pos-2');
+
+  //   transferElem2.forEach(transferElem => {
+  //     // transferPos2.forEach(transferPos => {
+  //       new TransferElements(
+  //         {
+  //           sourceElement: transferElem,
+  //           breakpoints: {
+  //             768: {
+  //               targetElement: transferPos
+  //             }
+  //           },
+  //         }
+  //       );
+  //     // });
+  //   });
+  // }
+
+  /**
+   * Таймлапс
+   */
   const timelineWrapper = document.querySelector('.timeline-wrapper');
   const timelineItems = document.querySelectorAll('.timeline-item');
   const timelineWidth = timelineWrapper.scrollWidth - window.innerWidth;

@@ -72,7 +72,8 @@
   &__img {
     max-width: 80.5rem;
     width: 100%;
-    height: calc(100% + var(--container-padding));
+    // height: calc(100% + var(--container-padding));
+    height: auto;
     margin-right: calc(var(--container-padding) * -1);
 
     @include md {

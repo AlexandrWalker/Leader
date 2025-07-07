@@ -36,8 +36,8 @@
     @include sm {
       margin-bottom: 4rem;
 
-      &:nth-child(1),
-      &:nth-child(2) {
+      &:nth-child(1):not(.form-group--file),
+      &:nth-child(2):not(.form-group--file) {
         width: 100%;
       }
 
@@ -74,6 +74,7 @@
           background-repeat: no-repeat;
           background-size: 100% 100%;
           color: var(--white);
+          transition: all 0.3s ease;
 
           @include md {
             --font-size: 2.4rem;
@@ -83,6 +84,7 @@
         p {
           color: var(--accent-50);
           text-decoration: underline;
+          transition: all 0.3s ease;
 
           @include md {
             font-size: 1.2rem;
@@ -91,9 +93,13 @@
 
         &:hover {
 
+          i {
+            background-color: var(--white);
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHZpZXdCb3g9IjAgMCAzNCAzNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xNi42MDI1IDEzLjAyMjVMMTcuOTk0NiAxMS42MzA0QzE4LjI4MTggMTEuMzQyOSAxOC42MjI5IDExLjExNDggMTguOTk4MyAxMC45NTkyQzE5LjM3MzcgMTAuODAzNSAxOS43NzYxIDEwLjcyMzQgMjAuMTgyNSAxMC43MjMzQzIwLjU4ODkgMTAuNzIzMiAyMC45OTEzIDEwLjgwMzEgMjEuMzY2OCAxMC45NTg2QzIxLjc0MjMgMTEuMTE0MSAyMi4wODM1IDExLjM0MiAyMi4zNzA4IDExLjYyOTRDMjIuNjU4MiAxMS45MTY4IDIyLjg4NjEgMTIuMjU3OSAyMy4wNDE2IDEyLjYzMzRDMjMuMTk3MSAxMy4wMDg5IDIzLjI3NzEgMTMuNDExMyAyMy4yNzcgMTMuODE3N0MyMy4yNzY5IDE0LjIyNDEgMjMuMTk2NyAxNC42MjY1IDIzLjA0MTEgMTUuMDAxOUMyMi44ODU0IDE1LjM3NzMgMjIuNjU3MyAxNS43MTg0IDIyLjM2OTggMTYuMDA1NkwyMC4zODExIDE3Ljk5NDRDMjAuMDkzOCAxOC4yODE3IDE5Ljc1MjcgMTguNTA5NSAxOS4zNzc0IDE4LjY2NUMxOS4wMDIgMTguODIwNSAxOC41OTk3IDE4LjkwMDUgMTguMTkzNSAxOC45MDA1QzE3Ljc4NzIgMTguOTAwNSAxNy4zODQ5IDE4LjgyMDUgMTcuMDA5NSAxOC42NjVDMTYuNjM0MiAxOC41MDk1IDE2LjI5MzEgMTguMjgxNyAxNi4wMDU5IDE3Ljk5NDQiIHN0cm9rZT0iIzE2MTYxNiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjxwYXRoIGQ9Ik0xNy4zOTgxIDIwLjk3NzVMMTYuMDA2IDIyLjM2OTZDMTUuNzE4OCAyMi42NTcxIDE1LjM3NzcgMjIuODg1MiAxNS4wMDIzIDIzLjA0MDhDMTQuNjI2OSAyMy4xOTY1IDE0LjIyNDUgMjMuMjc2NyAxMy44MTgxIDIzLjI3NjdDMTMuNDExNyAyMy4yNzY4IDEzLjAwOTMgMjMuMTk2OSAxMi42MzM4IDIzLjA0MTRDMTIuMjU4MyAyMi44ODU5IDExLjkxNzEgMjIuNjU4IDExLjYyOTggMjIuMzcwNkMxMS4zNDI0IDIyLjA4MzIgMTEuMTE0NSAyMS43NDIxIDEwLjk1OSAyMS4zNjY2QzEwLjgwMzUgMjAuOTkxMSAxMC43MjM1IDIwLjU4ODcgMTAuNzIzNiAyMC4xODIzQzEwLjcyMzcgMTkuNzc1OSAxMC44MDM5IDE5LjM3MzUgMTAuOTU5NSAxOC45OTgxQzExLjExNTIgMTguNjIyNyAxMS4zNDMzIDE4LjI4MTYgMTEuNjMwOCAxNy45OTQ0TDEzLjYxOTUgMTYuMDA1NkMxMy45MDY4IDE1LjcxODMgMTQuMjQ3OSAxNS40OTA1IDE0LjYyMzIgMTUuMzM1QzE0Ljk5ODYgMTUuMTc5NSAxNS40MDA5IDE1LjA5OTUgMTUuODA3MSAxNS4wOTk1QzE2LjIxMzQgMTUuMDk5NSAxNi42MTU3IDE1LjE3OTUgMTYuOTkxMSAxNS4zMzVDMTcuMzY2NCAxNS40OTA1IDE3LjcwNzUgMTUuNzE4MyAxNy45OTQ4IDE2LjAwNTYiIHN0cm9rZT0iIzE2MTYxNiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjwvc3ZnPg0K);
+          }
+
           p {
             color: var(--accent);
-            text-decoration: none;
           }
         }
       }
@@ -130,9 +136,7 @@
     &.filled,
     &:active,
     &:focus,
-    // &:target,
     &:hover {
-
       border-color: var(--gray);
 
       &+.form-label {
@@ -140,6 +144,39 @@
         visibility: hidden;
         pointer-events: none;
       }
+    }
+
+    &.invalid {
+      color: var(--accent);
+      border-color: var(--accent);
+
+      &+.form-label {
+        color: var(--accent);
+      }
+
+      &~.form-invalid {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &-invalid {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 120%;
+    color: var(--accent);
+    transition: all 0.3s ease;
+
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    @include md {
+      top: calc(100% + 0.5rem);
     }
   }
 
@@ -240,10 +277,13 @@
   }
 
   &-btn {
-    --button-color: var(--white);
-    --button-background: var(--gradient);
+    opacity: 0.5;
 
     width: 100%;
+
+    &:hover {
+      opacity: 1;
+    }
 
     i {
       color: var(--white);
@@ -288,6 +328,10 @@
 
       &:hover {
         color: var(--white);
+      }
+
+      span {
+        text-decoration: underline;
       }
 
       @include md {

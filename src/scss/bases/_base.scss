@@ -15,9 +15,8 @@ html {
 
 body {
   min-width: 320px;
-
   background-color: var(--page-bg);
-
+  
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 1.6rem;
@@ -41,8 +40,10 @@ body {
 
 section {
   // min-height: 93rem;
-  height: fit-content;
-  min-height: 100dvh;
+  height: auto;
+  min-height: 93rem;
+  max-height: fit-content;
+
   padding: 7rem 0 6rem;
   overflow-x: hidden;
   overflow-y: hidden;

@@ -3,6 +3,7 @@
 .about {
   padding-bottom: 10rem;
   overflow: visible;
+  position: relative;
 
   @include md {
     padding-bottom: 3rem;
@@ -87,6 +88,7 @@
         white-space: nowrap;
 
         display: block;
+        margin-left: 0;
 
         position: absolute;
         bottom: 1.6rem;
@@ -118,8 +120,6 @@
         }
       }
     }
-
-    &-text {}
   }
 
   &__body {
@@ -320,7 +320,7 @@
     flex-shrink: 0;
 
     position: absolute;
-    bottom: -5rem;
+    bottom: 5rem;
     right: 0;
 
     @include md {
