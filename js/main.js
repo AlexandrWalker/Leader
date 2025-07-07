@@ -278,6 +278,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  const commandSlider = new Swiper(".command__slider", {
+    slidesPerGroup: 1,
+    slidesPerView: 1,
+    spaceBetween: 100,
+    speed: 600,
+    loop: true,
+    grabCursor: true,
+    mousewheel: {
+      forceToAxis: true,
+    },
+    navigation: {
+      nextEl: ".command__slider-btn--next",
+      prevEl: ".command__slider-btn--prev",
+    },
+  });
+
 
   $(window).on('resize load', function () {
 
