@@ -52,6 +52,9 @@
   &__content {
     display: flex;
     flex-direction: column;
+    /* hack */
+    justify-content: center;
+    
     gap: 7rem;
     padding: 7rem 0;
 

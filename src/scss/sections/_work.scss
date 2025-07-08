@@ -173,12 +173,43 @@
       }
     }
 
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      @include md {
+        gap: 1.5rem;
+      }
+    }
+
+    &-title {
+      transition: var(--transition);
+
+      h4 {
+        font-family: var(--font-family);
+        font-weight: 700;
+        text-transform: none;
+
+        width: min-content;
+
+        @include sm {
+          font-size: 1.6rem;
+        }
+      }
+
+      .work__item:hover & {
+        color: var(--white);
+      }
+    }
+
     &-text {
       display: flex;
       flex-direction: column;
       gap: 1ch;
 
       color: var(--black-60);
+      transition: var(--transition);
 
       .work__item:hover & {
         color: var(--white);

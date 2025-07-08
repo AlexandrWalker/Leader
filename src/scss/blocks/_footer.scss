@@ -5,8 +5,15 @@
   overflow: hidden;
   padding-top: 7rem;
 
+  /* hack */
+  height: 100dvh;
+  min-height: 93rem;
+
   @include md {
     padding-top: 4rem;
+
+    height: fit-content;
+    min-height: unset;
   }
 
   &::before {
@@ -27,7 +34,17 @@
     }
   }
 
+  /* hack*/
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .burger-menu__inner {
+    /* hakc */
+    align-items: center;
+
     gap: 10rem;
     max-width: unset;
     margin: 0;
@@ -91,6 +108,7 @@
 
   &__body {
     padding-bottom: 3rem;
+    height: 100%;
 
     @include md {
       padding-bottom: 4rem;

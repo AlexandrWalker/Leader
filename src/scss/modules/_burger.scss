@@ -165,6 +165,11 @@
   }
 
   h3 {
+    margin-left: 0;
+
+    &::before {
+      display: none;
+    }
 
     @include md {
       display: none;
@@ -221,6 +226,7 @@
   &__inner {
     display: flex;
     flex-direction: row;
+    justify-content: unset;
     gap: 2rem;
 
     max-width: 136rem;

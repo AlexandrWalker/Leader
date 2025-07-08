@@ -21,6 +21,9 @@
   &__head {
     display: flex;
     flex-direction: column;
+    /* hack */
+    justify-content: center;
+
     gap: 7rem;
 
     padding: 7.6rem var(--container-padding) 4.5rem 2rem;
@@ -63,7 +66,8 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 2rem;
-    height: 100%;
+    /* hack */
+    // height: 100%;
 
     @include md {
       grid-template-columns: repeat(2, 1fr);
@@ -145,6 +149,9 @@
   &__body {
     display: flex;
     flex-direction: column;
+    /* hack */
+    justify-content: center;
+
     gap: 3rem;
 
     padding: 7rem 14.5rem 6rem var(--container-padding);

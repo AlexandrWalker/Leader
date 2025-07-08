@@ -1,0 +1,85 @@
+<div id="popup-consultation" class="popup" data-lenis-prevent>
+  <div class="popup__box">
+
+    <button class="popup__close">
+    </button>
+
+    <div class="popup__content">
+
+      <div class="general__head">
+        <div class="general__head-title">
+          <h3>
+            Обратная связь
+          </h3>
+        </div>
+        <div class="general__head-text">
+          <p>
+            Хотите доставить груз из другой страны?
+          </p>
+        </div>
+      </div>
+
+      <div class="popup__body">
+        <form class="form" action="#">
+          <div class="form-content">
+            <div class="form-group">
+              <input class="form-input" id="names" name="initials" type="text">
+              <label class="form-label" for="names">
+                Ваше имя <span>*</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <input class="form-input" id="phone" name="tel" type="tel">
+              <label class="form-label" for="phone">
+                телефон <span>*</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <input class="form-input" id="mail" name="mail" type="email">
+              <label class="form-label" for="mail">
+                эл. почта <span>*</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <textarea class="form-textarea" rows="1" name="comment" placeholder="комментарий"></textarea>
+            </div>
+          </div>
+          <div class="form-wrap">
+            <div class="form-group form-group--file">
+              <input class="form-file" id="file" type="file">
+              <label for="file">
+                <i class="icon-link"></i>
+                <p>
+                  Прикрепить резюме
+                </p>
+              </label>
+              <div class="form-file--text">
+                <p>
+                  (не более 20 мегабайт)
+                </p>
+              </div>
+              <button id="clear" class="form-file--clear">
+                x
+                <span>удалить</span>
+              </button>
+            </div>
+          </div>
+          <div class="form-wrap">
+            <button class="form-btn btn btn--accent" type="button">
+              <i class="icon-arrow"></i>
+              отправить заявку
+            </button>
+            <div class="form-text">
+              <p>
+                Нажимая кнопку «Отправить заявку», я соглашаюсь с <a href="">обработкой персональных данных</a>
+                и с <a href="">пользовательским соглашением</a>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

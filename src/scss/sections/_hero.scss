@@ -15,15 +15,19 @@
   @include md {
     background-image: url('./../../images/hero/bg-planshet.png');
 
-    padding: 10rem 0;
+    // padding: 10rem 0;
+    padding: 10rem 0 21rem;
   }
 
   @include sm {
     background-image: url('./../../images/hero/bg-mob.png');
+
+    padding: 10rem 0 26rem;
   }
 
   &__inner {
     display: flex;
+    justify-content: unset;
     align-items: center;
     height: 100%;
 

@@ -17,7 +17,7 @@ html {
 body {
   min-width: 320px;
   background-color: var(--page-bg);
-  
+
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 1.6rem;
@@ -40,16 +40,15 @@ body {
 }
 
 section {
-  // min-height: 93rem;
-  height: auto;
+  height: 100dvh;
   min-height: 93rem;
-  max-height: fit-content;
 
   padding: 7rem 0 6rem;
   overflow-x: hidden;
   overflow-y: hidden;
 
   @include md {
+    height: fit-content;
     min-height: unset;
     padding: 4rem 0 3rem;
   }
@@ -59,4 +58,14 @@ a {
   color: inherit;
 
   transition: all 0.3s ease;
+}
+
+[class^="__inner"],
+[class*="__inner"] {
+  max-width: 100%;
+  width: 100%;
+  max-height: 100%;
+  height: 100%;
+
+  justify-content: center;
 }

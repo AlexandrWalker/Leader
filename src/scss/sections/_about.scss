@@ -9,12 +9,18 @@
     padding-bottom: 3rem;
   }
 
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
   &__inner {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr;
     gap: 5rem 2rem;
-    height: 100%;
+    // height: 100%;
+    height: auto;
 
     position: relative;
 
