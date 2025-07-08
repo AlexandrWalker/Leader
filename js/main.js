@@ -270,9 +270,16 @@ document.addEventListener('DOMContentLoaded', () => {
       thumbs: {
         swiper: objectsGalleryMini,
       },
+      pagination: {
+        el: ".swiper-pagination",
+      },
       breakpoints: {
+        568: {
+          pagination: false,
+        },
         769: {
           spaceBetween: 20,
+          pagination: false,
         },
       },
     });
