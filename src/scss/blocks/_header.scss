@@ -177,6 +177,7 @@
       display: none;
       font-size: 4.2rem;
       color: var(--white);
+      pointer-events: none;
 
       @include md {
         display: flex;

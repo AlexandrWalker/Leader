@@ -304,11 +304,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $(window).on('resize load', function () {
 
+    const services__items = document.querySelectorAll('.services__item');
     if (window.innerWidth <= 768) {
-      const services__items = document.querySelectorAll('.services__item');
-
       services__items.forEach(services__item => {
-        services__item.setAttribute("href", "javascript:void");
+        services__item.querySelector('.services__item-wrap').classList.add('accordion');
+        // services__item.setAttribute("href", "javascript:void");
+      });
+    } else {
+      services__items.forEach(services__item => {
+        services__item.querySelector('.services__item-wrap').classList.remove('accordion');
+        // services__item.setAttribute("href", "javascript:void");
       });
     }
 
@@ -339,10 +344,151 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /**
- * Управляет переключением вкладок на странице.
- * Добавляет и удаляет классы активности для кнопок и панелей вкладок.
- * Поддерживает вложенные табы любой глубины и сохраняет активное состояние у вложенных табов при переключении внешних.
- */
+   * Активация любого количества модальных окон
+   */
+  function popupFunc() {
+    var popup__btn = document.querySelector('.popup__btn');
+
+    if (!popup__btn) {
+      return;
+    } else {
+      var close = document.querySelectorAll('.popup__close');
+      var openBtn = document.querySelectorAll('.popup__btn');
+
+      Array.from(openBtn, openButton => {
+        openButton.addEventListener('click', e => {
+
+          let open = document.getElementsByClassName('open');
+
+          if (open.length > 0 && open[0] !== this) {
+            open[0].classList.remove('open');
+          }
+
+          let popupId = e.target.getAttribute('data-id');
+          let popupValue = e.target.getAttribute('data-value');
+
+          if (popupId) {
+            document.getElementById(popupId).classList.add('open');
+
+            if (openButton.hasAttribute('data-value')) {
+              document.getElementById(popupId).querySelector('.dropdown--js').classList.add('check');
+              document.getElementById(popupId).querySelector('.dropdown__selected--js span').innerHTML = popupValue;
+              document.getElementById(popupId).querySelector('.dropdown__value').dataset.value = popupValue;
+              const dropdownRadios = document.getElementById(popupId).querySelectorAll('.dropdown__radio');
+              dropdownRadios.forEach(dropdownRadio => {
+                if (dropdownRadio.value == popupValue) {
+                  dropdownRadio.checked = true;
+                }
+              });
+            }
+
+            document.body.classList.add('no-scroll');
+            lenis.stop();
+          } else {
+            return
+          }
+
+          Array.from(close, closeButton => {
+            closeButton.addEventListener('click', e => {
+              document.getElementById(popupId).classList.remove("open");
+              document.body.classList.remove('no-scroll');
+              lenis.start();
+            });
+
+            window.addEventListener('keydown', (e) => {
+              if (e.key === "Escape") {
+                document.getElementById(popupId).classList.remove("open")
+                document.body.classList.remove('no-scroll');
+                lenis.start();
+              }
+            });
+
+            document.querySelector(".popup.open .popup__box").addEventListener('click', event => {
+              event._isClickWithInPopup = true;
+            });
+
+            document.getElementById(popupId).addEventListener('click', event => {
+              if (event._isClickWithInPopup) return;
+              event.currentTarget.classList.remove('open');
+              document.body.classList.remove('no-scroll');
+              lenis.start();
+            });
+          });
+        });
+      });
+    }
+  };
+  popupFunc();
+
+  /**
+   * Установка dropdown
+   */
+  const dropdownJs = document.querySelector('.dropdown--js');
+  if (dropdownJs) {
+    let dropdowns = document.querySelectorAll('.dropdown--js');
+    dropdowns.forEach(dropdown => {
+
+      function updateSelected() {
+        let selectedValue = dropdown.querySelector('.dropdown__value');
+        let selectedOption = dropdown.querySelector('.dropdown__radio:checked');
+        let selectedLabel = selectedOption.parentElement.querySelector('.dropdown__label');
+        let text = selectedLabel.textContent;
+        let selectedDropdown = dropdown.querySelector('.dropdown__selected--js');
+        selectedDropdown.querySelector('span').textContent = text;
+        selectedValue.dataset.value = text;
+
+        if (selectedValue.dataset.value.length != 0) {
+          dropdown.classList.add('check');
+        } else {
+          dropdown.classList.remove('check');
+        }
+      }
+
+      function toggleClass(el, className, add) {
+        let addClass = add;
+        if (typeof addClass === 'undefined') {
+          addClass = !el.classList.contains(className);
+        }
+        if (addClass) {
+          el.classList.add(className);
+        } else {
+          el.classList.remove(className);
+        }
+      }
+
+      let radios = dropdown.querySelectorAll('.dropdown__radio');
+      let root = dropdown;
+
+      for (let i = 0; i < radios.length; ++i) {
+        let radio = radios[i];
+        radio.addEventListener('change', function () {
+          updateSelected();
+        });
+        radio.addEventListener('click', function () {
+          toggleClass(root, 'is-active', false);
+        });
+      }
+
+      let selectedLabel = dropdown.querySelector('.dropdown__selected--js');
+      selectedLabel.addEventListener('click', function () {
+        toggleClass(root, 'is-active');
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!dropdown.querySelector('.dropdown__container').contains(event.target) && !dropdown.querySelector('.dropdown__selected').contains(event.target)) {
+          toggleClass(root, 'is-active', false);
+        }
+      });
+
+      // updateSelected();
+    });
+  }
+
+  /**
+   * Управляет переключением вкладок на странице.
+   * Добавляет и удаляет классы активности для кнопок и панелей вкладок.
+   * Поддерживает вложенные табы любой глубины и сохраняет активное состояние у вложенных табов при переключении внешних.
+   */
   if (document.querySelector('.tabs')) {
     document.querySelectorAll('.tabs').forEach((tabsContainer) => {
       tabsContainer.addEventListener('click', (event) => {

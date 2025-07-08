@@ -35,3 +35,9 @@
     @content;
   }
 }
+
+@mixin eesm() {
+  @media (max-width: 360px) {
+    @content;
+  }
+}

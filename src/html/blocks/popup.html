@@ -1,24 +1,20 @@
-<div id="popup-consultation" class="popup" data-lenis-prevent>
+<div id="popup-consultation" class="popup lenis" data-lenis-prevent>
   <div class="popup__box">
-
     <button class="popup__close">
     </button>
-
     <div class="popup__content">
-
       <div class="general__head">
         <div class="general__head-title">
           <h3>
-            Обратная связь
+            Получите консультацию
           </h3>
         </div>
         <div class="general__head-text">
           <p>
-            Хотите доставить груз из другой страны?
+            Отправьте заявку и мы свяжемся с вами в ближайшее время
           </p>
         </div>
       </div>
-
       <div class="popup__body">
         <form class="form" action="#">
           <div class="form-content">
@@ -41,45 +37,189 @@
               </label>
             </div>
             <div class="form-group">
-              <textarea class="form-textarea" rows="1" name="comment" placeholder="комментарий"></textarea>
+              <textarea class="form-textarea" id="comments" rows="1" name="comment"></textarea>
+              <label class="form-label" for="comments">
+                комментарий <span>*</span>
+              </label>
             </div>
           </div>
           <div class="form-wrap">
-            <div class="form-group form-group--file">
-              <input class="form-file" id="file" type="file">
-              <label for="file">
-                <i class="icon-link"></i>
+            <button class="form-btn btn btn--accent popup__btn" type="button" data-id="popup-results">
+              <i class="icon-arrow"></i>
+              отправить
+            </button>
+            <div class="form-bottom">
+              <input class="form-checkbox" name="checkbox" type="checkbox" required>
+              <div class="form-text">
                 <p>
-                  Прикрепить резюме
-                </p>
-              </label>
-              <div class="form-file--text">
-                <p>
-                  (не более 20 мегабайт)
+                  Нажимая кнопку «Отправить, я соглашаюсь с <a href="/">обработкой персональных данных</a>
+                  и с <a href="/">пользовательским соглашением</a>
                 </p>
               </div>
-              <button id="clear" class="form-file--clear">
-                x
-                <span>удалить</span>
-              </button>
-            </div>
-          </div>
-          <div class="form-wrap">
-            <button class="form-btn btn btn--accent" type="button">
-              <i class="icon-arrow"></i>
-              отправить заявку
-            </button>
-            <div class="form-text">
-              <p>
-                Нажимая кнопку «Отправить заявку», я соглашаюсь с <a href="">обработкой персональных данных</a>
-                и с <a href="">пользовательским соглашением</a>
-              </p>
             </div>
           </div>
         </form>
       </div>
-
     </div>
+  </div>
+</div>
 
+<div id="popup-services" class="popup lenis" data-lenis-prevent>
+  <div class="popup__box">
+    <button class="popup__close">
+    </button>
+    <div class="popup__content">
+      <div class="general__head">
+        <div class="general__head-title">
+          <h3>
+            Заказать услугу
+          </h3>
+        </div>
+        <div class="general__head-text">
+          <p>
+            Отправьте заявку и мы свяжемся с вами в ближайшее время
+          </p>
+        </div>
+      </div>
+      <div class="popup__body">
+        <form class="form" action="#">
+          <div class="form-content">
+            <div class="form-group">
+              <div class="dropdown dropdown--js">
+                <div class="dropdown__selected toggle--label dropdown__selected-label--js dropdown__selected--js">
+                  <span>Выбрать услугу</span>
+                  <i class="icon-chevron"></i>
+                </div>
+                <div class="dropdown__container">
+                  <div class="dropdown__content toggle--panel">
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Черновая отделка помещений" />
+                      <span class="dropdown__label">Черновая отделка помещений</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Чистовая отделка помещений" />
+                      <span class="dropdown__label">Чистовая отделка помещений</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Машинное нанесение краски" />
+                      <span class="dropdown__label">Машинное нанесение краски</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio" value="Машинная покраска" />
+                      <span class="dropdown__label">Машинная покраска</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio" value="Машинная штукатурка" />
+                      <span class="dropdown__label">Машинная штукатурка</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Устройство полусухой стяжки пола" />
+                      <span class="dropdown__label">Устройство полусухой стяжки пола</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Устройство конструкций из гипсокартона" />
+                      <span class="dropdown__label">Устройство конструкций из гипсокартона</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Нанесение декоративной штукатурки" />
+                      <span class="dropdown__label">Нанесение декоративной штукатурки</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio" value="Монтаж молдингов" />
+                      <span class="dropdown__label">Монтаж молдингов</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio" value="Устройство звукоизоляции" />
+                      <span class="dropdown__label">Устройство звукоизоляции</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio" value="Устройство гидроизоляции" />
+                      <span class="dropdown__label">Устройство гидроизоляции</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio" value="Устройство керамогранита" />
+                      <span class="dropdown__label">Устройство керамогранита</span>
+                    </label>
+                  </div>
+                </div>
+                <input class="dropdown__value" type="hidden">
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="form-input" id="companyName" name="company-name" type="text">
+              <label class="form-label" for="companyName">
+                Название компании <span>*</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <input class="form-input" id="contactPerson" name="contact-person" type="text">
+              <label class="form-label" for="contactPerson">
+                контактное лицо <span>*</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <input class="form-input" id="phone" name="tel" type="tel">
+              <label class="form-label" for="phone">
+                телефон <span>*</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <input class="form-input" id="mail" name="mail" type="email">
+              <label class="form-label" for="mail">
+                эл. почта <span>*</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <textarea class="form-textarea" id="comments" rows="1" name="comment"></textarea>
+              <label class="form-label" for="comments">
+                комментарий <span>*</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-wrap">
+            <button class="form-btn btn btn--accent popup__btn" type="button" data-id="popup-results">
+              <i class="icon-arrow"></i>
+              отправить
+            </button>
+            <div class="form-bottom">
+              <input class="form-checkbox" name="checkbox" type="checkbox" required>
+              <div class="form-text">
+                <p>
+                  Нажимая кнопку «Отправить, я соглашаюсь с <a href="/">обработкой персональных данных</a>
+                  и с <a href="/">пользовательским соглашением</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="popup-results" class="popup lenis" data-lenis-prevent>
+  <div class="popup__box">
+    <button class="popup__close">
+    </button>
+    <div class="popup__content">
+      <div class="general__head">
+        <div class="general__head-title">
+          <h3>
+            Ваше обращение отправлено!
+          </h3>
+        </div>
+        <div class="general__head-text">
+          <p>
+            Отправьте заявку и мы свяжемся с вами в ближайшее время
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
