@@ -10,6 +10,11 @@
   <meta name="format-detection" content="date=no">
   <meta name="format-detection" content="address=no">
   <meta name="format-detection" content="email=no">
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./images/favicon/site.webmanifest">
   <!-- title -->
   <title>Лидер</title>
   <!-- styles -->
@@ -45,19 +50,19 @@
             <ul>
               <li>
                 <i class="icon-telegram"></i>
-                <a href="/">
-                  в Телеграм
+                <a href="https://t.me/+71234567890">
+                  в Телеграм
                 </a>
               </li>
               <li>
                 <i class="icon-whatsapp"></i>
-                <a href="/">
-                  в WhatsApp
+                <a href="https://wa.me/+71234567890">
+                  в WhatsApp
                 </a>
               </li>
               <li>
                 <i class="icon-pochta"></i>
-                <a href="/">
+                <a href="mailto:Lider.otdelky@bk.ru">
                   Напишите на почту
                 </a>
               </li>
@@ -99,7 +104,7 @@
     </li>
     <li>
       <a href="#!">
-        О компании
+        О компании
       </a>
     </li>
     <li>
@@ -134,12 +139,12 @@
     </li>
     <li>
       <a href="#!">
-        Ответы на частые вопросы
+        Ответы на частые вопросы
       </a>
     </li>
     <li>
       <a href="#!">
-        Свяжитесь с нами
+        Свяжитесь с нами
       </a>
     </li>
   </ul>
@@ -204,7 +209,7 @@
 </div>
     <main class="main">
       <!-- Главный блок -->
-      <section class="hero">
+      <section id="hero" class="hero">
         <div class="hero__container container">
           <div class="hero__inner">
 
@@ -250,7 +255,7 @@
                   <p>
                     Строительная компания ООО «Лидер» современное, динамично развивающееся предприятие. Команда
                     организации
-                    успешно ведет свою деятельность на строительном рынке с 2013г.
+                    успешно ведет свою деятельность на строительном рынке с 2013г.
                   </p>
                 </div>
               </div>
@@ -275,7 +280,7 @@
                   </div>
                   <div class="about__item-text">
                     <p>
-                      Наемных работников в компании
+                      Наемных работников в компании
                     </p>
                   </div>
                 </div>
@@ -301,16 +306,14 @@
                 <div class="about__body-title">
                   <h4>
                     Профессионально выполняем черновую
-                    и чистовую работу любой сложности
+                    и чистовую работу любой сложности
                   </h4>
                 </div>
                 <div class="about__body-text">
                   <p>
                     Основное направление деятельности компании – выполнение внутренних отделочных работ. Приоритетной
-                    целью
-                    развития предприятия было использование самых современных технологических и организационных подходов
-                    в
-                    реализации строительных проектов, достигнутых мировой наукой и практикой.
+                    целью развития предприятия было использование самых современных технологических и организационных подходов
+                    в реализации строительных проектов, достигнутых мировой наукой и практикой.
                   </p>
                 </div>
               </div>
@@ -1281,7 +1284,11 @@
             <div class="types__items">
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Коттеджи.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/1.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/1-mob.png" type="image/png">
+                    <img src="./images/types/1.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1296,7 +1303,11 @@
               </div>
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Жилые комплексы.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/2.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/2-mob.png" type="image/png">
+                    <img src="./images/types/2.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1311,7 +1322,11 @@
               </div>
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Промобъекты.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/3.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/3-mob.png" type="image/png">
+                    <img src="./images/types/3.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1326,7 +1341,11 @@
               </div>
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Коммерческие помещения.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/4.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/4-mob.png" type="image/png">
+                    <img src="./images/types/4.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1342,7 +1361,11 @@
               </div>
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Офисные пространства.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/5.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/5-mob.png" type="image/png">
+                    <img src="./images/types/5.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1797,7 +1820,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo">
+                      <div class="command__item-photo" style="display:none;">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1825,7 +1848,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo">
+                      <div class="command__item-photo" style="display:none;">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1853,7 +1876,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo">
+                      <div class="command__item-photo" style="display:none;">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1898,18 +1921,21 @@
                     <label class="form-label" for="names">
                       Ваше имя <span>*</span>
                     </label>
+                    <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
                     <input class="form-input" id="phone" name="tel" type="tel">
                     <label class="form-label" for="phone">
                       телефон <span>*</span>
                     </label>
+                    <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
                     <input class="form-input" id="mail" name="mail" type="email">
                     <label class="form-label" for="mail">
                       эл. почта <span>*</span>
                     </label>
+                    <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
                     <textarea class="form-textarea" rows="1" name="comment" placeholder="комментарий"></textarea>
@@ -2621,7 +2647,7 @@
 
     </main>
     <!-- Подвал -->
-    <footer class="footer">
+    <footer id="footer" class="footer">
   <div class="container">
     <div class="footer__inner">
       <div class="footer__body">
@@ -2644,7 +2670,7 @@
     </li>
     <li>
       <a href="#!">
-        О компании
+        О компании
       </a>
     </li>
     <li>
@@ -2679,12 +2705,12 @@
     </li>
     <li>
       <a href="#!">
-        Ответы на частые вопросы
+        Ответы на частые вопросы
       </a>
     </li>
     <li>
       <a href="#!">
-        Свяжитесь с нами
+        Свяжитесь с нами
       </a>
     </li>
   </ul>
@@ -2726,7 +2752,7 @@
                 </div>
                 <div class="burger-menu__foot-text">
                   <p>
-                    г. Новосибирск, ул. Крылова 36 оф. 101
+                    г. Новосибирск, ул. Крылова 36 оф. 101
                   </p>
                 </div>
               </div>
@@ -2743,14 +2769,14 @@
               </div>
 
               <div class="burger-menu__foot-wrap">
-                <a class="footer__body-link" href="/">
+                <a class="footer__body-link" href="/Leader/privacy">
                   Политика конфиденциальности
                 </a>
-                <a class="footer__body-link" href="/">
-                  Политика конфиденциальности
+                <a class="footer__body-link" href="/Leader/policy">
+                  Политика обработки персональных данных
                 </a>
-                <a class="footer__body-link" href="/">
-                  Политика конфиденциальности
+                <a class="footer__body-link" href="/Leader/agreement">
+                  Пользовательское соглашение
                 </a>
               </div>
 
@@ -2796,24 +2822,28 @@
               <label class="form-label" for="names">
                 Ваше имя <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <input class="form-input" id="phone" name="tel" type="tel">
               <label class="form-label" for="phone">
                 телефон <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <input class="form-input" id="mail" name="mail" type="email">
               <label class="form-label" for="mail">
                 эл. почта <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <textarea class="form-textarea" id="comments" rows="1" name="comment"></textarea>
               <label class="form-label" for="comments">
                 комментарий <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
           </div>
           <div class="form-wrap">
@@ -2929,30 +2959,35 @@
               <label class="form-label" for="companyName">
                 Название компании <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <input class="form-input" id="contactPerson" name="contact-person" type="text">
               <label class="form-label" for="contactPerson">
                 контактное лицо <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <input class="form-input" id="phone" name="tel" type="tel">
               <label class="form-label" for="phone">
                 телефон <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <input class="form-input" id="mail" name="mail" type="email">
               <label class="form-label" for="mail">
                 эл. почта <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <textarea class="form-textarea" id="comments" rows="1" name="comment"></textarea>
               <label class="form-label" for="comments">
                 комментарий <span>*</span>
               </label>
+              <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
           </div>
           <div class="form-wrap">
@@ -2964,8 +2999,8 @@
               <input class="form-checkbox" name="checkbox" type="checkbox" required>
               <div class="form-text">
                 <p>
-                  Нажимая кнопку «Отправить, я соглашаюсь с <a href="/">обработкой персональных данных</a>
-                  и с <a href="/">пользовательским соглашением</a>
+                  Нажимая кнопку «Отправить, я соглашаюсь с <a href="/">обработкой персональных данных</a>
+                  и с <a href="/">пользовательским соглашением</a>
                 </p>
               </div>
             </div>
@@ -2997,18 +3032,43 @@
   </div>
 </div>
     <!-- Плашки -->
-    <div id="plate-cookie" class="plate plate--cookie">
+    <!-- Плашка Куки -->
+<div id="plate-cookie" class="plate plate--cookie">
   <div class="container">
     <div class="plate__inner">
       <div class="plate__body">
         <div class="plate__text">
           <p>
-            Этот сайт использует файлы <a href="/">сооkіе</a>
+            Этот сайт использует файлы <a href="/Leader/сооkіе">сооkіе</a>
           </p>
         </div>
         <button class="plate__btn btn btn--black" onclick="checkCookies()">
           Ок
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Плашка связи -->
+<div id="plate-contact" class="plate plate--contact">
+  <div class="container">
+    <div class="plate__inner">
+      <div class="plate__content">
+        <a class="plate__btn btn btn--outline" href="mailto:+71234567890">
+          ПОзвонить
+        </a>
+        <a class="plate__btn btn btn--outline" href="https://t.me/+71234567890">
+          <i class="icon-telegram-disc">
+            <span class="path1"></span>
+            <span class="path2"></span>
+          </i>
+        </a>
+        <a class="plate__btn btn btn--outline" href="https://wa.me/+71234567890">
+          <i class="icon-whatsapp-disc">
+            <span class="path1"></span>
+            <span class="path2"></span>
+          </i>
+        </a>
       </div>
     </div>
   </div>

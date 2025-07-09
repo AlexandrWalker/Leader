@@ -17,6 +17,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   gsap.ticker.lagSmoothing(0);
 
+  // $(window).on('scroll load', function () {
+  //   ScrollTrigger.refresh();
+  // });
+
+  /**
+   * Анимация
+   */
+  // const generalHead = document.querySelectorAll(".general__head");
+
+  // for (let i = 0; i < generalHead.length; i++) {
+  //   gsap.from(generalHead[i], {
+  //     opacity: 0,
+  //     x: -50,
+  //     duration: 0.3,
+  //     stagger: { amount: 0.2 },
+  //     scrollTrigger: {
+  //       trigger: generalHead[i],
+  //       start: "top 95%",
+  //       end: "bottom 20%",
+  //       toggleActions: "play none none none",
+  //       preventOverlaps: true,
+  //     },
+  //   })
+  // }
+
   /**
    * Управляет поведением меню-бургера.
    */
@@ -531,6 +556,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const hHeader = document.getElementById('header');
+  const hHero = document.getElementById('hero');
+  const hFooter = document.getElementById('footer');
+
+  if (hHero) {
+    const h = hHero.offsetHeight;
+    scrollView(h);
+  } else {
+    const h = hHeader.offsetHeight;
+    scrollView(h);
+  }
+
+  function scrollView(h) {
+    const plate = document.getElementById('plate-contact');
+    const classToAdd = 'show';
+
+    window.addEventListener('scroll', function () {
+      const verticalScrollPosition = window.pageYOffset;
+      const bottomScrollPosition = document.body.offsetHeight - hFooter.offsetHeight - window.innerHeight;
+      const isActive = plate.classList.contains(classToAdd);
+
+      if (verticalScrollPosition > h && verticalScrollPosition < bottomScrollPosition) {
+        plate.classList.add(classToAdd);
+      } else {
+        plate.classList.remove(classToAdd);
+      }
+    });
+  }
+
   /**
    * Кнопка куки
    */
@@ -628,5 +682,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function checkCookies() {
   document.cookie = 'COOKIE_ACCEPT=1;path=\'/\';expires:' + (new Date(new Date().getTime() + 86400e3 * 365).toUTCString());
-  document.getElementById('warning-plate').remove();
+  document.getElementById('plate-cookie').remove();
 }
