@@ -24,6 +24,12 @@
   }
 }
 
+@mixin mmd() {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
 @mixin sm() {
   @media (max-width: 576px) {
     @content;
@@ -37,7 +43,7 @@
 }
 
 @mixin eesm() {
-  @media (max-width: 360px) {
+  @media (max-width: 380px) {
     @content;
   }
 }

@@ -133,10 +133,21 @@
       padding: 0 1rem 1.5rem 0;
     }
 
+    &:hover {
+      border-color: var(--gray);
+
+      &+.form-label {
+        color: var(--white);
+
+        span {
+          color: var(--accent);
+        }
+      }
+    }
+
     &.filled,
     &:active,
-    &:focus,
-    &:hover {
+    &:focus {
       border-color: var(--gray);
 
       &+.form-label {
@@ -197,7 +208,8 @@
     pointer-events: none;
 
     span {
-      color: var(--accent);
+      color: var(--accent-50);
+      transition: all 0.2s ease;
     }
 
     @include md {
@@ -254,11 +266,26 @@
       }
     }
 
+    &:hover {
+      border-color: var(--gray);
+
+      &::placeholder {
+        color: var(--white);
+      }
+
+      &+.form-label {
+        color: var(--white);
+
+        span {
+          color: var(--accent);
+        }
+      }
+    }
+
     &.filled,
     &:active,
     &:focus,
-    &:target,
-    &:hover {
+    &:target {
       border-color: var(--gray);
 
       &::placeholder {

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'LeaderIcons';
-  src:  url('./fonts/LeaderIcons.eot?bdj2ke');
-  src:  url('./fonts/LeaderIcons.eot?bdj2ke#iefix') format('embedded-opentype'),
-    url('./fonts/LeaderIcons.ttf?bdj2ke') format('truetype'),
-    url('./fonts/LeaderIcons.woff?bdj2ke') format('woff'),
-    url('./fonts/LeaderIcons.svg?bdj2ke#LeaderIcons') format('svg');
+  src:  url('./fonts/LeaderIcons.eot?mfklsg');
+  src:  url('./fonts/LeaderIcons.eot?mfklsg#iefix') format('embedded-opentype'),
+    url('./fonts/LeaderIcons.ttf?mfklsg') format('truetype'),
+    url('./fonts/LeaderIcons.woff?mfklsg') format('woff'),
+    url('./fonts/LeaderIcons.svg?mfklsg#LeaderIcons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -31,26 +31,54 @@
 .icon-arrow-slider:before {
   content: "\e912";
 }
-.icon-chevron:before {
+.icon-arrow-slider-next:before {
   content: "\e913";
 }
-.icon-download:before {
+.icon-arrow-slider-prev:before {
   content: "\e914";
 }
-.icon-play:before {
+.icon-chevron:before {
   content: "\e915";
 }
-.icon-pochta:before {
+.icon-download:before {
   content: "\e916";
 }
-.icon-strelka:before {
-  content: "\e917";
-}
-.icon-telegram:before {
+.icon-play:before {
   content: "\e918";
 }
-.icon-whatsapp:before {
+.icon-pochta:before {
   content: "\e919";
+}
+.icon-strelka:before {
+  content: "\e91a";
+}
+.icon-telegram:before {
+  content: "\e91b";
+}
+.icon-telegram-disc .path1:before {
+  content: "\e91c";
+  color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+}
+.icon-telegram-disc .path2:before {
+  content: "\e91d";
+  margin-left: -1em;
+  color: rgb(22, 22, 22);
+  transition: all 0.3s ease;
+}
+.icon-whatsapp:before {
+  content: "\e91e";
+}
+.icon-whatsapp-disc .path1:before {
+  content: "\e91f";
+  color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+}
+.icon-whatsapp-disc .path2:before {
+  content: "\e920";
+  margin-left: -1em;
+  color: rgb(22, 22, 22);
+  transition: all 0.3s ease;
 }
 .icon-advan-1:before {
   content: "\e900";

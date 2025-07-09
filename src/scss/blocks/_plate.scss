@@ -2,11 +2,70 @@
 
 .plate {
   display: none;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 90;
-  pointer-events: none;
+
+  &--contact {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 90;
+
+    background: var(--black-70);
+    backdrop-filter: blur(0.855rem);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10rem);
+    transition: all 0.3s linear;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    @include sm {
+      display: block;
+    }
+
+    .plate__btn {
+      font-size: 1.4rem;
+
+      &:hover {
+
+        .path2:before {
+          color: var(--accent);
+        }
+      }
+    }
+
+    i {
+      background-color: var(--white);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+
+  &--cookie {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 90;
+    pointer-events: none;
+
+    .plate__btn {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+
+      @include md {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  }
 
   &__body {
     display: flex;
@@ -35,14 +94,14 @@
     }
   }
 
-  &__btn {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
+  &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0.8rem 0;
 
-    @include md {
-      width: 5rem;
-      height: 5rem;
+    a {
+      width: 100%;
     }
   }
 }

@@ -80,8 +80,18 @@
       padding: 0;
     }
 
+    @include sm {
+      gap: 1rem;
+
+      overflow: visible;
+    }
+
+    @include eesm {
+      width: 100%;
+    }
+
     &:hover {
-      width: calc(100% / 4);
+      width: calc(100% / 3.6);
 
       @include md {
         width: calc(50% - 0.5rem);
@@ -126,23 +136,6 @@
       overflow: hidden;
       // aspect-ratio: 384/930;
 
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 2;
-        background: var(--gradient);
-        opacity: 0;
-        transition: opacity .8s;
-
-        .types__item:hover & {
-          opacity: 0.7;
-        }
-      }
-
       @include md {
         width: 100%;
         height: 100%;
@@ -150,10 +143,61 @@
         aspect-ratio: 359/277;
       }
 
+      @include sm {
+        aspect-ratio: 172/133;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+        background: var(--gradient);
+        opacity: 0;
+        transition: opacity .8s;
+
+        @include md {
+          display: none;
+        }
+
+        .types__item:hover & {
+          opacity: 0.9;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        background: var(--black-70);
+        opacity: 1;
+        transition: opacity .8s;
+
+        @include md {
+          display: none;
+        }
+
+        .types__item:hover & {
+          opacity: 0;
+        }
+      }
+
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        filter: grayscale(1);
+
+        @include md {
+          filter: none;
+        }
       }
     }
 
@@ -204,6 +248,7 @@
 
       @include sm {
         font-size: 1.5rem;
+        margin-bottom: 0.5rem;
       }
 
       span {
@@ -223,6 +268,7 @@
 
     &-title {
       margin-bottom: 2rem;
+      width: min-content;
 
       @include md {
         margin-bottom: 0;

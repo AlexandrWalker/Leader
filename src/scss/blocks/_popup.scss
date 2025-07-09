@@ -168,10 +168,17 @@
         padding: 0 1rem 1.5rem 0;
       }
 
+      &:hover {
+        border-color: var(--black);
+
+        &+.form-label {
+          color: var(--black);
+        }
+      }
+
       &.filled,
       &:active,
-      &:focus,
-      &:hover {
+      &:focus {
         color: var(--black);
         border-color: var(--black);
       }
@@ -193,10 +200,21 @@
         color: var(--black-50);
       }
 
+      &:hover {
+        border-color: var(--black);
+
+        &::placeholder {
+          color: var(--black);
+        }
+
+        &+.form-label {
+          color: var(--black);
+        }
+      }
+
       &.filled,
       &:active,
-      &:focus,
-      &:hover {
+      &:focus {
         color: var(--black);
         border-color: var(--black);
       }

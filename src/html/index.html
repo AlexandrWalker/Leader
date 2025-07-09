@@ -4,10 +4,10 @@
 
 <body>
   <div class="wrapper">
-    @@include('./blocks/header.html')
+    @@include('./blocks/header.html', {"logo-path": "./../../images/logo/logo.svg"})
     <main class="main">
       <!-- Главный блок -->
-      <section class="hero">
+      <section id="hero" class="hero">
         <div class="hero__container container">
           <div class="hero__inner">
 
@@ -53,7 +53,7 @@
                   <p>
                     Строительная компания ООО «Лидер» современное, динамично развивающееся предприятие. Команда
                     организации
-                    успешно ведет свою деятельность на строительном рынке с 2013г.
+                    успешно ведет свою деятельность на строительном рынке с 2013г.
                   </p>
                 </div>
               </div>
@@ -78,7 +78,7 @@
                   </div>
                   <div class="about__item-text">
                     <p>
-                      Наемных работников в компании
+                      Наемных работников в компании
                     </p>
                   </div>
                 </div>
@@ -104,16 +104,14 @@
                 <div class="about__body-title">
                   <h4>
                     Профессионально выполняем черновую
-                    и чистовую работу любой сложности
+                    и чистовую работу любой сложности
                   </h4>
                 </div>
                 <div class="about__body-text">
                   <p>
                     Основное направление деятельности компании – выполнение внутренних отделочных работ. Приоритетной
-                    целью
-                    развития предприятия было использование самых современных технологических и организационных подходов
-                    в
-                    реализации строительных проектов, достигнутых мировой наукой и практикой.
+                    целью развития предприятия было использование самых современных технологических и организационных подходов
+                    в реализации строительных проектов, достигнутых мировой наукой и практикой.
                   </p>
                 </div>
               </div>
@@ -1084,7 +1082,11 @@
             <div class="types__items">
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Коттеджи.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/1.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/1-mob.png" type="image/png">
+                    <img src="./images/types/1.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1099,7 +1101,11 @@
               </div>
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Жилые комплексы.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/2.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/2-mob.png" type="image/png">
+                    <img src="./images/types/2.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1114,7 +1120,11 @@
               </div>
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Промобъекты.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/3.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/3-mob.png" type="image/png">
+                    <img src="./images/types/3.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1129,7 +1139,11 @@
               </div>
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Коммерческие помещения.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/4.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/4-mob.png" type="image/png">
+                    <img src="./images/types/4.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1145,7 +1159,11 @@
               </div>
               <div class="types__item">
                 <div class="types__item-img">
-                  <img src="./images/types/Офисные пространства.png" alt="">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="./images/types/5.png" type="image/png">
+                    <source media="(max-width: 768px)" srcset="./images/types/5-mob.png" type="image/png">
+                    <img src="./images/types/5.png" alt="">
+                  </picture>
                 </div>
                 <div class="types__item-content">
                   <div class="types__item-title">
@@ -1600,7 +1618,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo">
+                      <div class="command__item-photo" style="display:none;">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1628,7 +1646,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo">
+                      <div class="command__item-photo" style="display:none;">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1656,7 +1674,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo">
+                      <div class="command__item-photo" style="display:none;">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1701,18 +1719,21 @@
                     <label class="form-label" for="names">
                       Ваше имя <span>*</span>
                     </label>
+                    <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
                     <input class="form-input" id="phone" name="tel" type="tel">
                     <label class="form-label" for="phone">
                       телефон <span>*</span>
                     </label>
+                    <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
                     <input class="form-input" id="mail" name="mail" type="email">
                     <label class="form-label" for="mail">
                       эл. почта <span>*</span>
                     </label>
+                    <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
                     <textarea class="form-textarea" rows="1" name="comment" placeholder="комментарий"></textarea>

@@ -1,0 +1,201 @@
+@use './../mixins' as *;
+
+.privacy {
+  padding: 5rem 0 6rem;
+  height: auto;
+
+  @include md {
+    padding: 3rem 0 3rem;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    @include md {
+      gap: 3rem;
+    }
+
+    @include sm {
+      gap: 2rem;
+    }
+  }
+
+  &__body {
+    margin: 0 var(--title-margin-left);
+  }
+
+  h1 {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 4.5rem;
+    line-height: 120%;
+    color: inherit;
+
+    margin-left: var(--title-margin-left);
+
+    position: relative;
+
+    @include md {
+      gap: 1rem;
+
+      font-size: 3rem;
+
+      margin-left: 0;
+    }
+
+    @include sm {
+      font-size: 2rem;
+    }
+
+    @include eesm() {
+      font-size: 1.6rem;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 12.5rem;
+      height: 0.2rem;
+      background-color: var(--accent);
+      position: absolute;
+      top: 2.5rem;
+      right: calc(100% + 2rem);
+      flex-shrink: 0;
+
+      @include md {
+        display: none;
+      }
+    }
+  }
+
+  h6 {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.04;
+    text-transform: uppercase;
+    color: var(--accent);
+
+    margin-bottom: 2rem;
+
+    @include md {
+      font-size: 2rem;
+
+      margin-bottom: 1.5rem;
+    }
+
+    @include sm {
+      font-size: 1.6rem;
+    }
+
+    &:not(:first-child) {
+      padding-top: 1rem;
+
+      @include md {
+        padding-top: 0.5rem;
+      }
+    }
+  }
+
+  p {
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+
+      @include md {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  a {
+    color: var(--accent);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul {
+    // padding-left: 2.4rem;
+
+    li {
+      // list-style-type: initial;
+      margin-bottom: 2rem;
+
+      @include md {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+      }
+
+        &::before {
+          content: "·";
+          width: 2.4rem;
+          display: inline-block;
+          text-align: center;
+          font-weight: 700;
+        }
+    }
+  }
+
+  // ul li {
+  //   margin-bottom: 2rem;
+
+  //   @include md {
+  //     font-size: 1.4rem;
+  //     margin-bottom: 1.5rem;
+  //   }
+
+  //   &::before {
+  //     width: 1em;
+  //     display: inline-block;
+  //     font-weight: 700;
+  //     text-align: right;
+  //   }
+
+  //   &:nth-child(1)::before {
+  //     content: 'а)';
+  //   }
+
+  //   &:nth-child(2)::before {
+  //     content: 'б)';
+  //   }
+
+  //   &:nth-child(3)::before {
+  //     content: 'в)';
+  //   }
+
+  //   &:nth-child(4)::before {
+  //     content: 'г)';
+  //   }
+
+  //   &:nth-child(5)::before {
+  //     content: 'д)';
+  //   }
+
+  //   &:nth-child(6)::before {
+  //     content: 'е)';
+  //   }
+
+  //   &:nth-child(7)::before {
+  //     content: 'ё)';
+  //   }
+
+  //   &:nth-child(8)::before {
+  //     content: 'ж)';
+  //   }
+
+  //   &:nth-child(9)::before {
+  //     content: 'з)';
+  //   }
+
+  //   &:nth-child(10)::before {
+  //     content: 'и)';
+  //   }
+  // }
+}

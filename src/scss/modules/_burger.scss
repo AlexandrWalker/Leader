@@ -22,6 +22,10 @@
   top: 0;
   left: 0;
 
+  .innerPage & {
+    --background-color: var(--black);
+  }
+
   &:hover {
     --background-color: var(--accent);
 
@@ -50,6 +54,10 @@
 
   @include md {
     --width: 1.6rem;
+  }
+
+  .innerPage & {
+    --background-color: var(--white);
   }
 
   &::before,
@@ -242,9 +250,13 @@
 
     margin-left: auto;
 
+    @include xxl {
+      padding: 8rem 10rem 10rem;
+    }
+
     @include md {
       max-width: calc(100% - 2rem);
-      padding: 4rem 6rem 4rem 6rem;
+      padding: 4rem 5rem 4rem 9rem;
     }
 
     @include sm {
@@ -382,7 +394,11 @@
       width: fit-content;
 
       @include md {
-        font-size: 3rem;
+        font-size: 2.5rem;
+      }
+
+      @include sm {
+        margin-bottom: 0.6rem;
       }
 
       &::before {

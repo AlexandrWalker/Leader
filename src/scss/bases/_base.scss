@@ -29,6 +29,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+
+  &.innerPage {
+    padding-top: var(--header-height)
+  }
 }
 
 .main {
@@ -37,6 +41,10 @@ body {
 
 .footer {
   flex: 0 0 auto;
+
+  .innerPage & {
+    background-color: var(--white);
+  }
 }
 
 section {

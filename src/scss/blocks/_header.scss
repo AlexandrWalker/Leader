@@ -8,6 +8,10 @@
   z-index: 100;
   height: var(--header-height);
 
+  .innerPage & {
+    background-color: var(--white);
+  }
+
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -23,6 +27,10 @@
       justify-content: center;
       width: calc(100% - 12rem);
       margin-left: 6rem;
+    }
+
+    .innerPage & {
+      align-items: center;
     }
   }
 
@@ -83,8 +91,10 @@
       display: flex;
       flex-direction: row;
       gap: 1rem;
-      height: 6.8rem;
-      padding: 2.6rem var(--padding-x) 2rem var(--padding-x);
+      height: 4.4rem;
+      padding: 1rem var(--padding-x) 1rem var(--padding-x);
+      // height: 6.8rem;
+      // padding: 2.6rem var(--padding-x) 2rem var(--padding-x);
 
       a {
         font-family: var(--second-family);
@@ -95,6 +105,10 @@
 
         &:hover {
           color: var(--accent);
+        }
+
+        .innerPage & {
+          color: var(--black);
         }
       }
 

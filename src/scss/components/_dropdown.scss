@@ -35,10 +35,12 @@
 
     .dropdown.check & {
       color: var(--black);
+      border-color: var(--black);
     }
 
     .dropdown.is-active & {
       color: var(--black);
+      border-color: var(--black);
 
       i {
         transform: scale(-1, -1);
@@ -50,6 +52,7 @@
     &:focus,
     &:active {
       color: var(--black);
+      border-color: var(--black);
     }
 
     span {
