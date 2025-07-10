@@ -57,7 +57,8 @@ section {
 
   @include md {
     height: fit-content;
-    min-height: unset;
+    // min-height: unset;
+    min-height: 66rem;
     padding: 4rem 0 3rem;
   }
 }

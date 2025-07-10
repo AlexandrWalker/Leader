@@ -20,6 +20,8 @@
   <!-- styles -->
   <link rel="stylesheet" href="./libs/swiper/swiper-bundle.min.css">
   <link rel="stylesheet" href="./libs/lenis/lenis.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
   <link rel="stylesheet" href="./icons/style.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -98,52 +100,52 @@
       <nav>
   <ul class="burger-menu__list">
     <li>
-      <a href="#!">
+      <a href="#hero">
         Начало
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#about">
         О компании
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#services">
         Услуги
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#advan">
         Преимущества
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#work">
         Как мы работаем
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#objects">
         Наши объекты
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#command">
         Команда
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#clients">
         Отзывы
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#faq">
         Ответы на частые вопросы
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#callback">
         Свяжитесь с нами
       </a>
     </li>
@@ -237,11 +239,15 @@
               <img src="./images/hero/person-1.png" alt="">
             </div>
 
+            <div class="general__anim" data-splitting="chars" data-animation="fadeIn">
+              лидер
+            </div>
+
           </div>
         </div>
       </section>
       <!-- О компании -->
-      <section class="about">
+      <section id="about" class="about">
         <div class="container">
           <div class="about__inner">
             <div class="about__head">
@@ -299,7 +305,7 @@
               </div>
             </div>
             <div class="about__body">
-              <div class="about__body-img">
+              <div class="about__body-img" data-animation="parallax-img">
                 <img src="./images/about/about-cover.png" alt="">
               </div>
               <div class="about__body-content">
@@ -312,13 +318,14 @@
                 <div class="about__body-text">
                   <p>
                     Основное направление деятельности компании – выполнение внутренних отделочных работ. Приоритетной
-                    целью развития предприятия было использование самых современных технологических и организационных подходов
+                    целью развития предприятия было использование самых современных технологических и организационных
+                    подходов
                     в реализации строительных проектов, достигнутых мировой наукой и практикой.
                   </p>
                 </div>
               </div>
             </div>
-            <div class="about__video">
+            <div class="about__video" data-animation="parallax-img">
               <video src="#!" poster="./images/about/poster.png"></video>
               <div class="about__video-content">
                 <button class="about__video-btn">
@@ -334,10 +341,12 @@
             </div>
           </div>
           <div class="about__component"></div>
+          <div class="about__component--1"></div>
+          <div class="about__component--2"></div>
         </div>
       </section>
       <!-- История компании -->
-      <section class="history">
+      <section id="history" class="history">
         <div class="container">
           <div class="history__inner">
             <div class="history__head">
@@ -351,13 +360,12 @@
             </div>
             <div class="swiper__btns">
               <div class="swiper-button-prev">
-                <i class="icon-arrow"></i>
+                <i class="icon-arrow-slider-prev"></i>
               </div>
               <div class="swiper-button-next">
-                <i class="icon-arrow"></i>
+                <i class="icon-arrow-slider-next"></i>
               </div>
             </div>
-
             <div class="timeline-container">
               <div class="timeline">
                 <div class="timeline-wrapper">
@@ -501,17 +509,20 @@
                 </div>
               </div>
             </div>
+            <div class="general__anim" data-splitting="chars" data-animation="fadeIn">
+              История
+            </div>
           </div>
         </div>
       </section>
       <!-- Услуги -->
-      <section class="services">
+      <section id="services" class="services">
         <div class="container">
           <div class="services__inner">
             <div class="general__head">
               <div class="general__head-title">
                 <h2>
-                  Большой спектр услуг под любой запрос
+                  Большой спектр услуг <br> под любой запрос
                 </h2>
               </div>
             </div>
@@ -549,6 +560,9 @@
                     <div class="services__item-arrow">
                     </div>
                   </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
+                  </div>
                 </button>
               </div>
               <div class="services__item">
@@ -583,6 +597,9 @@
                     </div>
                     <div class="services__item-arrow">
                     </div>
+                  </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
                   </div>
                 </button>
               </div>
@@ -619,6 +636,9 @@
                     <div class="services__item-arrow">
                     </div>
                   </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
+                  </div>
                 </button>
               </div>
               <div class="services__item">
@@ -652,6 +672,9 @@
                     </div>
                     <div class="services__item-arrow">
                     </div>
+                  </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
                   </div>
                 </button>
               </div>
@@ -688,6 +711,9 @@
                     <div class="services__item-arrow">
                     </div>
                   </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
+                  </div>
                 </button>
               </div>
               <div class="services__item">
@@ -722,6 +748,9 @@
                     </div>
                     <div class="services__item-arrow">
                     </div>
+                  </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
                   </div>
                 </button>
               </div>
@@ -758,6 +787,9 @@
                     <div class="services__item-arrow">
                     </div>
                   </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
+                  </div>
                 </button>
               </div>
               <div class="services__item">
@@ -793,6 +825,9 @@
                     <div class="services__item-arrow">
                     </div>
                   </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
+                  </div>
                 </button>
               </div>
               <div class="services__item">
@@ -826,6 +861,9 @@
                     </div>
                     <div class="services__item-arrow">
                     </div>
+                  </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
                   </div>
                 </button>
               </div>
@@ -862,6 +900,9 @@
                     <div class="services__item-arrow">
                     </div>
                   </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
+                  </div>
                 </button>
               </div>
               <div class="services__item">
@@ -896,6 +937,9 @@
                     </div>
                     <div class="services__item-arrow">
                     </div>
+                  </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
                   </div>
                 </button>
               </div>
@@ -932,6 +976,9 @@
                     <div class="services__item-arrow">
                     </div>
                   </div>
+                  <div class="services__item-chevron">
+                    <i class="icon-chevron"></i>
+                  </div>
                 </button>
               </div>
             </div>
@@ -939,7 +986,7 @@
         </div>
       </section>
       <!-- Квиз -->
-      <section class="quiz">
+      <section id="quiz" class="quiz">
         <div class="container">
           <div class="quiz__inner">
             <div class="general__head">
@@ -963,26 +1010,26 @@
         </div>
       </section>
       <!-- Преимущества компании -->
-      <section class="advan">
+      <section id="advan" class="advan">
         <div class="advan__container container-fluid">
           <div class="advan__inner">
             <div class="advan__body">
               <div class="general__head">
                 <div class="general__head-title">
                   <h2>
-                    Преимущества компании
+                    Преимущества <br> компании
                   </h2>
                 </div>
               </div>
               <div class="advan__body-items">
                 <div class="advan__body-item">
-                  <img src="./images/advan/advan-cover-1.png" alt="">
+                  <img src="./images/advan/advan-recover-1.png" data-animation="parallax-img" alt="">
                 </div>
                 <div class="advan__body-item">
-                  <img src="./images/advan/advan-cover-2.png" alt="">
+                  <img src="./images/advan/advan-recover-2.png" alt="">
                 </div>
                 <div class="advan__body-item">
-                  <img src="./images/advan/advan-cover-3.png" alt="">
+                  <img src="./images/advan/advan-recover-3.png" alt="">
                 </div>
               </div>
             </div>
@@ -990,7 +1037,7 @@
               <div class="general__head">
                 <div class="general__head-title">
                   <h2>
-                    Преимущества компании
+                    Преимущества <br> компании
                   </h2>
                 </div>
                 <div class="general__head-text title-border">
@@ -1086,7 +1133,7 @@
         </div>
       </section>
       <!-- Как мы работаем -->
-      <section class="work">
+      <section id="work" class="work">
         <div class="container">
           <div class="work__inner">
             <div class="general__head">
@@ -1271,7 +1318,7 @@
         </div>
       </section>
       <!-- Объекты, с которыми мы работаем -->
-      <section class="types">
+      <section id="types" class="types">
         <div class="container-fluid">
           <div class="types__inner">
             <div class="general__head">
@@ -1384,7 +1431,7 @@
         </div>
       </section>
       <!-- Наши объекты -->
-      <section class="objects">
+      <section id="objects" class="objects">
         <div class="container">
           <div class="objects__inner transfer-pos-1">
 
@@ -1399,8 +1446,18 @@
 
               <div class="objects__content">
                 <div class="swiper objects__slider">
-                  <div class="swiper-button-prev objects__slider-btn--prev">
-                    <i class="icon-arrow"></i>
+                  <div class="swiper__btns">
+                    <div class="swiper-button-prev objects__slider-btn--prev">
+                      <i class="icon-arrow-slider-prev"></i>
+                    </div>
+                    <div class="swiper__btns-text">
+                      <p>
+                        Листать объекты
+                      </p>
+                    </div>
+                    <div class="swiper-button-next objects__slider-btn--next">
+                      <i class="icon-arrow-slider-next"></i>
+                    </div>
                   </div>
                   <div class="swiper-wrapper">
                     <div class="objects__slide swiper-slide">
@@ -1418,7 +1475,7 @@
                             <span>Адрес:</span> Новосибирск, Кирова 119 стр
                           </p>
                         </div>
-                        <div class="objects__item-body transfer-elem-2">
+                        <div class="objects__item-body">
                           <h4>
                             выполненные Работы:
                           </h4>
@@ -1544,9 +1601,6 @@
                       </div>
                     </div>
                   </div>
-                  <div class="swiper-button-next objects__slider-btn--next">
-                    <i class="icon-arrow"></i>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1555,7 +1609,7 @@
               <div class="swiper objects__slider--step">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <div class="objects__block transfer-pos-2">
+                    <div class="objects__block">
                       <div class="objects__block-head">
                         <div class="swiper objects__gallery">
                           <div class="swiper-wrapper">
@@ -1623,6 +1677,43 @@
                             Чистовой отделки (по площади пола)
                           </p>
                         </div>
+                      </div>
+                      <div class="objects__item-body">
+                        <h4>
+                          выполненные Работы:
+                        </h4>
+                        <ul>
+                          <li>
+                            Отделка черновая. Штукатурка
+                          </li>
+                          <li>
+                            Отделка черновая. Обшивка. Пол гипсокартоном
+                          </li>
+                          <li>
+                            Отделка черновая. Откосы окон и дверей
+                          </li>
+                          <li>
+                            Отделка чистовая. МОП. Пол 
+                          </li>
+                          <li>
+                            Отделка чистовая. МОП. Стены
+                          </li>
+                          <li>
+                            Отделка черновая. Перегородки
+                          </li>
+                          <li>
+                            Отделка чистовая. МОП. Потолок
+                          </li>
+                          <li>
+                            Отделка чистовая. Пол
+                          </li>
+                          <li>
+                            Отделка чистовая. Стены
+                          </li>
+                          <li>
+                            Отделка чистовая. Потолок
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -1696,6 +1787,31 @@
                           </p>
                         </div>
                       </div>
+                      <div class="objects__item-body">
+                        <h4>
+                          выполненные Работы:
+                        </h4>
+                        <ul>
+                          <li>
+                            Отделка черновая. Штукатурка
+                          </li>
+                          <li>
+                            Отделка черновая. Обшивка. Пол гипсокартоном
+                          </li>
+                          <li>
+                            Отделка черновая. Откосы окон и дверей
+                          </li>
+                          <li>
+                            Отделка чистовая. Пол
+                          </li>
+                          <li>
+                            Отделка чистовая. Стены
+                          </li>
+                          <li>
+                            Отделка чистовая. Потолок
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                   <div class="swiper-slide">
@@ -1767,10 +1883,39 @@
                             Чистовой отделки (по площади пола)
                           </p>
                         </div>
+                      </div>
+                      <div class="objects__item-body">
+                        <h4>
+                          выполненные Работы:
+                        </h4>
+                        <ul>
+                          <li>
+                            Отделка черновая. Штукатурка
+                          </li>
+                          <li>
+                            Отделка черновая. Обшивка. Пол гипсокартоном
+                          </li>
+                          <li>
+                            Отделка черновая. Откосы окон и дверей
+                          </li>
+                          <li>
+                            Отделка чистовая. МОП. Пол 
+                          </li>
+                          <li>
+                            Отделка чистовая. МОП. Стены
+                          </li>
+                          <li>
+                            Отделка черновая. Перегородки
+                          </li>
+                          <li>
+                            Отделка чистовая. МОП. Потолок
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
 
@@ -1778,7 +1923,7 @@
         </div>
       </section>
       <!-- Наша команда -->
-      <section class="command">
+      <section id="command" class="command">
         <div class="container">
           <div class="command__inner">
             <div class="general__head">
@@ -1820,7 +1965,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo" style="display:none;">
+                      <div class="command__item-photo">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1848,7 +1993,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo" style="display:none;">
+                      <div class="command__item-photo">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1876,7 +2021,7 @@
                           </p>
                         </fieldset>
                       </div>
-                      <div class="command__item-photo" style="display:none;">
+                      <div class="command__item-photo">
                         <img src="./images/command/photo-1.png" alt="">
                       </div>
                     </div>
@@ -1884,10 +2029,10 @@
                 </div>
                 <div class="swiper__btns">
                   <div class="swiper-button-prev command__slider-btn--prev">
-                    <i class="icon-arrow"></i>
+                    <i class="icon-arrow-slider-prev"></i>
                   </div>
                   <div class="swiper-button-next command__slider-btn--next">
-                    <i class="icon-arrow"></i>
+                    <i class="icon-arrow-slider-next"></i>
                   </div>
                 </div>
               </div>
@@ -1896,13 +2041,13 @@
         </div>
       </section>
       <!-- Присоединяйся к нашей команде! -->
-      <section class="join">
+      <section id="join" class="join">
         <div class="container">
           <div class="join__inner">
             <div class="general__head">
               <div class="general__head-title">
                 <h2>
-                  Присоединяйся
+                  Присоединяйся<br>
                   к нашей команде!
                 </h2>
               </div>
@@ -1967,13 +2112,15 @@
                     <i class="icon-arrow"></i>
                     отправить заявку
                   </button>
-                  <div class="form-text">
-                    <p>
-                      Нажимая кнопку «Отправить заявку», я соглашаюсь с <a href="">обработкой персональных данных</a>
-                      и
-                      с
-                      <a href="">пользовательским соглашением</a>
-                    </p>
+                  <div class="form-bottom">
+                    <input class="form-checkbox" name="checkbox" type="checkbox" required>
+                    <div class="form-text">
+                      <p>
+                        Нажимая кнопку «Отправить, я соглашаюсь с <a href="/Leader/policy.html">обработкой персональных
+                          данных</a>
+                        и с <a href="/Leader/agreement.html">пользовательским соглашением</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -1982,7 +2129,7 @@
         </div>
       </section>
       <!-- Наши заказчики / партнеры -->
-      <section class="clients">
+      <section id="clients" class="clients">
         <div class="container">
           <div class="clients__inner tabs">
             <div class="clients__head">
@@ -2002,10 +2149,10 @@
               </div>
               <div class="swiper__btns">
                 <div class="swiper-button-prev clients__slider-btn--prev">
-                  <i class="icon-arrow"></i>
+                  <i class="icon-arrow-slider-prev"></i>
                 </div>
                 <div class="swiper-button-next clients__slider-btn--next">
-                  <i class="icon-arrow"></i>
+                  <i class="icon-arrow-slider-next"></i>
                 </div>
               </div>
             </div>
@@ -2379,7 +2526,7 @@
         </div>
       </section>
       <!-- FAQ -->
-      <section class="faq">
+      <section id="faq" class="faq">
         <div class="container">
           <div class="faq__inner">
             <div class="general__head">
@@ -2575,7 +2722,7 @@
         </div>
       </section>
       <!-- Обратная связь -->
-      <section class="callback">
+      <section id="callback" class="callback">
         <div class="callback__container container">
           <div class="callback__inner">
             <div class="callback__content">
@@ -2626,13 +2773,15 @@
                       <i class="icon-arrow"></i>
                       отправить заявку
                     </button>
-                    <div class="form-text">
-                      <p>
-                        Нажимая кнопку «Отправить заявку», я соглашаюсь с <a href="">обработкой персональных данных</a>
-                        и
-                        с
-                        <a href="">пользовательским соглашением</a>
-                      </p>
+                    <div class="form-bottom">
+                      <input class="form-checkbox" name="checkbox" type="checkbox" required>
+                      <div class="form-text">
+                        <p>
+                          Нажимая кнопку «Отправить, я соглашаюсь с <a href="/Leader/policy.html">обработкой
+                            персональных данных</a>
+                          и с <a href="/Leader/agreement.html">пользовательским соглашением</a>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </form>
@@ -2664,52 +2813,52 @@
             <nav>
   <ul class="burger-menu__list">
     <li>
-      <a href="#!">
+      <a href="#hero">
         Начало
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#about">
         О компании
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#services">
         Услуги
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#advan">
         Преимущества
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#work">
         Как мы работаем
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#objects">
         Наши объекты
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#command">
         Команда
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#clients">
         Отзывы
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#faq">
         Ответы на частые вопросы
       </a>
     </li>
     <li>
-      <a href="#!">
+      <a href="#callback">
         Свяжитесь с нами
       </a>
     </li>
@@ -2999,8 +3148,8 @@
               <input class="form-checkbox" name="checkbox" type="checkbox" required>
               <div class="form-text">
                 <p>
-                  Нажимая кнопку «Отправить, я соглашаюсь с <a href="/">обработкой персональных данных</a>
-                  и с <a href="/">пользовательским соглашением</a>
+                  Нажимая кнопку «Отправить, я соглашаюсь с <a href="/Leader/policy.html">обработкой персональных данных</a>
+                  и с <a href="/Leader/agreement.html">пользовательским соглашением</a>
                 </p>
               </div>
             </div>
@@ -3086,6 +3235,8 @@
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/transfer-elements@1.0.7/dist/transfer-elements.min.js"></script>
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
   <!-- scripts -->
   <script src="./js/main.js"></script>
 </body>

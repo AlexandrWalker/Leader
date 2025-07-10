@@ -5,7 +5,7 @@
   z-index: 1;
   background-image: url('./../../images/hero/bg.png');
   background-position: center center;
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   overflow: hidden;
   // height: 100dvh;
@@ -23,6 +23,19 @@
     background-image: url('./../../images/hero/bg-mob.png');
 
     padding: 10rem 0 26rem;
+  }
+
+  h1::before {
+    width: 0;
+    right: calc(100% + 14.5rem);
+    transition: all 0.6s ease;
+  }
+
+  &.animatedClass {
+    h1::before {
+      width: 12.5rem;
+      right: calc(100% + 2rem);
+    }
   }
 
   &__inner {

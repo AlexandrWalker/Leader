@@ -401,6 +401,10 @@
         margin-bottom: 0.6rem;
       }
 
+      @include eesm {
+        font-size: 2rem;
+      }
+
       &::before {
         content: "";
         position: absolute;
@@ -483,6 +487,10 @@
       @include sm {
         flex-direction: row;
         width: 100%;
+      }
+
+      @include eesm {
+        flex-direction: column;
       }
     }
 

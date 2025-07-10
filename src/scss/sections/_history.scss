@@ -2,11 +2,21 @@
 
 .history {
   background-image: url(./../images/history/bg.png);
+  // background-image: url(./../images/history/bg-normal.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center center;
+  position: relative;
 
   color: var(--white);
+
+  @include md {
+    background-image: url(./../images/history/bg-planshet.png);
+  }
+
+  @include sm {
+    background-image: url(./../images/history/bg-mob.png);
+  }
 
   &__head {
     display: flex;
@@ -23,7 +33,7 @@
     gap: 7rem 2rem;
 
     @include md {
-      gap: 3rem;
+      gap: 2rem;
     }
   }
 
@@ -138,5 +148,33 @@
         padding-right: 4rem;
       }
     }
+  }
+
+  // .general__anim {
+  //   font-size: 25.8rem;
+
+  //   white-space: nowrap;
+  //   bottom: -5.8rem;
+  //   left: -1.3rem;
+
+  //   position: relative;
+  //   bottom: -1.3rem;
+
+  //   @include md {
+  //     display: block;
+  //     font-size: 10.2rem;
+  //     bottom: -3.2rem;
+  //     height: 10.2rem;
+  //   }
+
+  //   @include sm {
+  //     font-size: 5.3rem;
+  //     height: fit-content;
+  //     left: calc((var(--container-padding) + 0.3rem) * -1);
+  //   }
+  // }
+
+  .swiper__btns {
+    order: unset;
   }
 }

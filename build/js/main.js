@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
+    lenis.raf(time * 500);
   });
   gsap.ticker.lagSmoothing(0);
 
-  // $(window).on('scroll load', function () {
+  // $(window).on('scroll', function () {
   //   ScrollTrigger.refresh();
   // });
 
@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // const generalHead = document.querySelectorAll(".general__head");
 
   // for (let i = 0; i < generalHead.length; i++) {
-  //   gsap.from(generalHead[i], {
+  //   const generalTitle = generalHead[i].querySelector("h2");
+
+  //   gsap.from(generalTitle, {
   //     opacity: 0,
   //     x: -50,
   //     duration: 0.3,
@@ -39,8 +41,134 @@ document.addEventListener('DOMContentLoaded', () => {
   //       toggleActions: "play none none none",
   //       preventOverlaps: true,
   //     },
+  //     onStart: function() {
+  //     // onComplete: function () {
+  //       generalHead[i].classList.add('animatedClass'); // then only replace with blue div with new height and width
+  //     }
   //   })
   // }
+  // const titleItems = document.querySelectorAll(".general__anim");
+  // const target = document.querySelectorAll('.general__anim span');
+  // for (let i = 0; i < target.length; i++) {
+
+  //   const text = new SplitType(target[i], { types: 'words, chars' })
+
+  //   gsap.from(text.words, {
+  //     opacity: 0,
+  //     x: -50,
+  //     duration: 0.3,
+  //     stagger: { amount: 0.2 },
+  //     scrollTrigger: {
+  //       trigger: titleItems[i],
+  //       start: "top 95%",
+  //       end: "bottom 20%",
+  //       toggleActions: "play none none none",
+  //       preventOverlaps: true,
+  //     },
+  //   })
+  // }
+
+  // const titleChars = document.querySelectorAll('[data-splitting="chars"]');
+  // titleChars.forEach(titleChar => {
+  //   const char = new SplitType(titleChar, { types: 'words, chars' });
+  // });
+
+  // const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
+  // fadeInItems.forEach(fadeInItem => {
+  //   const chars = fadeInItem.querySelectorAll("div.char");
+  //   const tl = gsap.timeline({
+  //     paused: true
+  //   });
+  //   tl.from(chars, {
+  //     opacity: 0,
+  //     duration: .3,
+  //     ease: "power1.out",
+  //     stagger: {
+  //       amount: .4
+  //     }
+  //   });
+  //   scrollTriggerPlayer(fadeInItem, tl)
+  // });
+
+  $(window).on('resize load', function () {
+    if (window.innerWidth > '768' && window.innerWidth != '768') {
+      const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
+      if (parallaxItem) {
+        const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
+        parallaxImgContainers.forEach(parallaxImgContainer => {
+          gsap.fromTo(parallaxImgContainer,
+            { y: '-8%' },
+            {
+              y: '8%',
+              scrollTrigger: {
+                trigger: parallaxImgContainer,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+    }
+  });
+
+  const hero = document.getElementById("hero");
+  if (hero) {
+
+    const target = hero.querySelector('h1');
+
+    const span = target.querySelector('span');
+    const text = new SplitType(target, { types: 'chars, words' })
+    gsap.from(text.words, {
+      opacity: 0,
+      x: -50,
+      duration: 1,
+      stagger: { amount: 0.4 },
+      scrollTrigger: {
+        trigger: hero,
+        start: "top 95%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+        preventOverlaps: true,
+      },
+      onStart: function () {
+        // onComplete: function () {
+        hero.classList.add('animatedClass');
+      }
+    })
+
+    const hero__img = document.querySelector(".hero__img");
+
+    gsap.from(hero__img, {
+      opacity: 1,
+      y: 500,
+      duration: 1,
+      scrollTrigger: {
+        trigger: hero,
+        start: "top 95%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+      }
+    });
+  }
+
+  function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: "top bottom",
+      onLeaveBack: () => {
+        timeline.progress(1);
+        timeline.pause()
+      }
+    });
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: onEnterStart,
+      onEnter: () => timeline.play()
+    })
+  }
+  gsap.registerPlugin(ScrollTrigger);
 
   /**
    * Управляет поведением меню-бургера.
@@ -240,14 +368,9 @@ document.addEventListener('DOMContentLoaded', () => {
     mousewheel: {
       forceToAxis: true,
     },
-    // navigation: false,
-    breakpoints: {
-      769: {
-        navigation: {
-          nextEl: ".objects__slider-btn--next",
-          prevEl: ".objects__slider-btn--prev",
-        },
-      },
+    navigation: {
+      nextEl: ".objects__slider-btn--next",
+      prevEl: ".objects__slider-btn--prev",
     },
   });
 
@@ -264,6 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
       crossFade: true
     },
     mousewheel: false,
+    allowTouchMove: false,
   });
 
   objectsSlider.controller.control = objectsSliderStep;
@@ -371,6 +495,23 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Активация любого количества модальных окон
    */
+  function getScrollbarWidth() {
+    const div = document.createElement('div');
+
+    div.style.overflowY = 'scroll';
+    div.style.width = '100px';
+    div.style.height = '100px';
+    div.style.visibility = 'hidden';
+
+    document.body.appendChild(div);
+
+    const scrollbarWidth = div.offsetWidth - div.clientWidth;
+
+    document.body.removeChild(div);
+
+    return scrollbarWidth;
+  }
+
   function popupFunc() {
     var popup__btn = document.querySelector('.popup__btn');
 
@@ -407,6 +548,8 @@ document.addEventListener('DOMContentLoaded', () => {
               });
             }
 
+            const width = getScrollbarWidth();
+            document.body.style.paddingRight = width + 'px';
             document.body.classList.add('no-scroll');
             lenis.stop();
           } else {
@@ -416,6 +559,7 @@ document.addEventListener('DOMContentLoaded', () => {
           Array.from(close, closeButton => {
             closeButton.addEventListener('click', e => {
               document.getElementById(popupId).classList.remove("open");
+              document.body.style.paddingRight = 0;
               document.body.classList.remove('no-scroll');
               lenis.start();
             });
@@ -423,6 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.addEventListener('keydown', (e) => {
               if (e.key === "Escape") {
                 document.getElementById(popupId).classList.remove("open")
+                document.body.style.paddingRight = 0;
                 document.body.classList.remove('no-scroll');
                 lenis.start();
               }
@@ -435,6 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(popupId).addEventListener('click', event => {
               if (event._isClickWithInPopup) return;
               event.currentTarget.classList.remove('open');
+              document.body.style.paddingRight = 0;
               document.body.classList.remove('no-scroll');
               lenis.start();
             });
@@ -642,7 +788,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTrigger: {
       trigger: ".history",
       start: 'top 0',
-      endTrigger: ".footer",
+      endTrigger: ".services",
       end: `+=${timelineWidth}`,
       scrub: 1,
       pin: true,
@@ -657,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (timelineItems[itemIndex]) {
           timelineItems[itemIndex].classList.add('swiper-slide-active');
         }
-      }
+      },
     }
   });
 

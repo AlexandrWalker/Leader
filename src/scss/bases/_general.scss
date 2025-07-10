@@ -15,5 +15,41 @@
       margin-left: var(--title-margin-left);
       max-width: 57.5rem;
     }
+
+    h2 {
+
+      &::before {
+        // width: 0;
+        transition: all 0.3s ease;
+      }
+    }
+
+    // &.animatedClass h2::before {
+    //   width: 12.5rem;
+    // }
+  }
+
+  &__anim {
+    display: none;
+    //   font-family: var(--second-family);
+    //   font-weight: 700;
+    //   font-size: 17.4rem;
+    //   line-height: 120%;
+    //   color: var(--white);
+
+    //   opacity: 0.05;
+    //   display: block;
+    //   position: absolute;
+    //   bottom: -4.8rem;
+    //   left: -0.3rem;
+
+    //   @include xxl {
+
+    //     bottom: -7.3rem;
+    //   }
+
+    //   @include md {
+    //     display: none;
+    //   }
   }
 }

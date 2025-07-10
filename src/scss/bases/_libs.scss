@@ -17,10 +17,24 @@
     @include md {
       order: 3;
     }
+
+    &-text {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 0.6rem 1rem;
+      width: 100%;
+      background-color: var(--page-bg);
+      text-transform: uppercase;
+
+      @include sm {
+        display: flex;
+      }
+    }
   }
 
   &-button-prev {
-    transform: scale(-1, 1);
+    // transform: scale(-1, 1);
   }
 
   &-pagination {
@@ -76,6 +90,7 @@
   position: static;
   cursor: pointer;
   opacity: 1;
+  flex-shrink: 0;
 
   @include md {
     --swiper-button-size: 5rem;
@@ -113,10 +128,42 @@
 
       i {
         color: var(--black);
+
+        @include sm {
+          font-size: 1.6rem;
+          color: var(--accent);
+        }
       }
 
       @include md {
         display: none;
+      }
+
+      @include sm {
+        --swiper-button-size: 2.8rem;
+
+        display: flex;
+        width: 5rem;
+        position: static;
+        transform: none;
+        background-color: var(--page-bg);
+        border-radius: 0;
+      }
+    }
+
+    .swiper__btns {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+
+      @include sm {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        transform: none;
+        top: calc(100% + (100dvh / 3.6) + 1rem);
       }
     }
 
@@ -124,7 +171,7 @@
       position: absolute;
       top: 50%;
       left: 4.5rem;
-      transform: scale(-1, 1) translateY(-50%);
+      transform: translateY(-50%);
 
       &:hover {
         background-color: var(--accent);
@@ -147,6 +194,18 @@
         i {
           color: var(--white);
         }
+      }
+    }
+
+    @include sm {
+      .icon-arrow-slider-prev:before {
+        content: "\e915";
+        transform: rotate(90deg);
+      }
+
+      .icon-arrow-slider-next:before {
+        content: "\e915";
+        transform: rotate(-90deg);
       }
     }
   }

@@ -236,6 +236,18 @@
         }
       }
     }
+
+    &-checkbox {
+      border: 0.4rem solid var(--black);
+      background: var(--white);
+
+      &:hover {
+
+        &::before {
+          background: var(--black);
+        }
+      }
+    }
   }
 
   &#popup-results {
