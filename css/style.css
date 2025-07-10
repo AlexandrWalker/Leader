@@ -97,18 +97,18 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
+  font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
+  font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
-  font-weight: 900;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -121,10 +121,10 @@ a {
 }
 
 @font-face {
-  font-family: Montserrat;
+  font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -2888,10 +2888,6 @@ h6 span {
   width: fit-content;
 }
 
-.about__item:not(:first-child) .about__item-text {
-  width: 80%;
-}
-
 .about__item-count {
   position: relative;
 }
@@ -3019,6 +3015,7 @@ h6 span {
   -ms-flex-align: center;
   align-items: center;
   gap: 5rem;
+  cursor: pointer;
   padding: 9rem 0 13rem;
   position: absolute;
   top: 0;
@@ -6113,6 +6110,7 @@ h6 span {
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr 0fr;
     gap: 0 3rem;
+    width: 100%;
   }
 
   .services__item-wrap.accordion-active {
@@ -6200,6 +6198,7 @@ h6 span {
   .services__item-text {
     grid-template-rows: 1fr;
     padding-left: 8rem;
+    display: none;
   }
 
   .services__item-text {
@@ -6930,6 +6929,10 @@ h6 span {
 
   .services__inner {
     gap: 2rem;
+  }
+
+  .services__item-wrap {
+    gap: 0 2rem;
   }
 
   .types__inner {
