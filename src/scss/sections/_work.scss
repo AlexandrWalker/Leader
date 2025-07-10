@@ -219,13 +219,53 @@
     &-icon {
       width: 4.2rem;
       height: 6.3rem;
-      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIiIGhlaWdodD0iNjMiIHZpZXdCb3g9IjAgMCA0MiA2MyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik00MS45ODUgMzEuNDc0MkwyMC45NjQxIDMxLjQ3MzVMMC4wMDA2ODMyMzIgMTAuNTEwMUwyMS4wMjE2IDEwLjUxMDhMNDEuOTg1IDMxLjQ3NDJaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfNDJfMzApIi8+DQo8cGF0aCBkPSJNNDEuOTg1IDMxLjQ3NDJMMjAuOTY0MSAzMS40NzM0TC0wLjAwMDExMTczMiA1Mi40Mzc2TDIxLjAyMDggNTIuNDM4NEw0MS45ODUgMzEuNDc0MloiIGZpbGw9InVybCgjcGFpbnQxX2xpbmVhcl80Ml8zMCkiLz4NCjxkZWZzPg0KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzQyXzMwIiB4MT0iNDAuOTE5NyIgeTE9IjMxLjIzODgiIHgyPSIyLjE1NjAyIiB5Mj0iMTEuMzExMyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGN0U0NSIvPg0KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRUEwQzBDIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDFfbGluZWFyXzQyXzMwIiB4MT0iMy41NTQ1NiIgeTE9IjQ5Ljg2NjciIHgyPSIzOS4wMjg2IiB5Mj0iMzMuNzc1NCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGN0U0NSIvPg0KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRUEwQzBDIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPC9kZWZzPg0KPC9zdmc+DQo=);
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
+      // background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIiIGhlaWdodD0iNjMiIHZpZXdCb3g9IjAgMCA0MiA2MyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik00MS45ODUgMzEuNDc0MkwyMC45NjQxIDMxLjQ3MzVMMC4wMDA2ODMyMzIgMTAuNTEwMUwyMS4wMjE2IDEwLjUxMDhMNDEuOTg1IDMxLjQ3NDJaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfNDJfMzApIi8+DQo8cGF0aCBkPSJNNDEuOTg1IDMxLjQ3NDJMMjAuOTY0MSAzMS40NzM0TC0wLjAwMDExMTczMiA1Mi40Mzc2TDIxLjAyMDggNTIuNDM4NEw0MS45ODUgMzEuNDc0MloiIGZpbGw9InVybCgjcGFpbnQxX2xpbmVhcl80Ml8zMCkiLz4NCjxkZWZzPg0KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzQyXzMwIiB4MT0iNDAuOTE5NyIgeTE9IjMxLjIzODgiIHgyPSIyLjE1NjAyIiB5Mj0iMTEuMzExMyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGN0U0NSIvPg0KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRUEwQzBDIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDFfbGluZWFyXzQyXzMwIiB4MT0iMy41NTQ1NiIgeTE9IjQ5Ljg2NjciIHgyPSIzOS4wMjg2IiB5Mj0iMzMuNzc1NCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGN0U0NSIvPg0KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRUEwQzBDIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPC9kZWZzPg0KPC9zdmc+DQo=);
+      // background-repeat: no-repeat;
+      // background-size: 100% 100%;
       transition: var(--transition);
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+
+        visibility: visible;
+        opacity: 1;
+        z-index: 1;
+
+        transition: var(--transition);
+
+        &:last-child {
+          visibility: hidden;
+          opacity: 0;
+          z-index: -1;
+        }
+      }
 
       .work__item:hover & {
-        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIiIGhlaWdodD0iNjMiIHZpZXdCb3g9IjAgMCA0MiA2MyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik00MS45ODUgMzEuNDc0MkwyMC45NjQxIDMxLjQ3MzVMMC4wMDA2ODMyMzIgMTAuNTEwMUwyMS4wMjE2IDEwLjUxMDhMNDEuOTg1IDMxLjQ3NDJaIiBmaWxsPSIjMTYxNjE2Ii8+DQo8cGF0aCBkPSJNNDEuOTg1IDMxLjQ3NDJMMjAuOTY0MSAzMS40NzM0TC0wLjAwMDExMTczMiA1Mi40Mzc2TDIxLjAyMDggNTIuNDM4NEw0MS45ODUgMzEuNDc0MloiIGZpbGw9IiMxNjE2MTYiLz4NCjwvc3ZnPg0K);
+        // background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIiIGhlaWdodD0iNjMiIHZpZXdCb3g9IjAgMCA0MiA2MyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik00MS45ODUgMzEuNDc0MkwyMC45NjQxIDMxLjQ3MzVMMC4wMDA2ODMyMzIgMTAuNTEwMUwyMS4wMjE2IDEwLjUxMDhMNDEuOTg1IDMxLjQ3NDJaIiBmaWxsPSIjMTYxNjE2Ii8+DQo8cGF0aCBkPSJNNDEuOTg1IDMxLjQ3NDJMMjAuOTY0MSAzMS40NzM0TC0wLjAwMDExMTczMiA1Mi40Mzc2TDIxLjAyMDggNTIuNDM4NEw0MS45ODUgMzEuNDc0MloiIGZpbGw9IiMxNjE2MTYiLz4NCjwvc3ZnPg0K);
+
+        img {
+
+          &:first-child {
+            visibility: hidden;
+            opacity: 0;
+            z-index: -1;
+          }
+
+          &:last-child {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1;
+          }
+        }
       }
 
       .work__slide:last-child & {

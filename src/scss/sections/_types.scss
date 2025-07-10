@@ -96,6 +96,10 @@
       @include md {
         width: calc(50% - 0.5rem);
       }
+
+      @include eesm {
+        width: 100%;
+      }
     }
 
     &:first-child {

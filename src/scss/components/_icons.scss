@@ -25,4 +25,13 @@
       --font-size: 1.2rem;
     }
   }
+
+  &-link {
+
+    svg {
+      width: 3.4rem;
+      height: 3.4rem;
+      fill: transparent;
+    }
+  }
 }

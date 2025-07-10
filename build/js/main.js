@@ -91,28 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
   //   scrollTriggerPlayer(fadeInItem, tl)
   // });
 
-  $(window).on('resize load', function () {
-    if (window.innerWidth > '768' && window.innerWidth != '768') {
-      const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
-      if (parallaxItem) {
-        const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
-        parallaxImgContainers.forEach(parallaxImgContainer => {
-          gsap.fromTo(parallaxImgContainer,
-            { y: '-8%' },
-            {
-              y: '8%',
-              scrollTrigger: {
-                trigger: parallaxImgContainer,
-                start: 'top 90%',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
-        });
-      }
-    }
-  });
+  // $(window).on('resize load', function () {
+  //   if (window.innerWidth > '768' && window.innerWidth != '768') {
+  //     const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
+  //     if (parallaxItem) {
+  //       const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
+  //       parallaxImgContainers.forEach(parallaxImgContainer => {
+  //         gsap.fromTo(parallaxImgContainer,
+  //           { y: '-8%' },
+  //           {
+  //             y: '8%',
+  //             scrollTrigger: {
+  //               trigger: parallaxImgContainer,
+  //               start: 'top 90%',
+  //               end: 'bottom top',
+  //               scrub: true,
+  //             },
+  //           }
+  //         );
+  //       });
+  //     }
+  //   }
+  // });
 
   const hero = document.getElementById("hero");
   if (hero) {
@@ -415,8 +415,10 @@ document.addEventListener('DOMContentLoaded', () => {
       slidesPerView: 1,
       spaceBetween: 10,
       speed: 600,
-      grabCursor: false,
-      mousewheel: false,
+      grabCursor: true,
+      mousewheel: {
+        forceToAxis: true,
+      },
       thumbs: {
         swiper: objectsGalleryMini,
       },
@@ -426,10 +428,14 @@ document.addEventListener('DOMContentLoaded', () => {
       breakpoints: {
         568: {
           pagination: false,
+          grabCursor: false,
+          mousewheel: false,
         },
         769: {
           spaceBetween: 20,
           pagination: false,
+          grabCursor: false,
+          mousewheel: false,
         },
       },
     });
