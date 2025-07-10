@@ -3,7 +3,7 @@
 .hero {
   position: relative;
   z-index: 1;
-  background-image: url('./../../images/hero/bg.png');
+  background-image: url('./../images/hero/bg.png');
   background-position: center center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -13,14 +13,14 @@
   padding: 22rem 0 6rem;
 
   @include md {
-    background-image: url('./../../images/hero/bg-planshet.png');
+    background-image: url('./../images/hero/bg-planshet.png');
 
     // padding: 10rem 0;
     padding: 10rem 0 21rem;
   }
 
   @include sm {
-    background-image: url('./../../images/hero/bg-mob.png');
+    background-image: url('./../images/hero/bg-mob.png');
 
     padding: 10rem 0 26rem;
   }

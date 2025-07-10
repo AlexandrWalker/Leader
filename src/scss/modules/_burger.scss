@@ -106,17 +106,25 @@
   gap: 1rem;
 
   position: absolute;
-  bottom: 50%;
-  right: 3rem;
+  // bottom: 50%;
+  // right: 3rem;
 
-  writing-mode: vertical-rl;
-  transform: scale(-1, -1) translateY(-50%);
+  // writing-mode: vertical-rl;
+  // transform: scale(-1, -1) translateY(-50%);
   transition: all 0.3s ease;
 
   color: var(--burger-btn-color);
 
+  bottom: 50%;
+  right: -10rem;
+  transform: rotate(-90deg);
+
   &:hover {
     --burger-btn-color: var(--accent);
+  }
+
+  @include xxl {
+    right: -7rem;
   }
 
   @include md {
@@ -124,6 +132,10 @@
     bottom: unset;
     right: 2rem;
     transform: unset;
+  }
+
+  @include sm {
+    top: 1rem;
   }
 
   span {
