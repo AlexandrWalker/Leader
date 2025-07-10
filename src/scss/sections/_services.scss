@@ -113,10 +113,16 @@
         grid-template-rows: 1fr 0fr;
         gap: 0 3rem;
 
+        width: 100%;
+
         &.accordion-active {
           grid-template-rows: 1fr auto;
           gap: 2rem 3rem;
         }
+      }
+
+      @include sm {
+        gap: 0 2rem;
       }
 
       &>div {
@@ -315,6 +321,7 @@
       @include md {
         grid-template-rows: 1fr;
         padding-left: 8rem;
+        display: none;
       }
 
       p {
