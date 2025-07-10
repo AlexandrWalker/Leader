@@ -52,8 +52,7 @@ body {
 }
 
 section {
-  height: 100dvh;
-  min-height: 93rem;
+  height: clamp(93rem, 100dvh, 130dvh);
   padding: 7rem 0 6rem;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -122,26 +121,10 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
-  font-weight: 300;
   font-style: normal;
 }
 
@@ -156,6 +139,22 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
+  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
   src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
@@ -164,16 +163,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
+  font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
-  font-weight: 100;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -212,6 +211,9 @@ a {
   flex-direction: row;
   gap: 2rem;
   z-index: 10;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .swiper__btns-text {
@@ -1752,6 +1754,7 @@ h6 span {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   width: 100%;
+  height: 100dvh;
 }
 
 .burger-menu--opened {
@@ -1949,6 +1952,10 @@ h6 span {
   line-height: inherit;
 }
 
+.burger-menu__foot-text span {
+  white-space: nowrap;
+}
+
 .burger-menu__foot-btn {
   --button-color: var(--accent);
   --button-border-color: var(--gray);
@@ -2042,6 +2049,10 @@ h6 span {
 
 .footer .burger-menu__foot h2::before {
   display: none;
+}
+
+.footer .burger-menu__foot-tel {
+  margin-bottom: 0;
 }
 
 .footer__body {
@@ -2358,7 +2369,7 @@ h6 span {
   position: fixed;
   bottom: 0;
   right: 0;
-  z-index: 90;
+  z-index: 91;
   pointer-events: none;
 }
 
@@ -3589,6 +3600,10 @@ h6 span {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+}
+
+.faq {
+  background-color: var(--white);
 }
 
 .faq__inner {
@@ -4999,10 +5014,7 @@ h6 span {
   }
 
   section {
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
-    min-height: 66rem;
+    height: clamp(66rem, 100%, 100%);
     padding: 4rem 0 3rem;
   }
 
@@ -5457,6 +5469,7 @@ h6 span {
   }
 
   .privacy p:not(:last-child) {
+    font-size: 1.4rem;
     margin-bottom: 1.5rem;
   }
 
@@ -5485,6 +5498,7 @@ h6 span {
 
   .about__item-count h2 {
     bottom: -0.7rem;
+    font-size: 3rem;
   }
 
   .about__item-count::before {
@@ -5818,6 +5832,12 @@ h6 span {
     padding-right: 4rem;
   }
 
+  .history .swiper__btns {
+    -webkit-box-ordinal-group: 4;
+    -ms-flex-order: 3;
+    order: 3;
+  }
+
   .join::before {
     display: none;
   }
@@ -5927,7 +5947,7 @@ h6 span {
 
   .quiz {
     --title-margin-left: 4rem;
-    background-image: url(./../../images/quiz/bg-planshet.png);
+    background-image: url(./../images/quiz/bg-planshet.png);
   }
 
   .quiz h3 {
@@ -5937,6 +5957,14 @@ h6 span {
   .quiz__inner {
     gap: 3rem;
     max-width: 53.5rem;
+  }
+
+  .services .general__head-title {
+    color: var(--accent);
+  }
+
+  .services .general__head-title br {
+    display: none;
   }
 
   .services__inner {
@@ -6253,7 +6281,7 @@ h6 span {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
-    top: calc(100% + 27.7777777778dvh + 1rem);
+    top: calc(100% + 56.657223796dvw + 1rem);
   }
 
   .objects__slider .icon-arrow-slider-prev:before {
@@ -6374,6 +6402,7 @@ h6 span {
     flex-direction: column;
     padding: 4rem 2rem 3rem;
     max-width: 100%;
+    background-color: var(--white);
   }
 
   .burger-menu__head {
@@ -6419,6 +6448,10 @@ h6 span {
     white-space: unset;
   }
 
+  .footer .burger-menu__inner {
+    gap: 2rem;
+  }
+
   .footer .burger-menu__head {
     width: 100%;
   }
@@ -6437,6 +6470,10 @@ h6 span {
 
   .footer__bottom {
     padding: 0.6rem 0 0.7rem;
+  }
+
+  .footer__bottom a {
+    height: 1.25rem;
   }
 
   .plate--contact {
@@ -6507,6 +6544,7 @@ h6 span {
   .about__video {
     max-width: 100%;
     height: 5rem;
+    border-width: 0.1rem;
     border-color: var(--accent);
     aspect-ratio: unset;
     -ms-flex-negative: 0;
@@ -6535,6 +6573,12 @@ h6 span {
   .about__video-btn {
     width: 2.6rem;
     height: 2.6rem;
+    background-color: var(--accent);
+  }
+
+  .about__video-btn i {
+    color: var(--white);
+    font-size: 1rem;
   }
 
   .about__video-text {
@@ -6737,6 +6781,10 @@ h6 span {
     pointer-events: all;
   }
 
+  .objects__gallery-item {
+    aspect-ratio: 353/200;
+  }
+
   .objects__gallery-btn {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -6757,7 +6805,7 @@ h6 span {
   }
 
   .quiz {
-    background-image: url(./../../images/quiz/bg-mob.png);
+    background-image: url(./../images/quiz/bg-mob.png);
   }
 
   .quiz__inner {
