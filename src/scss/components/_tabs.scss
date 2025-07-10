@@ -1,6 +1,7 @@
 @use './../mixins' as *;
 
 .tabs {
+  position: relative;
 
   &__btn {
     display: flex;

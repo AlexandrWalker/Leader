@@ -33,6 +33,8 @@
     flex-direction: column;
     gap: 5rem;
 
+    justify-content: unset;
+
     @include xxl {
       gap: 3rem;
     }
