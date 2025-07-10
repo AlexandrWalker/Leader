@@ -48,17 +48,14 @@ body {
 }
 
 section {
-  height: 100dvh;
-  min-height: 93rem;
+  height: clamp(93rem, 100dvh, 130dvh);
 
   padding: 7rem 0 6rem;
   overflow-x: hidden;
   overflow-y: hidden;
 
   @include md {
-    height: fit-content;
-    // min-height: unset;
-    min-height: 66rem;
+    height: clamp(66rem, 100%, 100%);
     padding: 4rem 0 3rem;
   }
 }

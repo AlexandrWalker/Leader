@@ -328,6 +328,10 @@
       aspect-ratio: 850/480;
       position: relative;
 
+      @include sm {
+        aspect-ratio: 353/200;
+      }
+
       iframe,
       img {
         width: 100%;

@@ -7,7 +7,7 @@
   min-height: fit-content;
   color: var(--white);
 
-  background-image: url(./../../images/quiz/bg.png);
+  background-image: url(./../images/quiz/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -15,7 +15,7 @@
   @include md {
     --title-margin-left: 4rem;
 
-    background-image: url(./../../images/quiz/bg-planshet.png);
+    background-image: url(./../images/quiz/bg-planshet.png);
 
     h3 {
       font-size: 3rem;
@@ -23,7 +23,7 @@
   }
 
   @include sm {
-    background-image: url(./../../images/quiz/bg-mob.png);
+    background-image: url(./../images/quiz/bg-mob.png);
   }
 
   .general__head {

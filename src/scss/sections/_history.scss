@@ -176,5 +176,9 @@
 
   .swiper__btns {
     order: unset;
+
+    @include md {
+      order: 3;
+    }
   }
 }

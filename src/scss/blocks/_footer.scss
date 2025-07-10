@@ -54,6 +54,10 @@
     @include md {
       gap: 1rem;
     }
+
+    @include sm {
+      gap: 2rem;
+    }
   }
 
   .burger-menu__head {
@@ -104,6 +108,10 @@
     &::before {
       display: none;
     }
+  }
+
+  .burger-menu__foot-tel {
+    margin-bottom: 0;
   }
 
   &__body {
@@ -159,6 +167,10 @@
     a {
       width: auto;
       height: 2rem;
+
+      @include sm {
+        height: 1.25rem;
+      }
 
       img {
         width: 100%;

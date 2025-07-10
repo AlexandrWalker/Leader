@@ -109,6 +109,7 @@
 
         @include md {
           bottom: -0.7rem;
+          font-size: 3rem;
         }
 
         &::before {
@@ -228,6 +229,7 @@
     @include sm {
       max-width: 100%;
       height: 5rem;
+      border-width: 0.1rem;
       border-color: var(--accent);
       aspect-ratio: unset;
       flex-shrink: 0;
@@ -300,6 +302,7 @@
       @include sm {
         width: 2.6rem;
         height: 2.6rem;
+        background-color: var(--accent);
       }
 
       .about__video:hover & {
@@ -309,6 +312,11 @@
       i {
         .about__video:hover & {
           color: var(--white);
+        }
+
+        @include sm {
+          color: var(--white);
+          font-size: 1rem;
         }
       }
     }

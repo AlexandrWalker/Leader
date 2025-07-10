@@ -3,6 +3,17 @@
 .services {
   background-color: var(--white);
 
+  .general__head-title {
+
+    @include md {
+      color: var(--accent);
+
+      br {
+        display: none;
+      }
+    }
+  }
+
   &__inner {
     display: flex;
     flex-direction: column;

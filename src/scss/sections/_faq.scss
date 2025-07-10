@@ -1,6 +1,7 @@
 @use './../mixins' as *;
 
 .faq {
+  background-color: var(--white);
 
   &__inner {
     display: flex;

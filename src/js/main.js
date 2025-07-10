@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   const lenis = new Lenis({
     anchors: {
-      offset: -100,
+      offset: -60,
     }
   });
 
@@ -780,49 +780,52 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Таймлапс
    */
-  const timelineWrapper = document.querySelector('.timeline-wrapper');
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  const timelineWidth = timelineWrapper.scrollWidth - window.innerWidth;
+  const timeline = document.querySelector('.timeline');
+  if (timeline) {
+    const timelineWrapper = document.querySelector('.timeline-wrapper');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineWidth = timelineWrapper.scrollWidth - window.innerWidth;
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".history",
-      start: 'top 0',
-      endTrigger: ".services",
-      end: `+=${timelineWidth}`,
-      scrub: 1,
-      pin: true,
-      anticipatePin: 1,
-      onUpdate: self => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".history",
+        start: 'top 0',
+        endTrigger: ".services",
+        end: `+=${timelineWidth}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        onUpdate: self => {
 
-        const progress = self.progress;
-        const itemIndex = Math.floor(progress * (timelineItems.length - 1));
+          const progress = self.progress;
+          const itemIndex = Math.floor(progress * (timelineItems.length - 1));
 
-        timelineItems.forEach(item => item.classList.remove('swiper-slide-active'));
+          timelineItems.forEach(item => item.classList.remove('swiper-slide-active'));
 
-        if (timelineItems[itemIndex]) {
-          timelineItems[itemIndex].classList.add('swiper-slide-active');
-        }
-      },
-    }
-  });
+          if (timelineItems[itemIndex]) {
+            timelineItems[itemIndex].classList.add('swiper-slide-active');
+          }
+        },
+      }
+    });
 
-  tl.to(timelineWrapper, {
-    x: -timelineWidth,
-    ease: "none"
-  });
+    tl.to(timelineWrapper, {
+      x: -timelineWidth,
+      ease: "none"
+    });
 
-  document.querySelector('.button-next')?.addEventListener('click', () => {
-    const currentScroll = Math.abs(gsap.getProperty(timelineWrapper, "x"));
-    const nextScroll = Math.min(currentScroll + window.innerWidth * 0.8, timelineWidth);
-    gsap.to(timelineWrapper, { x: -nextScroll, duration: 0.5 });
-  });
+    document.querySelector('.button-next')?.addEventListener('click', () => {
+      const currentScroll = Math.abs(gsap.getProperty(timelineWrapper, "x"));
+      const nextScroll = Math.min(currentScroll + window.innerWidth * 0.8, timelineWidth);
+      gsap.to(timelineWrapper, { x: -nextScroll, duration: 0.5 });
+    });
 
-  document.querySelector('.button-prev')?.addEventListener('click', () => {
-    const currentScroll = Math.abs(gsap.getProperty(timelineWrapper, "x"));
-    const prevScroll = Math.max(currentScroll - window.innerWidth * 0.8, 0);
-    gsap.to(timelineWrapper, { x: -prevScroll, duration: 0.5 });
-  });
+    document.querySelector('.button-prev')?.addEventListener('click', () => {
+      const currentScroll = Math.abs(gsap.getProperty(timelineWrapper, "x"));
+      const prevScroll = Math.max(currentScroll - window.innerWidth * 0.8, 0);
+      gsap.to(timelineWrapper, { x: -prevScroll, duration: 0.5 });
+    });
+  }
 
 });
 

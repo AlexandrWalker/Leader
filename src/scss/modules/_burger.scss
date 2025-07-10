@@ -209,6 +209,7 @@
   transition: all 0.3s ease;
 
   width: 100%;
+  height: 100dvh;
 
   @include sm {
     top: -100%;
@@ -263,6 +264,7 @@
       flex-direction: column;
       padding: 4rem 2rem 3rem;
       max-width: 100%;
+      background-color: var(--white);
     }
   }
 
@@ -479,6 +481,10 @@
         font-weight: inherit;
         font-size: inherit;
         line-height: inherit;
+      }
+
+      span {
+        white-space: nowrap;
       }
     }
 
