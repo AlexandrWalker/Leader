@@ -41,10 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
   //       toggleActions: "play none none none",
   //       preventOverlaps: true,
   //     },
-  //     onStart: function() {
-  //     // onComplete: function () {
+  //     onStart: function () {
+  //       // onComplete: function () {
   //       generalHead[i].classList.add('animatedClass'); // then only replace with blue div with new height and width
-  //     }
+  //     },
+  //     onComplete: ScrollTrigger.refresh(),
   //   })
   // }
   // const titleItems = document.querySelectorAll(".general__anim");
@@ -806,6 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timelineItems[itemIndex].classList.add('swiper-slide-active');
           }
         },
+        onComplete: ScrollTrigger.refresh(),
       }
     });
 
