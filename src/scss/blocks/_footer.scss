@@ -12,8 +12,10 @@
   @include md {
     padding-top: 4rem;
 
+    display: flex;
+    align-items: center;
     height: fit-content;
-    min-height: unset;
+    min-height: 100dvh;
   }
 
   &::before {
