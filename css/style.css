@@ -105,14 +105,6 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
@@ -125,6 +117,14 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
   font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -5583,10 +5583,16 @@ h6 span {
 
   .footer {
     padding-top: 4rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
-    min-height: unset;
+    min-height: 100dvh;
   }
 
   .footer::before {
@@ -6042,6 +6048,7 @@ h6 span {
   .hero {
     background-image: url("./../images/hero/bg-planshet.png");
     padding: 10rem 0 21rem;
+    height: 100dvh;
   }
 
   .hero__inner {
