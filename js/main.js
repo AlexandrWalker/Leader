@@ -497,12 +497,17 @@ document.addEventListener('DOMContentLoaded', () => {
     speed: 600,
     grabCursor: false,
     autoHeight: true,
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
+    effect: false,
     mousewheel: false,
     allowTouchMove: false,
+    breakpoints: {
+      769: {
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+      },
+    },
   });
 
   objectsSlider.controller.control = objectsSliderStep;
