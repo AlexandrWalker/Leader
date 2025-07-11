@@ -2,6 +2,10 @@
 
 .work {
 
+  @include sm {
+    padding: 3rem 0;
+  }
+
   &__inner {
     display: flex;
     flex-direction: column;

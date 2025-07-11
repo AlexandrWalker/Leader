@@ -59,6 +59,16 @@
     border: 0.1rem solid var(--gray-30);
     transition: all 0.3s ease;
 
+    min-height: 70rem;
+
+    @include md {
+      min-height: 59.8rem;
+    }
+
+    @include md {
+      min-height: 48.4rem;
+    }
+
     &:hover {
       border-color: var(--accent);
     }
@@ -66,7 +76,8 @@
     &-img {
       width: 100%;
       height: 100%;
-      aspect-ratio: 399/260;
+      // aspect-ratio: 399/260;
+      aspect-ratio: 558/260;
 
       @include md {
         aspect-ratio: 357/167;
@@ -87,12 +98,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 11rem;
+      // gap: 11rem;
+      gap: 2rem;
       height: 100%;
       padding: 3rem 2rem;
 
       @include sm {
-        gap: 8rem;
+        // gap: 8rem;
         padding: 2rem 1.5rem 3rem;
       }
     }
@@ -111,7 +123,7 @@
     }
 
     &-text {
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
       color: var(--black-60);
 
       @include md {
@@ -133,6 +145,10 @@
       @include md {
         gap: 0.5rem;
         padding-left: 1rem;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
       }
     }
 
@@ -193,6 +209,17 @@
     &__slide {
       max-width: 25.3rem;
     }
+  }
+
+  &__slider {
+
+    .clients__item-img {
+      aspect-ratio: 327/260;
+    }
+  }
+
+  &__slide {
+    height: auto;
   }
 
   &__item {

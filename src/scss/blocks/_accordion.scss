@@ -1,6 +1,7 @@
 @use './../mixins' as *;
 
 .accordion {
+  cursor: pointer;
 
   &-active {
 

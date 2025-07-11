@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: column;
     /* hack */
-    justify-content: center;
+    // justify-content: center;
 
     gap: 7rem;
 
@@ -151,7 +151,7 @@
     display: flex;
     flex-direction: column;
     /* hack */
-    justify-content: center;
+    // justify-content: center;
 
     gap: 3rem;
 
@@ -159,6 +159,9 @@
     width: calc((var(--container-width) + (var(--container-padding) * 2)) / 2);
     background-color: var(--black);
     color: var(--white);
+
+    position: relative;
+    overflow: hidden;
 
     @include md {
       padding: 3rem 2rem;
@@ -169,12 +172,44 @@
       }
     }
 
+    &::before {
+      content: "";
+      background: var(--gradient);
+      width: 46.6rem;
+      height: 21.7rem;
+      position: absolute;
+      bottom: 0;
+      right: -14.8rem;
+      z-index: 1;
+
+      @include xxl {
+        width: 25.2rem;
+        height: 16rem;
+        right: 0;
+      }
+
+      @include md {
+        width: 28.6rem;
+        height: 20.7rem;
+        top: 0;
+        bottom: unset;
+        right: unset;
+        left: 0;
+      }
+
+      @include sm {
+        width: 14.6rem;
+        height: 10.6rem;
+      }
+    }
+
     &-items {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       // grid-template-rows: 31.5rem 32.7rem;
       grid-template-rows: auto auto;
       gap: 2rem;
+      z-index: 1;
 
       @include md {
         gap: 1rem;
@@ -194,8 +229,17 @@
 
       img {
         width: 100%;
-        height: 100%;
+        // height: 100%;
+        height: 130%;
+        position: relative;
+        top: -10%;
         object-fit: cover;
+
+        @include md {
+          height: 100%;
+          position: static;
+          top: unset;
+        }
       }
     }
   }

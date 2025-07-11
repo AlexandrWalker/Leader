@@ -61,7 +61,7 @@
   }
 
   &__head {
-    // display: flex;
+    display: flex;
     flex-direction: column;
     // justify-content: center;
     gap: 4rem;
@@ -118,7 +118,7 @@
   &__item {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
     max-width: 56rem;
 
     @include md {
@@ -128,7 +128,7 @@
     &-head {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 2rem;
 
       @include md {
         gap: 1.5rem;
@@ -147,17 +147,29 @@
           color: var(--accent);
 
           @include md {
-            display: block;
-            margin-bottom: 1rem;
+            // display: block;
+            // margin-bottom: 1rem;
           }
         }
+      }
+    }
+
+    &-title {}
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      @include sm {
+        gap: 1rem;
       }
     }
 
     &-body {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 2rem;
 
       @include md {
         gap: 1rem;
@@ -169,8 +181,10 @@
       }
 
       h4 {
+
         @include sm {
-          font-size: 1.5rem;
+          // font-size: 1.5rem;
+          font-size: 2rem;
         }
       }
 
@@ -187,6 +201,10 @@
           gap: 1.5rem;
 
           font-size: 1.4rem;
+        }
+
+        @include sm {
+          font-size: 1.2rem;
         }
 
         &::before {
@@ -207,7 +225,7 @@
           @include sm {
             width: 0.5rem;
             height: 0.5rem;
-            margin-top: 1.2rem;
+            margin-top: 0.9rem;
           }
         }
       }
@@ -292,6 +310,7 @@
         text-fill-color: transparent;
         white-space: nowrap;
         margin-left: 0;
+        gap: 0.2ch;
 
         @include md {
           font-size: 2rem;
@@ -300,6 +319,10 @@
         &::before {
           display: none;
         }
+      }
+
+      sup {
+        line-height: 130%;
       }
     }
 
@@ -361,9 +384,23 @@
         gap: 1rem;
       }
 
+      .objects__gallery-mini:hover &,
+      .objects__gallery-item:hover & {
+
+        p {
+          color: var(--accent);
+        }
+
+        i {
+          background-color: var(--accent);
+          color: var(--white);
+        }
+      }
+
       p {
         text-align: left;
         line-height: 120%;
+        transition: all 0.3s ease;
       }
 
       i {

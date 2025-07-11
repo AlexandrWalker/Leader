@@ -12,6 +12,7 @@
 
   @include md {
     background-image: url(./../images/history/bg-planshet.png);
+    height: 100dvh;
   }
 
   @include sm {
@@ -31,6 +32,9 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 7rem 2rem;
+
+    max-height: unset;
+    height: unset;
 
     @include md {
       gap: 2rem;
@@ -139,6 +143,7 @@
 
       p {
         font-weight: 400;
+        line-height: 120%;
       }
 
       padding-right: 16rem;
@@ -176,6 +181,9 @@
 
   .swiper__btns {
     order: unset;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    height: auto;
 
     @include md {
       order: 3;

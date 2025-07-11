@@ -19,14 +19,18 @@
     h2 {
 
       &::before {
-        // width: 0;
+        width: 0;
         transition: all 0.3s ease;
       }
     }
 
-    // &.animatedClass h2::before {
-    //   width: 12.5rem;
-    // }
+    &.animatedClass h2::before {
+      width: 12.5rem;
+
+      @include md {
+        width: 3rem;
+      }
+    }
   }
 
   &__anim {

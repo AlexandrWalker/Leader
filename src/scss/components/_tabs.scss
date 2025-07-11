@@ -11,17 +11,43 @@
 
     cursor: pointer;
 
-    &--active,
+    h2 {
+      transition: all 0.3s ease;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0.3rem;
+        left: 0;
+        width: 0;
+        height: 0.3rem;
+        background-color: var(--accent);
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+    }
+
+    &--active {
+
+      h2 {
+        color: var(--accent);
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
     &:hover {
 
       h2 {
         color: var(--accent);
-        text-decoration: underline;
-      }
-    }
 
-    h2 {
-      transition: all 0.3s ease;
+        &::after {
+          width: 100%;
+        }
+      }
     }
 
     &:not(:first-child) {

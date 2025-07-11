@@ -54,7 +54,7 @@
     flex-direction: column;
     /* hack */
     justify-content: center;
-    
+
     gap: 7rem;
     padding: 7rem 0;
 
@@ -85,8 +85,16 @@
 
     img {
       width: 100%;
-      height: 100%;
+      height: 130%;
+      position: relative;
+      top: -10%;
       object-fit: cover;
+
+      @include md {
+        height: 100%;
+        position: static;
+        top: unset;
+      }
     }
   }
 }
