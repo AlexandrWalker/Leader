@@ -513,335 +513,55 @@ document.addEventListener('DOMContentLoaded', () => {
   objectsSlider.controller.control = objectsSliderStep;
   objectsSliderStep.controller.control = objectsSlider;
 
-  // const objects__blocks = document.querySelectorAll('.objects__block');
-  // objects__blocks.forEach(objects__block => {
-  //   const objects__gallery = objects__block.querySelector('.objects__gallery');
-  //   const objects__galleryMini = objects__block.querySelector('.objects__gallery--mini');
+  const objects__blocks = document.querySelectorAll('.objects__block');
+  objects__blocks.forEach(objects__block => {
+    const objects__gallery = objects__block.querySelector('.objects__gallery');
+    const objects__galleryMini = objects__block.querySelector('.objects__gallery--mini');
 
-  /***
-   * Свайпер не инициализиарует по циклу сразу. Поэтому пришлось прибегнуть к костылю
-   */
+    const objectsGalleryMini = new Swiper(objects__galleryMini, {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      speed: 600,
+      grabCursor: false,
+      mousewheel: false,
+      watchSlidesProgress: true,
+      breakpoints: {
+        769: {
+          spaceBetween: 20,
+        },
+      },
+    });
 
-  $(window).on('resize load', function () {
-    if (window.innerWidth > '568' && window.innerWidth != '568') {
-      const objectsGalleryMini1 = new Swiper(".gallery-mini--1", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: false,
-        mousewheel: false,
-        watchSlidesProgress: true,
-        breakpoints: {
-          769: {
-            spaceBetween: 20,
-          },
+    const objectsGallery = new Swiper(objects__gallery, {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      speed: 600,
+      grabCursor: true,
+      mousewheel: {
+        forceToAxis: true,
+      },
+      thumbs: {
+        swiper: objectsGalleryMini,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      breakpoints: {
+        568: {
+          pagination: false,
+          grabCursor: false,
+          mousewheel: false,
         },
-      });
+        769: {
+          spaceBetween: 20,
+          pagination: false,
+          grabCursor: false,
+          mousewheel: false,
+        },
+      },
+    });
 
-      const objectsGallery1 = new Swiper(".gallery--1", {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: true,
-        mousewheel: {
-          forceToAxis: true,
-        },
-        thumbs: {
-          swiper: objectsGalleryMini1,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        breakpoints: {
-          568: {
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-          769: {
-            spaceBetween: 20,
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-        },
-      });
-      const objectsGalleryMini2 = new Swiper(".gallery-mini--2", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: false,
-        mousewheel: false,
-        watchSlidesProgress: true,
-        breakpoints: {
-          769: {
-            spaceBetween: 20,
-          },
-        },
-      });
-
-      const objectsGallery2 = new Swiper(".gallery--2", {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: true,
-        mousewheel: {
-          forceToAxis: true,
-        },
-        thumbs: {
-          swiper: objectsGalleryMini2,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        breakpoints: {
-          568: {
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-          769: {
-            spaceBetween: 20,
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-        },
-      });
-      const objectsGalleryMini3 = new Swiper(".gallery-mini--3", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: false,
-        mousewheel: false,
-        watchSlidesProgress: true,
-        breakpoints: {
-          769: {
-            spaceBetween: 20,
-          },
-        },
-      });
-
-      const objectsGallery3 = new Swiper(".gallery--3", {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: true,
-        mousewheel: {
-          forceToAxis: true,
-        },
-        thumbs: {
-          swiper: objectsGalleryMini3,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        breakpoints: {
-          568: {
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-          769: {
-            spaceBetween: 20,
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-        },
-      });
-      const objectsGalleryMini4 = new Swiper(".gallery-mini--4", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: false,
-        mousewheel: false,
-        watchSlidesProgress: true,
-        breakpoints: {
-          769: {
-            spaceBetween: 20,
-          },
-        },
-      });
-
-      const objectsGallery4 = new Swiper(".gallery--4", {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: true,
-        mousewheel: {
-          forceToAxis: true,
-        },
-        thumbs: {
-          swiper: objectsGalleryMini4,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        breakpoints: {
-          568: {
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-          769: {
-            spaceBetween: 20,
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-        },
-      });
-      const objectsGalleryMini5 = new Swiper(".gallery-mini--5", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: false,
-        mousewheel: false,
-        watchSlidesProgress: true,
-        breakpoints: {
-          769: {
-            spaceBetween: 20,
-          },
-        },
-      });
-
-      const objectsGallery5 = new Swiper(".gallery--5", {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: true,
-        mousewheel: {
-          forceToAxis: true,
-        },
-        thumbs: {
-          swiper: objectsGalleryMini5,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        breakpoints: {
-          568: {
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-          769: {
-            spaceBetween: 20,
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-        },
-      });
-      const objectsGalleryMini6 = new Swiper(".gallery-mini--6", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: false,
-        mousewheel: false,
-        watchSlidesProgress: true,
-        breakpoints: {
-          769: {
-            spaceBetween: 20,
-          },
-        },
-      });
-
-      const objectsGallery6 = new Swiper(".gallery--6", {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: true,
-        mousewheel: {
-          forceToAxis: true,
-        },
-        thumbs: {
-          swiper: objectsGalleryMini6,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        breakpoints: {
-          568: {
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-          769: {
-            spaceBetween: 20,
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-        },
-      });
-      const objectsGalleryMini7 = new Swiper(".gallery-mini--7", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: false,
-        mousewheel: false,
-        watchSlidesProgress: true,
-        breakpoints: {
-          769: {
-            spaceBetween: 20,
-          },
-        },
-      });
-
-      const objectsGallery7 = new Swiper(".gallery--7", {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        speed: 600,
-        grabCursor: true,
-        mousewheel: {
-          forceToAxis: true,
-        },
-        thumbs: {
-          swiper: objectsGalleryMini7,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        breakpoints: {
-          568: {
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-          769: {
-            spaceBetween: 20,
-            pagination: false,
-            grabCursor: false,
-            mousewheel: false,
-          },
-        },
-      });
-    } else {
-      const objects__blocks = document.querySelectorAll('.objects__block');
-      objects__blocks.forEach(objects__block => {
-        const objects__gallery = objects__block.querySelector('.objects__gallery');
-
-        const objectsGallery = new Swiper(objects__gallery, {
-          slidesPerView: 1,
-          spaceBetween: 10,
-          speed: 600,
-          grabCursor: true,
-          mousewheel: {
-            forceToAxis: true,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-          },
-        });
-      });
-
-    }
   });
-
-
-  // });
 
   const commandSlider = new Swiper(".command__slider", {
     slidesPerGroup: 1,
