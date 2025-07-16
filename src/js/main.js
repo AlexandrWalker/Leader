@@ -938,50 +938,195 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   const timeline = document.querySelector('.timeline');
   if (timeline) {
-    const timelineWrapper = document.querySelector('.timeline-wrapper');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineWidth = timelineWrapper.scrollWidth - window.innerWidth;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".history",
-        start: 'top 0',
-        endTrigger: ".services",
-        end: `+=${timelineWidth}`,
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        onUpdate: self => {
+    const timeline = document.querySelector('.timeline-container');
+    const timelineWrapper = timeline.querySelector('.timeline-wrapper');
+    const items = gsap.utils.toArray('.timeline-item', timeline);
+    const btnPrev = timeline.querySelector('.timeline-button-prev');
+    const btnNext = timeline.querySelector('.timeline-button-next');
 
-          const progress = self.progress;
-          const itemIndex = Math.floor(progress * (timelineItems.length - 1));
+    // const itemWidth = 400 + 20;
+    const itemWidth = items[1].offsetWidth;
+    const totalItems = items.length;
+    const totalWidth = itemWidth * totalItems;
+    const containerWidth = timeline.offsetWidth;
 
-          timelineItems.forEach(item => item.classList.remove('swiper-slide-active'));
+    const pauseDuration = 1;
+    const scrollDuration = 2;
+    const totalDuration = pauseDuration + scrollDuration + pauseDuration;
 
-          if (timelineItems[itemIndex]) {
-            timelineItems[itemIndex].classList.add('swiper-slide-active');
-          }
-        },
-        onComplete: ScrollTrigger.refresh(),
+    const maxShift = totalWidth - containerWidth;
+
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let startScroll = 0;
+
+    const tl = ScrollTrigger.create({
+      trigger: timeline,
+      start: 'top top',
+      end: () => `+=${totalDuration * itemWidth}`,
+      pin: true,
+      onUpdate: self => {
+        if (isAnimating || isDragging) return;
+
+        const progress = self.progress;
+        let x = 0;
+
+        if (progress < pauseDuration / totalDuration) {
+          currentIndex = 0;
+          x = 0;
+        } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
+          currentIndex = totalItems - 1;
+          x = -maxShift;
+        } else {
+          const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
+          const exactIndex = horProgress * (totalItems - 1);
+          currentIndex = Math.round(exactIndex);
+          x = -horProgress * maxShift;
+        }
+
+        gsap.set(timelineWrapper, { x });
+        updateActiveClass(currentIndex);
+      },
+      invalidateOnRefresh: true
+    });
+
+    function updateActiveClass(index) {
+      items.forEach((item, i) => {
+        item.classList.toggle('timeline-active', i === index);
+      });
+    }
+
+    function getScrollYForIndex(index) {
+      const startScroll = tl.start;
+      const scrollLength = totalDuration * itemWidth;
+      const progress = getProgressForIndex(index);
+
+      return startScroll + progress * scrollLength;
+    }
+
+    function getProgressForIndex(index) {
+      if (index === 0) return 0;
+      if (index === totalItems - 1) return 1;
+      return pauseDuration / totalDuration + (index / (totalItems - 1)) * (scrollDuration / totalDuration);
+    }
+
+    function goToIndex(index) {
+      index = Math.min(Math.max(index, 0), totalItems - 1);
+      if (index === currentIndex || isAnimating) return;
+
+      isAnimating = true;
+      const targetProgress = getProgressForIndex(index);
+      let targetX = 0;
+
+      if (targetProgress < pauseDuration / totalDuration) {
+        targetX = 0;
+      } else if (targetProgress > (pauseDuration + scrollDuration) / totalDuration) {
+        targetX = -maxShift;
+      } else {
+        const horProgress = (targetProgress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
+        targetX = -horProgress * maxShift;
+      }
+
+      gsap.to(timelineWrapper, {
+        x: targetX,
+        duration: 0.7,
+        ease: 'power2.out',
+        onComplete: () => {
+          currentIndex = index;
+          updateActiveClass(currentIndex);
+          isAnimating = false;
+        }
+      });
+
+      const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
+      gsap.to(window, {
+        scrollTo: { y: targetScroll, autoKill: false },
+        duration: 0.7,
+        ease: 'power2.out'
+      });
+    }
+
+    function handleTouchStart(e) {
+      if (isAnimating) return;
+
+      startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+      currentX = parseInt(gsap.getProperty(timelineWrapper, 'x') || 0, 10);
+      startScroll = window.scrollY;
+      isDragging = true;
+      timelineWrapper.classList.add('grabbing');
+
+      ScrollTrigger.getById('timeline')?.disable();
+    }
+
+    function handleTouchMove(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+
+      const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+      const diff = x - startX;
+      let newX = currentX + diff;
+
+      newX = Math.min(Math.max(newX, -maxShift), 0);
+
+      gsap.set(timelineWrapper, { x: newX });
+
+      window.scrollTo(0, startScroll);
+    }
+
+    function handleTouchEnd(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      timelineWrapper.classList.remove('grabbing');
+
+      const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
+      const diff = x - startX;
+      const velocity = diff / 100;
+
+      if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
+        if (diff > 0) {
+          goToIndex(currentIndex - 1);
+        } else {
+          goToIndex(currentIndex + 1);
+        }
+      } else {
+        goToIndex(currentIndex);
+      }
+
+      ScrollTrigger.getById('timeline')?.enable();
+    }
+
+    timelineWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
+    timelineWrapper.addEventListener('mousedown', handleTouchStart);
+
+    timelineWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
+    timelineWrapper.addEventListener('mousemove', handleTouchMove);
+
+    timelineWrapper.addEventListener('touchend', handleTouchEnd);
+    timelineWrapper.addEventListener('mouseup', handleTouchEnd);
+    timelineWrapper.addEventListener('mouseleave', handleTouchEnd);
+
+    btnPrev.addEventListener('click', () => {
+      if (isAnimating) return;
+      if (currentIndex > 0) {
+        goToIndex(currentIndex - 1);
       }
     });
 
-    tl.to(timelineWrapper, {
-      x: -timelineWidth,
-      ease: "none"
+    btnNext.addEventListener('click', () => {
+      if (isAnimating) return;
+      if (currentIndex < totalItems - 1) {
+        goToIndex(currentIndex + 1);
+      }
     });
 
-    document.querySelector('.button-next')?.addEventListener('click', () => {
-      const currentScroll = Math.abs(gsap.getProperty(timelineWrapper, "x"));
-      const nextScroll = Math.min(currentScroll + window.innerWidth * 0.8, timelineWidth);
-      gsap.to(timelineWrapper, { x: -nextScroll, duration: 0.5 });
-    });
+    updateActiveClass(currentIndex);
 
-    document.querySelector('.button-prev')?.addEventListener('click', () => {
-      const currentScroll = Math.abs(gsap.getProperty(timelineWrapper, "x"));
-      const prevScroll = Math.max(currentScroll - window.innerWidth * 0.8, 0);
-      gsap.to(timelineWrapper, { x: -prevScroll, duration: 0.5 });
-    });
+    tl.id = 'timeline';
   }
 
 });

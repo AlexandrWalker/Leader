@@ -16,14 +16,6 @@
     color: var(--black-50);
     cursor: pointer;
 
-    @include md {
-      font-size: 1.4rem;
-    }
-
-    @include sm {
-      font-size: 1.2rem;
-    }
-
     width: 100%;
     padding: 0 1rem 2rem 0;
     border-bottom: 0.1rem solid var(--gray-20);
@@ -32,6 +24,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include md {
+      font-size: 1.4rem;
+    }
+
+    @include sm {
+      font-size: 1.2rem;
+    }
 
     .dropdown.check & {
       color: var(--black);
