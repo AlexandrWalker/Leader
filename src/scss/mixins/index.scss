@@ -24,6 +24,18 @@
   }
 }
 
+@mixin xmd() {
+  @media (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin xxmd() {
+  @media (max-width: 660px) {
+    @content;
+  }
+}
+
 @mixin mmd() {
   @media (max-width: 600px) {
     @content;
