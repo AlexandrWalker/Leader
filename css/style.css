@@ -91,14 +91,6 @@ a {
 @font-face {
   font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Micra;
-  font-display: swap;
   src: url("../fonts/Micra-Bold.woff2") format("woff2"), url("../fonts/Micra-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
@@ -115,6 +107,22 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
   src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
@@ -123,8 +131,8 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
+  src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
+  font-weight: 200;
   font-style: normal;
 }
 
@@ -147,14 +155,6 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
   src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
@@ -163,16 +163,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
+  font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
-  font-weight: 100;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -2023,6 +2023,53 @@ h6 span {
 
 .burger-menu__foot-btn:hover {
   --button-color: var(--white);
+}
+
+.burger-menu .header__drop {
+  --padding-x: 1rem;
+  border-color: var(--gray);
+}
+
+.burger-menu .header__drop.accordion-active {
+  border-color: var(--black);
+}
+
+.burger-menu .header__drop.accordion-active legend {
+  color: var(--black);
+}
+
+.burger-menu .header__drop legend {
+  padding: 0 1rem;
+  color: var(--black);
+}
+
+.burger-menu .header__drop-head {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1.8rem var(--padding-x) 1.8rem var(--padding-x);
+}
+
+.burger-menu .header__drop-head i {
+  --font-size: 2.4rem;
+  color: var(--black);
+}
+
+.burger-menu .header__drop-head a {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 120%;
+  text-transform: uppercase;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  white-space: nowrap;
 }
 
 /* Blocks */
@@ -5558,11 +5605,12 @@ h6 span {
 
   .burger-menu__inner {
     max-width: calc(100% - 2rem);
-    padding: 4rem 5rem 4rem 9rem;
+    gap: 3rem;
+    padding: 4rem 2rem 4rem 4rem;
   }
 
   .burger-menu__head {
-    width: 26rem;
+    width: 22rem;
     gap: 3rem;
   }
 
@@ -5575,7 +5623,7 @@ h6 span {
   }
 
   .burger-menu__foot {
-    width: calc(100% - 26rem - 2rem);
+    width: calc(100% - 22rem - 3rem);
     gap: 3rem;
   }
 
@@ -5597,6 +5645,42 @@ h6 span {
 
   .burger-menu__foot-text {
     font-size: 1.5rem;
+  }
+
+  .burger-menu .header__drop {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 0.5rem;
+  }
+
+  .burger-menu .header__drop.accordion-active .header__drop-body {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .burger-menu .header__drop-head i {
+    --font-size: 2rem;
+  }
+
+  .burger-menu .header__drop-head a {
+    font-size: 2.2rem;
+  }
+
+  .burger-menu .header__drop-body {
+    --padding-x: 1.5rem;
+  }
+
+  .burger-menu .header__drop-body li {
+    gap: 1rem;
+  }
+
+  .burger-menu .header__drop-body li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .burger-menu .header__drop-body a {
+    font-size: 1.2rem;
   }
 
   .footer {
@@ -6544,6 +6628,117 @@ h6 span {
   }
 }
 
+@media (max-width: 720px) {
+  .burger-menu .header__drop-head a {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 660px) {
+  .burger-menu__inner {
+    gap: 1rem;
+  }
+
+  .burger-menu__title h3 {
+    font-size: 2rem;
+  }
+
+  .burger-menu__foot {
+    width: calc(100% - 22rem - 1rem);
+  }
+
+  .burger-menu .header__drop-head a {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .burger-close {
+    top: 1rem;
+  }
+
+  .burger-menu {
+    top: -100%;
+    bottom: 100%;
+    right: 0;
+  }
+
+  .burger-menu--opened {
+    top: 0;
+    bottom: 0;
+  }
+
+  .burger-menu__inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 3rem 2rem 3rem;
+    max-width: 100%;
+    gap: 2rem;
+    background-color: var(--white);
+  }
+
+  .burger-menu__head {
+    width: 100%;
+  }
+
+  .burger-menu__title {
+    display: none;
+  }
+
+  .burger-menu__list li {
+    margin-bottom: 1.5rem;
+  }
+
+  .burger-menu__foot {
+    width: 100%;
+  }
+
+  .burger-menu__foot-tel {
+    margin-bottom: 0.6rem;
+  }
+
+  .burger-menu__foot-wrap {
+    gap: 1rem;
+  }
+
+  .burger-menu__foot-text {
+    font-size: 2rem;
+  }
+
+  .burger-menu__foot-btns {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .burger-menu__foot-btn {
+    --padding: 1rem;
+    gap: 1rem;
+    text-align: left;
+    white-space: unset;
+  }
+
+  .burger-menu .header__drop {
+    --padding-x: 0.5rem;
+  }
+
+  .burger-menu .header__drop legend {
+    padding: 0 0.5rem;
+  }
+
+  .burger-menu .header__drop-head {
+    padding: 0.5rem var(--padding-x) 1rem var(--padding-x);
+  }
+
+  .burger-menu .header__drop-head a {
+    font-size: 5.2631578947vw;
+  }
+}
+
 @media (max-width: 576px) {
   .swiper {
     width: calc(100% + var(--container-padding) + var(--container-padding));
@@ -6696,74 +6891,6 @@ h6 span {
 
   p {
     font-size: 1.2rem;
-  }
-
-  .burger-close {
-    top: 1rem;
-  }
-
-  .burger-menu {
-    top: -100%;
-    bottom: 100%;
-    right: 0;
-  }
-
-  .burger-menu--opened {
-    top: 0;
-    bottom: 0;
-  }
-
-  .burger-menu__inner {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding: 4rem 2rem 3rem;
-    max-width: 100%;
-    background-color: var(--white);
-  }
-
-  .burger-menu__head {
-    width: 100%;
-  }
-
-  .burger-menu__title {
-    display: none;
-  }
-
-  .burger-menu__list li {
-    margin-bottom: 1.5rem;
-  }
-
-  .burger-menu__foot {
-    width: 100%;
-  }
-
-  .burger-menu__foot-tel {
-    margin-bottom: 0.6rem;
-  }
-
-  .burger-menu__foot-wrap {
-    gap: 1rem;
-  }
-
-  .burger-menu__foot-text {
-    font-size: 2rem;
-  }
-
-  .burger-menu__foot-btns {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    width: 100%;
-  }
-
-  .burger-menu__foot-btn {
-    --padding: 1rem;
-    gap: 1rem;
-    text-align: left;
-    white-space: unset;
   }
 
   .footer .burger-menu__inner {
