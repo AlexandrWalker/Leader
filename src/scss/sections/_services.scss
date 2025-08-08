@@ -110,6 +110,12 @@
 
       i {
         --font-size: 2rem;
+        color: var(--black);
+
+        .services__item:hover &,
+        .accordion-active & {
+          color: var(--accent);
+        }
       }
     }
 

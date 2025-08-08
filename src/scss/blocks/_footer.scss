@@ -5,6 +5,8 @@
   overflow: hidden;
   padding-top: 7rem;
 
+  background-color: var(--white);
+
   /* hack */
   // height: 100dvh;
   // min-height: 93rem;
@@ -114,6 +116,127 @@
 
   .burger-menu__foot-tel {
     margin-bottom: 0;
+  }
+
+  .header__drop {
+    --padding-x: 1rem;
+
+    border-color: var(--gray);
+
+    @include md {
+      display: flex;
+      padding: 0 0.5rem;
+    }
+
+    @include mmd {
+      --padding-x: 0.5rem;
+    }
+
+    &:hover,
+    &.accordion-active {
+      border-color: var(--black);
+
+      legend {
+        color: var(--black);
+      }
+
+      .header__drop-body {
+
+        @include md {
+          padding-top: 1.5rem;
+          padding-bottom: 1rem;
+        }
+      }
+    }
+
+    legend {
+      padding: 0 1rem;
+      color: var(--black);
+
+      @include mmd {
+        padding: 0 0.5rem;
+      }
+    }
+
+    &-head {
+      align-items: center;
+      height: fit-content;
+      padding: 1.8rem var(--padding-x) 1.8rem var(--padding-x);
+
+      @include mmd {
+        padding: 0.5rem var(--padding-x) 1rem var(--padding-x);
+      }
+
+      i {
+        --font-size: 2.4rem;
+
+        color: var(--black);
+
+        @include md {
+          --font-size: 2rem;
+        }
+      }
+
+      a {
+        font-family: var(--second-family);
+        font-weight: 700;
+        font-size: 3rem;
+        line-height: 120%;
+
+        text-transform: uppercase;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        white-space: nowrap;
+
+        @include md {
+          font-size: 2.2rem;
+        }
+
+        @include xmd {
+          font-size: 1.8rem;
+        }
+
+        @include xxmd {
+          font-size: 1.6rem;
+        }
+
+        @include mmd {
+          // font-size: 2.2rem;
+          font-size: calc(100vw / 19);
+        }
+      }
+    }
+
+    &-body {
+
+      @include md {
+        --padding-x: 1.5rem;
+      }
+
+      li {
+
+        @include md {
+          gap: 1rem;
+        }
+
+        &:not(:last-child) {
+
+          @include md {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+
+      a {
+
+        @include md {
+          font-size: 1.2rem;
+        }
+      }
+    }
   }
 
   &__body {

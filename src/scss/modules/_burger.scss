@@ -562,6 +562,7 @@
       --padding-x: 0.5rem;
     }
 
+    &:hover,
     &.accordion-active {
       border-color: var(--black);
 
