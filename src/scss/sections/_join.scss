@@ -46,7 +46,9 @@
   .form-group {
 
     &:nth-child(1):not(.form-group--file),
-    &:nth-child(2):not(.form-group--file) {
+    &:nth-child(2):not(.form-group--file),
+    &:nth-child(3):not(.form-group--file),
+    &:nth-child(4):not(.form-group--file) {
       width: calc(50% - 1rem);
 
       @include md {

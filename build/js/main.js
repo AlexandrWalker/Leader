@@ -191,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const span = target.querySelector('span');
     const text = new SplitType(target, { types: 'chars, words' })
+    
     gsap.from(text.words, {
       opacity: 0,
       x: -50,
@@ -580,21 +581,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  $(window).on('resize load', function () {
+  // $(window).on('resize load', function () {
 
-    const services__items = document.querySelectorAll('.services__item');
-    if (window.innerWidth <= 768) {
-      services__items.forEach(services__item => {
-        services__item.querySelector('.services__item-wrap').classList.add('accordion');
-      });
-      accordionFunc();
-    } else {
-      services__items.forEach(services__item => {
-        services__item.querySelector('.services__item-wrap').classList.remove('accordion');
-      });
-    }
+  //   const services__items = document.querySelectorAll('.services__item');
+  //   if (window.innerWidth <= 768) {
+  //     services__items.forEach(services__item => {
+  //       services__item.querySelector('.services__item-wrap').classList.add('accordion');
+  //     });
+  //     accordionFunc();
+  //   } else {
+  //     services__items.forEach(services__item => {
+  //       services__item.querySelector('.services__item-wrap').classList.remove('accordion');
+  //     });
+  //   }
 
-  })
+  // })
 
   function accordionFunc() {
     if (document.querySelector('.accordion-parent')) {

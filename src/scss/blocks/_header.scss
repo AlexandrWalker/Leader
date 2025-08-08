@@ -185,9 +185,13 @@
   }
 
   &__btn {
-    --height: 100%;
+    --height: 10rem;
 
     min-width: 37rem;
+
+    position: fixed;
+    top: 0;
+    right: 0;
 
     i {
       display: none;
@@ -202,7 +206,7 @@
 
     @include md {
       --width: 6rem;
-      --height: 100%;
+      --height: 6rem;
 
       min-width: unset;
       gap: 0;
