@@ -64,12 +64,15 @@
     display: flex;
     align-items: flex-end;
     width: calc(100% / 5);
-    height: 100dvh;
+
+    min-height: clamp(93rem, 100dvh, 150dvh);
+
     padding: 0 0 0 5rem;
     transition: width .8s;
     overflow: hidden;
     position: relative;
     will-change: width;
+
 
     @include md {
       flex-direction: column;
@@ -78,6 +81,8 @@
       width: calc(50% - 0.5rem);
       height: fit-content;
       padding: 0;
+
+      min-height: unset;
     }
 
     @include sm {

@@ -280,7 +280,7 @@
     &-body {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10rem;
+      gap: 2rem 10rem;
 
       @include md {
         grid-template-columns: 1fr;
@@ -454,6 +454,19 @@
         width: 100%;
         margin-left: 0;
         padding: 0;
+      }
+
+      .swiper-slide {
+        border: 0.1rem solid transparent;
+        cursor: pointer;
+
+        &-thumb-active {
+          border-color: var(--accent);
+        }
+
+        &:hover {
+          border-color: var(--accent);
+        }
       }
     }
   }

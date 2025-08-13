@@ -78,7 +78,7 @@
 
     &.accordion-active {
       background-color: var(--black);
-      border-color: var(--black);
+      border-color: var(--accent);
 
       @include sm {
         padding: 1rem 1rem 3rem;

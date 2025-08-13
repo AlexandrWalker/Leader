@@ -52,7 +52,7 @@ body {
 }
 
 section {
-  height: clamp(93rem, 100dvh, 150dvh);
+  min-height: clamp(93rem, 100dvh, 150dvh);
   padding: 7rem 0 6rem;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -91,16 +91,16 @@ a {
 @font-face {
   font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Micra-Bold.woff2") format("woff2"), url("../fonts/Micra-Bold.woff") format("woff");
-  font-weight: 700;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
+  src: url("../fonts/Micra-Bold.woff2") format("woff2"), url("../fonts/Micra-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -155,16 +155,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -4490,7 +4490,7 @@ h6 span {
 .objects__block-body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10rem;
+  gap: 2rem 10rem;
 }
 
 .objects__block-item {
@@ -4629,6 +4629,19 @@ h6 span {
   width: 100%;
 }
 
+.objects__gallery--mini .swiper-slide {
+  border: 0.1rem solid transparent;
+  cursor: pointer;
+}
+
+.objects__gallery--mini .swiper-slide-thumb-active {
+  border-color: var(--accent);
+}
+
+.objects__gallery--mini .swiper-slide:hover {
+  border-color: var(--accent);
+}
+
 .quiz {
   padding: 0;
   max-height: -webkit-fit-content;
@@ -4719,7 +4732,7 @@ h6 span {
 
 .services__item.accordion-active {
   background-color: var(--black);
-  border-color: var(--black);
+  border-color: var(--accent);
 }
 
 .services__item-chevron {
@@ -4972,7 +4985,7 @@ h6 span {
   -ms-flex-align: end;
   align-items: flex-end;
   width: 20%;
-  height: 100dvh;
+  min-height: clamp(93rem, 100dvh, 150dvh);
   padding: 0 0 0 5rem;
   -webkit-transition: width 0.8s;
   transition: width 0.8s;
@@ -5385,7 +5398,7 @@ h6 span {
   }
 
   section {
-    height: clamp(66rem, 100%, 100%);
+    min-height: clamp(66rem, 100%, 100%);
     padding: 4rem 0 3rem;
   }
 
@@ -6631,6 +6644,7 @@ h6 span {
     height: -moz-fit-content;
     height: fit-content;
     padding: 0;
+    min-height: unset;
   }
 
   .types__item:hover {
