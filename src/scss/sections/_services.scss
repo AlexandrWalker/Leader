@@ -55,7 +55,7 @@
     padding: 6rem 6rem 5rem 14.5rem;
     border: 0.1rem solid var(--gray-20);
 
-    transition: all 0.3s ease;
+    transition: all 0.8s ease;
     position: relative;
 
     @include md {
@@ -65,6 +65,7 @@
       gap: 0 2rem;
       margin-top: 0;
       padding: 2rem;
+      transition: all 0.3s ease;
     }
 
     @include sm {
@@ -77,7 +78,6 @@
     }
 
     &.accordion-active {
-      background-color: var(--black);
       border-color: var(--accent);
 
       @include sm {
@@ -88,19 +88,21 @@
     &-chevron {
       display: flex;
       align-items: center;
-      transition: all 0.3s ease;
+      transition: all 0.8s ease;
 
       position: absolute;
-      top: 6.5rem;
+      top: 0.5rem;
       right: 6rem;
 
       @include md {
-        top: 3.7rem;
+        transition: all 0.3s ease;
+
+        top: 0.2rem;
         right: 2rem;
       }
 
       @include sm {
-        top: 2.6rem;
+        top: 1rem;
         right: 1rem;
       }
 
@@ -127,39 +129,33 @@
       height: 6rem;
       padding: 0 1rem;
       background-color: var(--white);
-      transition: all 0s ease;
-      transition-delay: 0.3s;
+      transition: all 0.3s ease;
 
       position: absolute;
       top: -3rem;
       left: 2rem;
 
       @include md {
+        justify-content: flex-start;
+        align-items: flex-start;
         width: 5rem;
         height: 5rem;
         padding: 0;
         margin-top: 0;
         margin-bottom: 0;
-        transition: all 0.3s ease;
-        transition-delay: 0s;
+        background-color: var(--gray-30);
 
         position: relative;
         top: unset;
         left: unset;
 
-        /* */
-        justify-content: flex-start;
-        align-items: flex-start;
-        background: var(--gray-30);
-
         .services__item:hover & {
-          background: var(--accent);
+          background-color: var(--accent);
         }
       }
 
       .accordion-active & {
         background-color: transparent;
-        transition-delay: 0s;
 
         @include md {
           background-color: var(--accent);
@@ -169,18 +165,16 @@
       i {
         --font-size: 6rem;
 
+        background-color: #ECEEEF;
+        transition: all 0.3s ease;
         color: var(--black);
-        transition: 0s;
-
         position: relative;
         z-index: 2;
 
         @include md {
-          --font-size: 5rem;
           --font-size: 3rem;
 
-          background: transparent;
-          transition: 0.3s;
+          background-color: transparent;
         }
 
         .accordion-active &,
@@ -189,46 +183,32 @@
         }
 
         &::before {
+          position: relative;
           z-index: 2;
-          background: var(--gray-30);
-          transition: all 0.3s ease;
-
-          @include md {
-            transition: all 0.3s ease;
-          }
-
-          .accordion-active &,
-          .services__item:hover & {
-            background: var(--gradient);
-
-            @include md {
-              background: var(--accent);
-            }
-          }
         }
 
         &::after {
           content: "";
           width: 100%;
           height: 100%;
-          background-color: var(--white);
+          background: var(--gradient);
+          transition: all 0.3s ease;
+          opacity: 0;
+
           position: absolute;
           top: 0;
+          right: 0;
           bottom: 0;
           left: 0;
-          right: 0;
           z-index: 1;
 
           @include md {
-            transition: all 0.3s ease;
+            display: none;
           }
 
           .accordion-active &,
           .services__item:hover & {
-
-            @include md {
-              background: transparent;
-            }
+            opacity: 1;
           }
         }
       }
@@ -265,7 +245,29 @@
       }
     }
 
+    &-hover {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      clip-path: ellipse(10% 10% at 5rem -10%);
+      background-color: var(--black);
+      transition: clip-path .8s cubic-bezier(.7, 0, .4, 1);
+
+      @include md {
+        display: none;
+      }
+
+      .accordion-active & {
+        clip-path: ellipse(160% 160% at 5rem -10%);
+      }
+    }
+
     &-head {
+      position: relative;
+      z-index: 2;
 
       @include md {
         width: calc(100% - 7rem);
@@ -278,12 +280,14 @@
 
     &-title {
       margin-bottom: 2rem;
-      transition: all 0.3s ease;
+      transition: all 0.8s ease;
 
       @include md {
         display: flex;
         align-items: center;
         margin-bottom: 0;
+        transition: all 0.3s ease;
+        width: calc(100% - 4rem);
       }
 
       span {
@@ -297,11 +301,19 @@
 
         @include sm {
           font-size: 1.5rem;
+          word-break: break-word;
+        }
+        @include eesm() {
+          font-size: 1.2rem;
         }
       }
 
       .accordion-active & {
         color: var(--white);
+
+        @include md {
+          color: var(--black);
+        }
       }
     }
 
@@ -318,13 +330,16 @@
     }
 
     &-body {
+      position: relative;
+      z-index: 2;
       display: grid;
       grid-template-rows: 0fr 0fr;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.8s cubic-bezier(.7, 0, .4, 1);
 
       @include md {
         grid-template-rows: 0fr 0fr;
+        transition: all 0.3s ease;
       }
 
       .services__item-text {
@@ -352,9 +367,11 @@
       flex-direction: row;
       gap: 13rem;
       overflow: hidden;
+      color: var(--white);
 
       @include md {
         gap: 6rem;
+        color: var(--black);
       }
 
       @include sm {
@@ -413,7 +430,6 @@
 
       p {
         font-weight: 500;
-        color: var(--white);
       }
 
       a {
@@ -424,6 +440,7 @@
 
         @include md {
           font-size: 1.4rem;
+          color: var(--black);
         }
 
         @include sm {

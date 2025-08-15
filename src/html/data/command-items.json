@@ -1,0 +1,32 @@
+[
+  {
+    "post": "Начальник участка",
+    "name": "Воробьев Сергей <br> Николаевич",
+
+    "pro-experience": "40 лет",
+    "experience": "2 года",
+
+    "vocation": "Любовь к профессии и гордость за результаты своего труда",
+    "skills": "Техническая грамотность и умение находить общий язык с людьми",
+    "value": "Обеспечивает качественное выполнение работ на участке, создаёт позитивную атмосферу в команде",
+    
+    "photo": "./images/command/photo-full-1.png",
+    "photo-mob": "./images/command/photo-full-1.png",
+    "quote": "Всегда мечтал быть строителем и дарить людям города! Я доволен своей карьерой и снова прошёл бы весь путь от начала до конца!"
+  },
+  {
+    "post": "Рабочий участка",
+    "name": "Воробьев Алексей <br> Николаевич",
+
+    "pro-experience": "10 лет",
+    "experience": "5 года",
+
+    "vocation": "Любовь к профессии и гордость за результаты своего труда",
+    "skills": "Техническая грамотность и умение находить общий язык с людьми",
+    "value": "Обеспечивает качественное выполнение работ на участке, создаёт позитивную атмосферу в команде",
+    
+    "photo": "./images/command/photo-full-1.png",
+    "photo-mob": "./images/command/photo-full-1.png",
+    "quote": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nisi est vitae ipsam quod ex. Voluptatum dolor dolore perspiciatis!"
+  }
+]

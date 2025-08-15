@@ -321,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const burgerMenu = document.querySelector('.burger-menu');
     const burgerClose = document.querySelector('.burger-close');
     const overlay = document.querySelector('.burger-overlay');
+    const header = document.getElementById('header');
     const elements = document.querySelectorAll('.burger-menu__list a');
 
     /**
@@ -328,7 +329,9 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const toggleMenu = () => {
       const isOpened = burgerBtn.classList.toggle('burger-btn--opened');
-      burgerMenu.classList.toggle('burger-menu--opened', isOpened);
+      const isHeaderOpened = header.classList.toggle('opened');
+      burgerMenu.classList.toggle('burger-menu--opened', isOpened, isHeaderOpened);
+
       lenis.stop();
     };
 
@@ -336,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * Закрывает меню.
      */
     const closeMenu = () => {
+      header.classList.remove('opened');
       burgerBtn.classList.remove('burger-btn--opened');
       burgerMenu.classList.remove('burger-menu--opened');
       lenis.start();

@@ -5,8 +5,15 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 100;
+  z-index: 201;
   height: var(--header-height);
+
+  transition: z-index 0.5s ease;
+
+  &.opened {
+    z-index: 100;
+    transition-delay: 0.6s;
+  }
 
   .innerPage & {
     background-color: var(--white);
@@ -121,12 +128,13 @@
 
     &-body {
       width: 100%;
+      width: calc(100% + 0.3rem);
       padding: 0 var(--padding-x) 0 var(--padding-x);
       background-color: var(--page-bg);
       position: absolute;
       top: 100%;
-      right: 0;
-      left: 0;
+      right: -0.1rem;
+      left: -0.1rem;
       transition: all 0.3s ease;
 
       ul {

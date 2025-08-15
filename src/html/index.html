@@ -375,12 +375,11 @@
             </div>
             <div class="services__items accordion-parent">
               <div class="services__item accordion">
-
+                <div class="services__item-hover"></div>
                 <div class="services__item-icon">
                   <i class="icon-services-2"></i>
                   <span>01</span>
                 </div>
-
                 <div class="services__item-head">
                   <div class="services__item-title">
                     <h4>
@@ -396,7 +395,6 @@
                     </p>
                   </div>
                 </div>
-
                 <div class="services__item-body accordion-body">
                   <div class="services__item-text">
                     <p>
@@ -460,10 +458,10 @@
                     </ul>
                   </div>
                 </div>
-
               </div>
 
               <div class="services__item accordion">
+                <div class="services__item-hover"></div>
                 <div class="services__item-icon">
                   <i class="icon-services-1"></i>
                   <span>02</span>
@@ -502,6 +500,7 @@
               </div>
 
               <div class="services__item accordion">
+                <div class="services__item-hover"></div>
                 <div class="services__item-icon">
                   <i class="icon-services-5"></i>
                   <span>03</span>
@@ -538,6 +537,7 @@
               </div>
 
               <div class="services__item accordion">
+                <div class="services__item-hover"></div>
                 <div class="services__item-icon">
                   <i class="icon-services-6"></i>
                   <span>04</span>
@@ -574,6 +574,7 @@
               </div>
 
               <div class="services__item accordion">
+                <div class="services__item-hover"></div>
                 <div class="services__item-icon">
                   <i class="icon-services-7"></i>
                   <span>05</span>
@@ -2368,107 +2369,18 @@
                   Наша команда
                 </h2>
               </div>
-              <div class="general__head-text" data-animation="fadeIn">
-                <p>
-                  Примерный текст под торговым предложением в две строки или более трех строк в зависимости от контента
-                  сайта. Примерный текст под торговым предложением в две строки или более.
-                </p>
-              </div>
             </div>
             <div class="command__body">
               <div class="swiper command__slider">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide command__slide">
-                    <div class="command__item">
-                      <div class="command__item-head">
-                        <h6>
-                          Василий
-                          петров
-                        </h6>
-                        <p>
-                          Прораб, стаж 20 лет
-                        </p>
-                      </div>
-                      <div class="command__item-body">
-                        <fieldset>
-                          <legend align="left"></legend>
-                          <p>
-                            В начале нашей деятельности мы поставили себе задачу создать предприятие, способное работать
-                            быстро и эффективно, что бы скорость выполнения работ не влияла на ухудшение в качестве.
-                          </p>
-                          <p>
-                            Сегодня мы можем уверенно сказать - нам это удалось!
-                          </p>
-                        </fieldset>
-                      </div>
-                      <div class="command__item-photo">
-                        <img src="./images/command/photo-1.png" alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide command__slide">
-                    <div class="command__item">
-                      <div class="command__item-head">
-                        <h6>
-                          Василий
-                          петров
-                        </h6>
-                        <p>
-                          Прораб, стаж 20 лет
-                        </p>
-                      </div>
-                      <div class="command__item-body">
-                        <fieldset>
-                          <legend align="left"></legend>
-                          <p>
-                            В начале нашей деятельности мы поставили себе задачу создать предприятие, способное работать
-                            быстро и эффективно, что бы скорость выполнения работ не влияла на ухудшение в качестве.
-                          </p>
-                          <p>
-                            Сегодня мы можем уверенно сказать - нам это удалось!
-                          </p>
-                        </fieldset>
-                      </div>
-                      <div class="command__item-photo">
-                        <img src="./images/command/photo-1.png" alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide command__slide">
-                    <div class="command__item">
-                      <div class="command__item-head">
-                        <h6>
-                          Василий
-                          петров
-                        </h6>
-                        <p>
-                          Прораб, стаж 20 лет
-                        </p>
-                      </div>
-                      <div class="command__item-body">
-                        <fieldset>
-                          <legend align="left"></legend>
-                          <p>
-                            В начале нашей деятельности мы поставили себе задачу создать предприятие, способное работать
-                            быстро и эффективно, что бы скорость выполнения работ не влияла на ухудшение в качестве.
-                          </p>
-                          <p>
-                            Сегодня мы можем уверенно сказать - нам это удалось!
-                          </p>
-                        </fieldset>
-                      </div>
-                      <div class="command__item-photo">
-                        <img src="./images/command/photo-1.png" alt="">
-                      </div>
-                    </div>
-                  </div>
+                  @@loop('./elements/command-item.html', './data/command-items.json')
                 </div>
                 <div class="swiper__btns">
-                  <div class="swiper-button-prev command__slider-btn--prev">
-                    <i class="icon-arrow-slider-prev"></i>
-                  </div>
                   <div class="swiper-button-next command__slider-btn--next">
                     <i class="icon-arrow-slider-next"></i>
+                  </div>
+                  <div class="swiper-button-prev command__slider-btn--prev">
+                    <i class="icon-arrow-slider-prev"></i>
                   </div>
                 </div>
               </div>
