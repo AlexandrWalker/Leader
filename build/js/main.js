@@ -144,6 +144,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+      const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
+      if (parallaxImg) {
+        const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
+        parallaxImgContainers.forEach(parallaxImgContainer => {
+          const image = parallaxImgContainer.querySelector('img');
+          gsap.fromTo(image,
+            { y: '-10%' },
+            {
+              y: '10%',
+              scrollTrigger: {
+                trigger: parallaxImgContainer,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
       const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
       if (parallaxBlock) {
         const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
@@ -181,6 +201,25 @@ document.addEventListener('DOMContentLoaded', () => {
           );
         });
       }
+
+      const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
+      if (parallaxSection) {
+        const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
+        parallaxSections.forEach(parallaxSection => {
+          gsap.fromTo(parallaxSection,
+            { y: '-15%' },
+            {
+              y: '0%',
+              scrollTrigger: {
+                trigger: parallaxSection,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
     }
   });
 
@@ -191,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const span = target.querySelector('span');
     const text = new SplitType(target, { types: 'chars, words' })
-    
+
     gsap.from(text.words, {
       opacity: 0,
       x: -50,
@@ -396,6 +435,10 @@ document.addEventListener('DOMContentLoaded', () => {
     mousewheel: {
       forceToAxis: true,
     },
+    navigation: {
+      nextEl: ".work__slider-btn--next",
+      prevEl: ".work__slider-btn--prev",
+    },
     breakpoints: {
       769: {
         slidesPerView: 5,
@@ -480,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loop: true,
     speed: 600,
     grabCursor: true,
-    autoHeight: true,
+    // autoHeight: true,
     effect: 'fade',
     fadeEffect: {
       crossFade: true
@@ -501,7 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loop: true,
     speed: 600,
     grabCursor: false,
-    autoHeight: true,
+    // autoHeight: true,
     effect: false,
     mousewheel: false,
     allowTouchMove: false,
@@ -572,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerGroup: 1,
     slidesPerView: 1,
     spaceBetween: 100,
-    speed: 600,
+    speed: 1500,
     loop: true,
     grabCursor: true,
     mousewheel: {

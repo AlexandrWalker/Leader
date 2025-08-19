@@ -102,7 +102,7 @@
               </div>
             </div>
             <div class="about__body">
-              <div class="about__body-img" data-animation="parallax-block">
+              <div class="about__body-img" data-animation="parallax-block" data-parallax="parallax-img">
                 <img src="./images/about/about-cover.png" alt="">
               </div>
               <div class="about__body-content">
@@ -687,10 +687,10 @@
                   </div>
                   <div class="advan__item-text">
                     <p>
-                      Мы предлагаем штукатурные станции M-TEC (Германия), пневмотранспортные установки, компрессоры
-                      Airman (Япония), пневмонагнетатели, безвоздушные покрасочные станции, высокооборотные
-                      автоматические плиткорезы DLT, а также плиткорезы для крупноформатного керамогранита (до 1000×3000
-                      мм)
+                      Мы используем механизацию во всех видах работ: штукатурные станции, пневмотранспортные системы,
+                      компрессоры и пневмонагнетатели для подачи раствора, затирочные машины, безвоздушные покрасочные и
+                      шпаклевочные станции, высокооборотные плиткорезы, рамы для крупноформатного керамогранита
+                      (1000×3000 мм) и другое современное оборудование.
                     </p>
                   </div>
                 </div>
@@ -700,13 +700,12 @@
                   </div>
                   <div class="advan__item-title">
                     <p>
-                      штат опытных
-                      специалистов
+                      КВАЛИФИЦИРОВАННЫЙ ШТАТ СПЕЦИАЛИСТОВ
                     </p>
                   </div>
                   <div class="advan__item-text">
                     <p>
-                      Мы регулярно проводим мастер-классы и обучающие программы повышающие компетенцию нашей команды
+                      Мы регулярно проводим мастер-классы и обучающие программы, повышающие компетенцию нашей команды
                     </p>
                   </div>
                 </div>
@@ -716,12 +715,12 @@
                   </div>
                   <div class="advan__item-title">
                     <p>
-                      Высокая продуктивность
+                      ВЫСОКАЯ ПРОИЗВОДИТЕЛЬНОСТЬ ТРУДА
                     </p>
                   </div>
                   <div class="advan__item-text">
                     <p>
-                      В сезон на наших объектах трудятся до 170 человек одновременно
+                      В сезон на наших объектах трудятся до 150 человек одновременно
                     </p>
                   </div>
                 </div>
@@ -731,7 +730,7 @@
                   </div>
                   <div class="advan__item-title">
                     <p>
-                      Автоматизация бизнес-процессов
+                      АВТОМАТИЗАЦИЯ ВСЕХ ВНУТРЕННИХ БИЗНЕС-ПРОЦЕССОВ
                     </p>
                   </div>
                   <div class="advan__item-text">
@@ -746,13 +745,13 @@
                   </div>
                   <div class="advan__item-title">
                     <p>
-                      Надёжность
-                      и безопасность
+                      НАДЁЖНОСТЬ
+                      И БЕЗОПАСНОСТЬ
                     </p>
                   </div>
                   <div class="advan__item-text">
                     <p>
-                      Работаем по контракту со строгим соблюдением сроков и гарантийных обязательств
+                      Работаем по контракту с соблюдением сроков и гарантийных обязательств
                     </p>
                   </div>
                 </div>
@@ -765,17 +764,21 @@
       <section id="work" class="work">
         <div class="container">
           <div class="work__inner">
-            <div class="general__head" data-animation="reveal">
-              <div class="general__head-title">
-                <h2>
-                  Как мы работаем
-                </h2>
+            <div class="work__head">
+              <div class="general__head" data-animation="reveal">
+                <div class="general__head-title">
+                  <h2>
+                    Как мы работаем
+                  </h2>
+                </div>
               </div>
-              <div class="general__head-text" data-animation="fadeIn">
-                <p>
-                  Примерный текст под торговым предложением в две строки или более трех строк в зависимости от контента
-                  сайта. Примерный текст под торговым предложением в две строки или более.
-                </p>
+              <div class="swiper__btns">
+                <div class="swiper-button-prev work__slider-btn--prev">
+                  <i class="icon-arrow-slider-prev"></i>
+                </div>
+                <div class="swiper-button-next work__slider-btn--next">
+                  <i class="icon-arrow-slider-next"></i>
+                </div>
               </div>
             </div>
 
@@ -2389,7 +2392,7 @@
         </div>
       </section>
       <!-- Присоединяйся к нашей команде! -->
-      <section id="join" class="join">
+      <section id="join" class="join" data-animation="parallax-section">
         <div class="container">
           <div class="join__inner">
             <div class="general__head" data-animation="reveal">
@@ -2444,7 +2447,7 @@
                     </label>
                     <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group form-group--textarea">
                     <textarea class="form-textarea" rows="1" name="comment" placeholder="комментарий"></textarea>
                   </div>
                 </div>
@@ -3662,7 +3665,7 @@
                       </label>
                       <span class="form-invalid">Данное поле неверно заполнено</span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group--textarea">
                       <textarea class="form-textarea" rows="1" name="comment" placeholder="комментарий"></textarea>
                     </div>
                   </div>

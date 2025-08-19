@@ -2,6 +2,7 @@
 
 .objects {
   background-color: var(--white);
+  background-image: linear-gradient(to right, var(--white) 50%, var(--page-bg-50) 50%);
   padding: 0;
   margin-bottom: 0;
 
@@ -9,6 +10,7 @@
 
   @include md {
     padding: 4rem 0 5rem;
+    background-image: none;
   }
 
   &::before {

@@ -75,9 +75,15 @@
       align-items: center;
       width: var(--history-head-width);
       height: var(--history-head-width);
-      background-color: var(--gray);
 
       position: relative;
+
+      background-color: var(--gray-50);
+      transition: background-color 0.5s ease;
+
+      .timeline-active & {
+        background-color: var(--gray);
+      }
 
       @include md {
         --history-head-width: 26rem;
@@ -113,6 +119,8 @@
         background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNjYiIHZpZXdCb3g9IjAgMCA0NCA2NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik00My42NzYzIDMyLjc0MjFMMjEuODA4NiAzMi43NDEzTDAuMDAwNzY0ODg3IDEwLjkzMzRMMjEuODY4NSAxMC45MzQyTDQzLjY3NjMgMzIuNzQyMVoiIGZpbGw9IndoaXRlIi8+DQo8cGF0aCBkPSJNNDMuNjc2NCAzMi43NDI1TDIxLjgwODcgMzIuNzQxN0w2LjY4OTk0ZS0wNSA1NC41NTAzTDIxLjg2NzggNTQuNTUxMkw0My42NzY0IDMyLjc0MjVaIiBmaWxsPSJ3aGl0ZSIvPg0KPC9zdmc+DQo=);
         background-repeat: no-repeat;
         background-size: 100% 100%;
+
+        display: none;
       }
     }
 
@@ -127,6 +135,13 @@
       left: -0.8rem;
       bottom: -2.3rem;
 
+      opacity: 0.5;
+      transition: opacity 0.5s ease;
+
+      .timeline-active & {
+        opacity: 1;
+      }
+
       @include md {
         font-size: 8rem;
         left: 0;
@@ -139,6 +154,12 @@
     }
 
     &-text {
+      opacity: 0.5;
+      transition: opacity 0.5s ease;
+
+      .timeline-active & {
+        opacity: 1;
+      }
 
       p {
         font-weight: 400;

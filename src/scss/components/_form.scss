@@ -122,6 +122,28 @@
         }
       }
     }
+
+    &--textarea {
+
+      &:hover::before {
+        width: 100%;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0.1rem;
+        background-color: var(--gray);
+        position: absolute;
+        bottom: 0.6rem;
+        left: 0;
+        z-index: 1;
+        transition: all 0.5s ease;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   &-input {
@@ -152,10 +174,14 @@
     }
 
     &:hover {
-      border-color: var(--gray);
+      // border-color: var(--gray);
 
       &+.form-label {
         color: var(--white);
+
+        &::before {
+          width: 100%;
+        }
 
         span {
           color: var(--accent);
@@ -166,13 +192,21 @@
     &.filled,
     &:active,
     &:focus {
-      border-color: var(--gray);
+      // border-color: var(--gray);
 
       &+.form-label {
-        opacity: 0;
+        // opacity: 0;
         visibility: hidden;
         pointer-events: none;
+
+        &::before {
+          width: 100%;
+        }
       }
+    }
+
+    &:not(:focus) {
+      color: var(--white-50);
     }
 
     &.invalid {
@@ -221,9 +255,39 @@
 
     position: absolute;
     top: 0;
+    right: 0;
     left: 0;
+    width: 100%;
 
     pointer-events: none;
+
+
+    &::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0.1rem;
+      background-color: var(--gray);
+      position: absolute;
+      bottom: -2.9rem;
+      left: 0;
+      z-index: 1;
+      transition: all 0.5s ease;
+      opacity: 1;
+      visibility: visible;
+
+      @include md {
+        bottom: -2.3rem;
+      }
+
+      @include sm {
+        bottom: -1.9rem;
+      }
+
+      .callback & {
+        bottom: -3.1rem;
+      }
+    }
 
     span {
       color: var(--accent-50);
@@ -286,6 +350,7 @@
 
     &:hover {
       border-color: var(--gray);
+      transition-delay: 0.5s;
 
       &::placeholder {
         color: var(--white);
@@ -305,6 +370,7 @@
     &:focus,
     &:target {
       border-color: var(--gray);
+      transition-delay: 0.5s;
 
       &::placeholder {
         opacity: 0;
@@ -316,6 +382,10 @@
         visibility: hidden;
         pointer-events: none;
       }
+    }
+
+    &:not(:focus) {
+      color: var(--white-50);
     }
   }
 

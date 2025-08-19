@@ -161,6 +161,7 @@
       flex-shrink: 0;
       overflow: hidden;
       border: 0.3rem solid var(--white);
+      aspect-ratio: 705/397;
 
       @include md {
         width: 100%;

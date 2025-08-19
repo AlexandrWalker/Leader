@@ -64,11 +64,9 @@
 
   &__items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, calc((100%/3) - 4rem/3));
     grid-template-rows: repeat(2, 1fr);
     gap: 2rem;
-    /* hack */
-    // height: 100%;
 
     @include md {
       grid-template-columns: repeat(2, 1fr);
@@ -137,7 +135,6 @@
 
     &-title {
       text-transform: uppercase;
-      letter-spacing: 0.1em;
 
       margin-bottom: 2rem;
 

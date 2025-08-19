@@ -252,7 +252,7 @@
       top: 0;
       left: 0;
       z-index: 1;
-      clip-path: ellipse(10% 10% at 5rem -10%);
+      clip-path: inset(0 100% 100% 0);
       background-color: var(--black);
       transition: clip-path .8s cubic-bezier(.7, 0, .4, 1);
 
@@ -261,7 +261,7 @@
       }
 
       .accordion-active & {
-        clip-path: ellipse(160% 160% at 5rem -10%);
+        clip-path: inset(0 0 0 0);
       }
     }
 

@@ -57,3 +57,18 @@
     //   }
   }
 }
+
+[data-parallax="parallax-img"] {
+  overflow: hidden;
+
+  img {
+    margin-top: -10%;
+    margin-bottom: -10%;
+    height: 120% !important;
+
+    @include md {
+      margin: 0;
+      height: 100% !important;
+    }
+  }
+}
