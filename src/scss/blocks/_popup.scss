@@ -196,6 +196,10 @@
       &::before {
         bottom: -2.1rem;
         background-color: var(--black);
+
+        @include sm {
+          bottom: -1.9rem;
+        }
       }
     }
 
@@ -237,6 +241,13 @@
 
         &+.form-label::before {
           width: 100%;
+        }
+      }
+
+      &+.form-label::before {
+
+        @include sm {
+          bottom: -1.6rem;
         }
       }
     }
