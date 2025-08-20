@@ -207,9 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
         parallaxSections.forEach(parallaxSection => {
           gsap.fromTo(parallaxSection,
-            { y: '-15%' },
+            { y: '0%' },
             {
-              y: '0%',
+              y: '-15%',
               scrollTrigger: {
                 trigger: parallaxSection,
                 start: 'top 90%',

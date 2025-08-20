@@ -47,7 +47,7 @@
       cursor: pointer;
 
       i {
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
       }
     }
 
@@ -68,7 +68,7 @@
       width: 8rem;
       height: 8rem;
       background-color: var(--gray);
-      transition: all 0.3s ease;
+      transition: all 0.5s ease;
       flex-shrink: 0;
 
       @include md {
@@ -96,7 +96,7 @@
     &-title {
       color: var(--accent);
       text-transform: uppercase;
-      transition: all 0.3s ease;
+      transition: all 0.5s ease;
 
       .faq__item-head:hover & {
         color: var(--black);
@@ -106,7 +106,7 @@
     &-body {
       padding: 0 var(--title-margin-left);
       background-color: var(--gray-30);
-      transition: all 0.3s ease;
+      transition: all 0.5s ease;
 
       @include md {
         --title-margin-left: 6.7rem;

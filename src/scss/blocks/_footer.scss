@@ -7,17 +7,16 @@
 
   background-color: var(--white);
 
-  /* hack */
-  // height: 100dvh;
-  // min-height: 93rem;
-
   @include md {
-    padding-top: 4rem;
+    padding-top: 10rem;
 
     display: flex;
     align-items: center;
     height: fit-content;
-    min-height: 100dvh;
+  }
+
+  @include md {
+    padding-top: 8rem;
   }
 
   &::before {
@@ -43,6 +42,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include md {
+      min-height: calc(100dvh - 10rem);
+    }
+
+    @include sm {
+      min-height: calc(100dvh - 8rem);
+    }
   }
 
   .burger-menu__inner {
@@ -54,7 +61,7 @@
     margin: 0;
     padding: 0;
     background: transparent;
-    opacity: 1;
+    clip-path: none;
 
     @include md {
       gap: 1rem;
@@ -236,6 +243,16 @@
         @include md {
           font-size: 1.2rem;
         }
+      }
+    }
+
+    &-icons {
+
+      i {
+        color: var(--white);
+        border-radius: 50%;
+        background-color: var(--accent);
+        flex-shrink: 0;
       }
     }
   }

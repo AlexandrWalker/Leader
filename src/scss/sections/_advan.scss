@@ -85,11 +85,15 @@
     // width: calc((100% / 3) - (4rem / 3));
     padding: 2rem;
     border: 0.1rem solid var(--accent-30);
-
+    transition: color 0.3s ease;
     position: relative;
 
     @include md {
       padding: 2rem 2rem 2.5rem 9rem;
+    }
+
+    &:hover {
+      color: var(--accent);
     }
 
     &:first-child {

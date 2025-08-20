@@ -242,7 +242,7 @@
     width: calc(50% + var(--container-padding));
     margin-right: calc(var(--container-padding) * -1);
     padding: 7rem var(--container-padding) 7rem 2rem;
-    background-color: var(--page-bg-50);
+    // background-color: var(--page-bg-50);
 
     @include md {
       width: calc(50% + var(--container-padding) - 0.5rem);

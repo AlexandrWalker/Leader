@@ -173,7 +173,8 @@
       }
 
       &:hover {
-        border-color: var(--black);
+        // border-color: var(--black);
+        // border-color: transparent;
 
         &+.form-label {
           color: var(--black);
@@ -184,12 +185,18 @@
       &:active,
       &:focus {
         color: var(--black);
-        border-color: var(--black);
+        // border-color: var(--black);
+        // border-color: transparent;
       }
     }
 
     &-label {
       color: var(--black-50);
+
+      &::before {
+        bottom: -2.1rem;
+        background-color: var(--black);
+      }
     }
 
     &-textarea {
@@ -205,7 +212,8 @@
       }
 
       &:hover {
-        border-color: var(--black);
+        // border-color: var(--black);
+        border-color: unset;
 
         &::placeholder {
           color: var(--black);
@@ -213,6 +221,10 @@
 
         &+.form-label {
           color: var(--black);
+
+          &::before {
+            width: 100%;
+          }
         }
       }
 
@@ -220,7 +232,12 @@
       &:active,
       &:focus {
         color: var(--black);
-        border-color: var(--black);
+        // border-color: var(--black);
+        border-color: unset;
+
+        &+.form-label::before {
+          width: 100%;
+        }
       }
     }
 
