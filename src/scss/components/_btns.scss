@@ -119,5 +119,9 @@
       --button-color: var(--black);
       --button-background: var(--white);
     }
+
+    &::after {
+      display: none;
+    }
   }
 }

@@ -17,58 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   gsap.ticker.lagSmoothing(0);
 
-  // $(window).on('scroll', function () {
-  //   ScrollTrigger.refresh();
-  // });
-
-  /**
-   * Анимация
-   */
-  // const generalHead = document.querySelectorAll(".general__head");
-
-  // for (let i = 0; i < generalHead.length; i++) {
-  //   const generalTitle = generalHead[i].querySelector("h2");
-
-  //   gsap.from(generalTitle, {
-  //     opacity: 0,
-  //     x: -50,
-  //     duration: 0.3,
-  //     stagger: { amount: 0.2 },
-  //     scrollTrigger: {
-  //       trigger: generalHead[i],
-  //       start: "top 95%",
-  //       end: "bottom 20%",
-  //       toggleActions: "play none none none",
-  //       preventOverlaps: true,
-  //     },
-  //     onStart: function () {
-  //       // onComplete: function () {
-  //       generalHead[i].classList.add('animatedClass');
-  //     },
-  //     onComplete: ScrollTrigger.refresh(),
-  //   })
-  // }
-  // const titleItems = document.querySelectorAll(".general__anim");
-  // const target = document.querySelectorAll('.general__anim span');
-  // for (let i = 0; i < target.length; i++) {
-
-  //   const text = new SplitType(target[i], { types: 'words, chars' })
-
-  //   gsap.from(text.words, {
-  //     opacity: 0,
-  //     x: -50,
-  //     duration: 0.3,
-  //     stagger: { amount: 0.2 },
-  //     scrollTrigger: {
-  //       trigger: titleItems[i],
-  //       start: "top 95%",
-  //       end: "bottom 20%",
-  //       toggleActions: "play none none none",
-  //       preventOverlaps: true,
-  //     },
-  //   })
-  // }
-
   const revealItems = document.querySelectorAll('[data-animation="reveal"]');
 
   revealItems.forEach(titleWord => {
@@ -415,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     slidesPerGroup: 1,
     spaceBetween: 10,
-    speed: 600,
+    speed: 1000,
     mousewheel: {
       forceToAxis: true,
     },
@@ -431,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerGroup: 1,
     slidesPerView: 'auto',
     spaceBetween: 0,
-    speed: 600,
+    speed: 1000,
     mousewheel: {
       forceToAxis: true,
     },
@@ -452,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     spaceBetween: 10,
     loop: true,
-    speed: 600,
+    speed: 1000,
     mousewheel: {
       forceToAxis: true,
     },
@@ -489,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     spaceBetween: 10,
     loop: true,
-    speed: 600,
+    speed: 1000,
     mousewheel: {
       forceToAxis: true,
     },
@@ -521,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
-    speed: 600,
+    speed: 1000,
     grabCursor: true,
     // autoHeight: true,
     effect: 'fade',
@@ -542,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
-    speed: 600,
+    speed: 1000,
     grabCursor: false,
     // autoHeight: true,
     effect: false,
@@ -569,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const objectsGalleryMini = new Swiper(objects__galleryMini, {
       slidesPerView: 3,
       spaceBetween: 10,
-      speed: 600,
+      speed: 1000,
       grabCursor: false,
       mousewheel: false,
       watchSlidesProgress: true,
@@ -583,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const objectsGallery = new Swiper(objects__gallery, {
       slidesPerView: 1,
       spaceBetween: 10,
-      speed: 600,
+      speed: 1000,
       grabCursor: true,
       mousewheel: {
         forceToAxis: true,
