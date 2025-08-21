@@ -101,6 +101,10 @@
       .faq__item-head:hover & {
         color: var(--black);
         transform: translateX(2rem);
+
+        @include md {
+          transform: unset;
+        }
       }
     }
 
@@ -111,6 +115,8 @@
 
       @include md {
         --title-margin-left: 6.7rem;
+
+        padding: 0 2rem 0 var(--title-margin-left);
       }
     }
 
@@ -141,6 +147,10 @@
     .faq__item-title {
       color: var(--black);
       transform: translateX(2rem);
+
+      @include md {
+        transform: unset;
+      }
     }
 
     .faq__item-head i {

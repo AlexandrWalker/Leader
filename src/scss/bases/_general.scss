@@ -67,8 +67,8 @@
     height: 120% !important;
 
     @include md {
-      margin: 0;
-      height: 100% !important;
+      // margin: 0;
+      // height: 100% !important;
     }
   }
 }

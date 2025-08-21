@@ -99,6 +99,7 @@
   &__img {
     width: 71rem;
     width: 36.979%;
+    width: 71rem;
     height: auto;
     object-fit: contain;
 
@@ -109,12 +110,15 @@
 
     @include md {
       width: 62.76%;
+      width: 48.2rem;
       right: -6.64%;
     }
 
     @include sm {
       width: 93.64%;
+      width: 36.8rem;
       right: -31.55%;
+      right: -12.4rem;
     }
 
     img {

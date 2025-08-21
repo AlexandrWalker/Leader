@@ -65,7 +65,7 @@
       gap: 0 2rem;
       margin-top: 0;
       padding: 2rem;
-      transition: all 0.3s ease;
+      transition: all 0.5s ease;
     }
 
     @include sm {
@@ -303,6 +303,7 @@
           font-size: 1.5rem;
           word-break: break-word;
         }
+
         @include eesm() {
           font-size: 1.2rem;
         }
@@ -317,9 +318,8 @@
       }
     }
 
-    &-text {
+    &-desc {
       color: var(--accent);
-      overflow: hidden;
 
       .services__item-head & {
 
@@ -333,16 +333,16 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-rows: 0fr 0fr;
+      grid-template-rows: 0fr;
       overflow: hidden;
       transition: all 0.8s cubic-bezier(.7, 0, .4, 1);
+      margin-top: 0;
 
       @include md {
-        grid-template-rows: 0fr 0fr;
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
       }
 
-      .services__item-text {
+      .services__item-desc {
         display: none;
 
         @include md {
@@ -352,29 +352,33 @@
 
       .accordion-active & {
         margin-top: 4rem;
-        grid-template-rows: 1fr auto;
 
         @include md {
-          grid-template-rows: 1fr auto;
-          gap: 2rem;
           margin-top: 2rem;
         }
       }
     }
 
     &-content {
-      display: flex;
-      flex-direction: row;
-      gap: 13rem;
       overflow: hidden;
       color: var(--white);
 
       @include md {
-        gap: 6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        height: auto;
         color: var(--black);
       }
+    }
 
-      @include sm {
+    &-list {
+      display: flex;
+      flex-direction: row;
+      gap: 13rem;
+      overflow: hidden;
+
+      @include md {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;

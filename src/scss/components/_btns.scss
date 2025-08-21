@@ -49,6 +49,10 @@
     z-index: -1;
     clip-path: inset(0 100% 100% 0);
     transition: clip-path 0.5s cubic-bezier(0.7, 0, 0.4, 1);
+
+    @include md {
+      display: none;
+    }
   }
 
   i {
@@ -60,6 +64,10 @@
   &:hover {
     --button-color: var(--white);
     --button-background: transparent;
+
+    @include md {
+      --button-background: var(--accent);
+    }
 
     &::after {
       clip-path: inset(0 0 0 0);
@@ -86,6 +94,11 @@
     &:hover {
       --button-border-color: transparent;
       --button-background: transparent;
+
+      @include md {
+        --button-border-color: var(--accent);
+        --button-background: var(--accent);
+      }
 
       i {
         color: var(--white);
@@ -117,7 +130,7 @@
     }
 
     &:hover {
-      --button-background: var(--gradient);
+      --button-background: var(--gradient) !important;
 
       &::before {
         opacity: 1;
