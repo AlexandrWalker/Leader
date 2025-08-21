@@ -70,8 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTriggerPlayer(fadeInItem, tl)
   });
 
-  // $(window).on('resize load', function () {
-  // if (window.innerWidth > '768' && window.innerWidth != '768') {
   const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
   if (parallaxItem) {
     const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
@@ -112,64 +110,84 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
-  if (parallaxBlock) {
-    const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
-    parallaxImgBlocks.forEach(parallaxImgBlock => {
-      gsap.fromTo(parallaxImgBlock,
-        { y: '-8%' },
-        {
-          y: '8%',
-          scrollTrigger: {
-            trigger: parallaxImgBlock,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
+  $(window).on('resize load', function () {
+    if (window.innerWidth > '768' && window.innerWidth != '768') {
 
-  const parallaxBox = document.querySelector('[data-animation="parallax-box"]');
-  if (parallaxBox) {
-    const parallaxImgBoxes = document.querySelectorAll('[data-animation="parallax-box"]');
-    parallaxImgBoxes.forEach(parallaxImgBox => {
-      gsap.fromTo(parallaxImgBox,
-        { y: '15%' },
-        {
-          y: '-35%',
-          scrollTrigger: {
-            trigger: parallaxImgBox,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
+      const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
+      if (parallaxBlock) {
+        const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
+        parallaxImgBlocks.forEach(parallaxImgBlock => {
+          gsap.fromTo(parallaxImgBlock,
+            { y: '-8%' },
+            {
+              y: '8%',
+              scrollTrigger: {
+                trigger: parallaxImgBlock,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
 
-  const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
-  if (parallaxSection) {
-    const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
-    parallaxSections.forEach(parallaxSection => {
-      gsap.fromTo(parallaxSection,
-        { y: '0%' },
-        {
-          y: '-15%',
+      const parallaxBox = document.querySelector('[data-animation="parallax-box"]');
+      if (parallaxBox) {
+        const parallaxImgBoxes = document.querySelectorAll('[data-animation="parallax-box"]');
+        parallaxImgBoxes.forEach(parallaxImgBox => {
+          gsap.fromTo(parallaxImgBox,
+            { y: '15%' },
+            {
+              y: '-35%',
+              scrollTrigger: {
+                trigger: parallaxImgBox,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+      const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
+      if (parallaxSection) {
+        const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
+        parallaxSections.forEach(parallaxSection => {
+          gsap.fromTo(parallaxSection,
+            { y: '0%' },
+            {
+              y: '-15%',
+              scrollTrigger: {
+                trigger: parallaxSection,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+      const faqItems = document.querySelectorAll(".faq__item");
+      for (let i = 0; i < faqItems.length; i++) {
+        gsap.from(faqItems[i], {
+          opacity: 0,
+          x: -50,
+          duration: 0.3,
           scrollTrigger: {
-            trigger: parallaxSection,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
-  // }
-  // });
+            trigger: faqItems[i],
+            start: "top 95%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            preventOverlaps: true,
+          }
+        })
+      }
+
+    }
+  });
 
   const hero = document.getElementById("hero");
   if (hero) {
@@ -228,23 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
   gsap.registerPlugin(ScrollTrigger);
-
-  const faqItems = document.querySelectorAll(".faq__item");
-  for (let i = 0; i < faqItems.length; i++) {
-    gsap.from(faqItems[i], {
-      opacity: 0,
-      x: -50,
-      duration: 0.3,
-      scrollTrigger: {
-        trigger: faqItems[i],
-        start: "top 95%",
-        end: "bottom 20%",
-        toggleActions: "play none none none",
-        preventOverlaps: true,
-        // markers: true,
-      }
-    })
-  }
 
   /**
    * Анимация чисел
