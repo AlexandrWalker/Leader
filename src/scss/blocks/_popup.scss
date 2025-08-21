@@ -40,7 +40,7 @@
     // transform: scale(0);
     opacity: 0;
     transform: translateY(10rem);
-    transition: all 0.5s;
+    transition: all 0.5s linear;
     will-change: transform;
 
     @include md {
