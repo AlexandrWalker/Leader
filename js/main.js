@@ -961,34 +961,38 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let startScroll = 0;
 
-    const tl = ScrollTrigger.create({
-      trigger: timeline,
-      start: 'top top',
-      end: () => `+=${totalDuration * itemWidth}`,
-      pin: true,
-      onUpdate: self => {
-        if (isAnimating || isDragging) return;
+    $(window).on('resize load', function () {
+      if (window.innerWidth > '768' && window.innerWidth != '768') {
+        const tl = ScrollTrigger.create({
+          trigger: timeline,
+          start: 'top top',
+          end: () => `+=${totalDuration * itemWidth}`,
+          pin: true,
+          onUpdate: self => {
+            if (isAnimating || isDragging) return;
 
-        const progress = self.progress;
-        let x = 0;
+            const progress = self.progress;
+            let x = 0;
 
-        if (progress < pauseDuration / totalDuration) {
-          currentIndex = 0;
-          x = 0;
-        } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
-          currentIndex = totalItems - 1;
-          x = -maxShift;
-        } else {
-          const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
-          const exactIndex = horProgress * (totalItems - 1);
-          currentIndex = Math.round(exactIndex);
-          x = -horProgress * maxShift;
-        }
+            if (progress < pauseDuration / totalDuration) {
+              currentIndex = 0;
+              x = 0;
+            } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
+              currentIndex = totalItems - 1;
+              x = -maxShift;
+            } else {
+              const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
+              const exactIndex = horProgress * (totalItems - 1);
+              currentIndex = Math.round(exactIndex);
+              x = -horProgress * maxShift;
+            }
 
-        gsap.set(timelineWrapper, { x });
-        updateActiveClass(currentIndex);
-      },
-      invalidateOnRefresh: true
+            gsap.set(timelineWrapper, { x });
+            updateActiveClass(currentIndex);
+          },
+          invalidateOnRefresh: true
+        });
+      }
     });
 
     function updateActiveClass(index) {
@@ -1039,12 +1043,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
-      gsap.to(window, {
-        scrollTo: { y: targetScroll, autoKill: false },
-        duration: 0.7,
-        ease: 'power2.out'
+      $(window).on('resize load', function () {
+        if (window.innerWidth > '768' && window.innerWidth != '768') {
+          const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
+          gsap.to(window, {
+            scrollTo: { y: targetScroll, autoKill: false },
+            duration: 0.7,
+            ease: 'power2.out'
+          });
+        }
       });
+
     }
 
     function handleTouchStart(e) {
@@ -1122,7 +1131,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateActiveClass(currentIndex);
 
-    tl.id = 'timeline';
+    $(window).on('resize load', function () {
+      if (window.innerWidth > '768' && window.innerWidth != '768') {
+        tl.id = 'timeline';
+      }
+    });
   }
 
 });
