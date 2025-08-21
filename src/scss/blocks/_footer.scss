@@ -147,7 +147,10 @@
       legend {
         color: var(--black);
       }
+    }
 
+    &.accordion-active {
+      
       .header__drop-body {
 
         @include md {

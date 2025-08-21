@@ -41,6 +41,7 @@
     opacity: 0;
     transform: translateY(10rem);
     transition: all 0.5s;
+    will-change: transform;
 
     @include md {
       padding: 5rem 2rem 3rem;
