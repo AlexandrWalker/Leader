@@ -105,6 +105,14 @@ a {
 }
 
 @font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
   font-family: Micra;
   font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
@@ -117,14 +125,6 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
   font-style: normal;
 }
 
@@ -7979,6 +7979,14 @@ h6 span {
     max-width: 27.2rem;
   }
 
+  .work__item {
+    margin-right: 1rem;
+  }
+
+  .work__item::before {
+    display: none;
+  }
+
   .work__item-head {
     padding: 3rem 1rem 1rem;
   }
@@ -7990,6 +7998,49 @@ h6 span {
 
   .work__item-title h4 {
     font-size: 1.6rem;
+  }
+
+  .work__item-icon {
+    width: 2.6rem;
+    height: 3.9rem;
+  }
+
+  .work .swiper-slide-active .work__item {
+    border-image-source: var(--gradient);
+  }
+
+  .work .swiper-slide-active .work__item-subtitle {
+    color: var(--black);
+  }
+
+  .work .swiper-slide-active .work__item-body::before {
+    opacity: 1;
+  }
+
+  .work .swiper-slide-active .work__item-title {
+    color: var(--white);
+  }
+
+  .work .swiper-slide-active .work__item-text {
+    color: var(--white);
+  }
+
+  .work .swiper-slide-active .work__item-icon img {
+    -webkit-transform: translateX(2rem);
+    -ms-transform: translateX(2rem);
+    transform: translateX(2rem);
+  }
+
+  .work .swiper-slide-active .work__item-icon img:first-child {
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .work .swiper-slide-active .work__item-icon img:last-child {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
   }
 }
 
