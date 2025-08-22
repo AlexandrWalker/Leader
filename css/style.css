@@ -113,18 +113,18 @@ a {
 }
 
 @font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Micra;
   font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -4146,10 +4146,6 @@ h6 span {
   gap: 0.5rem;
 }
 
-.command__item-wrap:last-child {
-  max-width: 27rem;
-}
-
 .command__item-wrap p:first-child {
   color: var(--accent);
 }
@@ -5860,43 +5856,43 @@ h6 span {
   }
 
   .command .swiper-slide.swiper-slide-prev .command__item-head {
-    -webkit-transition: all 1s ease;
-    transition: all 1s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .command .swiper-slide.swiper-slide-prev .command__item-body {
-    -webkit-transition: all 1s ease;
-    transition: all 1s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .command .swiper-slide.swiper-slide-prev .command__item-quote {
-    -webkit-transition: all 1.2s ease;
-    transition: all 1.2s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .command .swiper-slide.swiper-slide-prev .command__item-photo {
-    -webkit-transition: all 1.5s ease;
-    transition: all 1.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .command .swiper-slide .command__item-head {
-    -webkit-transition: all 1s ease;
-    transition: all 1s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .command .swiper-slide .command__item-body {
-    -webkit-transition: all 1.5s ease;
-    transition: all 1.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .command .swiper-slide .command__item-quote {
-    -webkit-transition: all 1.5s ease;
-    transition: all 1.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .command .swiper-slide .command__item-photo {
-    -webkit-transition: all 1.5s ease;
-    transition: all 1.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   :root {
@@ -6699,6 +6695,10 @@ h6 span {
   .command__item-block {
     gap: 1.5rem;
     max-width: 34rem;
+  }
+
+  .command__item-wrap:last-child {
+    max-width: 27rem;
   }
 
   .command__item-quote {
