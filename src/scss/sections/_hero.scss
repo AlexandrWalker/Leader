@@ -20,6 +20,8 @@
   @include sm {
     background-image: url('./../images/hero/bg-mob.png');
     padding: 10rem 0 26rem;
+    /* hack*/
+    height: auto;
   }
 
   h1::before {

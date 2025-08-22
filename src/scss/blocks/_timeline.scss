@@ -1,3 +1,5 @@
+@use './../mixins' as *;
+
 .timeline {
   width: 100dvw;
   padding: 0 var(--container-padding);
@@ -11,6 +13,11 @@
     overflow: hidden;
     height: 100dvh;
     position: relative;
+
+    /* hack*/
+    @include md {
+      height: auto;
+    }
   }
 
   &-wrapper {

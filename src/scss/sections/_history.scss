@@ -16,6 +16,8 @@
 
   @include sm {
     background-image: url(./../images/history/bg-mob.png);
+    /* hack*/
+    height: auto;
   }
 
   &__head {

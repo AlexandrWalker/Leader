@@ -107,14 +107,6 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
@@ -125,6 +117,14 @@ a {
   font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -2317,7 +2317,6 @@ h6 span {
 }
 
 .footer .burger-menu__inner {
-  /* hakc */
   gap: 10rem;
   max-width: unset;
   margin: 0;
@@ -3204,6 +3203,7 @@ h6 span {
   overflow: hidden;
   height: 100dvh;
   position: relative;
+  /* hack*/
 }
 
 .timeline-wrapper {
@@ -6252,6 +6252,7 @@ h6 span {
 
   .footer .burger-menu__inner {
     gap: 1rem;
+    overflow: unset;
   }
 
   .footer .burger-menu__head {
@@ -6424,6 +6425,10 @@ h6 span {
   .privacy ul li {
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
+  }
+
+  .timeline-container {
+    height: auto;
   }
 
   .about {
@@ -6653,6 +6658,7 @@ h6 span {
   .command {
     background-image: none;
     padding: 4rem 0 2rem;
+    /* hack*/
     min-height: unset;
   }
 
@@ -6662,6 +6668,7 @@ h6 span {
 
   .command__item {
     gap: 2rem;
+    /* hack*/
     min-height: auto;
   }
 
@@ -7893,6 +7900,8 @@ h6 span {
   .hero {
     background-image: url("./../images/hero/bg-mob.png");
     padding: 10rem 0 26rem;
+    /* hack*/
+    height: auto;
   }
 
   .hero__content {
@@ -7913,6 +7922,8 @@ h6 span {
 
   .history {
     background-image: url(./../images/history/bg-mob.png);
+    /* hack*/
+    height: auto;
   }
 
   .join .form-group:nth-child(1):not(.form-group--file),
