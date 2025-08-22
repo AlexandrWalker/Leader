@@ -77,6 +77,17 @@
       max-width: unset;
       gap: 3rem;
     }
+
+    .btn {
+
+      &:hover {
+        
+        @include sm {
+          --button-border-color: var(--white-30);
+          --button-color: var(--white);
+        }
+      }
+    }
   }
 
   &__info {
