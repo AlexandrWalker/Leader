@@ -34,8 +34,8 @@
   }
 
   @include md {
-    --width: 6rem;
-    --height: 6rem;
+    --width: var(--header-height);
+    --height: var(--header-height);
   }
 
   @include mmd {
@@ -514,7 +514,7 @@
       p {
 
         @include md {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
       }
     }
@@ -718,7 +718,7 @@
       a {
 
         @include md {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
       }
     }

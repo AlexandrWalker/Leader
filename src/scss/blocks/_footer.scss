@@ -250,6 +250,10 @@
         @include md {
           font-size: 1.2rem;
         }
+
+        @include sm {
+          font-size: 1.3rem;
+        }
       }
     }
 
@@ -296,7 +300,7 @@
       }
 
       @include sm {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
     }
   }

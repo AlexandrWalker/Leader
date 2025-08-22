@@ -311,7 +311,7 @@
         }
 
         @include eesm() {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
       }
 
@@ -419,7 +419,7 @@
 
         @include sm {
           gap: 1rem;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
 
         &::before {
@@ -454,7 +454,7 @@
         }
 
         @include sm {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
 
         &:hover {

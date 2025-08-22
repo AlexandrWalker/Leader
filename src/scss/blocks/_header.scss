@@ -27,8 +27,9 @@
 
     @include md {
       justify-content: center;
-      width: calc(100% - 12rem);
-      margin-left: 6rem;
+      align-items: center;
+      width: calc(100% - (var(--header-height) * 2));
+      margin-left: var(--header-height);
     }
 
     .innerPage & {
@@ -230,8 +231,8 @@
     }
 
     @include md {
-      --width: 6rem;
-      --height: 6rem;
+      --width: var(--header-height);
+      --height: var(--header-height);
 
       min-width: unset;
       gap: 0;

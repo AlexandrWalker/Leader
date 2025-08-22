@@ -70,6 +70,11 @@
       gap: 3rem;
     }
 
+    @include sm {
+      max-width: 100%;
+      gap: 2rem;
+    }
+
     @include esm {
       max-width: unset;
       gap: 3rem;
@@ -89,10 +94,6 @@
       .suptitle {
         max-width: 30rem;
       }
-    }
-
-    @include sm {
-      gap: 1.5rem;
     }
   }
 
@@ -116,9 +117,13 @@
 
     @include sm {
       width: 93.64%;
-      width: 36.8rem;
+      width: 42.5rem;
       right: -31.55%;
       right: -12.4rem;
+    }
+
+    @include esm {
+      width: 36.8rem;
     }
 
     img {
