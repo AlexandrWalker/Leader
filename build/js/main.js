@@ -57,6 +57,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /**
+   * Анимация чисел
+   */
+  function counterFunc() {
+    function counter(array, element, time = 1000) {
+      let n = 0;
+      const num = Number(array.dataset.val);
+      let interval = setInterval(() => {
+        n < num ? (n += num / (time / 10)) : clearInterval(interval);
+        array.classList.contains('frac')
+          ? (element.innerHTML = n.toFixed(1))
+          : (element.innerHTML = Math.round(n));
+      }, 10);
+    }
+
+    const numbBoxes = document.querySelectorAll('.numbs');
+    numbBoxes.forEach((numbBox) => {
+      const numbs = numbBox.querySelectorAll('.number');
+      numbs.forEach((numb) => {
+        const count = numb.querySelector('span');
+        gsap.to(count, {
+          scrollTrigger: {
+            trigger: numbBox,
+            start: `top 95%`,
+            // start: `top 60%`,
+            // markers: true,
+          },
+          onStart: () => counter(numb, count),
+        });
+      });
+    });
+  }
+  counterFunc();
+
   $(window).on('resize load', function () {
     if (window.innerWidth > '768' && window.innerWidth != '768') {
 
@@ -227,39 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      /**
-       * Анимация чисел
-       */
-      function counterFunc() {
-        function counter(array, element, time = 1000) {
-          let n = 0;
-          const num = Number(array.dataset.val);
-          let interval = setInterval(() => {
-            n < num ? (n += num / (time / 10)) : clearInterval(interval);
-            array.classList.contains('frac')
-              ? (element.innerHTML = n.toFixed(1))
-              : (element.innerHTML = Math.round(n));
-          }, 10);
-        }
-
-        const numbBoxes = document.querySelectorAll('.numbs');
-        numbBoxes.forEach((numbBox) => {
-          const numbs = numbBox.querySelectorAll('.number');
-          numbs.forEach((numb) => {
-            const count = numb.querySelector('span');
-            gsap.to(count, {
-              scrollTrigger: {
-                trigger: numbBox,
-                start: `top 95%`,
-                // start: `top 60%`,
-                // markers: true,
-              },
-              onStart: () => counter(numb, count),
-            });
-          });
-        });
-      }
-      counterFunc();
     }
   });
 
@@ -278,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
       onEnter: () => timeline.play()
     })
   }
-  
+
   gsap.registerPlugin(ScrollTrigger);
 
   /**
@@ -364,14 +365,20 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     slidesPerGroup: 1,
     spaceBetween: 10,
-    speed: 1000,
+    speed: 600,
     mousewheel: {
       forceToAxis: true,
     },
     breakpoints: {
+      567: {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        speed: 1000,
+      },
       600: {
         slidesPerView: 'auto',
         spaceBetween: 20,
+        speed: 1000,
       },
     },
   });
@@ -380,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerGroup: 1,
     slidesPerView: 'auto',
     spaceBetween: 0,
-    speed: 1000,
+    speed: 600,
     mousewheel: {
       forceToAxis: true,
     },
@@ -389,9 +396,15 @@ document.addEventListener('DOMContentLoaded', () => {
       prevEl: ".work__slider-btn--prev",
     },
     breakpoints: {
+      567: {
+        slidesPerView: 5,
+        spaceBetween: 20,
+        speed: 1000,
+      },
       769: {
         slidesPerView: 5,
         spaceBetween: 20,
+        speed: 1000,
       },
     },
   });
@@ -401,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     spaceBetween: 10,
     loop: true,
-    speed: 1000,
+    speed: 600,
     mousewheel: {
       forceToAxis: true,
     },
@@ -416,6 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
       567: {
         slidesPerView: 2,
         spaceBetween: 10,
+        speed: 1000,
         pagination: {
           el: ".swiper-pagination",
         },
@@ -424,11 +438,13 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 4,
         spaceBetween: 20,
         pagination: false,
+        speed: 1000,
       },
       1441: {
         slidesPerView: 5,
         spaceBetween: 20,
         pagination: false,
+        speed: 1000,
       },
     },
   });
@@ -438,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     spaceBetween: 10,
     loop: true,
-    speed: 1000,
+    speed: 600,
     mousewheel: {
       forceToAxis: true,
     },
@@ -453,6 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
       567: {
         slidesPerView: 2,
         spaceBetween: 10,
+        speed: 1000,
         pagination: {
           el: ".swiper-pagination",
         },
@@ -461,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 3,
         spaceBetween: 20,
         pagination: false,
+        speed: 1000,
       },
     },
   });
@@ -470,9 +488,8 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
-    speed: 1000,
+    speed: 600,
     grabCursor: true,
-    // autoHeight: true,
     effect: 'fade',
     fadeEffect: {
       crossFade: true
@@ -484,6 +501,9 @@ document.addEventListener('DOMContentLoaded', () => {
       nextEl: ".objects__slider-btn--next",
       prevEl: ".objects__slider-btn--prev",
     },
+    567: {
+      speed: 1000,
+    },
   });
 
   const objectsSliderStep = new Swiper(".objects__slider--step", {
@@ -491,18 +511,21 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
-    speed: 1000,
+    speed: 600,
     grabCursor: false,
-    // autoHeight: true,
     effect: false,
     mousewheel: false,
     allowTouchMove: false,
     breakpoints: {
+      567: {
+        speed: 1000,
+      },
       769: {
         effect: 'fade',
         fadeEffect: {
           crossFade: true
         },
+        speed: 1000,
       },
     },
   });
@@ -518,13 +541,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const objectsGalleryMini = new Swiper(objects__galleryMini, {
       slidesPerView: 3,
       spaceBetween: 10,
-      speed: 1000,
+      speed: 600,
       grabCursor: false,
       mousewheel: false,
       watchSlidesProgress: true,
       breakpoints: {
+        567: {
+          speed: 1000,
+        },
         769: {
           spaceBetween: 20,
+          speed: 1000,
         },
       },
     });
@@ -532,7 +559,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const objectsGallery = new Swiper(objects__gallery, {
       slidesPerView: 1,
       spaceBetween: 10,
-      speed: 1000,
+      speed: 600,
       grabCursor: true,
       mousewheel: {
         forceToAxis: true,
@@ -548,12 +575,14 @@ document.addEventListener('DOMContentLoaded', () => {
           pagination: false,
           grabCursor: false,
           mousewheel: false,
+          speed: 1000,
         },
         769: {
           spaceBetween: 20,
           pagination: false,
           grabCursor: false,
           mousewheel: false,
+          speed: 1000,
         },
       },
     });
@@ -564,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerGroup: 1,
     slidesPerView: 1,
     spaceBetween: 100,
-    speed: 1500,
+    speed: 600,
     loop: true,
     grabCursor: true,
     mousewheel: {
@@ -573,6 +602,11 @@ document.addEventListener('DOMContentLoaded', () => {
     navigation: {
       nextEl: ".command__slider-btn--next",
       prevEl: ".command__slider-btn--prev",
+    },
+    breakpoints: {
+      568: {
+        speed: 1500,
+      },
     },
   });
 

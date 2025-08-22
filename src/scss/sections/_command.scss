@@ -183,7 +183,10 @@
       gap: 0.5rem;
 
       &:last-child {
-        max-width: 27rem;
+        
+        @include md {
+          max-width: 27rem;
+        }
 
         @include sm {
           max-width: 22rem;
