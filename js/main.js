@@ -17,59 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   gsap.ticker.lagSmoothing(0);
 
-  const revealItems = document.querySelectorAll('[data-animation="reveal"]');
-
-  revealItems.forEach(titleWord => {
-    const innerWords = document.querySelectorAll('h2');
-    innerWords.forEach(wordH2 => {
-      const wordsH2 = new SplitType(wordH2, { types: 'words, words' });
-    });
-    const wordsH3 = new SplitType(titleWord.querySelector('h3'), { types: 'words, words' });
-    const wordsH4 = new SplitType(titleWord.querySelector('h4'), { types: 'words, words' });
-  });
-
-  revealItems.forEach(revealItem => {
-    const word = revealItem.querySelectorAll("div.word");
-    const tl = gsap.timeline({
-      paused: true
-    });
-    tl.from(word, {
-      opacity: 0,
-      y: "10",
-      duration: .3,
-      ease: "power1.out",
-      stagger: {
-        amount: .3
-      },
-      onStart: function () {
-        revealItem.classList.add('animatedClass');
-      },
-    });
-    scrollTriggerPlayer(revealItem, tl)
-  });
-
-  const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
-
-  fadeInItems.forEach(titleChar => {
-    const char = new SplitType(titleChar.querySelector('p'), { types: 'words, chars' });
-  });
-
-  fadeInItems.forEach(fadeInItem => {
-    const word = fadeInItem.querySelectorAll("div.char");
-    const tl = gsap.timeline({
-      paused: true
-    });
-    tl.from(word, {
-      opacity: 0,
-      duration: .3,
-      ease: "power1.out",
-      stagger: {
-        amount: .8
-      }
-    });
-    scrollTriggerPlayer(fadeInItem, tl)
-  });
-
   const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
   if (parallaxItem) {
     const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
@@ -112,6 +59,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $(window).on('resize load', function () {
     if (window.innerWidth > '768' && window.innerWidth != '768') {
+
+      const revealItems = document.querySelectorAll('[data-animation="reveal"]');
+
+      revealItems.forEach(titleWord => {
+        const innerWords = document.querySelectorAll('h2');
+        innerWords.forEach(wordH2 => {
+          const wordsH2 = new SplitType(wordH2, { types: 'words, words' });
+        });
+        const wordsH3 = new SplitType(titleWord.querySelector('h3'), { types: 'words, words' });
+        const wordsH4 = new SplitType(titleWord.querySelector('h4'), { types: 'words, words' });
+      });
+
+      revealItems.forEach(revealItem => {
+        const word = revealItem.querySelectorAll("div.word");
+        const tl = gsap.timeline({
+          paused: true
+        });
+        tl.from(word, {
+          opacity: 0,
+          y: "10",
+          duration: .3,
+          ease: "power1.out",
+          stagger: {
+            amount: .3
+          },
+          onStart: function () {
+            revealItem.classList.add('animatedClass');
+          },
+        });
+        scrollTriggerPlayer(revealItem, tl)
+      });
+
+      const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
+
+      fadeInItems.forEach(titleChar => {
+        const char = new SplitType(titleChar.querySelector('p'), { types: 'words, chars' });
+      });
+
+      fadeInItems.forEach(fadeInItem => {
+        const word = fadeInItem.querySelectorAll("div.char");
+        const tl = gsap.timeline({
+          paused: true
+        });
+        tl.from(word, {
+          opacity: 0,
+          duration: .3,
+          ease: "power1.out",
+          stagger: {
+            amount: .8
+          }
+        });
+        scrollTriggerPlayer(fadeInItem, tl)
+      });
 
       const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
       if (parallaxBlock) {
@@ -962,13 +962,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let startScroll = 0;
 
-    $(window).on('resize load', function () {
-      if (window.innerWidth > '768' && window.innerWidth != '768') {
+    // $(window).on('resize load', function () {
+      // if (window.innerWidth > '768' && window.innerWidth != '768') {
         const tl = ScrollTrigger.create({
           trigger: timeline,
           start: 'top top',
           end: () => `+=${totalDuration * itemWidth}`,
           pin: true,
+          // pin: window.innerWidth > 768 ? true : false,
           onUpdate: self => {
             if (isAnimating || isDragging) return;
 
@@ -993,8 +994,8 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           invalidateOnRefresh: true
         });
-      }
-    });
+      // }
+    // });
 
     function updateActiveClass(index) {
       items.forEach((item, i) => {
@@ -1044,16 +1045,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      $(window).on('resize load', function () {
-        if (window.innerWidth > '768' && window.innerWidth != '768') {
+      // $(window).on('resize load', function () {
+        // if (window.innerWidth > '768' && window.innerWidth != '768') {
           const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
           gsap.to(window, {
             scrollTo: { y: targetScroll, autoKill: false },
             duration: 0.7,
             ease: 'power2.out'
           });
-        }
-      });
+        // }
+      // });
 
     }
 
@@ -1132,11 +1133,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateActiveClass(currentIndex);
 
-    $(window).on('resize load', function () {
-      if (window.innerWidth > '768' && window.innerWidth != '768') {
+    // $(window).on('resize load', function () {
+      // if (window.innerWidth > '768' && window.innerWidth != '768') {
         tl.id = 'timeline';
-      }
-    });
+      // }
+    // });
   }
 
 });
