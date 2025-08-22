@@ -107,14 +107,6 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
   src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
@@ -123,8 +115,8 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
-  font-weight: 200;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -133,6 +125,14 @@ a {
   font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
+  font-weight: 200;
   font-style: normal;
 }
 
@@ -4353,6 +4353,7 @@ h6 span {
 .hero {
   position: relative;
   z-index: 1;
+  background-color: rgb(29, 29, 29);
   background-image: url("./../images/hero/bg.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -5223,6 +5224,10 @@ h6 span {
   color: var(--white);
 }
 
+.services__item-text p {
+  pointer-events: none;
+}
+
 .services__item-desc {
   color: var(--accent);
 }
@@ -5282,11 +5287,19 @@ h6 span {
   -ms-flex-align: center;
   align-items: center;
   gap: 3rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-weight: 500;
   font-size: 1.6rem;
   line-height: 120%;
   color: var(--white);
   position: relative;
+}
+
+.services__item-list li:hover {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
 .services__item-list li::before {
@@ -7464,6 +7477,37 @@ h6 span {
 
   .command .swiper__btns {
     gap: 1rem;
+  }
+
+  .btn:hover {
+    --button-color: var(--black);
+    --button-background: var(--white);
+  }
+
+  .btn:hover i {
+    color: var(--accent);
+  }
+
+  .btn--outline:hover {
+    --button-color: var(--white);
+    --button-background: transparent;
+    --button-border-color: var(--white-30);
+  }
+
+  .btn--outline:hover i {
+    color: var(--accent);
+  }
+
+  .btn--accent::before {
+    display: none;
+  }
+
+  .btn--accent:hover {
+    color: var(--white);
+  }
+
+  .btn--accent:hover i {
+    color: var(--white);
   }
 
   .dropdown__selected {
