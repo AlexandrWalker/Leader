@@ -186,49 +186,82 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       }
 
+      const hero = document.getElementById("hero");
+      if (hero) {
+
+        const target = hero.querySelector('h1');
+
+        const span = target.querySelector('span');
+        const text = new SplitType(target, { types: 'chars, words' })
+
+        gsap.from(text.words, {
+          opacity: 0,
+          x: -50,
+          duration: 1,
+          stagger: { amount: 0.4 },
+          scrollTrigger: {
+            trigger: hero,
+            start: "top 95%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            preventOverlaps: true,
+          },
+          onStart: function () {
+            // onComplete: function () {
+            hero.classList.add('animatedClass');
+          }
+        })
+
+        const hero__img = document.querySelector(".hero__img");
+
+        gsap.from(hero__img, {
+          opacity: 1,
+          y: 500,
+          duration: 1,
+          scrollTrigger: {
+            trigger: hero,
+            start: "top 95%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+          }
+        });
+      }
+
+      /**
+       * Анимация чисел
+       */
+      function counterFunc() {
+        function counter(array, element, time = 1000) {
+          let n = 0;
+          const num = Number(array.dataset.val);
+          let interval = setInterval(() => {
+            n < num ? (n += num / (time / 10)) : clearInterval(interval);
+            array.classList.contains('frac')
+              ? (element.innerHTML = n.toFixed(1))
+              : (element.innerHTML = Math.round(n));
+          }, 10);
+        }
+
+        const numbBoxes = document.querySelectorAll('.numbs');
+        numbBoxes.forEach((numbBox) => {
+          const numbs = numbBox.querySelectorAll('.number');
+          numbs.forEach((numb) => {
+            const count = numb.querySelector('span');
+            gsap.to(count, {
+              scrollTrigger: {
+                trigger: numbBox,
+                start: `top 95%`,
+                // start: `top 60%`,
+                // markers: true,
+              },
+              onStart: () => counter(numb, count),
+            });
+          });
+        });
+      }
+      counterFunc();
     }
   });
-
-  const hero = document.getElementById("hero");
-  if (hero) {
-
-    const target = hero.querySelector('h1');
-
-    const span = target.querySelector('span');
-    const text = new SplitType(target, { types: 'chars, words' })
-
-    gsap.from(text.words, {
-      opacity: 0,
-      x: -50,
-      duration: 1,
-      stagger: { amount: 0.4 },
-      scrollTrigger: {
-        trigger: hero,
-        start: "top 95%",
-        end: "bottom 20%",
-        toggleActions: "play none none none",
-        preventOverlaps: true,
-      },
-      onStart: function () {
-        // onComplete: function () {
-        hero.classList.add('animatedClass');
-      }
-    })
-
-    const hero__img = document.querySelector(".hero__img");
-
-    gsap.from(hero__img, {
-      opacity: 1,
-      y: 500,
-      duration: 1,
-      scrollTrigger: {
-        trigger: hero,
-        start: "top 95%",
-        end: "bottom 20%",
-        toggleActions: "play none none none",
-      }
-    });
-  }
 
   function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
     ScrollTrigger.create({
@@ -245,41 +278,8 @@ document.addEventListener('DOMContentLoaded', () => {
       onEnter: () => timeline.play()
     })
   }
+  
   gsap.registerPlugin(ScrollTrigger);
-
-  /**
-   * Анимация чисел
-   */
-  function counterFunc() {
-    function counter(array, element, time = 1000) {
-      let n = 0;
-      const num = Number(array.dataset.val);
-      let interval = setInterval(() => {
-        n < num ? (n += num / (time / 10)) : clearInterval(interval);
-        array.classList.contains('frac')
-          ? (element.innerHTML = n.toFixed(1))
-          : (element.innerHTML = Math.round(n));
-      }, 10);
-    }
-
-    const numbBoxes = document.querySelectorAll('.numbs');
-    numbBoxes.forEach((numbBox) => {
-      const numbs = numbBox.querySelectorAll('.number');
-      numbs.forEach((numb) => {
-        const count = numb.querySelector('span');
-        gsap.to(count, {
-          scrollTrigger: {
-            trigger: numbBox,
-            start: `top 95%`,
-            // start: `top 60%`,
-            // markers: true,
-          },
-          onStart: () => counter(numb, count),
-        });
-      });
-    });
-  }
-  counterFunc();
 
   /**
    * Расчёт ширины скроллбара старницы и добавление отступа в body при октрытии попапов
@@ -963,38 +963,40 @@ document.addEventListener('DOMContentLoaded', () => {
     let startScroll = 0;
 
     // $(window).on('resize load', function () {
-      // if (window.innerWidth > '768' && window.innerWidth != '768') {
-        const tl = ScrollTrigger.create({
-          trigger: timeline,
-          start: 'top top',
-          end: () => `+=${totalDuration * itemWidth}`,
-          pin: true,
-          // pin: window.innerWidth > 768 ? true : false,
-          onUpdate: self => {
-            if (isAnimating || isDragging) return;
+    // if (window.innerWidth > '768' && window.innerWidth != '768') {
+    const tl = ScrollTrigger.create({
+      trigger: timeline,
+      start: 'top top',
+      end: () => `+=${totalDuration * itemWidth}`,
+      // change begin
+      // pin: true,
+      pin: window.innerWidth > 768 ?? false,
+      // change end
+      onUpdate: self => {
+        if (isAnimating || isDragging) return;
 
-            const progress = self.progress;
-            let x = 0;
+        const progress = self.progress;
+        let x = 0;
 
-            if (progress < pauseDuration / totalDuration) {
-              currentIndex = 0;
-              x = 0;
-            } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
-              currentIndex = totalItems - 1;
-              x = -maxShift;
-            } else {
-              const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
-              const exactIndex = horProgress * (totalItems - 1);
-              currentIndex = Math.round(exactIndex);
-              x = -horProgress * maxShift;
-            }
+        if (progress < pauseDuration / totalDuration) {
+          currentIndex = 0;
+          x = 0;
+        } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
+          currentIndex = totalItems - 1;
+          x = -maxShift;
+        } else {
+          const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
+          const exactIndex = horProgress * (totalItems - 1);
+          currentIndex = Math.round(exactIndex);
+          x = -horProgress * maxShift;
+        }
 
-            gsap.set(timelineWrapper, { x });
-            updateActiveClass(currentIndex);
-          },
-          invalidateOnRefresh: true
-        });
-      // }
+        gsap.set(timelineWrapper, { x });
+        updateActiveClass(currentIndex);
+      },
+      invalidateOnRefresh: true
+    });
+    // }
     // });
 
     function updateActiveClass(index) {
@@ -1045,17 +1047,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // $(window).on('resize load', function () {
-        // if (window.innerWidth > '768' && window.innerWidth != '768') {
-          const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
-          gsap.to(window, {
-            scrollTo: { y: targetScroll, autoKill: false },
-            duration: 0.7,
-            ease: 'power2.out'
-          });
-        // }
-      // });
-
+      // change
+      if (window.innerWidth > 768) {
+        const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
+        gsap.to(window, {
+          scrollTo: { y: targetScroll, autoKill: false },
+          duration: 0.7,
+          ease: 'power2.out'
+        });
+      }
+      // change end
     }
 
     function handleTouchStart(e) {
@@ -1134,9 +1135,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveClass(currentIndex);
 
     // $(window).on('resize load', function () {
-      // if (window.innerWidth > '768' && window.innerWidth != '768') {
-        tl.id = 'timeline';
-      // }
+    // if (window.innerWidth > '768' && window.innerWidth != '768') {
+    tl.id = 'timeline';
+    // }
     // });
   }
 
