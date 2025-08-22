@@ -184,6 +184,10 @@
 
       &:last-child {
         max-width: 27rem;
+
+        @include sm {
+          max-width: 22rem;
+        }
       }
 
       p {
@@ -211,6 +215,7 @@
 
       @include sm {
         max-width: 82%;
+        max-width: 75%;
         margin-top: 1.5rem;
         padding: 0 6rem 2rem 2rem;
       }

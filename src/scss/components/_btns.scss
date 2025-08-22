@@ -110,9 +110,9 @@
       }
 
       @include sm {
-        --button-color: var(--white);
+        --button-color: var(--accent);
         --button-background: transparent;
-        --button-border-color: var(--white-30);
+        --button-border-color: var(--gray);
       }
 
       i {
