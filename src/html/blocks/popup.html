@@ -19,6 +19,42 @@
         <form class="form" action="#">
           <div class="form-content">
             <div class="form-group">
+              <div class="dropdown dropdown--js">
+                <div class="dropdown__selected toggle--label dropdown__selected-label--js dropdown__selected--js">
+                  <span>Выбрать услугу</span>
+                  <i class="icon-chevron"></i>
+                </div>
+                <div class="dropdown__container">
+                  <div class="dropdown__content toggle--panel">
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio" value="Чистовая отделка" />
+                      <span class="dropdown__label">Чистовая отделка</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio" value="Черновая отделка" />
+                      <span class="dropdown__label">Черновая отделка</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Механизированная штукатурка" />
+                      <span class="dropdown__label">Механизированная штукатурка</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Устройство полусохой стяжки пола" />
+                      <span class="dropdown__label">Устройство полусохой стяжки пола</span>
+                    </label>
+                    <label class="dropdown__option">
+                      <input class="dropdown__radio" name="type__radio" type="radio"
+                        value="Устройство конструкции из гипсокартона" />
+                      <span class="dropdown__label">Устройство конструкции из гипсокартона</span>
+                    </label>
+                  </div>
+                </div>
+                <input class="dropdown__value" type="hidden">
+              </div>
+            </div>
+            <div class="form-group">
               <input class="form-input" id="names" name="initials" type="text">
               <label class="form-label" for="names">
                 Ваше имя <span>*</span>
@@ -35,14 +71,14 @@
             <div class="form-group">
               <input class="form-input" id="mail" name="mail" type="email">
               <label class="form-label" for="mail">
-                эл. почта <span>*</span>
+                эл. почта
               </label>
               <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <textarea class="form-textarea" id="comments" rows="1" name="comment"></textarea>
               <label class="form-label" for="comments">
-                комментарий <span>*</span>
+                комментарий
               </label>
               <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
@@ -149,14 +185,14 @@
             <div class="form-group">
               <input class="form-input" id="mail" name="mail" type="email">
               <label class="form-label" for="mail">
-                эл. почта <span>*</span>
+                эл. почта
               </label>
               <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
             <div class="form-group">
               <textarea class="form-textarea" id="comments" rows="1" name="comment"></textarea>
               <label class="form-label" for="comments">
-                комментарий <span>*</span>
+                комментарий
               </label>
               <span class="form-invalid">Данное поле неверно заполнено</span>
             </div>
