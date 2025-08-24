@@ -326,6 +326,10 @@
       gap: 2rem;
       background-color: var(--white);
     }
+
+    @include sm {
+      transition-duration: 0.5s;
+    }
   }
 
   &__head {

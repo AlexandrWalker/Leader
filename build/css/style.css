@@ -163,16 +163,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
-  font-weight: 100;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
+  font-weight: 100;
   font-style: normal;
 }
 
@@ -7620,6 +7620,11 @@ h6 span {
     font-size: 1.3rem;
   }
 
+  .burger-menu__inner {
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
   .footer__inner {
     min-height: calc(100dvh - 8rem);
   }
@@ -7911,6 +7916,7 @@ h6 span {
     padding: 10rem 0 26rem;
     /* hack*/
     height: auto;
+    min-height: 74rem;
   }
 
   .hero__content {
