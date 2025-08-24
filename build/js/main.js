@@ -992,46 +992,48 @@ document.addEventListener('DOMContentLoaded', () => {
     let isAnimating = false;
 
     let startX = 0;
+    let startY = 0;
     let currentX = 0;
     let isDragging = false;
     let startScroll = 0;
 
-    // $(window).on('resize load', function () {
-    // if (window.innerWidth > '768' && window.innerWidth != '768') {
-    const tl = ScrollTrigger.create({
-      trigger: timeline,
-      start: 'top top',
-      end: () => `+=${totalDuration * itemWidth}`,
-      // change begin
-      // pin: true,
-      pin: window.innerWidth > 768 ?? false,
-      // change end
-      onUpdate: self => {
-        if (isAnimating || isDragging) return;
+    let xSwipe = false;
 
-        const progress = self.progress;
-        let x = 0;
+    const mobile = window.innerWidth <= 768;
 
-        if (progress < pauseDuration / totalDuration) {
-          currentIndex = 0;
-          x = 0;
-        } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
-          currentIndex = totalItems - 1;
-          x = -maxShift;
-        } else {
-          const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
-          const exactIndex = horProgress * (totalItems - 1);
-          currentIndex = Math.round(exactIndex);
-          x = -horProgress * maxShift;
-        }
+    let tl = null;
 
-        gsap.set(timelineWrapper, { x });
-        updateActiveClass(currentIndex);
-      },
-      invalidateOnRefresh: true
-    });
-    // }
-    // });
+    if (!mobile) {
+      tl = ScrollTrigger.create({
+        trigger: timeline,
+        start: 'top top',
+        end: () => `+=${totalDuration * itemWidth}`,
+        pin: true,
+        onUpdate: self => {
+          if (isAnimating || isDragging) return;
+
+          const progress = self.progress;
+          let x = 0;
+
+          if (progress < pauseDuration / totalDuration) {
+            currentIndex = 0;
+            x = 0;
+          } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
+            currentIndex = totalItems - 1;
+            x = -maxShift;
+          } else {
+            const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
+            const exactIndex = horProgress * (totalItems - 1);
+            currentIndex = Math.round(exactIndex);
+            x = -horProgress * maxShift;
+          }
+
+          gsap.set(timelineWrapper, { x });
+          updateActiveClass(currentIndex);
+        },
+        invalidateOnRefresh: true
+      });
+    }
 
     function updateActiveClass(index) {
       items.forEach((item, i) => {
@@ -1072,8 +1074,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       gsap.to(timelineWrapper, {
         x: targetX,
-        duration: 0.7,
-        ease: 'power2.out',
+        duration: mobile ? 0.3 : 0.7,
+        ease: mobile ? 'none' : 'power2.out',
         onComplete: () => {
           currentIndex = index;
           updateActiveClass(currentIndex);
@@ -1081,8 +1083,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // change
-      if (window.innerWidth > 768) {
+      if (!mobile && tl) {
         const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
         gsap.to(window, {
           scrollTo: { y: targetScroll, autoKill: false },
@@ -1090,19 +1091,22 @@ document.addEventListener('DOMContentLoaded', () => {
           ease: 'power2.out'
         });
       }
-      // change end
     }
 
     function handleTouchStart(e) {
       if (isAnimating) return;
 
       startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+      startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
       currentX = parseInt(gsap.getProperty(timelineWrapper, 'x') || 0, 10);
       startScroll = window.scrollY;
       isDragging = true;
+      xSwipe = false;
       timelineWrapper.classList.add('grabbing');
 
-      ScrollTrigger.getById('timeline')?.disable();
+      if (tl) {
+        ScrollTrigger.getById('timeline')?.disable();
+      }
     }
 
     function handleTouchMove(e) {
@@ -1110,14 +1114,37 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
 
       const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-      const diff = x - startX;
-      let newX = currentX + diff;
+      const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
 
-      newX = Math.min(Math.max(newX, -maxShift), 0);
+      if (!xSwipe) {
+        const diffX = Math.abs(x - startX);
+        const diffY = Math.abs(y - startY);
 
-      gsap.set(timelineWrapper, { x: newX });
+        console.log('diffX ' + diffX);
+        console.log('diffY ' + diffY);
 
-      window.scrollTo(0, startScroll);
+        if (diffY > diffX && diffY > 10) {
+          isDragging = false;
+          return;
+        }
+
+        if (diffX > 10) {
+          xSwipe = true;
+          e.preventDefault();
+        }
+      }
+
+      if (xSwipe) {
+        const diff = x - startX;
+
+        let newX = currentX + diff;
+
+        newX = Math.min(Math.max(newX, -maxShift), 0);
+
+        gsap.set(timelineWrapper, { x: newX });
+
+        window.scrollTo(0, startScroll);
+      }
     }
 
     function handleTouchEnd(e) {
@@ -1168,11 +1195,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateActiveClass(currentIndex);
 
-    // $(window).on('resize load', function () {
-    // if (window.innerWidth > '768' && window.innerWidth != '768') {
-    tl.id = 'timeline';
-    // }
-    // });
+    if (tl) {
+      tl.id = 'timeline';
+    }
   }
 
 });
