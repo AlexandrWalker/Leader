@@ -202,67 +202,67 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       counterFunc();
 
+      const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
+      if (parallaxBlock) {
+        const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
+        parallaxImgBlocks.forEach(parallaxImgBlock => {
+          gsap.fromTo(parallaxImgBlock,
+            { y: '-8%' },
+            {
+              y: '8%',
+              scrollTrigger: {
+                trigger: parallaxImgBlock,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+      const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
+      if (parallaxItem) {
+        const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
+        parallaxImgContainers.forEach(parallaxImgContainer => {
+          const image = parallaxImgContainer.querySelector('img');
+          gsap.fromTo(image,
+            { y: '-10%' },
+            {
+              y: '10%',
+              scrollTrigger: {
+                trigger: parallaxImgContainer,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+      const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
+      if (parallaxImg) {
+        const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
+        parallaxImgContainers.forEach(parallaxImgContainer => {
+          const image = parallaxImgContainer.querySelector('img');
+          gsap.fromTo(image,
+            { y: '-10%' },
+            {
+              y: '10%',
+              scrollTrigger: {
+                trigger: parallaxImgContainer,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
     }
   });
-
-  const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
-  if (parallaxBlock) {
-    const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
-    parallaxImgBlocks.forEach(parallaxImgBlock => {
-      gsap.fromTo(parallaxImgBlock,
-        { y: '-8%' },
-        {
-          y: '8%',
-          scrollTrigger: {
-            trigger: parallaxImgBlock,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
-
-  const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
-  if (parallaxItem) {
-    const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
-    parallaxImgContainers.forEach(parallaxImgContainer => {
-      const image = parallaxImgContainer.querySelector('img');
-      gsap.fromTo(image,
-        { y: '-10%' },
-        {
-          y: '10%',
-          scrollTrigger: {
-            trigger: parallaxImgContainer,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
-
-  const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
-  if (parallaxImg) {
-    const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
-    parallaxImgContainers.forEach(parallaxImgContainer => {
-      const image = parallaxImgContainer.querySelector('img');
-      gsap.fromTo(image,
-        { y: '-10%' },
-        {
-          y: '10%',
-          scrollTrigger: {
-            trigger: parallaxImgContainer,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
 
   function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
     ScrollTrigger.create({
