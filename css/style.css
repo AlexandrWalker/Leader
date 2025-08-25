@@ -778,8 +778,8 @@ body {
   left: -0.1rem;
   z-index: -1;
   clip-path: inset(0 100% 100% 0);
-  -webkit-transition: clip-path 0.5s cubic-bezier(0.7, 0, 0.4, 1);
-  transition: clip-path 0.5s cubic-bezier(0.7, 0, 0.4, 1);
+  -webkit-transition: clip-path 0.3s cubic-bezier(0.7, 0, 0.4, 1);
+  transition: clip-path 0.3s cubic-bezier(0.7, 0, 0.4, 1);
 }
 
 .btn i {
@@ -5045,7 +5045,7 @@ h6 span {
 .services {
   background-color: var(--white);
   height: auto;
-  min-height: clamp(93rem, 100dvh, 150dvh);
+  min-height: clamp(93rem, 100vh, 150dvh);
 }
 
 .services__inner {
@@ -5265,6 +5265,14 @@ h6 span {
 }
 
 .services__item-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4rem;
   overflow: hidden;
   color: var(--white);
 }
