@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.ticker.lagSmoothing(0);
 
   $(window).on('resize load', function () {
-    if (window.innerWidth > '768' && window.innerWidth != '768') {
+    if (window.innerWidth > 768) {
 
       if (!checkEditMode) {
         const revealItems = document.querySelectorAll('[data-animation="reveal"]');
@@ -74,46 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           });
           scrollTriggerPlayer(fadeInItem, tl)
-        });
-      }
-
-      const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
-      if (parallaxItem) {
-        const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
-        parallaxImgContainers.forEach(parallaxImgContainer => {
-          const image = parallaxImgContainer.querySelector('img');
-          gsap.fromTo(image,
-            { y: '-10%' },
-            {
-              y: '10%',
-              scrollTrigger: {
-                trigger: parallaxImgContainer,
-                start: 'top 90%',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
-        });
-      }
-
-      const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
-      if (parallaxImg) {
-        const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
-        parallaxImgContainers.forEach(parallaxImgContainer => {
-          const image = parallaxImgContainer.querySelector('img');
-          gsap.fromTo(image,
-            { y: '-10%' },
-            {
-              y: '10%',
-              scrollTrigger: {
-                trigger: parallaxImgContainer,
-                start: 'top 90%',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
         });
       }
 
@@ -174,22 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      const faqItems = document.querySelectorAll(".faq__item");
-      for (let i = 0; i < faqItems.length; i++) {
-        gsap.from(faqItems[i], {
-          opacity: 0,
-          x: -50,
-          duration: 0.3,
-          scrollTrigger: {
-            trigger: faqItems[i],
-            start: "top 95%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
-            preventOverlaps: true,
-          }
-        })
-      }
-
       const hero = document.getElementById("hero");
       if (hero) {
 
@@ -197,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const target = hero.querySelector('h1');
           const span = target.querySelector('span');
           const text = new SplitType(target, { types: 'chars, words' })
-
           gsap.from(text.words, {
             opacity: 0,
             x: -50,
@@ -216,8 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
           })
         }
 
-        const hero__img = document.querySelector(".hero__img");
-
+        const hero__img = hero.querySelector(".hero__img");
         gsap.from(hero__img, {
           opacity: 1,
           y: 500,
@@ -229,6 +171,22 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleActions: "play none none none",
           }
         });
+      }
+
+      const faqItems = document.querySelectorAll(".faq__item");
+      for (let i = 0; i < faqItems.length; i++) {
+        gsap.from(faqItems[i], {
+          opacity: 0,
+          x: -50,
+          duration: 0.3,
+          scrollTrigger: {
+            trigger: faqItems[i],
+            start: "top 95%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            preventOverlaps: true,
+          }
+        })
       }
 
       /**
@@ -263,25 +221,64 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       counterFunc();
 
-
-      function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
-        ScrollTrigger.create({
-          trigger: triggerElement,
-          start: "top bottom",
-          onLeaveBack: () => {
-            timeline.progress(1);
-            timeline.pause()
-          }
-        });
-        ScrollTrigger.create({
-          trigger: triggerElement,
-          start: onEnterStart,
-          onEnter: () => timeline.play()
-        })
-      }
-
     }
   });
+
+  const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
+  if (parallaxItem) {
+    const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
+    parallaxImgContainers.forEach(parallaxImgContainer => {
+      const image = parallaxImgContainer.querySelector('img');
+      gsap.fromTo(image,
+        { y: '-10%' },
+        {
+          y: '10%',
+          scrollTrigger: {
+            trigger: parallaxImgContainer,
+            start: 'top 90%',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    });
+  }
+
+  const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
+  if (parallaxImg) {
+    const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
+    parallaxImgContainers.forEach(parallaxImgContainer => {
+      const image = parallaxImgContainer.querySelector('img');
+      gsap.fromTo(image,
+        { y: '-10%' },
+        {
+          y: '10%',
+          scrollTrigger: {
+            trigger: parallaxImgContainer,
+            start: 'top 90%',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    });
+  }
+
+  function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: "top bottom",
+      onLeaveBack: () => {
+        timeline.progress(1);
+        timeline.pause()
+      }
+    });
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: onEnterStart,
+      onEnter: () => timeline.play()
+    })
+  }
 
   // gsap.registerPlugin(ScrollTrigger);
 
