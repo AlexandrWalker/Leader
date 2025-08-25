@@ -288,22 +288,22 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Расчёт ширины скроллбара старницы и добавление отступа в body при октрытии попапов
    */
-  function getScrollbarWidth() {
-    const div = document.createElement('div');
+  // function getScrollbarWidth() {
+  //   const div = document.createElement('div');
 
-    div.style.overflowY = 'scroll';
-    div.style.width = '100px';
-    div.style.height = '100px';
-    div.style.visibility = 'hidden';
+  //   div.style.overflowY = 'scroll';
+  //   div.style.width = '100px';
+  //   div.style.height = '100px';
+  //   div.style.visibility = 'hidden';
 
-    document.body.appendChild(div);
+  //   document.body.appendChild(div);
 
-    const scrollbarWidth = div.offsetWidth - div.clientWidth;
+  //   const scrollbarWidth = div.offsetWidth - div.clientWidth;
 
-    document.body.removeChild(div);
+  //   document.body.removeChild(div);
 
-    return scrollbarWidth;
-  }
+  //   return scrollbarWidth;
+  // }
 
   /**
    * Управляет поведением меню-бургера.
@@ -651,30 +651,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   accordionFunc();
 
-  const inputElements = document.querySelectorAll('.form-input');
-  const textareaElements = document.querySelectorAll('.form-textarea');
-  const className = 'filled';
+  // const inputElements = document.querySelectorAll('.form-input');
+  // const textareaElements = document.querySelectorAll('.form-textarea');
+  // const className = 'filled';
 
-  if (inputElements.length > 0) {
-    inputElements.forEach(element => {
-      element.addEventListener('input', function () {
-        if (this.value.trim() !== '') {
-          element.classList.add(className);
-        } else {
-          element.classList.remove(className);
-        }
-      });
-    });
-    textareaElements.forEach(element => {
-      element.addEventListener('input', function () {
-        if (this.value.trim() !== '') {
-          element.classList.add(className);
-        } else {
-          element.classList.remove(className);
-        }
-      });
-    });
-  }
+  // if (inputElements.length > 0) {
+  //   inputElements.forEach(element => {
+  //     element.addEventListener('input', function () {
+  //       if (this.value.trim() !== '') {
+  //         element.classList.add(className);
+  //       } else {
+  //         element.classList.remove(className);
+  //       }
+  //     });
+  //   });
+  //   textareaElements.forEach(element => {
+  //     element.addEventListener('input', function () {
+  //       if (this.value.trim() !== '') {
+  //         element.classList.add(className);
+  //       } else {
+  //         element.classList.remove(className);
+  //       }
+  //     });
+  //   });
+  // }
 
   /**
    * Активация любого количества модальных окон
@@ -715,8 +715,8 @@ document.addEventListener('DOMContentLoaded', () => {
               });
             }
 
-            const width = getScrollbarWidth();
-            document.body.style.paddingRight = width + 'px';
+            // const width = getScrollbarWidth();
+            // document.body.style.paddingRight = width + 'px';
 
             document.body.classList.add('no-scroll');
             lenis.stop();
@@ -728,7 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeButton.addEventListener('click', e => {
               document.getElementById(popupId).classList.remove("open");
 
-              document.body.style.paddingRight = 0;
+              // document.body.style.paddingRight = 0;
 
               document.body.classList.remove('no-scroll');
               lenis.start();
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (e.key === "Escape") {
                 document.getElementById(popupId).classList.remove("open")
 
-                document.body.style.paddingRight = 0;
+                // document.body.style.paddingRight = 0;
 
                 document.body.classList.remove('no-scroll');
                 lenis.start();
@@ -753,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (event._isClickWithInPopup) return;
               event.currentTarget.classList.remove('open');
 
-              document.body.style.paddingRight = 0;
+              // document.body.style.paddingRight = 0;
 
               document.body.classList.remove('no-scroll');
               lenis.start();
@@ -876,34 +876,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const hHeader = document.getElementById('header');
-  const hHero = document.getElementById('hero');
-  const hFooter = document.getElementById('footer');
+  // const hHeader = document.getElementById('header');
+  // const hHero = document.getElementById('hero');
+  // const hFooter = document.getElementById('footer');
 
-  if (hHero) {
-    const h = hHero.offsetHeight;
-    scrollView(h);
-  } else {
-    const h = hHeader.offsetHeight;
-    scrollView(h);
-  }
+  // if (hHero) {
+  //   const h = hHero.offsetHeight;
+  //   scrollView(h);
+  // } else {
+  //   const h = hHeader.offsetHeight;
+  //   scrollView(h);
+  // }
 
-  function scrollView(h) {
-    const plate = document.getElementById('plate-contact');
-    const classToAdd = 'show';
+  // function scrollView(h) {
+  //   const plate = document.getElementById('plate-contact');
+  //   const classToAdd = 'show';
 
-    window.addEventListener('scroll', function () {
-      const verticalScrollPosition = window.pageYOffset;
-      const bottomScrollPosition = document.body.offsetHeight - hFooter.offsetHeight - window.innerHeight;
-      const isActive = plate.classList.contains(classToAdd);
+  //   window.addEventListener('scroll', function () {
+  //     const verticalScrollPosition = window.pageYOffset;
+  //     const bottomScrollPosition = document.body.offsetHeight - hFooter.offsetHeight - window.innerHeight;
+  //     const isActive = plate.classList.contains(classToAdd);
 
-      if (verticalScrollPosition > h && verticalScrollPosition < bottomScrollPosition) {
-        plate.classList.add(classToAdd);
-      } else {
-        plate.classList.remove(classToAdd);
-      }
-    });
-  }
+  //     if (verticalScrollPosition > h && verticalScrollPosition < bottomScrollPosition) {
+  //       plate.classList.add(classToAdd);
+  //     } else {
+  //       plate.classList.remove(classToAdd);
+  //     }
+  //   });
+  // }
 
   /**
    * Кнопка куки
