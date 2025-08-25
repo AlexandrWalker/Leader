@@ -1,6 +1,6 @@
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
-
 document.addEventListener('DOMContentLoaded', () => {
+
+  gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
   const checkEditMode = document.querySelector('.bx-panel-toggle-on') ?? null;
 
