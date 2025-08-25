@@ -52,7 +52,6 @@ body {
 }
 
 section {
-  min-height: clamp(93rem, 100vh, 150vh);
   padding: 7rem 0 6rem;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -105,6 +104,22 @@ a {
 }
 
 @font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
@@ -117,6 +132,14 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
   font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -149,30 +172,6 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
   font-weight: 100;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -1967,7 +1966,7 @@ h6 span {
   -webkit-transition: all 1s cubic-bezier(1, 0, 0, 1);
   transition: all 1s cubic-bezier(1, 0, 0, 1);
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .burger-menu--big {
@@ -2532,8 +2531,16 @@ h6 span {
   border-color: var(--page-bg);
 }
 
+.innerPage .header .header__drop.accordion-active {
+  border-color: var(--gray);
+}
+
 .header__drop.accordion-active legend {
   color: var(--page-bg);
+}
+
+.innerPage .header .header__drop.accordion-active legend {
+  color: var(--black);
 }
 
 .header__drop.accordion-active .header__drop-head a {
@@ -2549,6 +2556,10 @@ h6 span {
 .header__drop.accordion-active .header__drop-body {
   padding-top: 3rem;
   padding-bottom: 2rem;
+}
+
+.innerPage .header .header__drop.accordion-active .header__drop-body {
+  background-color: var(--gray);
 }
 
 .header__drop.accordion-active .header__drop-body ul {
@@ -2622,6 +2633,14 @@ h6 span {
   --font-size: 2.4rem;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+}
+
+.innerPage .header .header__drop-icons i .path1::before {
+  color: var(--black);
+}
+
+.innerPage .header .header__drop-icons i .path2::before {
+  color: var(--white);
 }
 
 .header__drop-link {
@@ -3202,7 +3221,7 @@ h6 span {
 }
 
 .timeline {
-  width: 100dvw;
+  width: 100vw;
   padding: 0 var(--container-padding);
   margin-left: calc(var(--container-padding) * -1);
 }
@@ -5045,7 +5064,6 @@ h6 span {
 .services {
   background-color: var(--white);
   height: auto;
-  min-height: clamp(93rem, 100vh, 150vh);
 }
 
 .services__inner {
@@ -5829,7 +5847,6 @@ h6 span {
   }
 
   section {
-    min-height: clamp(66rem, 100%, 100%);
     padding: 4rem 0 3rem;
   }
 
@@ -6832,7 +6849,7 @@ h6 span {
 
   .history {
     background-image: url(./../images/history/bg-planshet.png);
-    height: 100vh;
+    height: 100dvh;
   }
 
   .history__inner {
@@ -6996,10 +7013,6 @@ h6 span {
   .quiz__inner {
     gap: 3rem;
     max-width: 53.5rem;
-  }
-
-  .services {
-    min-height: auto;
   }
 
   .services .general__head-title {
@@ -7440,7 +7453,7 @@ h6 span {
   }
 
   .footer .header__drop-head a {
-    font-size: 4.7619047619dvw;
+    font-size: 4.7619047619vw;
   }
 }
 
@@ -7490,7 +7503,7 @@ h6 span {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
-    top: calc(100% + 56.657223796dvw + 1rem);
+    top: calc(100% + 56.657223796vw + 1rem);
   }
 
   .objects__slider .icon-arrow-slider-prev:before {

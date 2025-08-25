@@ -3,10 +3,10 @@
 .services {
   background-color: var(--white);
   height: auto;
-  min-height: clamp(93rem, 100vh, 150vh);
+  // min-height: clamp(93rem, 100vh, 150vh);
 
   @include md {
-    min-height: auto;
+    // min-height: auto;
   }
 
   .general__head-title {

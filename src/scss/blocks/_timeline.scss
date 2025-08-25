@@ -1,7 +1,7 @@
 @use './../mixins' as *;
 
 .timeline {
-  width: 100dvw;
+  width: 100vw;
   padding: 0 var(--container-padding);
   margin-left: calc(var(--container-padding) * -1);
   // overflow: hidden;
