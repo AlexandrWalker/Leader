@@ -52,7 +52,7 @@ body {
 }
 
 section {
-  min-height: clamp(93rem, 100dvh, 150dvh);
+  min-height: clamp(93rem, 100vh, 150vh);
   padding: 7rem 0 6rem;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -97,18 +97,18 @@ a {
 }
 
 @font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Micra;
   font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -1967,7 +1967,7 @@ h6 span {
   -webkit-transition: all 1s cubic-bezier(1, 0, 0, 1);
   transition: all 1s cubic-bezier(1, 0, 0, 1);
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
 }
 
 .burger-menu--big {
@@ -2834,7 +2834,7 @@ h6 span {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   z-index: 300;
   background-color: var(--black-90);
   display: grid;
@@ -3218,7 +3218,7 @@ h6 span {
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
-  height: 100dvh;
+  height: 100vh;
   position: relative;
   /* hack*/
 }
@@ -3793,7 +3793,7 @@ h6 span {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: 100dvh;
+  min-height: 100vh;
 }
 
 .callback__content {
@@ -4029,7 +4029,7 @@ h6 span {
   background-position: center center;
   padding: 8.5rem 0 0;
   position: relative;
-  min-height: 100dvh;
+  min-height: 100vh;
 }
 
 .command .general__head {
@@ -4074,7 +4074,7 @@ h6 span {
   flex-direction: column;
   gap: 3rem;
   height: 100%;
-  min-height: calc(100dvh - 18rem);
+  min-height: calc(100vh - 18rem);
   position: relative;
 }
 
@@ -5045,7 +5045,7 @@ h6 span {
 .services {
   background-color: var(--white);
   height: auto;
-  min-height: clamp(93rem, 100vh, 150dvh);
+  min-height: clamp(93rem, 100vh, 150vh);
 }
 
 .services__inner {
@@ -5390,7 +5390,7 @@ h6 span {
   -ms-flex-align: end;
   align-items: flex-end;
   width: 20%;
-  min-height: clamp(93rem, 100dvh, 150dvh);
+  min-height: clamp(93rem, 100vh, 150vh);
   padding: 0 0 0 5rem;
   -webkit-transition: width 0.8s;
   transition: width 0.8s;
@@ -6796,7 +6796,7 @@ h6 span {
   .hero {
     background-image: url("./../images/hero/bg-planshet.png");
     padding: 10rem 0 21rem;
-    height: 100dvh;
+    height: 100vh;
   }
 
   .hero__inner {
@@ -6832,7 +6832,7 @@ h6 span {
 
   .history {
     background-image: url(./../images/history/bg-planshet.png);
-    height: 100dvh;
+    height: 100vh;
   }
 
   .history__inner {
@@ -7647,7 +7647,7 @@ h6 span {
   }
 
   .footer__inner {
-    min-height: calc(100dvh - 8rem);
+    min-height: calc(100vh - 8rem);
   }
 
   .footer .burger-menu__inner {
