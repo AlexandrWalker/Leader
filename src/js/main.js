@@ -1,4 +1,4 @@
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
 
