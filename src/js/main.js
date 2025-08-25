@@ -57,40 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /**
-   * Анимация чисел
-   */
-  function counterFunc() {
-    function counter(array, element, time = 1000) {
-      let n = 0;
-      const num = Number(array.dataset.val);
-      let interval = setInterval(() => {
-        n < num ? (n += num / (time / 10)) : clearInterval(interval);
-        array.classList.contains('frac')
-          ? (element.innerHTML = n.toFixed(1))
-          : (element.innerHTML = Math.round(n));
-      }, 10);
-    }
-
-    const numbBoxes = document.querySelectorAll('.numbs');
-    numbBoxes.forEach((numbBox) => {
-      const numbs = numbBox.querySelectorAll('.number');
-      numbs.forEach((numb) => {
-        const count = numb.querySelector('span');
-        gsap.to(count, {
-          scrollTrigger: {
-            trigger: numbBox,
-            start: `top 95%`,
-            // start: `top 60%`,
-            // markers: true,
-          },
-          onStart: () => counter(numb, count),
-        });
-      });
-    });
-  }
-  counterFunc();
-
   $(window).on('resize load', function () {
     if (window.innerWidth > '768' && window.innerWidth != '768') {
 
@@ -260,6 +226,40 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
+
+      /**
+       * Анимация чисел
+       */
+      function counterFunc() {
+        function counter(array, element, time = 1000) {
+          let n = 0;
+          const num = Number(array.dataset.val);
+          let interval = setInterval(() => {
+            n < num ? (n += num / (time / 10)) : clearInterval(interval);
+            array.classList.contains('frac')
+              ? (element.innerHTML = n.toFixed(1))
+              : (element.innerHTML = Math.round(n));
+          }, 10);
+        }
+
+        const numbBoxes = document.querySelectorAll('.numbs');
+        numbBoxes.forEach((numbBox) => {
+          const numbs = numbBox.querySelectorAll('.number');
+          numbs.forEach((numb) => {
+            const count = numb.querySelector('span');
+            gsap.to(count, {
+              scrollTrigger: {
+                trigger: numbBox,
+                start: `top 95%`,
+                // start: `top 60%`,
+                // markers: true,
+              },
+              onStart: () => counter(numb, count),
+            });
+          });
+        });
+      }
+      counterFunc();
 
     }
   });
@@ -610,23 +610,6 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
-
-  // $(window).on('resize load', function () {
-
-  //   const services__items = document.querySelectorAll('.services__item');
-  //   if (window.innerWidth <= 768) {
-  //     services__items.forEach(services__item => {
-  //       services__item.querySelector('.services__item-wrap').classList.add('accordion');
-  //     });
-  //     accordionFunc();
-  //   } else {
-  //     services__items.forEach(services__item => {
-  //       services__item.querySelector('.services__item-wrap').classList.remove('accordion');
-  //     });
-  //   }
-
-  // })
-
   function accordionFunc() {
     if (document.querySelector('.accordion-parent')) {
       document.querySelectorAll('.accordion-parent').forEach((accordionContainer) => {
@@ -669,25 +652,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const textareaElements = document.querySelectorAll('.form-textarea');
   const className = 'filled';
 
-  inputElements.forEach(element => {
-    element.addEventListener('input', function () {
-      if (this.value.trim() !== '') {
-        element.classList.add(className);
-      } else {
-        element.classList.remove(className);
-      }
+  if (inputElements.length > 0) {
+    inputElements.forEach(element => {
+      element.addEventListener('input', function () {
+        if (this.value.trim() !== '') {
+          element.classList.add(className);
+        } else {
+          element.classList.remove(className);
+        }
+      });
     });
-  });
-
-  textareaElements.forEach(element => {
-    element.addEventListener('input', function () {
-      if (this.value.trim() !== '') {
-        element.classList.add(className);
-      } else {
-        element.classList.remove(className);
-      }
+    textareaElements.forEach(element => {
+      element.addEventListener('input', function () {
+        if (this.value.trim() !== '') {
+          element.classList.add(className);
+        } else {
+          element.classList.remove(className);
+        }
+      });
     });
-  });
+  }
 
   /**
    * Активация любого количества модальных окон
@@ -944,261 +928,242 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     );
   }
-  // if (document.querySelector('.transfer-pos-2')) {
-  //   const transferElem2 = document.querySelectorAll('.transfer-elem-2');
-  //   const transferPos2 = document.querySelectorAll('.transfer-pos-2');
-
-  //   transferElem2.forEach(transferElem => {
-  //     // transferPos2.forEach(transferPos => {
-  //       new TransferElements(
-  //         {
-  //           sourceElement: transferElem,
-  //           breakpoints: {
-  //             768: {
-  //               targetElement: transferPos
-  //             }
-  //           },
-  //         }
-  //       );
-  //     // });
-  //   });
-  // }
 
   /**
    * Таймлапс
    */
-  const timeline = document.querySelector('.timeline');
-  if (timeline) {
+  // const timeline = document.querySelector('.timeline');
+  // if (timeline) {
 
-    const timeline = document.querySelector('.timeline-container');
-    const timelineWrapper = timeline.querySelector('.timeline-wrapper');
-    const items = gsap.utils.toArray('.timeline-item', timeline);
-    const btnPrev = timeline.querySelector('.timeline-button-prev');
-    const btnNext = timeline.querySelector('.timeline-button-next');
+  //   const timeline = document.querySelector('.timeline-container');
+  //   const timelineWrapper = timeline.querySelector('.timeline-wrapper');
+  //   const items = gsap.utils.toArray('.timeline-item', timeline);
+  //   const btnPrev = timeline.querySelector('.timeline-button-prev');
+  //   const btnNext = timeline.querySelector('.timeline-button-next');
 
-    // const itemWidth = 400 + 20;
-    const itemWidth = items[1].offsetWidth;
-    const totalItems = items.length;
-    const totalWidth = itemWidth * totalItems;
-    const containerWidth = timeline.offsetWidth;
+  //   // const itemWidth = 400 + 20;
+  //   const itemWidth = items[1].offsetWidth;
+  //   const totalItems = items.length;
+  //   const totalWidth = itemWidth * totalItems;
+  //   const containerWidth = timeline.offsetWidth;
 
-    const pauseDuration = 1;
-    const scrollDuration = 2;
-    const totalDuration = pauseDuration + scrollDuration + pauseDuration;
+  //   const pauseDuration = 1;
+  //   const scrollDuration = 2;
+  //   const totalDuration = pauseDuration + scrollDuration + pauseDuration;
 
-    const maxShift = totalWidth - containerWidth;
+  //   const maxShift = totalWidth - containerWidth;
 
-    let currentIndex = 0;
-    let isAnimating = false;
+  //   let currentIndex = 0;
+  //   let isAnimating = false;
 
-    let startX = 0;
-    let startY = 0;
-    let currentX = 0;
-    let isDragging = false;
-    let startScroll = 0;
+  //   let startX = 0;
+  //   let startY = 0;
+  //   let currentX = 0;
+  //   let isDragging = false;
+  //   let startScroll = 0;
 
-    let xSwipe = false;
+  //   let xSwipe = false;
 
-    const mobile = window.innerWidth <= 768;
+  //   const mobile = window.innerWidth <= 768;
 
-    let tl = null;
+  //   let tl = null;
 
-    if (!mobile) {
-      tl = ScrollTrigger.create({
-        trigger: timeline,
-        start: 'top top',
-        end: () => `+=${totalDuration * itemWidth}`,
-        pin: true,
-        onUpdate: self => {
-          if (isAnimating || isDragging) return;
+  //   if (!mobile) {
+  //     tl = ScrollTrigger.create({
+  //       trigger: timeline,
+  //       start: 'top top',
+  //       end: () => `+=${totalDuration * itemWidth}`,
+  //       pin: true,
+  //       onUpdate: self => {
+  //         if (isAnimating || isDragging) return;
 
-          const progress = self.progress;
-          let x = 0;
+  //         const progress = self.progress;
+  //         let x = 0;
 
-          if (progress < pauseDuration / totalDuration) {
-            currentIndex = 0;
-            x = 0;
-          } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
-            currentIndex = totalItems - 1;
-            x = -maxShift;
-          } else {
-            const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
-            const exactIndex = horProgress * (totalItems - 1);
-            currentIndex = Math.round(exactIndex);
-            x = -horProgress * maxShift;
-          }
+  //         if (progress < pauseDuration / totalDuration) {
+  //           currentIndex = 0;
+  //           x = 0;
+  //         } else if (progress > (pauseDuration + scrollDuration) / totalDuration) {
+  //           currentIndex = totalItems - 1;
+  //           x = -maxShift;
+  //         } else {
+  //           const horProgress = (progress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
+  //           const exactIndex = horProgress * (totalItems - 1);
+  //           currentIndex = Math.round(exactIndex);
+  //           x = -horProgress * maxShift;
+  //         }
 
-          gsap.set(timelineWrapper, { x });
-          updateActiveClass(currentIndex);
-        },
-        invalidateOnRefresh: true
-      });
-    }
+  //         gsap.set(timelineWrapper, { x });
+  //         updateActiveClass(currentIndex);
+  //       },
+  //       invalidateOnRefresh: true
+  //     });
+  //   }
 
-    function updateActiveClass(index) {
-      items.forEach((item, i) => {
-        item.classList.toggle('timeline-active', i === index);
-      });
-    }
+  //   function updateActiveClass(index) {
+  //     items.forEach((item, i) => {
+  //       item.classList.toggle('timeline-active', i === index);
+  //     });
+  //   }
 
-    function getScrollYForIndex(index) {
-      const startScroll = tl.start;
-      const scrollLength = totalDuration * itemWidth;
-      const progress = getProgressForIndex(index);
+  //   function getScrollYForIndex(index) {
+  //     const startScroll = tl.start;
+  //     const scrollLength = totalDuration * itemWidth;
+  //     const progress = getProgressForIndex(index);
 
-      return startScroll + progress * scrollLength;
-    }
+  //     return startScroll + progress * scrollLength;
+  //   }
 
-    function getProgressForIndex(index) {
-      if (index === 0) return 0;
-      if (index === totalItems - 1) return 1;
-      return pauseDuration / totalDuration + (index / (totalItems - 1)) * (scrollDuration / totalDuration);
-    }
+  //   function getProgressForIndex(index) {
+  //     if (index === 0) return 0;
+  //     if (index === totalItems - 1) return 1;
+  //     return pauseDuration / totalDuration + (index / (totalItems - 1)) * (scrollDuration / totalDuration);
+  //   }
 
-    function goToIndex(index) {
-      index = Math.min(Math.max(index, 0), totalItems - 1);
-      if (index === currentIndex || isAnimating) return;
+  //   function goToIndex(index) {
+  //     index = Math.min(Math.max(index, 0), totalItems - 1);
+  //     if (index === currentIndex || isAnimating) return;
 
-      isAnimating = true;
-      const targetProgress = getProgressForIndex(index);
-      let targetX = 0;
+  //     isAnimating = true;
+  //     const targetProgress = getProgressForIndex(index);
+  //     let targetX = 0;
 
-      if (targetProgress < pauseDuration / totalDuration) {
-        targetX = 0;
-      } else if (targetProgress > (pauseDuration + scrollDuration) / totalDuration) {
-        targetX = -maxShift;
-      } else {
-        const horProgress = (targetProgress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
-        targetX = -horProgress * maxShift;
-      }
+  //     if (targetProgress < pauseDuration / totalDuration) {
+  //       targetX = 0;
+  //     } else if (targetProgress > (pauseDuration + scrollDuration) / totalDuration) {
+  //       targetX = -maxShift;
+  //     } else {
+  //       const horProgress = (targetProgress - pauseDuration / totalDuration) / (scrollDuration / totalDuration);
+  //       targetX = -horProgress * maxShift;
+  //     }
 
-      gsap.to(timelineWrapper, {
-        x: targetX,
-        duration: mobile ? 0.3 : 0.7,
-        ease: mobile ? 'none' : 'power2.out',
-        onComplete: () => {
-          currentIndex = index;
-          updateActiveClass(currentIndex);
-          isAnimating = false;
-        }
-      });
+  //     gsap.to(timelineWrapper, {
+  //       x: targetX,
+  //       duration: mobile ? 0.3 : 0.7,
+  //       ease: mobile ? 'none' : 'power2.out',
+  //       onComplete: () => {
+  //         currentIndex = index;
+  //         updateActiveClass(currentIndex);
+  //         isAnimating = false;
+  //       }
+  //     });
 
-      if (!mobile && tl) {
-        const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
-        gsap.to(window, {
-          scrollTo: { y: targetScroll, autoKill: false },
-          duration: 0.7,
-          ease: 'power2.out'
-        });
-      }
-    }
+  //     if (!mobile && tl) {
+  //       const targetScroll = tl.start + targetProgress * (tl.end - tl.start);
+  //       gsap.to(window, {
+  //         scrollTo: { y: targetScroll, autoKill: false },
+  //         duration: 0.7,
+  //         ease: 'power2.out'
+  //       });
+  //     }
+  //   }
 
-    function handleTouchStart(e) {
-      if (isAnimating) return;
+  //   function handleTouchStart(e) {
+  //     if (isAnimating) return;
 
-      startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-      startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-      currentX = parseInt(gsap.getProperty(timelineWrapper, 'x') || 0, 10);
-      startScroll = window.scrollY;
-      isDragging = true;
-      xSwipe = false;
-      timelineWrapper.classList.add('grabbing');
+  //     startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+  //     startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+  //     currentX = parseInt(gsap.getProperty(timelineWrapper, 'x') || 0, 10);
+  //     startScroll = window.scrollY;
+  //     isDragging = true;
+  //     xSwipe = false;
+  //     timelineWrapper.classList.add('grabbing');
 
-      if (tl) {
-        ScrollTrigger.getById('timeline')?.disable();
-      }
-    }
+  //     if (tl) {
+  //       ScrollTrigger.getById('timeline')?.disable();
+  //     }
+  //   }
 
-    function handleTouchMove(e) {
-      if (!isDragging) return;
-      e.preventDefault();
+  //   function handleTouchMove(e) {
+  //     if (!isDragging) return;
+  //     e.preventDefault();
 
-      const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-      const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+  //     const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+  //     const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
 
-      if (!xSwipe) {
-        const diffX = Math.abs(x - startX);
-        const diffY = Math.abs(y - startY);
+  //     if (!xSwipe) {
+  //       const diffX = Math.abs(x - startX);
+  //       const diffY = Math.abs(y - startY);
 
-        console.log('diffX ' + diffX);
-        console.log('diffY ' + diffY);
+  //       console.log('diffX ' + diffX);
+  //       console.log('diffY ' + diffY);
 
-        if (diffY > diffX && diffY > 10) {
-          isDragging = false;
-          return;
-        }
+  //       if (diffY > diffX && diffY > 10) {
+  //         isDragging = false;
+  //         return;
+  //       }
 
-        if (diffX > 10) {
-          xSwipe = true;
-          e.preventDefault();
-        }
-      }
+  //       if (diffX > 10) {
+  //         xSwipe = true;
+  //         e.preventDefault();
+  //       }
+  //     }
 
-      if (xSwipe) {
-        const diff = x - startX;
+  //     if (xSwipe) {
+  //       const diff = x - startX;
 
-        let newX = currentX + diff;
+  //       let newX = currentX + diff;
 
-        newX = Math.min(Math.max(newX, -maxShift), 0);
+  //       newX = Math.min(Math.max(newX, -maxShift), 0);
 
-        gsap.set(timelineWrapper, { x: newX });
+  //       gsap.set(timelineWrapper, { x: newX });
 
-        window.scrollTo(0, startScroll);
-      }
-    }
+  //       window.scrollTo(0, startScroll);
+  //     }
+  //   }
 
-    function handleTouchEnd(e) {
-      if (!isDragging) return;
-      isDragging = false;
-      timelineWrapper.classList.remove('grabbing');
+  //   function handleTouchEnd(e) {
+  //     if (!isDragging) return;
+  //     isDragging = false;
+  //     timelineWrapper.classList.remove('grabbing');
 
-      const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
-      const diff = x - startX;
-      const velocity = diff / 100;
+  //     const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
+  //     const diff = x - startX;
+  //     const velocity = diff / 100;
 
-      if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
-        if (diff > 0) {
-          goToIndex(currentIndex - 1);
-        } else {
-          goToIndex(currentIndex + 1);
-        }
-      } else {
-        goToIndex(currentIndex);
-      }
+  //     if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
+  //       if (diff > 0) {
+  //         goToIndex(currentIndex - 1);
+  //       } else {
+  //         goToIndex(currentIndex + 1);
+  //       }
+  //     } else {
+  //       goToIndex(currentIndex);
+  //     }
 
-      ScrollTrigger.getById('timeline')?.enable();
-    }
+  //     ScrollTrigger.getById('timeline')?.enable();
+  //   }
 
-    timelineWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
-    timelineWrapper.addEventListener('mousedown', handleTouchStart);
+  //   timelineWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
+  //   timelineWrapper.addEventListener('mousedown', handleTouchStart);
 
-    timelineWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
-    timelineWrapper.addEventListener('mousemove', handleTouchMove);
+  //   timelineWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
+  //   timelineWrapper.addEventListener('mousemove', handleTouchMove);
 
-    timelineWrapper.addEventListener('touchend', handleTouchEnd);
-    timelineWrapper.addEventListener('mouseup', handleTouchEnd);
-    timelineWrapper.addEventListener('mouseleave', handleTouchEnd);
+  //   timelineWrapper.addEventListener('touchend', handleTouchEnd);
+  //   timelineWrapper.addEventListener('mouseup', handleTouchEnd);
+  //   timelineWrapper.addEventListener('mouseleave', handleTouchEnd);
 
-    btnPrev.addEventListener('click', () => {
-      if (isAnimating) return;
-      if (currentIndex > 0) {
-        goToIndex(currentIndex - 1);
-      }
-    });
+  //   btnPrev.addEventListener('click', () => {
+  //     if (isAnimating) return;
+  //     if (currentIndex > 0) {
+  //       goToIndex(currentIndex - 1);
+  //     }
+  //   });
 
-    btnNext.addEventListener('click', () => {
-      if (isAnimating) return;
-      if (currentIndex < totalItems - 1) {
-        goToIndex(currentIndex + 1);
-      }
-    });
+  //   btnNext.addEventListener('click', () => {
+  //     if (isAnimating) return;
+  //     if (currentIndex < totalItems - 1) {
+  //       goToIndex(currentIndex + 1);
+  //     }
+  //   });
 
-    updateActiveClass(currentIndex);
+  //   updateActiveClass(currentIndex);
 
-    if (tl) {
-      tl.id = 'timeline';
-    }
-  }
+  //   if (tl) {
+  //     tl.id = 'timeline';
+  //   }
+  // }
 
 });
 
