@@ -261,25 +261,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+      function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
+        ScrollTrigger.create({
+          trigger: triggerElement,
+          start: "top bottom",
+          onLeaveBack: () => {
+            timeline.progress(1);
+            timeline.pause()
+          }
+        });
+        ScrollTrigger.create({
+          trigger: triggerElement,
+          start: onEnterStart,
+          onEnter: () => timeline.play()
+        })
+      }
+
     }
   });
-
-  function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: "top bottom",
-      onLeaveBack: () => {
-        timeline.progress(1);
-        timeline.pause()
-      }
-    });
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: onEnterStart,
-      onEnter: () => timeline.play()
-    })
-  }
-
+  
   // gsap.registerPlugin(ScrollTrigger);
 
   /**
