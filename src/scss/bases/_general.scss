@@ -62,8 +62,19 @@
   }
 }
 
+.hero__img,
+[data-animation="fadeIn"],
+[data-animation="reveal"],
+[data-animation="parallax-box"],
+[data-animation="parallax-block"],
+[data-animation="parallax-section"],
+[data-animation="parallax-img"] {
+  will-change: transform;
+}
+
 [data-parallax="parallax-img"] {
   overflow: hidden;
+  will-change: transform;
 
   img {
     margin-top: -10%;
