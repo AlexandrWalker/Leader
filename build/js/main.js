@@ -19,46 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   gsap.ticker.lagSmoothing(0);
 
-  const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
-  if (parallaxItem) {
-    const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
-    parallaxImgContainers.forEach(parallaxImgContainer => {
-      const image = parallaxImgContainer.querySelector('img');
-      gsap.fromTo(image,
-        { y: '-10%' },
-        {
-          y: '10%',
-          scrollTrigger: {
-            trigger: parallaxImgContainer,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
-
-  const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
-  if (parallaxImg) {
-    const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
-    parallaxImgContainers.forEach(parallaxImgContainer => {
-      const image = parallaxImgContainer.querySelector('img');
-      gsap.fromTo(image,
-        { y: '-10%' },
-        {
-          y: '10%',
-          scrollTrigger: {
-            trigger: parallaxImgContainer,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
-
   $(window).on('resize load', function () {
     if (window.innerWidth > '768' && window.innerWidth != '768') {
 
@@ -114,6 +74,46 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           });
           scrollTriggerPlayer(fadeInItem, tl)
+        });
+      }
+
+      const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
+      if (parallaxItem) {
+        const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
+        parallaxImgContainers.forEach(parallaxImgContainer => {
+          const image = parallaxImgContainer.querySelector('img');
+          gsap.fromTo(image,
+            { y: '-10%' },
+            {
+              y: '10%',
+              scrollTrigger: {
+                trigger: parallaxImgContainer,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+      const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
+      if (parallaxImg) {
+        const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
+        parallaxImgContainers.forEach(parallaxImgContainer => {
+          const image = parallaxImgContainer.querySelector('img');
+          gsap.fromTo(image,
+            { y: '-10%' },
+            {
+              y: '10%',
+              scrollTrigger: {
+                trigger: parallaxImgContainer,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
         });
       }
 
@@ -211,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
               preventOverlaps: true,
             },
             onStart: function () {
-              // onComplete: function () {
               hero.classList.add('animatedClass');
             }
           })
@@ -264,24 +263,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       counterFunc();
 
+
+      function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
+        ScrollTrigger.create({
+          trigger: triggerElement,
+          start: "top bottom",
+          onLeaveBack: () => {
+            timeline.progress(1);
+            timeline.pause()
+          }
+        });
+        ScrollTrigger.create({
+          trigger: triggerElement,
+          start: onEnterStart,
+          onEnter: () => timeline.play()
+        })
+      }
+
     }
   });
 
-  function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: "top bottom",
-      onLeaveBack: () => {
-        timeline.progress(1);
-        timeline.pause()
-      }
-    });
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: onEnterStart,
-      onEnter: () => timeline.play()
-    })
-  }
+  // gsap.registerPlugin(ScrollTrigger);
 
   /**
    * Расчёт ширины скроллбара старницы и добавление отступа в body при октрытии попапов

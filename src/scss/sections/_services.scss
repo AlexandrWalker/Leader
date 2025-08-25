@@ -3,7 +3,7 @@
 .services {
   background-color: var(--white);
   height: auto;
-  min-height: clamp(93rem, 100vh, 150dvh);
+  min-height: clamp(93rem, 100vh, 150vh);
 
   @include md {
     min-height: auto;

@@ -44,11 +44,11 @@
     justify-content: space-between;
 
     @include md {
-      // min-height: calc(100dvh - 10rem);
+      // min-height: calc(100vh - 10rem);
     }
 
     @include sm {
-      min-height: calc(100dvh - 8rem);
+      min-height: calc(100vh - 8rem);
     }
   }
 

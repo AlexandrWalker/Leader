@@ -48,9 +48,9 @@ body {
 }
 
 section {
-  // height: clamp(93rem, 100dvh, 150dvh);
-  min-height: clamp(93rem, 100dvh, 150dvh);
-  // height: clamp(100%, 100dvh, 150dvh);
+  // height: clamp(93rem, 100vh, 150vh);
+  min-height: clamp(93rem, 100vh, 150vh);
+  // height: clamp(100%, 100vh, 150vh);
 
   padding: 7rem 0 6rem;
   overflow-x: hidden;
