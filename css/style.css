@@ -97,6 +97,14 @@ a {
 }
 
 @font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
@@ -117,14 +125,6 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
   font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -1959,7 +1959,6 @@ h6 span {
 .burger-menu {
   position: fixed;
   top: 0;
-  top: -100%;
   bottom: 0;
   left: 0;
   z-index: 200;
@@ -1994,7 +1993,6 @@ h6 span {
 
 .burger-menu--opened {
   pointer-events: all;
-  top: 0;
 }
 
 .burger-menu--opened .burger-overlay {
@@ -6862,7 +6860,7 @@ h6 span {
 
   .history {
     background-image: url(./../images/history/bg-planshet.png);
-    height: 100dvh;
+    height: 100vh;
   }
 
   .history__inner {

@@ -115,6 +115,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+      const faqItems = document.querySelectorAll(".faq__item");
+      for (let i = 0; i < faqItems.length; i++) {
+        gsap.from(faqItems[i], {
+          opacity: 0,
+          x: -50,
+          duration: 0.3,
+          scrollTrigger: {
+            trigger: faqItems[i],
+            start: "top 95%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            preventOverlaps: true,
+          }
+        })
+      }
+
+      /* Отсюда */
       const hero = document.getElementById("hero");
       if (hero) {
 
@@ -153,54 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
-
-      const faqItems = document.querySelectorAll(".faq__item");
-      for (let i = 0; i < faqItems.length; i++) {
-        gsap.from(faqItems[i], {
-          opacity: 0,
-          x: -50,
-          duration: 0.3,
-          scrollTrigger: {
-            trigger: faqItems[i],
-            start: "top 95%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
-            preventOverlaps: true,
-          }
-        })
-      }
-
-      /**
-       * Анимация чисел
-       */
-      function counterFunc() {
-        function counter(array, element, time = 1000) {
-          let n = 0;
-          const num = Number(array.dataset.val);
-          let interval = setInterval(() => {
-            n < num ? (n += num / (time / 10)) : clearInterval(interval);
-            array.classList.contains('frac')
-              ? (element.innerHTML = n.toFixed(1))
-              : (element.innerHTML = Math.round(n));
-          }, 10);
-        }
-
-        const numbBoxes = document.querySelectorAll('.numbs');
-        numbBoxes.forEach((numbBox) => {
-          const numbs = numbBox.querySelectorAll('.number');
-          numbs.forEach((numb) => {
-            const count = numb.querySelector('span');
-            gsap.to(count, {
-              scrollTrigger: {
-                trigger: numbBox,
-                start: `top 95%`,
-              },
-              onStart: () => counter(numb, count),
-            });
-          });
-        });
-      }
-      counterFunc();
 
       const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
       if (parallaxBlock) {
@@ -261,6 +230,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+      /**
+       * Анимация чисел
+       */
+      function counterFunc() {
+        function counter(array, element, time = 1000) {
+          let n = 0;
+          const num = Number(array.dataset.val);
+          let interval = setInterval(() => {
+            n < num ? (n += num / (time / 10)) : clearInterval(interval);
+            array.classList.contains('frac')
+              ? (element.innerHTML = n.toFixed(1))
+              : (element.innerHTML = Math.round(n));
+          }, 10);
+        }
+
+        const numbBoxes = document.querySelectorAll('.numbs');
+        numbBoxes.forEach((numbBox) => {
+          const numbs = numbBox.querySelectorAll('.number');
+          numbs.forEach((numb) => {
+            const count = numb.querySelector('span');
+            gsap.to(count, {
+              scrollTrigger: {
+                trigger: numbBox,
+                start: `top 95%`,
+              },
+              onStart: () => counter(numb, count),
+            });
+          });
+        });
+      }
+      counterFunc();
+
       function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
         ScrollTrigger.create({
           trigger: triggerElement,
@@ -276,10 +277,11 @@ document.addEventListener('DOMContentLoaded', () => {
           onEnter: () => timeline.play()
         })
       }
+      /* До сюда */
 
     }
   });
-  
+
   // gsap.registerPlugin(ScrollTrigger);
 
   /**
@@ -397,8 +399,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     breakpoints: {
       567: {
-        slidesPerView: 5,
-        spaceBetween: 20,
+        slidesPerView: 'auto',
+        spaceBetween: 0,
         speed: 1000,
       },
       769: {
