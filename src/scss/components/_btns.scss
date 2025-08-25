@@ -48,7 +48,7 @@
     left: -0.1rem;
     z-index: -1;
     clip-path: inset(0 100% 100% 0);
-    transition: clip-path 0.5s cubic-bezier(0.7, 0, 0.4, 1);
+    transition: clip-path 0.3s cubic-bezier(0.7, 0, 0.4, 1);
 
     @include md {
       display: none;

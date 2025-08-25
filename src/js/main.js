@@ -2,6 +2,8 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger, ScrollSmoother);
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const checkEditMode = document.querySelector('.bx-panel-toggle-on') ?? null;
+
   /**
    * Инициализация Lenis
    */
@@ -60,58 +62,60 @@ document.addEventListener('DOMContentLoaded', () => {
   $(window).on('resize load', function () {
     if (window.innerWidth > '768' && window.innerWidth != '768') {
 
-      const revealItems = document.querySelectorAll('[data-animation="reveal"]');
+      if (!checkEditMode) {
+        const revealItems = document.querySelectorAll('[data-animation="reveal"]');
 
-      revealItems.forEach(titleWord => {
-        const innerWords = document.querySelectorAll('h2');
-        innerWords.forEach(wordH2 => {
-          const wordsH2 = new SplitType(wordH2, { types: 'words, words' });
+        revealItems.forEach(titleWord => {
+          const innerWords = document.querySelectorAll('h2');
+          innerWords.forEach(wordH2 => {
+            const wordsH2 = new SplitType(wordH2, { types: 'words, words' });
+          });
+          const wordsH3 = new SplitType(titleWord.querySelector('h3'), { types: 'words, words' });
+          const wordsH4 = new SplitType(titleWord.querySelector('h4'), { types: 'words, words' });
         });
-        const wordsH3 = new SplitType(titleWord.querySelector('h3'), { types: 'words, words' });
-        const wordsH4 = new SplitType(titleWord.querySelector('h4'), { types: 'words, words' });
-      });
 
-      revealItems.forEach(revealItem => {
-        const word = revealItem.querySelectorAll("div.word");
-        const tl = gsap.timeline({
-          paused: true
+        revealItems.forEach(revealItem => {
+          const word = revealItem.querySelectorAll("div.word");
+          const tl = gsap.timeline({
+            paused: true
+          });
+          tl.from(word, {
+            opacity: 0,
+            y: "10",
+            duration: .3,
+            ease: "power1.out",
+            stagger: {
+              amount: .3
+            },
+            onStart: function () {
+              revealItem.classList.add('animatedClass');
+            },
+          });
+          scrollTriggerPlayer(revealItem, tl)
         });
-        tl.from(word, {
-          opacity: 0,
-          y: "10",
-          duration: .3,
-          ease: "power1.out",
-          stagger: {
-            amount: .3
-          },
-          onStart: function () {
-            revealItem.classList.add('animatedClass');
-          },
-        });
-        scrollTriggerPlayer(revealItem, tl)
-      });
 
-      const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
+        const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
 
-      fadeInItems.forEach(titleChar => {
-        const char = new SplitType(titleChar.querySelector('p'), { types: 'words, chars' });
-      });
+        fadeInItems.forEach(titleChar => {
+          const char = new SplitType(titleChar.querySelector('p'), { types: 'words, chars' });
+        });
 
-      fadeInItems.forEach(fadeInItem => {
-        const word = fadeInItem.querySelectorAll("div.char");
-        const tl = gsap.timeline({
-          paused: true
+        fadeInItems.forEach(fadeInItem => {
+          const word = fadeInItem.querySelectorAll("div.char");
+          const tl = gsap.timeline({
+            paused: true
+          });
+          tl.from(word, {
+            opacity: 0,
+            duration: .3,
+            ease: "power1.out",
+            stagger: {
+              amount: .8
+            }
+          });
+          scrollTriggerPlayer(fadeInItem, tl)
         });
-        tl.from(word, {
-          opacity: 0,
-          duration: .3,
-          ease: "power1.out",
-          stagger: {
-            amount: .8
-          }
-        });
-        scrollTriggerPlayer(fadeInItem, tl)
-      });
+      }
 
       const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
       if (parallaxBlock) {
@@ -189,28 +193,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const hero = document.getElementById("hero");
       if (hero) {
 
-        const target = hero.querySelector('h1');
+        if (!checkEditMode) {
+          const target = hero.querySelector('h1');
+          const span = target.querySelector('span');
+          const text = new SplitType(target, { types: 'chars, words' })
 
-        const span = target.querySelector('span');
-        const text = new SplitType(target, { types: 'chars, words' })
-
-        gsap.from(text.words, {
-          opacity: 0,
-          x: -50,
-          duration: 1,
-          stagger: { amount: 0.4 },
-          scrollTrigger: {
-            trigger: hero,
-            start: "top 95%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
-            preventOverlaps: true,
-          },
-          onStart: function () {
-            // onComplete: function () {
-            hero.classList.add('animatedClass');
-          }
-        })
+          gsap.from(text.words, {
+            opacity: 0,
+            x: -50,
+            duration: 1,
+            stagger: { amount: 0.4 },
+            scrollTrigger: {
+              trigger: hero,
+              start: "top 95%",
+              end: "bottom 20%",
+              toggleActions: "play none none none",
+              preventOverlaps: true,
+            },
+            onStart: function () {
+              // onComplete: function () {
+              hero.classList.add('animatedClass');
+            }
+          })
+        }
 
         const hero__img = document.querySelector(".hero__img");
 
@@ -251,8 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
               scrollTrigger: {
                 trigger: numbBox,
                 start: `top 95%`,
-                // start: `top 60%`,
-                // markers: true,
               },
               onStart: () => counter(numb, count),
             });
@@ -279,8 +282,6 @@ document.addEventListener('DOMContentLoaded', () => {
       onEnter: () => timeline.play()
     })
   }
-
-  gsap.registerPlugin(ScrollTrigger);
 
   /**
    * Расчёт ширины скроллбара старницы и добавление отступа в body при октрытии попапов

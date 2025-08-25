@@ -3,7 +3,7 @@
 .services {
   background-color: var(--white);
   height: auto;
-  min-height: clamp(93rem, 100dvh, 150dvh);
+  min-height: clamp(93rem, 100vh, 150dvh);
 
   @include md {
     min-height: auto;
@@ -373,6 +373,9 @@
     }
 
     &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
       overflow: hidden;
       color: var(--white);
 
