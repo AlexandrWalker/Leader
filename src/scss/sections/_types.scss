@@ -79,10 +79,9 @@
       gap: 2rem;
       align-items: unset;
       width: calc(50% - 0.5rem);
-      height: fit-content;
-      padding: 0;
-
+      height: auto;
       min-height: unset;
+      padding: 0;
     }
 
     @include sm {

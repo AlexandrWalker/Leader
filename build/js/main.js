@@ -280,6 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+  });
+
   // gsap.registerPlugin(ScrollTrigger);
 
   /**
