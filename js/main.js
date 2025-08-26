@@ -284,8 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollTrigger.refresh();
   });
 
-  // gsap.registerPlugin(ScrollTrigger);
-
   /**
    * Расчёт ширины скроллбара старницы и добавление отступа в body при октрытии попапов
    */
