@@ -113,18 +113,18 @@ a {
 }
 
 @font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Micra;
   font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -5862,11 +5862,6 @@ h6 span {
     width: 3rem;
   }
 
-  [data-parallax=parallax-img] img {
-    margin: 0;
-    height: 100% !important;
-  }
-
   .swiper__btns {
     -webkit-box-ordinal-group: 4;
     -ms-flex-order: 3;
@@ -6619,12 +6614,6 @@ h6 span {
     gap: 1rem;
   }
 
-  .advan__body-item img {
-    height: 100%;
-    position: static;
-    top: unset;
-  }
-
   .callback {
     min-height: unset;
   }
@@ -6644,12 +6633,6 @@ h6 span {
 
   .callback__img {
     display: none;
-  }
-
-  .callback__img img {
-    height: 100%;
-    position: static;
-    top: unset;
   }
 
   .clients .general__head-title {
@@ -7221,11 +7204,9 @@ h6 span {
     -ms-flex-align: unset;
     align-items: unset;
     width: calc(50% - 0.5rem);
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
-    padding: 0;
+    height: auto;
     min-height: unset;
+    padding: 0;
   }
 
   .types__item:hover {
