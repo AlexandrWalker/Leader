@@ -19,271 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   gsap.ticker.lagSmoothing(0);
 
-  $(window).on('resize load', function () {
-    if (window.innerWidth > 768) {
-
-      if (!checkEditMode) {
-        const revealItems = document.querySelectorAll('[data-animation="reveal"]');
-
-        revealItems.forEach(titleWord => {
-          const innerWords = document.querySelectorAll('h2');
-          innerWords.forEach(wordH2 => {
-            const wordsH2 = new SplitType(wordH2, { types: 'words, words' });
-          });
-          const wordsH3 = new SplitType(titleWord.querySelector('h3'), { types: 'words, words' });
-          const wordsH4 = new SplitType(titleWord.querySelector('h4'), { types: 'words, words' });
-        });
-
-        revealItems.forEach(revealItem => {
-          const word = revealItem.querySelectorAll("div.word");
-          const tl = gsap.timeline({
-            paused: true
-          });
-          tl.from(word, {
-            opacity: 0,
-            y: "10",
-            duration: .3,
-            ease: "power1.out",
-            stagger: {
-              amount: .3
-            },
-            onStart: function () {
-              revealItem.classList.add('animatedClass');
-            },
-          });
-          scrollTriggerPlayer(revealItem, tl)
-        });
-
-        const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
-
-        fadeInItems.forEach(titleChar => {
-          const char = new SplitType(titleChar.querySelector('p'), { types: 'words, chars' });
-        });
-
-        fadeInItems.forEach(fadeInItem => {
-          const word = fadeInItem.querySelectorAll("div.char");
-          const tl = gsap.timeline({
-            paused: true
-          });
-          tl.from(word, {
-            opacity: 0,
-            duration: .3,
-            ease: "power1.out",
-            stagger: {
-              amount: .8
-            }
-          });
-          scrollTriggerPlayer(fadeInItem, tl)
-        });
-      }
-
-      const parallaxBox = document.querySelector('[data-animation="parallax-box"]');
-      if (parallaxBox) {
-        const parallaxImgBoxes = document.querySelectorAll('[data-animation="parallax-box"]');
-        parallaxImgBoxes.forEach(parallaxImgBox => {
-          gsap.fromTo(parallaxImgBox,
-            { y: '15%' },
-            {
-              y: '-35%',
-              scrollTrigger: {
-                trigger: parallaxImgBox,
-                start: 'top 90%',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
-        });
-      }
-
-      const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
-      if (parallaxSection) {
-        const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
-        parallaxSections.forEach(parallaxSection => {
-          gsap.fromTo(parallaxSection,
-            { y: '0%' },
-            {
-              y: '-15%',
-              scrollTrigger: {
-                trigger: parallaxSection,
-                start: 'top 90%',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
-        });
-      }
-
-      const faqItems = document.querySelectorAll(".faq__item");
-      for (let i = 0; i < faqItems.length; i++) {
-        gsap.from(faqItems[i], {
-          opacity: 0,
-          x: -50,
-          duration: 0.3,
-          scrollTrigger: {
-            trigger: faqItems[i],
-            start: "top 95%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
-            preventOverlaps: true,
-          }
-        })
-      }
-
-    }
-  });
-
-  const hero = document.getElementById("hero");
-  if (hero) {
-
-    if (!checkEditMode) {
-      const target = hero.querySelector('h1');
-      const span = target.querySelector('span');
-      const text = new SplitType(target, { types: 'chars, words' })
-      gsap.from(text.words, {
-        opacity: 0,
-        x: -50,
-        duration: 1,
-        stagger: { amount: 0.4 },
-        scrollTrigger: {
-          trigger: hero,
-          start: "top 95%",
-          end: "bottom 20%",
-          toggleActions: "play none none none",
-          preventOverlaps: true,
-        },
-        onStart: function () {
-          hero.classList.add('animatedClass');
-        }
-      })
-    }
-
-    const hero__img = hero.querySelector(".hero__img");
-    gsap.from(hero__img, {
-      opacity: 1,
-      y: 500,
-      duration: 1,
-      scrollTrigger: {
-        trigger: hero,
-        start: "top 95%",
-        end: "bottom 20%",
-        toggleActions: "play none none none",
-      }
-    });
-  }
-
-  const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
-  if (parallaxBlock) {
-    const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
-    parallaxImgBlocks.forEach(parallaxImgBlock => {
-      gsap.fromTo(parallaxImgBlock,
-        { y: '-8%' },
-        {
-          y: '8%',
-          scrollTrigger: {
-            trigger: parallaxImgBlock,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
-
-  const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
-  if (parallaxItem) {
-    const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
-    parallaxImgContainers.forEach(parallaxImgContainer => {
-      const image = parallaxImgContainer.querySelector('img');
-      gsap.fromTo(image,
-        { y: '-10%' },
-        {
-          y: '10%',
-          scrollTrigger: {
-            trigger: parallaxImgContainer,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
-
-  const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
-  if (parallaxImg) {
-    const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
-    parallaxImgContainers.forEach(parallaxImgContainer => {
-      const image = parallaxImgContainer.querySelector('img');
-      gsap.fromTo(image,
-        { y: '-10%' },
-        {
-          y: '10%',
-          scrollTrigger: {
-            trigger: parallaxImgContainer,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-    });
-  }
-
-  /**
-   * Анимация чисел
-   */
-  function counterFunc() {
-    function counter(array, element, time = 1000) {
-      let n = 0;
-      const num = Number(array.dataset.val);
-      let interval = setInterval(() => {
-        n < num ? (n += num / (time / 10)) : clearInterval(interval);
-        array.classList.contains('frac')
-          ? (element.innerHTML = n.toFixed(1))
-          : (element.innerHTML = Math.round(n));
-      }, 10);
-    }
-
-    const numbBoxes = document.querySelectorAll('.numbs');
-    numbBoxes.forEach((numbBox) => {
-      const numbs = numbBox.querySelectorAll('.number');
-      numbs.forEach((numb) => {
-        const count = numb.querySelector('span');
-        gsap.to(count, {
-          scrollTrigger: {
-            trigger: numbBox,
-            start: `top 95%`,
-          },
-          onStart: () => counter(numb, count),
-        });
-      });
-    });
-  }
-  counterFunc();
-
-  function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: "top bottom",
-      onLeaveBack: () => {
-        timeline.progress(1);
-        timeline.pause()
-      }
-    });
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: onEnterStart,
-      onEnter: () => timeline.play()
-    })
-  }
-
-  window.addEventListener('resize', () => {
-    ScrollTrigger.refresh();
-  });
-
   /**
    * Расчёт ширины скроллбара старницы и добавление отступа в body при октрытии попапов
    */
@@ -612,6 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
+  /**
+   * Аккордион
+   */
   function accordionFunc() {
     if (document.querySelector('.accordion-parent')) {
       document.querySelectorAll('.accordion-parent').forEach((accordionContainer) => {
@@ -628,7 +366,6 @@ document.addEventListener('DOMContentLoaded', () => {
               accordionActive[0].classList.remove(accordionActiveClass);
             }
             this.classList.toggle(accordionActiveClass);
-            // ScrollTrigger.refresh();
 
             window.addEventListener('keydown', (e) => {
               if (e.key === "Escape") {
@@ -952,8 +689,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const pauseDuration = 1;
     const scrollDuration = 2;
     const totalDuration = pauseDuration + scrollDuration + pauseDuration;
+    // const totalDuration = pauseDuration + scrollDuration;
 
     const maxShift = totalWidth - containerWidth;
+
+    console.log(maxShift);
 
     let currentIndex = 0;
     let isAnimating = false;
@@ -976,6 +716,7 @@ document.addEventListener('DOMContentLoaded', () => {
         start: 'top top',
         end: () => `+=${totalDuration * itemWidth}`,
         pin: true,
+        markers: true,
         onUpdate: self => {
           if (isAnimating || isDragging) return;
 
@@ -1166,6 +907,269 @@ document.addEventListener('DOMContentLoaded', () => {
       tl.id = 'timeline';
     }
   }
+
+  $(window).on('resize load', function () {
+    if (window.innerWidth > 768) {
+
+      if (!checkEditMode) {
+        const revealItems = document.querySelectorAll('[data-animation="reveal"]');
+
+        revealItems.forEach(titleWord => {
+          const innerWords = document.querySelectorAll('h2');
+          innerWords.forEach(wordH2 => {
+            const wordsH2 = new SplitType(wordH2, { types: 'words, words' });
+          });
+          const wordsH3 = new SplitType(titleWord.querySelector('h3'), { types: 'words, words' });
+          const wordsH4 = new SplitType(titleWord.querySelector('h4'), { types: 'words, words' });
+        });
+
+        revealItems.forEach(revealItem => {
+          const word = revealItem.querySelectorAll("div.word");
+          const tl = gsap.timeline({
+            paused: true
+          });
+          tl.from(word, {
+            opacity: 0,
+            y: "10",
+            duration: .3,
+            ease: "power1.out",
+            stagger: {
+              amount: .3
+            },
+            onStart: function () {
+              revealItem.classList.add('animatedClass');
+            },
+          });
+          scrollTriggerPlayer(revealItem, tl)
+        });
+
+        const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
+
+        fadeInItems.forEach(titleChar => {
+          const char = new SplitType(titleChar.querySelector('p'), { types: 'words, chars' });
+        });
+
+        fadeInItems.forEach(fadeInItem => {
+          const word = fadeInItem.querySelectorAll("div.char");
+          const tl = gsap.timeline({
+            paused: true
+          });
+          tl.from(word, {
+            opacity: 0,
+            duration: .3,
+            ease: "power1.out",
+            stagger: {
+              amount: .8
+            }
+          });
+          scrollTriggerPlayer(fadeInItem, tl)
+        });
+      }
+
+      const parallaxBox = document.querySelector('[data-animation="parallax-box"]');
+      if (parallaxBox) {
+        const parallaxImgBoxes = document.querySelectorAll('[data-animation="parallax-box"]');
+        parallaxImgBoxes.forEach(parallaxImgBox => {
+          gsap.fromTo(parallaxImgBox,
+            { y: '15%' },
+            {
+              y: '-35%',
+              scrollTrigger: {
+                trigger: parallaxImgBox,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+      const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
+      if (parallaxSection) {
+        const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
+        parallaxSections.forEach(parallaxSection => {
+          gsap.fromTo(parallaxSection,
+            { y: '0%' },
+            {
+              y: '-15%',
+              scrollTrigger: {
+                trigger: parallaxSection,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+      const faqItems = document.querySelectorAll(".faq__item");
+      for (let i = 0; i < faqItems.length; i++) {
+        gsap.from(faqItems[i], {
+          opacity: 0,
+          x: -50,
+          duration: 0.3,
+          scrollTrigger: {
+            trigger: faqItems[i],
+            start: "top 95%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            preventOverlaps: true,
+          }
+        })
+      }
+
+    }
+  });
+
+  const hero = document.getElementById("hero");
+  if (hero) {
+
+    if (!checkEditMode) {
+      const target = hero.querySelector('h1');
+      const span = target.querySelector('span');
+      const text = new SplitType(target, { types: 'chars, words' })
+      gsap.from(text.words, {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        stagger: { amount: 0.4 },
+        scrollTrigger: {
+          trigger: hero,
+          start: "top 95%",
+          end: "bottom 20%",
+          toggleActions: "play none none none",
+          preventOverlaps: true,
+        },
+        onStart: function () {
+          hero.classList.add('animatedClass');
+        }
+      })
+    }
+
+    const hero__img = hero.querySelector(".hero__img");
+    gsap.from(hero__img, {
+      opacity: 1,
+      y: 500,
+      duration: 1,
+      scrollTrigger: {
+        trigger: hero,
+        start: "top 95%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+      }
+    });
+  }
+
+  const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
+  if (parallaxBlock) {
+    const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
+    parallaxImgBlocks.forEach(parallaxImgBlock => {
+      gsap.fromTo(parallaxImgBlock,
+        { y: '-8%' },
+        {
+          y: '8%',
+          scrollTrigger: {
+            trigger: parallaxImgBlock,
+            start: 'top 90%',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    });
+  }
+
+  const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
+  if (parallaxItem) {
+    const parallaxImgContainers = document.querySelectorAll('[data-animation="parallax-img"]');
+    parallaxImgContainers.forEach(parallaxImgContainer => {
+      const image = parallaxImgContainer.querySelector('img');
+      gsap.fromTo(image,
+        { y: '-10%' },
+        {
+          y: '10%',
+          scrollTrigger: {
+            trigger: parallaxImgContainer,
+            start: 'top 90%',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    });
+  }
+
+  const parallaxImg = document.querySelector('[data-parallax="parallax-img"]');
+  if (parallaxImg) {
+    const parallaxImgContainers = document.querySelectorAll('[data-parallax="parallax-img"]');
+    parallaxImgContainers.forEach(parallaxImgContainer => {
+      const image = parallaxImgContainer.querySelector('img');
+      gsap.fromTo(image,
+        { y: '-10%' },
+        {
+          y: '10%',
+          scrollTrigger: {
+            trigger: parallaxImgContainer,
+            start: 'top 90%',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    });
+  }
+
+  /**
+   * Анимация чисел
+   */
+  function counterFunc() {
+    function counter(array, element, time = 1000) {
+      let n = 0;
+      const num = Number(array.dataset.val);
+      let interval = setInterval(() => {
+        n < num ? (n += num / (time / 10)) : clearInterval(interval);
+        array.classList.contains('frac')
+          ? (element.innerHTML = n.toFixed(1))
+          : (element.innerHTML = Math.round(n));
+      }, 10);
+    }
+
+    const numbBoxes = document.querySelectorAll('.numbs');
+    numbBoxes.forEach((numbBox) => {
+      const numbs = numbBox.querySelectorAll('.number');
+      numbs.forEach((numb) => {
+        const count = numb.querySelector('span');
+        gsap.to(count, {
+          scrollTrigger: {
+            trigger: numbBox,
+            start: `top 95%`,
+          },
+          onStart: () => counter(numb, count),
+        });
+      });
+    });
+  }
+  counterFunc();
+
+  function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: "top bottom",
+      onLeaveBack: () => {
+        timeline.progress(1);
+        timeline.pause()
+      }
+    });
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: onEnterStart,
+      onEnter: () => timeline.play()
+    })
+  }
+
+  window.addEventListener('resize', ScrollTrigger.refresh());
 
 });
 

@@ -50,7 +50,8 @@
     transition: all 0.3s ease;
     cursor: pointer;
 
-    &.accordion-active {
+    // &.accordion-active {
+    &:hover {
 
       border-color: var(--page-bg);
 
@@ -80,6 +81,7 @@
       .header__drop-body {
         padding-top: 3rem;
         padding-bottom: 2rem;
+        grid-template-rows: 1fr;
 
 
         .innerPage .header & {
@@ -172,6 +174,8 @@
     }
 
     &-body {
+      display: grid;
+      grid-template-rows: 0fr;
       width: 100%;
       width: calc(100% + 0.3rem);
       padding: 0 var(--padding-x) 0 var(--padding-x);
