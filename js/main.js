@@ -716,7 +716,6 @@ document.addEventListener('DOMContentLoaded', () => {
         start: 'top top',
         end: () => `+=${totalDuration * itemWidth}`,
         pin: true,
-        markers: true,
         onUpdate: self => {
           if (isAnimating || isDragging) return;
 
