@@ -1048,10 +1048,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const hero__img = hero.querySelector(".hero__img");
-    gsap.from(hero__img, {
+    gsap.fromTo(hero__img, { opacity: 0 }, {
       opacity: 1,
-      y: 500,
       duration: 1,
+      delay: 0.5,
       scrollTrigger: {
         trigger: hero,
         start: "top 95%",
