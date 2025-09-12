@@ -97,22 +97,6 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
@@ -139,8 +123,24 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
   src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
   font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -2662,7 +2662,7 @@ h6 span {
   grid-template-rows: 0fr;
   width: 100%;
   width: calc(100% + 0.3rem);
-  padding: 0 var(--padding-x) 0 var(--padding-x);
+  padding: 0 var(--padding-x) 0 calc(var(--padding-x) * 2);
   background-color: var(--page-bg);
   position: absolute;
   top: 100%;
@@ -6376,6 +6376,10 @@ h6 span {
     gap: 0.5rem;
   }
 
+  .header__drop-body {
+    padding: 0 var(--padding-x) 0 var(--padding-x);
+  }
+
   .header__drop {
     display: none;
   }
@@ -7654,6 +7658,10 @@ h6 span {
     transition-duration: 0.5s;
   }
 
+  .burger-menu .header__drop-body {
+    --padding-x: 1.1rem;
+  }
+
   .footer__inner {
     min-height: calc(100vh - 8rem);
   }
@@ -7668,6 +7676,10 @@ h6 span {
 
   .footer .burger-menu__foot {
     width: 100%;
+  }
+
+  .footer .header__drop-body {
+    --padding-x: 1rem;
   }
 
   .footer .header__drop-body a {

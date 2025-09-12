@@ -229,6 +229,10 @@
         --padding-x: 1.5rem;
       }
 
+      @include sm {
+        --padding-x: 1rem;
+      }
+
       li {
 
         @include md {

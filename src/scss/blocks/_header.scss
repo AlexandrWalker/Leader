@@ -178,13 +178,17 @@
       grid-template-rows: 0fr;
       width: 100%;
       width: calc(100% + 0.3rem);
-      padding: 0 var(--padding-x) 0 var(--padding-x);
+      padding: 0 var(--padding-x) 0 calc(var(--padding-x) * 2);
       background-color: var(--page-bg);
       position: absolute;
       top: 100%;
       right: -0.1rem;
       left: -0.1rem;
       transition: all 0.3s ease;
+
+      @include md {
+        padding: 0 var(--padding-x) 0 var(--padding-x);
+      }
 
       ul {
         overflow: hidden;
