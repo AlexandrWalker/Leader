@@ -40,6 +40,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
+   * Управляет поведением шапки.
+   */
+  function headerFunc() {
+
+    const header = document.getElementById('header');
+    const firstSection = document.querySelector('section');
+    let lastScrollTop = 1;
+    const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
+
+    window.addEventListener('scroll', () => {
+      if (scrollPosition() > lastScrollTop && scrollPosition() > firstSection.offsetHeight) {
+        header.classList.add('out');
+      } else {
+        header.classList.remove('out');
+      }
+
+      lastScrollTop = scrollPosition();
+    })
+  }
+
+  headerFunc();
+
+  /**
    * Управляет поведением меню-бургера.
    */
   function burgerNav() {
@@ -110,12 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
       567: {
         slidesPerView: 'auto',
         spaceBetween: 10,
-        speed: 1000,
+        speed: 600,
       },
       600: {
         slidesPerView: 'auto',
         spaceBetween: 20,
-        speed: 1000,
+        speed: 600,
       },
     },
   });
@@ -125,6 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     spaceBetween: 0,
     speed: 600,
+    draggable: true,
+    freeMode: true,
     mousewheel: {
       forceToAxis: true,
     },
@@ -136,12 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
       567: {
         slidesPerView: 'auto',
         spaceBetween: 0,
-        speed: 1000,
+        speed: 600,
       },
       769: {
         slidesPerView: 5,
         spaceBetween: 20,
-        speed: 1000,
+        speed: 600,
       },
     },
   });
@@ -166,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
       567: {
         slidesPerView: 2,
         spaceBetween: 10,
-        speed: 1000,
+        speed: 600,
         pagination: {
           el: ".swiper-pagination",
         },
@@ -175,13 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 4,
         spaceBetween: 20,
         pagination: false,
-        speed: 1000,
+        speed: 600,
       },
       1441: {
         slidesPerView: 5,
         spaceBetween: 20,
         pagination: false,
-        speed: 1000,
+        speed: 600,
       },
     },
   });
@@ -206,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
       567: {
         slidesPerView: 2,
         spaceBetween: 10,
-        speed: 1000,
+        speed: 600,
         pagination: {
           el: ".swiper-pagination",
         },
@@ -215,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 3,
         spaceBetween: 20,
         pagination: false,
-        speed: 1000,
+        speed: 600,
       },
     },
   });
@@ -239,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
       prevEl: ".objects__slider-btn--prev",
     },
     567: {
-      speed: 1000,
+      speed: 600,
     },
   });
 
@@ -255,14 +280,14 @@ document.addEventListener('DOMContentLoaded', () => {
     allowTouchMove: false,
     breakpoints: {
       567: {
-        speed: 1000,
+        speed: 600,
       },
       769: {
         effect: 'fade',
         fadeEffect: {
           crossFade: true
         },
-        speed: 1000,
+        speed: 600,
       },
     },
   });
@@ -284,11 +309,11 @@ document.addEventListener('DOMContentLoaded', () => {
       watchSlidesProgress: true,
       breakpoints: {
         567: {
-          speed: 1000,
+          speed: 600,
         },
         769: {
           spaceBetween: 20,
-          speed: 1000,
+          speed: 600,
         },
       },
     });
@@ -312,14 +337,14 @@ document.addEventListener('DOMContentLoaded', () => {
           pagination: false,
           grabCursor: false,
           mousewheel: false,
-          speed: 1000,
+          speed: 600,
         },
         769: {
           spaceBetween: 20,
           pagination: false,
           grabCursor: false,
           mousewheel: false,
-          speed: 1000,
+          speed: 600,
         },
       },
     });
@@ -714,8 +739,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tl = ScrollTrigger.create({
         trigger: timeline,
         start: 'top top',
+        // start: '-33.33% top',
         end: () => `+=${totalDuration * itemWidth}`,
         pin: true,
+        // markers: true,
         onUpdate: self => {
           if (isAnimating || isDragging) return;
 
@@ -1167,6 +1194,27 @@ document.addEventListener('DOMContentLoaded', () => {
       onEnter: () => timeline.play()
     })
   }
+
+  const videoBtn = document.querySelector('.video--btn');
+  const videoClose = document.querySelector('.about__video--close');
+  videoBtn.addEventListener('click', function () {
+    videoBtn.classList.add('open');
+    setTimeout(() => {
+      videoBtn.classList.add('open--height');
+    }, 5000);
+  })
+
+  // Закрытие меню при клике вне области меню и бургера
+  document.addEventListener('click', (event) => {
+    if (!videoBtn.contains(event.target) && !videoClose.contains(event.target)) {
+      videoBtn.classList.remove('open');
+      videoBtn.classList.remove('open--height');
+    }
+  });
+  videoClose.addEventListener('click', () => {
+    videoBtn.classList.remove('open');
+    videoBtn.classList.remove('open--height');
+  });
 
   window.addEventListener('resize', ScrollTrigger.refresh());
 

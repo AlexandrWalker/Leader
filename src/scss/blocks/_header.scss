@@ -7,6 +7,15 @@
   left: 0;
   z-index: 100;
   height: var(--header-height);
+  transition: all 1s ease;
+
+  &.out {
+
+    .header__btn {
+      transform: translateY(-101%);
+      transition-delay: 0.3s;
+    }
+  }
 
   &.opened {}
 

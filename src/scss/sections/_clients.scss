@@ -78,6 +78,7 @@
       height: 100%;
       // aspect-ratio: 399/260;
       aspect-ratio: 558/260;
+      position: relative;
 
       @include md {
         aspect-ratio: 357/167;
@@ -91,6 +92,19 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    &-name {
+      color: var(--gray);
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+
+      @include sm {
+        font-size: 1.5rem;
+        bottom: 1.5rem;
+        left: 1.5rem;
       }
     }
 
