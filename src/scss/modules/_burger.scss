@@ -21,6 +21,8 @@
   top: 0;
   left: 0;
 
+  pointer-events: all;
+
   .innerPage & {
     --background-color: var(--black);
   }
@@ -61,6 +63,10 @@
     --width: 1.6rem;
   }
 
+  .header.opened & {
+    background-color: transparent;
+  }
+
   .innerPage & {
     --background-color: var(--white);
   }
@@ -89,6 +95,11 @@
   &::before {
     top: -1rem;
 
+    .header.opened & {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
     @include md {
       top: -0.8rem;
     }
@@ -96,6 +107,11 @@
 
   &::after {
     top: 1rem;
+
+    .header.opened & {
+      top: 0;
+      transform: rotate(-45deg);
+    }
 
     @include md {
       top: 0.8rem;
@@ -123,6 +139,9 @@
   bottom: 50%;
   right: -10rem;
   transform: rotate(-90deg);
+
+  opacity: 0;
+  pointer-events: none;
 
   &:hover {
     --burger-btn-color: var(--accent);
@@ -311,7 +330,7 @@
     @include md {
       max-width: calc(100% - 2rem);
       gap: 3rem;
-      padding: 4rem 2rem 4rem 4rem;
+      padding: 8rem 2rem 4rem 4rem;
     }
 
     @include xxmd {

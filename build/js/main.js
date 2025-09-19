@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const isHeaderOpened = header.classList.toggle('opened');
       burgerMenu.classList.toggle('burger-menu--opened', isOpened, isHeaderOpened);
 
-      lenis.stop();
+      burgerBtn.classList.contains('burger-btn--opened') ? lenis.stop() : lenis.start();
+
     };
 
     /**
@@ -125,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     slidesPerGroup: 1,
     spaceBetween: 10,
-    speed: 600,
+    speed: 300,
     mousewheel: {
       forceToAxis: true,
     },
@@ -133,12 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
       567: {
         slidesPerView: 'auto',
         spaceBetween: 10,
-        speed: 600,
+        speed: 300,
       },
       600: {
         slidesPerView: 'auto',
         spaceBetween: 20,
-        speed: 600,
+        speed: 300,
       },
     },
   });
@@ -147,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerGroup: 1,
     slidesPerView: 'auto',
     spaceBetween: 0,
-    speed: 600,
+    speed: 300,
     draggable: true,
     freeMode: true,
     mousewheel: {
@@ -161,12 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
       567: {
         slidesPerView: 'auto',
         spaceBetween: 0,
-        speed: 600,
+        speed: 300,
       },
       769: {
         slidesPerView: 5,
         spaceBetween: 20,
-        speed: 600,
+        speed: 300,
       },
     },
   });
@@ -176,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     spaceBetween: 10,
     loop: true,
-    speed: 600,
+    speed: 300,
     mousewheel: {
       forceToAxis: true,
     },
@@ -186,12 +187,13 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     pagination: {
       el: ".swiper-pagination",
+      dynamicBullets: true,
     },
     breakpoints: {
       567: {
         slidesPerView: 2,
         spaceBetween: 10,
-        speed: 600,
+        speed: 300,
         pagination: {
           el: ".swiper-pagination",
         },
@@ -200,13 +202,13 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 4,
         spaceBetween: 20,
         pagination: false,
-        speed: 600,
+        speed: 300,
       },
       1441: {
         slidesPerView: 5,
         spaceBetween: 20,
         pagination: false,
-        speed: 600,
+        speed: 300,
       },
     },
   });
@@ -216,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 'auto',
     spaceBetween: 10,
     loop: true,
-    speed: 600,
+    speed: 300,
     mousewheel: {
       forceToAxis: true,
     },
@@ -226,12 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     pagination: {
       el: ".swiper-pagination",
+      dynamicBullets: true,
     },
     breakpoints: {
       567: {
         slidesPerView: 2,
         spaceBetween: 10,
-        speed: 600,
+        speed: 300,
         pagination: {
           el: ".swiper-pagination",
         },
@@ -240,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 3,
         spaceBetween: 20,
         pagination: false,
-        speed: 600,
+        speed: 300,
       },
     },
   });
@@ -250,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
-    speed: 600,
+    speed: 300,
     grabCursor: true,
     effect: 'fade',
     fadeEffect: {
@@ -264,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
       prevEl: ".objects__slider-btn--prev",
     },
     567: {
-      speed: 600,
+      speed: 300,
     },
   });
 
@@ -273,21 +276,21 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
-    speed: 600,
+    speed: 300,
     grabCursor: false,
     effect: false,
     mousewheel: false,
     allowTouchMove: false,
     breakpoints: {
       567: {
-        speed: 600,
+        speed: 300,
       },
       769: {
         effect: 'fade',
         fadeEffect: {
           crossFade: true
         },
-        speed: 600,
+        speed: 300,
       },
     },
   });
@@ -303,17 +306,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const objectsGalleryMini = new Swiper(objects__galleryMini, {
       slidesPerView: 3,
       spaceBetween: 10,
-      speed: 600,
+      speed: 300,
       grabCursor: false,
       mousewheel: false,
       watchSlidesProgress: true,
       breakpoints: {
         567: {
-          speed: 600,
+          speed: 300,
         },
         769: {
           spaceBetween: 20,
-          speed: 600,
+          speed: 300,
         },
       },
     });
@@ -321,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const objectsGallery = new Swiper(objects__gallery, {
       slidesPerView: 1,
       spaceBetween: 10,
-      speed: 600,
+      speed: 300,
       grabCursor: true,
       mousewheel: {
         forceToAxis: true,
@@ -331,20 +334,21 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       pagination: {
         el: ".swiper-pagination",
+        dynamicBullets: true,
       },
       breakpoints: {
         568: {
           pagination: false,
           grabCursor: false,
           mousewheel: false,
-          speed: 600,
+          speed: 300,
         },
         769: {
           spaceBetween: 20,
           pagination: false,
           grabCursor: false,
           mousewheel: false,
-          speed: 600,
+          speed: 300,
         },
       },
     });
@@ -355,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerGroup: 1,
     slidesPerView: 1,
     spaceBetween: 100,
-    speed: 600,
+    speed: 300,
     loop: true,
     grabCursor: true,
     mousewheel: {
@@ -713,8 +717,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pauseDuration = 1;
     const scrollDuration = 2;
-    const totalDuration = pauseDuration + scrollDuration + pauseDuration;
-    // const totalDuration = pauseDuration + scrollDuration;
+    // const totalDuration = pauseDuration + scrollDuration + pauseDuration;
+    const totalDuration = pauseDuration + scrollDuration;
 
     const maxShift = totalWidth - containerWidth;
 
@@ -739,10 +743,9 @@ document.addEventListener('DOMContentLoaded', () => {
       tl = ScrollTrigger.create({
         trigger: timeline,
         start: 'top top',
-        // start: '-33.33% top',
+        // start: `+=${-itemWidth} top`,
         end: () => `+=${totalDuration * itemWidth}`,
         pin: true,
-        // markers: true,
         onUpdate: self => {
           if (isAnimating || isDragging) return;
 
@@ -935,6 +938,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   $(window).on('resize load', function () {
+
+    const creepingBlock = document.querySelector('[data-animation="creeping"]');
+    if (creepingBlock) {
+      const wrapper = document.querySelector('.wrapper');
+      creepingAnim(creepingBlock, wrapper)
+    }
+
     if (window.innerWidth > 768) {
 
       if (!checkEditMode) {
@@ -1147,6 +1157,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function creepingAnim(creepingBlock, wrapper) {
+    const trigger = document.querySelector(`.${creepingBlock.getAttribute('data-creeping-trigger')}`);
+    wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
+    console.log(wrapper.offsetHeight)
+    console.log(creepingBlock.offsetHeight)
+    gsap.to(creepingBlock, {
+      bottom: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: trigger,
+        start: `+=${wrapper.offsetHeight - creepingBlock.offsetHeight} bottom`,
+        end: () => `${wrapper.offsetHeight - creepingBlock.offsetHeight / 2}`,
+        scrub: true,
+        pinSpacing: true,
+      }
+    });
+  }
+
   /**
    * Анимация чисел
    */
@@ -1195,25 +1223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  const videoBtn = document.querySelector('.video--btn');
-  const videoClose = document.querySelector('.about__video--close');
-  videoBtn.addEventListener('click', function () {
-    videoBtn.classList.add('open');
-    setTimeout(() => {
-      videoBtn.classList.add('open--height');
-    }, 5000);
-  })
-
-  // Закрытие меню при клике вне области меню и бургера
-  document.addEventListener('click', (event) => {
-    if (!videoBtn.contains(event.target) && !videoClose.contains(event.target)) {
-      videoBtn.classList.remove('open');
-      videoBtn.classList.remove('open--height');
-    }
-  });
-  videoClose.addEventListener('click', () => {
-    videoBtn.classList.remove('open');
-    videoBtn.classList.remove('open--height');
+  Fancybox.bind("[data-fancybox]", {
   });
 
   window.addEventListener('resize', ScrollTrigger.refresh());

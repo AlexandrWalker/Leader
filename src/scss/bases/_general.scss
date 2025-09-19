@@ -87,3 +87,18 @@
     }
   }
 }
+
+.f-html {
+  max-width: 95% !important;
+  max-height: 90% !important;
+  height: auto !important;
+}
+
+
+[data-animation="creeping"] {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
