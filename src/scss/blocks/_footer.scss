@@ -1,21 +1,17 @@
 @use './../mixins' as *;
 
 .footer {
-  // position: relative;
+  --footer-padding-top: 7rem;
+
   overflow: hidden;
-  padding-top: 7rem;
+  padding-top: var(--footer-padding-top);
   background-color: var(--white);
 
   @include md {
-    padding-top: 10rem;
+    --footer-padding-top: 8rem;
 
     display: flex;
     align-items: center;
-    // height: fit-content;
-  }
-
-  @include md {
-    padding-top: 8rem;
   }
 
   &::before {
@@ -42,15 +38,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    min-height: calc(100vh - 8rem);
-
-    @include md {
-      // min-height: calc(100vh - 10rem);
-    }
-
-    @include sm {
-      min-height: calc(100vh - 8rem);
-    }
+    min-height: calc(100vh - var(--footer-padding-top));
   }
 
   .burger-menu__inner {

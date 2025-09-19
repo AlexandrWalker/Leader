@@ -2335,8 +2335,9 @@ h6 span {
 }
 
 .footer {
+  --footer-padding-top: 7rem;
   overflow: hidden;
-  padding-top: 7rem;
+  padding-top: var(--footer-padding-top);
   background-color: var(--white);
   /* hack*/
 }
@@ -2366,7 +2367,7 @@ h6 span {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  min-height: calc(100vh - 8rem);
+  min-height: calc(100vh - var(--footer-padding-top));
 }
 
 .footer .burger-menu__inner {
@@ -6356,17 +6357,13 @@ h6 span {
   }
 
   .footer {
-    padding-top: 10rem;
+    --footer-padding-top: 8rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-
-  .footer {
-    padding-top: 8rem;
   }
 
   .footer::before {
@@ -7742,10 +7739,6 @@ h6 span {
 
   .burger-menu .header__drop-body {
     --padding-x: 1.1rem;
-  }
-
-  .footer__inner {
-    min-height: calc(100vh - 8rem);
   }
 
   .footer .burger-menu__inner {
