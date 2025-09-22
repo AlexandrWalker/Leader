@@ -1162,7 +1162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
     console.log(wrapper.offsetHeight)
     console.log(creepingBlock.offsetHeight)
-    gsap.to(creepingBlock, {
+    gsap.fromTo(creepingBlock, {bottom: -creepingBlock.offsetHeight}, {
       bottom: 0,
       ease: 'none',
       scrollTrigger: {
