@@ -717,8 +717,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pauseDuration = 1;
     const scrollDuration = 2;
-    // const totalDuration = pauseDuration + scrollDuration + pauseDuration;
-    const totalDuration = pauseDuration + scrollDuration;
+    const totalDuration = pauseDuration + scrollDuration + pauseDuration;
+    // const totalDuration = pauseDuration + scrollDuration;
 
     const maxShift = totalWidth - containerWidth;
 
