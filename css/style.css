@@ -113,18 +113,18 @@ a {
 }
 
 @font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Micra;
   font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -230,7 +230,11 @@ a {
 .f-html {
   max-width: 95% !important;
   max-height: 90% !important;
-  height: auto !important;
+  width: auto !important;
+  height: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  aspect-ratio: 410/730;
 }
 
 [data-animation=creeping] {
@@ -3557,7 +3561,7 @@ h6 span {
   transition: all 0.5s ease;
 }
 
-.about__video video {
+.about__video iframe {
   display: block;
   width: 100%;
   height: 100%;
@@ -4445,6 +4449,17 @@ h6 span {
   background-color: var(--gray-30);
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+.faq__item-body .faq__item-wrap {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: unset;
+  -ms-flex-align: unset;
+  align-items: unset;
+  gap: 2rem;
 }
 
 .faq__item-wrap {
@@ -6880,6 +6895,10 @@ h6 span {
     padding: 0 2rem 0 var(--title-margin-left);
   }
 
+  .faq__item-body .faq__item-wrap {
+    gap: 1.5rem;
+  }
+
   .faq .accordion-active .faq__item-body {
     padding: 2rem 2rem 2rem var(--title-margin-left);
   }
@@ -7869,7 +7888,7 @@ h6 span {
     padding: 1.2rem 0;
   }
 
-  .about__video video {
+  .about__video iframe {
     display: none;
   }
 
