@@ -1162,7 +1162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
     console.log(wrapper.offsetHeight)
     console.log(creepingBlock.offsetHeight)
-    gsap.fromTo(creepingBlock, {bottom: -creepingBlock.offsetHeight}, {
+    gsap.fromTo(creepingBlock, { bottom: -creepingBlock.offsetHeight }, {
       bottom: 0,
       ease: 'none',
       scrollTrigger: {
@@ -1223,8 +1223,19 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  Fancybox.bind("[data-fancybox]", {
+
+  /**
+   * Инициализация Fancybox
+   */
+  Fancybox.bind('[data-fancybox]', {
+    mainStyle: {
+      '--f-html-bg': 'transparent'
+    },
+    Html: {
+      autoSize: true,
+    },
   });
+
 
   window.addEventListener('resize', ScrollTrigger.refresh());
 
