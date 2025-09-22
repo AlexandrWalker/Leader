@@ -126,6 +126,8 @@
     &-content {
       display: flex;
       flex-direction: column;
+
+      height: 100%;
     }
 
     &-title {
@@ -163,6 +165,10 @@
 
       &:not(:last-child) {
         margin-bottom: 2rem;
+      }
+
+      &--first {
+        margin-top: auto;
       }
     }
 
