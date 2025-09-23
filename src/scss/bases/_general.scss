@@ -100,7 +100,7 @@
 
 .fancybox__container .fancybox__carousel {
   clip-path: inset(0 0 0 100%);
-  transition: clip-path 1s cubic-bezier(0.7, 0, 0.4, 1);
+  transition: clip-path 1s linear;
   transition-delay: 0s;
   will-change: clip-path;
   overflow: hidden !important;
@@ -108,7 +108,7 @@
 
 .fancybox__container.is-ready .fancybox__carousel {
   clip-path: inset(0 0 0 0);
-  transition: clip-path 1s cubic-bezier(0.7, 0, 0.4, 1) 0.3s;
+  transition: clip-path 2s cubic-bezier(0.7, 0, 0.4, 1) 0.1s;
 }
 
 [data-animation="creeping"] {
