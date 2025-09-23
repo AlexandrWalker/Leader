@@ -18,6 +18,7 @@ body {
   font-size: 1.6rem;
   line-height: 130%;
   color: var(--black);
+  cursor: default;
 }
 
 .wrapper {
@@ -115,16 +116,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -139,16 +140,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
-  font-weight: 500;
+  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
-  font-weight: 300;
+  src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -249,8 +250,8 @@ a {
 
 .fancybox__container.is-ready .fancybox__carousel {
   clip-path: inset(0 0 0 0);
-  -webkit-transition: clip-path 2s cubic-bezier(0.7, 0, 0.4, 1) 0.1s;
-  transition: clip-path 2s cubic-bezier(0.7, 0, 0.4, 1) 0.1s;
+  -webkit-transition: clip-path 2s cubic-bezier(0.7, 0, 0.4, 1) 0s;
+  transition: clip-path 2s cubic-bezier(0.7, 0, 0.4, 1) 0s;
 }
 
 [data-animation=creeping] {
@@ -3577,12 +3578,28 @@ h6 span {
   transition: all 0.5s ease;
 }
 
+.about__video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(22, 22, 22, 0.6)), to(rgba(22, 22, 22, 0.6)));
+  background: linear-gradient(0deg, rgba(22, 22, 22, 0.6), rgba(22, 22, 22, 0.6));
+}
+
 .about__video iframe {
   display: block;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
 }
 
 .about__video-content {
@@ -3607,7 +3624,7 @@ h6 span {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
 .about__video-content span {
@@ -7907,6 +7924,10 @@ h6 span {
 
   .about__body-content h4 {
     font-size: 1.5rem;
+  }
+
+  .about__video::before {
+    display: none;
   }
 
   .about__video {
