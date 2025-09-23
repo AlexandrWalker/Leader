@@ -1241,6 +1241,16 @@ document.addEventListener('DOMContentLoaded', () => {
       destroy: () => {
         lenis.start();
       }
+    },
+    afterLoad: function () {
+
+      $(".fancybox-skin").addClass('fadeInDown animated');
+
+    },
+    beforeClose: function () {
+
+      $(".fancybox-skin").addClass('fadeOutDown animated');
+
     }
   });
 
