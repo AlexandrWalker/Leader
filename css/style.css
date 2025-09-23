@@ -105,18 +105,18 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -235,6 +235,22 @@ a {
   padding: 0 !important;
   border: 0 !important;
   aspect-ratio: 410/730;
+}
+
+.fancybox__container .fancybox__carousel {
+  clip-path: inset(0 0 0 100%);
+  -webkit-transition: clip-path 1s cubic-bezier(0.7, 0, 0.4, 1);
+  transition: clip-path 1s cubic-bezier(0.7, 0, 0.4, 1);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+  will-change: clip-path;
+  overflow: hidden !important;
+}
+
+.fancybox__container.is-ready .fancybox__carousel {
+  clip-path: inset(0 0 0 0);
+  -webkit-transition: clip-path 1s cubic-bezier(0.7, 0, 0.4, 1) 0.3s;
+  transition: clip-path 1s cubic-bezier(0.7, 0, 0.4, 1) 0.3s;
 }
 
 [data-animation=creeping] {
