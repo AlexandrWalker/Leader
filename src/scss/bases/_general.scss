@@ -113,7 +113,7 @@
 
 .fancybox__container.is-ready .fancybox__carousel {
   clip-path: inset(0 0 0 0);
-  transition: clip-path 2s cubic-bezier(0.7, 0, 0.4, 1) 0.1s;
+  transition: clip-path 2s cubic-bezier(0.7, 0, 0.4, 1) 0s;
 
   @include sm {
     transition: clip-path 1s cubic-bezier(0.7, 0, 0.4, 1) 0s;

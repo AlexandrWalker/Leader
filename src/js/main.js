@@ -1162,6 +1162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
     console.log(wrapper.offsetHeight)
     console.log(creepingBlock.offsetHeight)
+
     gsap.fromTo(creepingBlock, { bottom: -creepingBlock.offsetHeight }, {
       bottom: 0,
       ease: 'none',
@@ -1242,19 +1243,9 @@ document.addEventListener('DOMContentLoaded', () => {
         lenis.start();
       }
     },
-    afterLoad: function () {
-
-      $(".fancybox-skin").addClass('fadeInDown animated');
-
-    },
-    beforeClose: function () {
-
-      $(".fancybox-skin").addClass('fadeOutDown animated');
-
-    }
   });
 
-  window.addEventListener('resize', ScrollTrigger.refresh());
+  window.addEventListener('resize scroll', ScrollTrigger.refresh());
 
 });
 
