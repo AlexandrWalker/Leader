@@ -1,3 +1,37 @@
+// // ---- DOMContentLoaded ---- //
+// document.addEventListener("DOMContentLoaded", async () => {
+//   // ---- GSAP INIT ---- //
+//   gsap.registerPlugin(ScrollTrigger);
+
+//   ScrollTrigger.defaults({
+//     scroller: "#scrollable-container",
+//   });
+
+//   const lottiePlayers = document.querySelectorAll("lottie-player");
+//   const srcs = Array.from(lottiePlayers).map((player) =>
+//     player.getAttribute("src")
+//   );
+
+//   try {
+//     if (srcs.length > 0) {
+//       await preloadAnimations(srcs);
+//       manageScrollAnimations();
+//       ScrollTrigger.refresh();
+//     }
+
+//     const loadingOverlay = document.getElementById("loading-overlay");
+//     if (loadingOverlay) {
+//       loadingOverlay.classList.add("hidden");
+
+//       loadingOverlay.addEventListener("transitionend", () => {
+//         loadingOverlay.parentNode.removeChild(loadingOverlay);
+//       });
+//     }
+//   } catch (error) {
+//     console.error("Error preloading animations", error);
+//   }
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
 
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
@@ -188,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pagination: {
       el: ".swiper-pagination",
       dynamicBullets: true,
+      dynamicMainBullets: 4
     },
     breakpoints: {
       567: {
@@ -253,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
-    speed: 300,
+    speed: 600,
     grabCursor: true,
     effect: 'fade',
     fadeEffect: {
@@ -276,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
-    speed: 300,
+    speed: 600,
     grabCursor: false,
     effect: false,
     mousewheel: false,
@@ -306,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const objectsGalleryMini = new Swiper(objects__galleryMini, {
       slidesPerView: 3,
       spaceBetween: 10,
-      speed: 300,
+      speed: 600,
       grabCursor: false,
       mousewheel: false,
       watchSlidesProgress: true,
@@ -324,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const objectsGallery = new Swiper(objects__gallery, {
       slidesPerView: 1,
       spaceBetween: 10,
-      speed: 300,
+      speed: 600,
       grabCursor: true,
       mousewheel: {
         forceToAxis: true,
@@ -939,13 +974,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $(window).on('resize load', function () {
 
-    const creepingBlock = document.querySelector('[data-animation="creeping"]');
-    if (creepingBlock) {
-      const wrapper = document.querySelector('.wrapper');
-      creepingAnim(creepingBlock, wrapper)
-    }
-
     if (window.innerWidth > 768) {
+
+      const creepingBlock = document.querySelector('[data-animation="creeping"]');
+      if (creepingBlock) {
+        const wrapper = document.querySelector('.wrapper');
+        creepingAnim(creepingBlock, wrapper)
+      }
 
       if (!checkEditMode) {
         const revealItems = document.querySelectorAll('[data-animation="reveal"]');
@@ -1159,9 +1194,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function creepingAnim(creepingBlock, wrapper) {
     const trigger = document.querySelector(`.${creepingBlock.getAttribute('data-creeping-trigger')}`);
-    wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
-    console.log(wrapper.offsetHeight)
-    console.log(creepingBlock.offsetHeight)
+
+    $(window).on('resize load', function () {
+      wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
+      console.log(wrapper.offsetHeight)
+      console.log(creepingBlock.offsetHeight)
+    });
 
     gsap.fromTo(creepingBlock, { bottom: -creepingBlock.offsetHeight }, {
       bottom: 0,
@@ -1172,6 +1210,8 @@ document.addEventListener('DOMContentLoaded', () => {
         end: () => `${wrapper.offsetHeight - creepingBlock.offsetHeight / 2}`,
         scrub: true,
         pinSpacing: true,
+        invalidateOnRefresh: true,
+        markers: true,
       }
     });
   }

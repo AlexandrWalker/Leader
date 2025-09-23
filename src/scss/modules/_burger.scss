@@ -339,7 +339,8 @@
 
     @include mmd {
       flex-direction: column;
-      padding: 3rem 2rem 3rem;
+      // padding: 3rem 2rem 3rem;
+      padding: 7rem 2rem 3rem;
       max-width: 100%;
       gap: 2rem;
       background-color: var(--white);
