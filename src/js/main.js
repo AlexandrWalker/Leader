@@ -1232,10 +1232,17 @@ document.addEventListener('DOMContentLoaded', () => {
       '--f-html-bg': 'transparent'
     },
     Html: {
-      autoSize: true,
+      autoSize: false,
     },
+    on: {
+      'Carousel.ready': () => {
+        lenis.stop();
+      },
+      destroy: () => {
+        lenis.start();
+      }
+    }
   });
-
 
   window.addEventListener('resize', ScrollTrigger.refresh());
 
