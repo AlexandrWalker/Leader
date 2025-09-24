@@ -98,26 +98,10 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
   font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
   font-style: normal;
 }
 
@@ -146,6 +130,14 @@ a {
 }
 
 @font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
@@ -158,6 +150,14 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -1609,6 +1609,7 @@ body {
   -ms-flex-align: center;
   align-items: center;
   gap: 2rem;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -1646,7 +1647,7 @@ body {
   width: 100%;
 }
 
-.tabs__btn:not(:first-child)::before {
+.tabs__btn:not(:last-child)::after {
   content: "/";
   font-family: var(--second-family);
   font-weight: 400;
@@ -6202,13 +6203,13 @@ h6 span {
     font-size: 1.2rem;
   }
 
+  .tabs__btn:not(:last-child)::after {
+    font-size: 3rem;
+  }
+
   .tabs__btn:not(:first-child) {
     gap: 1rem;
     margin-left: 4rem;
-  }
-
-  .tabs__btn:not(:first-child)::before {
-    font-size: 3rem;
   }
 
   h1::before {
@@ -7779,12 +7780,16 @@ h6 span {
     --font-size: 1.2rem;
   }
 
+  .tabs__btn {
+    gap: 1rem;
+  }
+
   .tabs__btn h2::after {
     bottom: 0;
     height: 0.2rem;
   }
 
-  .tabs__btn:not(:first-child)::before {
+  .tabs__btn:not(:last-child)::after {
     font-size: 2rem;
   }
 

@@ -9,7 +9,12 @@
     align-items: center;
     gap: 2rem;
 
+    white-space: nowrap;
     cursor: pointer;
+
+    @include sm {
+      gap: 1rem;
+    }
 
     h2 {
       transition: all 0.3s ease;
@@ -55,14 +60,9 @@
       }
     }
 
-    &:not(:first-child) {
+    &:not(:last-child) {
 
-      @include md {
-        gap: 1rem;
-        margin-left: 4rem;
-      }
-
-      &::before {
+      &::after {
         content: "/";
         font-family: var(--second-family);
         font-weight: 400;
@@ -77,6 +77,14 @@
         @include sm {
           font-size: 2rem;
         }
+      }
+    }
+
+    &:not(:first-child) {
+
+      @include md {
+        gap: 1rem;
+        margin-left: 4rem;
       }
 
       h2 {
