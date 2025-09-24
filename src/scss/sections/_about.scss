@@ -214,17 +214,21 @@
   &__video {
     max-width: 41.5rem;
     width: 100%;
+    max-height: 80dvh;
     height: auto;
     aspect-ratio: 415/731;
     overflow: hidden;
     border: 0.3rem solid var(--white);
 
     position: absolute;
-    top: -21rem;
-    right: 0;
+    // top: -21rem;
+    left: calc(100% - 41.5rem);
+    margin-top: -21rem;
     z-index: 1;
 
-    transition: all 0.5s ease;
+    margin-left: auto;
+
+    transition: all 0.5s ease, margin-top 0s;
 
     &::before {
       content: "";
@@ -244,6 +248,9 @@
     @include md {
       position: relative;
       top: unset;
+      left: unset;
+      right: 0;
+      margin-top: 0;
 
       grid-column: 6 / 9;
     }
@@ -258,14 +265,42 @@
       padding: 1.2rem 0;
     }
 
+    html.with-fancybox & {
+
+      @include dosm {
+        max-width: 90dvw;
+        height: 80dvh;
+        position: fixed;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%) !important;
+        top: 10dvh;
+        right: 5dvw;
+        left: 0;
+        aspect-ratio: unset;
+        margin-top: 0;
+        transform: translate3d(0px, 0px, 0px) !important;
+        background: var(--black);
+
+        transition: all 0.5s ease, max-width 0.5s ease 0.5s, left 0s, transform 0s, margin-top 0s;
+
+        iframe {
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+      }
+    }
+
     iframe {
       display: block;
-      width: 100%;
+      width: auto;
       height: 100%;
       object-fit: cover;
       position: relative;
       z-index: 1;
       filter: grayscale(1);
+
+      transition: opacity 0.3s ease;
 
       @include sm {
         display: none;

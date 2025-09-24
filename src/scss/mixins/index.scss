@@ -42,6 +42,12 @@
   }
 }
 
+@mixin dosm () {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
 @mixin sm() {
   @media (max-width: 576px) {
     @content;
