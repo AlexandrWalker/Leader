@@ -1211,7 +1211,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scrub: true,
         pinSpacing: true,
         invalidateOnRefresh: true,
-        markers: true,
       }
     });
   }
