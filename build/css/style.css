@@ -98,14 +98,6 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
@@ -116,16 +108,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Montserrat;
+  font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -142,6 +134,14 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
   font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -228,7 +228,7 @@ a {
   height: 120% !important;
 }
 
-.f-html {
+html.video-show .f-html {
   max-width: 90dvw !important;
   max-height: 80dvh !important;
   width: 100% !important;
@@ -237,20 +237,20 @@ a {
   border: 0 !important;
 }
 
-.fancybox__container .fancybox__carousel {
+html.video-show .fancybox__container .fancybox__carousel {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
   opacity: 0;
   overflow: hidden !important;
 }
 
-.fancybox__container.is-ready .fancybox__carousel {
+html.video-show .fancybox__container.is-ready .fancybox__carousel {
   opacity: 1;
   -webkit-transition-delay: 0.8s;
   transition-delay: 0.8s;
 }
 
-.fancybox__slide.has-html {
+html.video-show .fancybox__slide.has-html {
   padding: 0;
 }
 
@@ -5969,7 +5969,7 @@ h6 span {
 }
 
 @media (min-width: 576px) {
-  html.with-fancybox .about__video {
+  html.video-show .about__video {
     max-width: 90dvw;
     height: 80dvh;
     position: fixed;
@@ -5987,7 +5987,7 @@ h6 span {
     transition: all 0.5s ease, max-width 0.5s ease 0.5s, left 0s, transform 0s, margin-top 0s, -webkit-transform 0s;
   }
 
-  html.with-fancybox .about__video iframe {
+  html.video-show .about__video iframe {
     opacity: 0;
     -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
@@ -7632,7 +7632,7 @@ h6 span {
 }
 
 @media (max-width: 576px) {
-  .f-html {
+  html.video-show .f-html {
     width: 100% !important;
     height: auto !important;
   }

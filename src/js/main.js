@@ -757,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const maxShift = totalWidth - containerWidth;
 
-    console.log(maxShift);
+    // console.log(maxShift);
 
     let currentIndex = 0;
     let isAnimating = false;
@@ -979,6 +979,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const creepingBlock = document.querySelector('[data-animation="creeping"]');
       if (creepingBlock) {
         const wrapper = document.querySelector('.wrapper');
+        wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
         creepingAnim(creepingBlock, wrapper)
       }
 
@@ -1194,13 +1195,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function creepingAnim(creepingBlock, wrapper) {
     const trigger = document.querySelector(`.${creepingBlock.getAttribute('data-creeping-trigger')}`);
-
-    $(window).on('resize load', function () {
-      wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
-      console.log(wrapper.offsetHeight)
-      console.log(creepingBlock.offsetHeight)
-    });
-
     gsap.fromTo(creepingBlock, { bottom: -creepingBlock.offsetHeight }, {
       bottom: 0,
       ease: 'none',
@@ -1247,6 +1241,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   counterFunc();
 
+
+
   function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
     ScrollTrigger.create({
       trigger: triggerElement,
@@ -1280,9 +1276,23 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       destroy: () => {
         lenis.start();
+
+        const html = document.documentElement;
+
+        if (html.classList.contains('video-show')) {
+          html.classList.remove('video-show');
+        }
       }
     },
   });
+
+  const videoBtn = document.getElementById('videoBtn');
+  const html = document.documentElement;
+
+  videoBtn.addEventListener('click', () => {
+    html.classList.add('video-show');
+  })
+
 
   window.addEventListener('resize scroll', ScrollTrigger.refresh());
 
