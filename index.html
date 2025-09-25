@@ -373,8 +373,8 @@
               </div>
             </div>
             <div id="videoBtn" class="about__video video--btn" data-animation="parallax-block"
-              data-src="https://kinescope.io/uR1cQDyZ72KGGHjPGzc3YA" data-type="iframe" data-fancybox
-              data-width="80%" data-height="90%">
+              data-src="https://kinescope.io/uR1cQDyZ72KGGHjPGzc3YA" data-type="iframe" data-fancybox data-width="80%"
+              data-height="90%">
               <iframe src="https://kinescope.io/embed/bkVAttSLQMzttd3z89BKNm"
                 allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
                 frameborder="0" allowfullscreen="" width="410" height="730"></iframe>
@@ -400,8 +400,8 @@
         </div>
       </section>
       <!-- История компании -->
-      <section id="history" class="history timeline-container">
-        <div class="container">
+      <section id="history" class="history timeline-placeholder">
+        <div class="container timeline-container">
           <div class="history__inner">
 
             <div class="history__head">
@@ -612,6 +612,15 @@
             </div>
 
           </div>
+        </div>
+        <div class="history__layer">
+          <picture>
+            <source media="(min-width: 835px)" srcset="./images/history/bg.png" type="image/png">
+            <source media="((max-width: 834px) and (min-width: 601px))" srcset="./images/history/bg-planshet.png"
+              type="image/png">
+            <source media="(max-width: 600px)" srcset="./images/history/bg-mob.png" type="image/png">
+            <img src="./images/history/bg.png" alt="">
+          </picture>
         </div>
       </section>
       <!-- Услуги -->
