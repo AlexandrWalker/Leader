@@ -1,37 +1,3 @@
-// // ---- DOMContentLoaded ---- //
-// document.addEventListener("DOMContentLoaded", async () => {
-//   // ---- GSAP INIT ---- //
-//   gsap.registerPlugin(ScrollTrigger);
-
-//   ScrollTrigger.defaults({
-//     scroller: "#scrollable-container",
-//   });
-
-//   const lottiePlayers = document.querySelectorAll("lottie-player");
-//   const srcs = Array.from(lottiePlayers).map((player) =>
-//     player.getAttribute("src")
-//   );
-
-//   try {
-//     if (srcs.length > 0) {
-//       await preloadAnimations(srcs);
-//       manageScrollAnimations();
-//       ScrollTrigger.refresh();
-//     }
-
-//     const loadingOverlay = document.getElementById("loading-overlay");
-//     if (loadingOverlay) {
-//       loadingOverlay.classList.add("hidden");
-
-//       loadingOverlay.addEventListener("transitionend", () => {
-//         loadingOverlay.parentNode.removeChild(loadingOverlay);
-//       });
-//     }
-//   } catch (error) {
-//     console.error("Error preloading animations", error);
-//   }
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
 
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
@@ -83,17 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const header = document.getElementById('header');
     const firstSection = document.querySelector('section');
-    let lastScrollTop = 1;
+    let lastScrollTop = 0;
     const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
 
     window.addEventListener('scroll', () => {
       if (scrollPosition() > lastScrollTop && scrollPosition() > firstSection.offsetHeight) {
         header.classList.add('out');
+        console.log('add')
       } else {
         header.classList.remove('out');
+        console.log('remove')
       }
 
-      lastScrollTop = scrollPosition();
+      lastScrollTop = scrollPosition() + 0.13;
     })
   }
 
@@ -212,12 +180,15 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => {
           if (window.innerWidth > 768) {
             const { activeIndex } = this;
-            const slideWidth = this.slides[activeIndex].clientWidth / 10 + 12;
+            // const slideWidth = this.slides[activeIndex].clientWidth / 10 + 12;
+            const slideWidth = this.slides[activeIndex].offsetWidth + 20;
             const work__items = document.querySelector('.work__items');
             const swiperWrapper = work__items.querySelector('.swiper-wrapper');
+
             if (this.realIndex > 2) {
-              work__items.style.transform = `translateX(${(slideWidth * (this.realIndex - 2))}rem)`;
+              work__items.style.transform = `translateX(${(slideWidth * (this.realIndex - 2))}px)`;
               swiperWrapper.classList.add('done');
+              console.log(slideWidth);
             } else {
               work__items.style.transform = `translateX(0rem)`;
               swiperWrapper.classList.remove('done');
@@ -227,12 +198,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.innerWidth > 768) {
           const { activeIndex } = this;
-          const slideWidth = this.slides[activeIndex].clientWidth / 10 + 13;
+          // const slideWidth = this.slides[activeIndex].clientWidth / 10 + 13;
+          const slideWidth = this.slides[activeIndex].offsetWidth + 20;
           const work__items = document.querySelector('.work__items');
           const swiperWrapper = work__items.querySelector('.swiper-wrapper');
+
           if (this.realIndex > 2) {
-            work__items.style.transform = `translateX(${(slideWidth * (this.realIndex - 2))}rem)`;
+            work__items.style.transform = `translateX(${(slideWidth * (this.realIndex - 2))}px)`;
             swiperWrapper.classList.add('done');
+            console.log(slideWidth);
           } else {
             work__items.style.transform = `translateX(0rem)`;
             swiperWrapper.classList.remove('done');
