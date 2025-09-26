@@ -59,6 +59,10 @@
     font-size: 2.4rem;
     color: var(--accent);
     transition-delay: 0.2s;
+
+    @include md {
+      transition-delay: 0s;
+    }
   }
 
   &:hover {
@@ -184,6 +188,40 @@
 
     &::after {
       display: none;
+    }
+  }
+
+  &--video {
+
+    &:hover {
+
+      @include dosm {
+
+        .icon-play {
+          background-color: var(--white);
+          color: var(--accent);
+        }
+      }
+
+      @include sm {
+        
+        .icon-play {
+          color: var(--white);
+        }
+      }
+    }
+
+    .icon-play {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background-color: var(--accent);
+
+      font-size: 0.8rem;
+      color: var(--white);
     }
   }
 }

@@ -624,6 +624,69 @@
 
         gap: 1rem;
       }
+
+      @include md {
+        transition-delay: 0s;
+      }
+
+      @include sm {
+        font-size: 1.4rem;
+      }
+
+      &:hover {
+
+        @include dosm {
+          svg {
+            fill: var(--white);
+          }
+        }
+      }
+
+      svg {
+        fill: var(--accent);
+        width: 3.2rem;
+        height: 3.2rem;
+        transition: all 0.3s ease;
+
+        @include md {
+          width: 2.4rem;
+          height: 2.4rem;
+        }
+      }
+    }
+
+    &-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      margin-top: 2rem;
+
+      @include md {
+        margin-top: 1rem;
+      }
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 130%;
+      color: var(--black);
+
+      &:hover {
+        color: var(--accent);
+
+        span {
+          text-decoration: none;
+        }
+      }
+
+      span {
+        text-decoration: underline;
+      }
     }
   }
 

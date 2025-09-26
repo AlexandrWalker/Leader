@@ -202,11 +202,13 @@
     }
 
     @include sm {
+      /* icon-chevron \e915 */
       .icon-arrow-slider-prev:before {
         content: "\e915";
         transform: rotate(90deg);
       }
 
+      /* icon-chevron \e915 */
       .icon-arrow-slider-next:before {
         content: "\e915";
         transform: rotate(-90deg);
