@@ -98,6 +98,14 @@ a {
 }
 
 @font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
@@ -110,14 +118,6 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -148,16 +148,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
-  font-weight: 500;
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -2405,7 +2405,7 @@ h6 span {
 }
 
 .burger-menu .header__drop-body {
-  background: rgba(22, 22, 22, 0.84);
+  background: var(--black-80);
   backdrop-filter: blur(6.9px);
   color: var(--white);
 }
@@ -2454,6 +2454,8 @@ h6 span {
   position: absolute;
   right: -26.2rem;
   bottom: -2.3rem;
+  z-index: 5;
+  pointer-events: none;
   display: block;
   width: 89.5rem;
   height: 67.8rem;
@@ -2482,7 +2484,7 @@ h6 span {
   max-width: unset;
   margin: 0;
   padding: 0;
-  background: transparent;
+  background: var(--white);
   clip-path: none;
 }
 
@@ -2562,7 +2564,7 @@ h6 span {
 
 .footer .header__drop-body {
   background: rgba(22, 22, 22, 0.84);
-  backdrop-filter: blur(6.9px);
+  backdrop-filter: blur(0.7rem);
   color: var(--white);
 }
 
@@ -7835,6 +7837,7 @@ h6 span {
   html.video-show .f-html {
     width: 100% !important;
     height: auto !important;
+    aspect-ratio: 730/410;
   }
 
   .swiper {

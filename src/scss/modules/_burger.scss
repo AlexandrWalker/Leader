@@ -795,7 +795,7 @@
     }
 
     &-body {
-      background: rgba(22, 22, 22, 0.84);
+      background: var(--black-80);
       backdrop-filter: blur(6.9px);
       color: var(--white);
 

@@ -23,6 +23,52 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.ticker.lagSmoothing(0);
 
   /**
+   * Инициализация Fancybox
+   */
+  Fancybox.bind('[data-fancybox]', {
+    mainStyle: {
+      '--f-html-bg': 'transparent'
+    },
+    Html: {
+      autoSize: false,
+    },
+    on: {
+      'Carousel.ready': () => {
+        lenis.stop();
+      },
+      destroy: () => {
+        lenis.start();
+
+        const html = document.documentElement;
+
+        if (html.classList.contains('video-show')) {
+          html.classList.remove('video-show');
+        }
+
+        if (html.classList.contains('burger-video-show')) {
+          html.classList.remove('burger-video-show');
+        }
+      }
+    },
+  });
+
+  const videoBtn = document.getElementById('videoBtn');
+  const html = document.documentElement;
+
+  if (videoBtn) {
+    videoBtn.addEventListener('click', () => {
+      html.classList.add('video-show');
+    })
+  }
+
+  const burgerVideoBtn = document.getElementById('burgerVideoBtn');
+  if (burgerVideoBtn) {
+    burgerVideoBtn.addEventListener('click', () => {
+      html.classList.add('burger-video-show');
+    })
+  }
+
+  /**
    * Расчёт ширины скроллбара старницы и добавление отступа в body при октрытии попапов
    */
   function getScrollbarWidth() {
@@ -46,25 +92,20 @@ document.addEventListener('DOMContentLoaded', () => {
    * Управляет поведением шапки.
    */
   function headerFunc() {
-
     const header = document.getElementById('header');
     const firstSection = document.querySelector('section');
-    let lastScrollTop = 0;
+    let lastScrollTop = 1;
     const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
 
     window.addEventListener('scroll', () => {
       if (scrollPosition() > lastScrollTop && scrollPosition() > firstSection.offsetHeight) {
         header.classList.add('out');
-        console.log('add')
       } else {
         header.classList.remove('out');
-        console.log('remove')
       }
-
-      lastScrollTop = scrollPosition() + 0.13;
+      lastScrollTop = scrollPosition();
     })
   }
-
   headerFunc();
 
   /**
@@ -1294,73 +1335,6 @@ document.addEventListener('DOMContentLoaded', () => {
       onEnter: () => timeline.play()
     })
   }
-
-
-  /**
-   * Инициализация Fancybox
-   */
-  Fancybox.bind('[data-fancybox]', {
-    mainStyle: {
-      '--f-html-bg': 'transparent'
-    },
-    Html: {
-      autoSize: false,
-    },
-    on: {
-      'Carousel.ready': () => {
-        lenis.stop();
-      },
-      destroy: () => {
-        lenis.start();
-
-        const html = document.documentElement;
-
-        if (html.classList.contains('video-show')) {
-          html.classList.remove('video-show');
-        }
-
-        if (html.classList.contains('burgerVideoBtn')) {
-          html.classList.remove('burgerVideoBtn');
-        }
-      }
-    },
-  });
-
-  const videoBtn = document.getElementById('videoBtn');
-  const html = document.documentElement;
-
-  videoBtn.addEventListener('click', () => {
-    html.classList.add('video-show');
-  })
-
-  const burgerVideoBtn = document.getElementById('burgerVideoBtn');
-
-  burgerVideoBtn.addEventListener('click', () => {
-    html.classList.add('burger-video-show');
-  })
-
-
-
-  /* Marquiz script start */
-  // (function (w, d, s, o) {
-  //   var j = d.createElement(s); j.async = true; j.src = '//script.marquiz.ru/v2.js'; j.onload = function () {
-  //     if (document.readyState !== 'loading') Marquiz.init(o);
-  //     else document.addEventListener("DOMContentLoaded", function () {
-  //       Marquiz.init(o);
-  //     });
-  //   };
-  //   d.head.insertBefore(j, d.head.firstElementChild);
-  // })(window, document, 'script', {
-  //   host: '//quiz.marquiz.ru',
-  //   region: 'ru',
-  //   id: '68c8fc6ca253fb0019fdf4c0',
-  //   autoOpen: 10,
-  //   autoOpenFreq: 'once',
-  //   openOnExit: false,
-  //   disableOnMobile: false
-  // }
-  // );
-  /* Marquiz script end */
 
 
 
