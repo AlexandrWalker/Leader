@@ -129,6 +129,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       burgerBtn.classList.contains('burger-btn--opened') ? lenis.stop() : lenis.start();
 
+      if (document.documentElement.classList.contains('burger-menu--open')) {
+        document.body.style.paddingRight = 0;
+        document.documentElement.classList.remove('burger-menu--open');
+      } else {
+        const width = getScrollbarWidth();
+        document.body.style.paddingRight = width + 'px';
+        document.documentElement.classList.add('burger-menu--open');
+      }
     };
 
     /**
@@ -139,6 +147,11 @@ document.addEventListener('DOMContentLoaded', () => {
       burgerBtn.classList.remove('burger-btn--opened');
       burgerMenu.classList.remove('burger-menu--opened');
       lenis.start();
+
+      if (document.documentElement.classList.contains('burger-menu--open')) {
+        document.body.style.paddingRight = 0;
+        document.documentElement.classList.remove('burger-menu--open');
+      }
     };
 
     // Открытие/закрытие меню по клику на бургер
@@ -572,6 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const width = getScrollbarWidth();
             document.body.style.paddingRight = width + 'px';
+            document.documentElement.classList.add('popup--open');
 
             document.body.classList.add('no-scroll');
             lenis.stop();
@@ -583,7 +597,10 @@ document.addEventListener('DOMContentLoaded', () => {
             closeButton.addEventListener('click', e => {
               document.getElementById(popupId).classList.remove("open");
 
-              document.body.style.paddingRight = 0;
+              if (document.documentElement.classList.contains('popup--open')) {
+                document.body.style.paddingRight = 0;
+                document.documentElement.classList.remove('popup--open');
+              }
 
               document.body.classList.remove('no-scroll');
               lenis.start();
@@ -593,7 +610,10 @@ document.addEventListener('DOMContentLoaded', () => {
               if (e.key === "Escape") {
                 document.getElementById(popupId).classList.remove("open")
 
-                document.body.style.paddingRight = 0;
+                if (document.documentElement.classList.contains('popup--open')) {
+                  document.body.style.paddingRight = 0;
+                  document.documentElement.classList.remove('popup--open');
+                }
 
                 document.body.classList.remove('no-scroll');
                 lenis.start();
@@ -608,7 +628,10 @@ document.addEventListener('DOMContentLoaded', () => {
               if (event._isClickWithInPopup) return;
               event.currentTarget.classList.remove('open');
 
-              document.body.style.paddingRight = 0;
+              if (document.documentElement.classList.contains('popup--open')) {
+                document.body.style.paddingRight = 0;
+                document.documentElement.classList.remove('popup--open');
+              }
 
               document.body.classList.remove('no-scroll');
               lenis.start();
