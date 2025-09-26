@@ -1223,10 +1223,10 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', () => {
         if ((window.innerWidth > 768)) {
           presentation.setAttribute('href', desk)
-          presentation.setAttribute('download', desk)
+          presentation.setAttribute('download', 'Лидер_desk.pdf')
         } else {
           presentation.setAttribute('href', mob)
-          presentation.setAttribute('download', mob)
+          presentation.setAttribute('download', 'Лидер_mob.pdf')
         }
       });
     });
@@ -1237,10 +1237,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if ((window.innerWidth > 768)) {
         presentation.setAttribute('href', desk)
-        presentation.setAttribute('download', desk)
+        presentation.setAttribute('download', 'Лидер_desk.pdf')
       } else {
         presentation.setAttribute('href', mob)
-        presentation.setAttribute('download', mob)
+        presentation.setAttribute('download', 'Лидер_mob.pdf')
       }
     });
   }
@@ -1318,6 +1318,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (html.classList.contains('video-show')) {
           html.classList.remove('video-show');
         }
+
+        if (html.classList.contains('burgerVideoBtn')) {
+          html.classList.remove('burgerVideoBtn');
+        }
       }
     },
   });
@@ -1327,6 +1331,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   videoBtn.addEventListener('click', () => {
     html.classList.add('video-show');
+  })
+
+  const burgerVideoBtn = document.getElementById('burgerVideoBtn');
+
+  burgerVideoBtn.addEventListener('click', () => {
+    html.classList.add('burger-video-show');
   })
 
 

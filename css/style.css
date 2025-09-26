@@ -98,14 +98,6 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
@@ -118,6 +110,14 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -228,6 +228,7 @@ a {
   height: 120% !important;
 }
 
+html.burger-video-show .f-html,
 html.video-show .f-html {
   max-width: 90dvw !important;
   max-height: 80dvh !important;
@@ -250,6 +251,7 @@ html.video-show .fancybox__container.is-ready .fancybox__carousel {
   transition-delay: 0.8s;
 }
 
+html.burger-video-show .fancybox__slide.has-html,
 html.video-show .fancybox__slide.has-html {
   padding: 0;
 }
@@ -606,8 +608,7 @@ html.video-show .fancybox__slide.has-html {
 /* Links */
 
 a,
-a:link,
-a:visited {
+a:link {
   text-decoration: none;
 }
 
@@ -906,6 +907,24 @@ body {
 
 .btn--black::after {
   display: none;
+}
+
+.btn--video .icon-play {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background-color: var(--accent);
+  font-size: 0.8rem;
+  color: var(--white);
 }
 
 .dropdown {
@@ -2282,6 +2301,52 @@ h6 span {
 
 .burger-menu__foot-btn:hover {
   --button-color: var(--white);
+}
+
+.burger-menu__foot-btn svg {
+  fill: var(--accent);
+  width: 3.2rem;
+  height: 3.2rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.burger-menu__foot-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+
+.burger-menu__foot-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 130%;
+  color: var(--black);
+}
+
+.burger-menu__foot-link:hover {
+  color: var(--accent);
+}
+
+.burger-menu__foot-link:hover span {
+  text-decoration: none;
+}
+
+.burger-menu__foot-link span {
+  text-decoration: underline;
 }
 
 .burger-menu .header__drop {
@@ -6045,6 +6110,15 @@ h6 span {
 }
 
 @media (min-width: 576px) {
+  .btn--video:hover .icon-play {
+    background-color: var(--white);
+    color: var(--accent);
+  }
+
+  .burger-menu__foot-btn:hover svg {
+    fill: var(--white);
+  }
+
   html.video-show .about__video {
     max-width: 90dvw;
     height: 80dvh;
@@ -6202,6 +6276,11 @@ h6 span {
 
   .btn::after {
     display: none;
+  }
+
+  .btn i {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
   }
 
   .btn:hover {
@@ -6483,6 +6562,20 @@ h6 span {
 
   .burger-menu__foot-text {
     font-size: 1.5rem;
+  }
+
+  .burger-menu__foot-btn {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+  }
+
+  .burger-menu__foot-btn svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .burger-menu__foot-links {
+    margin-top: 1rem;
   }
 
   .burger-menu .header__drop {
@@ -7738,6 +7831,7 @@ h6 span {
 }
 
 @media (max-width: 576px) {
+  html.burger-video-show .f-html,
   html.video-show .f-html {
     width: 100% !important;
     height: auto !important;
@@ -7791,6 +7885,11 @@ h6 span {
     top: calc(100% + 56.657223796vw + 1rem);
   }
 
+  .objects__slider {
+    /* icon-chevron \e915 */
+    /* icon-chevron \e915 */
+  }
+
   .objects__slider .icon-arrow-slider-prev:before {
     content: "\e915";
     -webkit-transform: rotate(90deg);
@@ -7837,6 +7936,10 @@ h6 span {
   }
 
   .btn--accent:hover i {
+    color: var(--white);
+  }
+
+  .btn--video:hover .icon-play {
     color: var(--white);
   }
 
@@ -7946,6 +8049,10 @@ h6 span {
   .burger-menu__inner {
     -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
+  }
+
+  .burger-menu__foot-btn {
+    font-size: 1.4rem;
   }
 
   .burger-menu .header__drop-body {
