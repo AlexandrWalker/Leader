@@ -207,6 +207,39 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 300,
       },
     },
+    on: {
+      slideChange: function () {
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 768) {
+            const { activeIndex } = this;
+            const slideWidth = this.slides[activeIndex].clientWidth / 10 + 12;
+            const work__items = document.querySelector('.work__items');
+            const swiperWrapper = work__items.querySelector('.swiper-wrapper');
+            if (this.realIndex > 2) {
+              work__items.style.transform = `translateX(${(slideWidth * (this.realIndex - 2))}rem)`;
+              swiperWrapper.classList.add('done');
+            } else {
+              work__items.style.transform = `translateX(0rem)`;
+              swiperWrapper.classList.remove('done');
+            }
+          }
+        });
+
+        if (window.innerWidth > 768) {
+          const { activeIndex } = this;
+          const slideWidth = this.slides[activeIndex].clientWidth / 10 + 13;
+          const work__items = document.querySelector('.work__items');
+          const swiperWrapper = work__items.querySelector('.swiper-wrapper');
+          if (this.realIndex > 2) {
+            work__items.style.transform = `translateX(${(slideWidth * (this.realIndex - 2))}rem)`;
+            swiperWrapper.classList.add('done');
+          } else {
+            work__items.style.transform = `translateX(0rem)`;
+            swiperWrapper.classList.remove('done');
+          }
+        }
+      }
+    }
   });
 
   const customersSlider = new Swiper(".customers__slider", {
@@ -225,7 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
     pagination: {
       el: ".swiper-pagination",
       dynamicBullets: true,
-      dynamicMainBullets: 4
+      dynamicMainBullets: 4,
+      clickable: true
     },
     breakpoints: {
       567: {
@@ -234,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 300,
         pagination: {
           el: ".swiper-pagination",
+          clickable: true
         },
       },
       769: {
@@ -267,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pagination: {
       el: ".swiper-pagination",
       dynamicBullets: true,
+      clickable: true
     },
     breakpoints: {
       567: {
@@ -275,6 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 300,
         pagination: {
           el: ".swiper-pagination",
+          clickable: true
         },
       },
       769: {
@@ -372,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       pagination: {
         el: ".swiper-pagination",
-        dynamicBullets: true,
+        // dynamicBullets: true,
       },
       breakpoints: {
         568: {
@@ -738,230 +775,232 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Таймлапс
    */
-  const timeline = document.querySelector('.timeline');
-  if (timeline) {
+  const timelinePlaceholders = document.querySelectorAll('.timeline-placeholder');
+  if (timelinePlaceholders.length > 0) {
 
-    const timelinePlaceholder = document.querySelector('.timeline-placeholder');
-    const timelineContainer = document.querySelector('.timeline-container');
-    const timelineWrapper = document.querySelector('.timeline-wrapper');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const btnPrev = document.querySelector('.timeline-button-prev');
-    const btnNext = document.querySelector('.timeline-button-next');
+    timelinePlaceholders.forEach(timelinePlaceholder => {
 
-    let itemWidth = 0;
-    let containerWidth = 0;
-    let totalWidth = 0;
-    let maxScroll = 0;
-    let placeholderHeight = 0;
-    let containerHeight = 0;
-    let scrollDistance = 0;
+      const timelineContainer = timelinePlaceholder.querySelector('.timeline-container');
+      const timelineWrapper = timelinePlaceholder.querySelector('.timeline-wrapper');
+      const timelineItems = timelinePlaceholder.querySelectorAll('.timeline-item');
+      const btnPrev = timelinePlaceholder.querySelector('.timeline-button-prev');
+      const btnNext = timelinePlaceholder.querySelector('.timeline-button-next');
 
-    let timelineProgress = 0;
-    let currentIndex = 0;
-    let isAnimating = false;
-    let startX = 0;
-    let startY = 0;
-    let currentX = 0;
-    let isDragging = false;
-    let startScroll = 0;
-    let xSwipe = false;
+      let itemWidth = 0;
+      let containerWidth = 0;
+      let totalWidth = 0;
+      let maxScroll = 0;
+      let placeholderHeight = 0;
+      let containerHeight = 0;
+      let scrollDistance = 0;
 
-    function calculatePlaceholderHeight() {
-      containerHeight = timelineContainer.offsetHeight;
+      let timelineProgress = 0;
+      let currentIndex = 0;
+      let isAnimating = false;
+      let startX = 0;
+      let startY = 0;
+      let currentX = 0;
+      let isDragging = false;
+      let startScroll = 0;
+      let xSwipe = false;
 
-      itemWidth = timelineItems[0].offsetWidth;
-      containerWidth = timelineContainer.offsetWidth;
-      totalWidth = itemWidth * timelineItems.length;
-      maxScroll = Math.max(0, totalWidth - containerWidth);
+      function calculatePlaceholderHeight() {
+        containerHeight = timelineContainer.offsetHeight;
 
-      const horizontalScrollSpace = (totalWidth / containerWidth) * containerHeight;
-      placeholderHeight = containerHeight + horizontalScrollSpace;
-      scrollDistance = placeholderHeight - containerHeight;
+        itemWidth = timelineItems[0].clientWidth;
+        containerWidth = timelineContainer.offsetWidth;
+        totalWidth = itemWidth * timelineItems.length;
+        maxScroll = Math.max(0, totalWidth - containerWidth);
 
-      timelinePlaceholder.style.height = `${placeholderHeight}px`;
-    }
+        const horizontalScrollSpace = (totalWidth / containerWidth) * containerHeight;
+        placeholderHeight = containerHeight + horizontalScrollSpace;
+        scrollDistance = placeholderHeight - containerHeight;
 
-    function updateButtons() {
-      btnPrev.disabled = currentIndex === 0;
-      btnNext.disabled = currentIndex === timelineItems.length - 1;
-    }
+        timelinePlaceholder.style.height = `${placeholderHeight}px`;
+      }
 
-    function goToIndex(index) {
-      if (isAnimating) return;
+      function updateButtons() {
+        btnPrev.disabled = currentIndex === 0;
+        btnNext.disabled = currentIndex === timelineItems.length - 1;
+      }
 
-      index = Math.max(0, Math.min(index, timelineItems.length - 1));
-      if (index === currentIndex) return;
+      function goToIndex(index) {
+        if (isAnimating) return;
 
-      isAnimating = true;
+        index = Math.max(0, Math.min(index, timelineItems.length - 1));
+        if (index === currentIndex) return;
 
-      const targetProgress = index / (timelineItems.length - 1);
-      const containerTop = timelinePlaceholder.offsetTop;
-      const targetScroll = containerTop + (targetProgress * scrollDistance);
+        isAnimating = true;
 
-      lenis.scrollTo(targetScroll, {
-        duration: 0.7,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        onComplete: () => {
-          isAnimating = false;
+        const targetProgress = index / (timelineItems.length - 1);
+        const containerTop = timelinePlaceholder.offsetTop;
+        const targetScroll = containerTop + (targetProgress * scrollDistance);
+
+        lenis.scrollTo(targetScroll, {
+          duration: 0.7,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          onComplete: () => {
+            isAnimating = false;
+          }
+        });
+      }
+
+      function updateTimeline(scrollY) {
+        const containerTop = timelinePlaceholder.offsetTop;
+
+        let scrollProgress = (scrollY - containerTop) / scrollDistance;
+        scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+
+        if (scrollY >= containerTop && scrollY <= containerTop + scrollDistance) {
+          timelineProgress = scrollProgress;
+
+          const translateX = -timelineProgress * maxScroll;
+          timelineWrapper.style.transform = `translateX(${translateX}px)`;
+
+          updateActiveItem(timelineProgress);
+
+        } else {
+          if (scrollY < containerTop) {
+            timelineProgress = 0;
+            timelineWrapper.style.transform = 'translateX(0px)';
+            updateActiveItem(0);
+          }
+
+          else if (scrollY > containerTop + scrollDistance) {
+            timelineProgress = 1;
+            timelineWrapper.style.transform = `translateX(${-maxScroll}px)`;
+            updateActiveItem(1);
+          }
+        }
+      }
+
+      function updateActiveItem(progress) {
+        const newIndex = Math.min(
+          timelineItems.length - 1,
+          Math.floor(progress * timelineItems.length)
+        );
+
+        if (newIndex !== currentIndex) {
+          currentIndex = newIndex;
+
+          timelineItems.forEach((item, index) => {
+            item.classList.toggle('timeline-active', index === currentIndex);
+          });
+
+          // updateButtons();
+        }
+      }
+
+      btnPrev.addEventListener('click', () => {
+        goToIndex(currentIndex - 1);
+      });
+
+      btnNext.addEventListener('click', () => {
+        goToIndex(currentIndex + 1);
+      });
+
+      function handleTouchStart(e) {
+        if (isAnimating) return;
+
+        startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+        startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+        currentX = parseInt(gsap.getProperty(timelineWrapper, 'x') || 0, 10);
+        startScroll = lenis.scroll;
+        isDragging = true;
+        xSwipe = false;
+        timelineWrapper.classList.add('grabbing');
+      }
+
+      function handleTouchMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+
+        const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+        const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+
+        if (!xSwipe) {
+          const diffX = Math.abs(x - startX);
+          const diffY = Math.abs(y - startY);
+
+          if (diffY > diffX && diffY > 10) {
+            isDragging = false;
+            timelineWrapper.classList.remove('grabbing');
+            return;
+          }
+
+          if (diffX > 10) {
+            xSwipe = true;
+            e.preventDefault();
+          }
+        }
+
+        if (xSwipe) {
+          const diff = x - startX;
+
+          let newX = currentX + diff;
+
+          newX = Math.min(Math.max(newX, -maxScroll), 0);
+
+          timelineWrapper.style.transform = `translateX(${newX}px)`;
+
+          lenis.scrollTo(startScroll, { immediate: true });
+        }
+      }
+
+      function handleTouchEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        timelineWrapper.classList.remove('grabbing');
+
+        const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
+        const diff = x - startX;
+        const velocity = diff / 100;
+
+        if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
+          if (diff > 0) {
+            goToIndex(currentIndex - 1);
+          } else {
+            goToIndex(currentIndex + 1);
+          }
+        } else {
+          goToIndex(currentIndex);
+        }
+      }
+
+      timelineWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
+      timelineWrapper.addEventListener('mousedown', handleTouchStart);
+
+      timelineWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
+      timelineWrapper.addEventListener('mousemove', handleTouchMove);
+
+      timelineWrapper.addEventListener('touchend', handleTouchEnd);
+      timelineWrapper.addEventListener('mouseup', handleTouchEnd);
+      timelineWrapper.addEventListener('mouseleave', handleTouchEnd);
+
+      lenis.on('scroll', ({ scroll }) => {
+        if (!isDragging) { // Не обновляем во время свайпа
+          updateTimeline(scroll);
         }
       });
-    }
 
-    function updateTimeline(scrollY) {
-      const containerTop = timelinePlaceholder.offsetTop;
-
-      let scrollProgress = (scrollY - containerTop) / scrollDistance;
-      scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-
-      if (scrollY >= containerTop && scrollY <= containerTop + scrollDistance) {
-        timelineProgress = scrollProgress;
-
-        const translateX = -timelineProgress * maxScroll;
-        timelineWrapper.style.transform = `translateX(${translateX}px)`;
-
-        updateActiveItem(timelineProgress);
-
-      } else {
-        if (scrollY < containerTop) {
-          timelineProgress = 0;
-          timelineWrapper.style.transform = 'translateX(0px)';
-          updateActiveItem(0);
-        }
-
-        else if (scrollY > containerTop + scrollDistance) {
-          timelineProgress = 1;
-          timelineWrapper.style.transform = `translateX(${-maxScroll}px)`;
-          updateActiveItem(1);
-        }
-      }
-    }
-
-    function updateActiveItem(progress) {
-      const newIndex = Math.min(
-        timelineItems.length - 1,
-        Math.floor(progress * timelineItems.length)
-      );
-
-      if (newIndex !== currentIndex) {
-        currentIndex = newIndex;
-
-        timelineItems.forEach((item, index) => {
-          item.classList.toggle('timeline-active', index === currentIndex);
-        });
-
+      window.addEventListener('resize', () => {
+        calculatePlaceholderHeight();
+        updateTimeline(lenis.scroll);
         // updateButtons();
-      }
-    }
+      });
 
-    btnPrev.addEventListener('click', () => {
-      goToIndex(currentIndex - 1);
-    });
-
-    btnNext.addEventListener('click', () => {
-      goToIndex(currentIndex + 1);
-    });
-
-    function handleTouchStart(e) {
-      if (isAnimating) return;
-
-      startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-      startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-      currentX = parseInt(gsap.getProperty(timelineWrapper, 'x') || 0, 10);
-      startScroll = lenis.scroll;
-      isDragging = true;
-      xSwipe = false;
-      timelineWrapper.classList.add('grabbing');
-    }
-
-    function handleTouchMove(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-
-      const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-      const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-
-      if (!xSwipe) {
-        const diffX = Math.abs(x - startX);
-        const diffY = Math.abs(y - startY);
-
-        if (diffY > diffX && diffY > 10) {
-          isDragging = false;
-          timelineWrapper.classList.remove('grabbing');
-          return;
-        }
-
-        if (diffX > 10) {
-          xSwipe = true;
-          e.preventDefault();
-        }
-      }
-
-      if (xSwipe) {
-        const diff = x - startX;
-
-        let newX = currentX + diff;
-
-        newX = Math.min(Math.max(newX, -maxScroll), 0);
-
-        timelineWrapper.style.transform = `translateX(${newX}px)`;
-
-        lenis.scrollTo(startScroll, { immediate: true });
-      }
-    }
-
-    function handleTouchEnd(e) {
-      if (!isDragging) return;
-      isDragging = false;
-      timelineWrapper.classList.remove('grabbing');
-
-      const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
-      const diff = x - startX;
-      const velocity = diff / 100;
-
-      if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
-        if (diff > 0) {
-          goToIndex(currentIndex - 1);
-        } else {
-          goToIndex(currentIndex + 1);
-        }
-      } else {
-        goToIndex(currentIndex);
-      }
-    }
-
-    timelineWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
-    timelineWrapper.addEventListener('mousedown', handleTouchStart);
-
-    timelineWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
-    timelineWrapper.addEventListener('mousemove', handleTouchMove);
-
-    timelineWrapper.addEventListener('touchend', handleTouchEnd);
-    timelineWrapper.addEventListener('mouseup', handleTouchEnd);
-    timelineWrapper.addEventListener('mouseleave', handleTouchEnd);
-
-    lenis.on('scroll', ({ scroll }) => {
-      if (!isDragging) { // Не обновляем во время свайпа
-        updateTimeline(scroll);
-      }
-    });
-
-    window.addEventListener('resize', () => {
       calculatePlaceholderHeight();
-      updateTimeline(lenis.scroll);
       // updateButtons();
-    });
 
-    calculatePlaceholderHeight();
-    // updateButtons();
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
 
-    function raf(time) {
-      lenis.raf(time);
       requestAnimationFrame(raf);
-    }
 
-    requestAnimationFrame(raf);
-
-    updateActiveItem(0);
+      updateActiveItem(0);
+    });
   }
 
   $(window).on('resize load', function () {
@@ -1201,6 +1240,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const btnPres = document.querySelectorAll('.btn--pres');
+  if (btnPres.length > 0) {
+    btnPres.forEach(presentation => {
+      const desk = presentation.dataset.desk;
+      const mob = presentation.dataset.mob;
+
+      window.addEventListener('resize', () => {
+        if ((window.innerWidth > 768)) {
+          presentation.setAttribute('href', desk)
+          presentation.setAttribute('download', desk)
+        } else {
+          presentation.setAttribute('href', mob)
+          presentation.setAttribute('download', mob)
+        }
+      });
+    });
+
+    btnPres.forEach(presentation => {
+      const desk = presentation.dataset.desk;
+      const mob = presentation.dataset.mob;
+
+      if ((window.innerWidth > 768)) {
+        presentation.setAttribute('href', desk)
+        presentation.setAttribute('download', desk)
+      } else {
+        presentation.setAttribute('href', mob)
+        presentation.setAttribute('download', mob)
+      }
+    });
+  }
+
   /**
    * Анимация чисел
    */
@@ -1284,6 +1354,30 @@ document.addEventListener('DOMContentLoaded', () => {
   videoBtn.addEventListener('click', () => {
     html.classList.add('video-show');
   })
+
+
+
+  /* Marquiz script start */
+  // (function (w, d, s, o) {
+  //   var j = d.createElement(s); j.async = true; j.src = '//script.marquiz.ru/v2.js'; j.onload = function () {
+  //     if (document.readyState !== 'loading') Marquiz.init(o);
+  //     else document.addEventListener("DOMContentLoaded", function () {
+  //       Marquiz.init(o);
+  //     });
+  //   };
+  //   d.head.insertBefore(j, d.head.firstElementChild);
+  // })(window, document, 'script', {
+  //   host: '//quiz.marquiz.ru',
+  //   region: 'ru',
+  //   id: '68c8fc6ca253fb0019fdf4c0',
+  //   autoOpen: 10,
+  //   autoOpenFreq: 'once',
+  //   openOnExit: false,
+  //   disableOnMobile: false
+  // }
+  // );
+  /* Marquiz script end */
+
 
 
   window.addEventListener('resize scroll', ScrollTrigger.refresh());

@@ -36,6 +36,12 @@
   }
 }
 
+@mixin xxxmd() {
+  @media (max-width: 630px) {
+    @content;
+  }
+}
+
 @mixin mmd() {
   @media (max-width: 600px) {
     @content;

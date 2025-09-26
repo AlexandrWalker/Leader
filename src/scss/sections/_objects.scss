@@ -472,4 +472,12 @@
       }
     }
   }
+
+  .swiper-pagination {
+
+    @include sm {
+      top: unset;
+      bottom: 2rem !important;
+    }
+  }
 }

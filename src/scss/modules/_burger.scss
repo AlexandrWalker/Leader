@@ -577,17 +577,28 @@
       span {
         white-space: nowrap;
       }
+
+      &--link {
+
+        a {
+          font-weight: inherit;
+          font-size: inherit;
+          line-height: inherit;
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            color: var(--accent);
+          }
+        }
+      }
     }
 
     &-btns {
 
       @include mmd {
-        flex-direction: row;
-        width: 100%;
-      }
-
-      @include eesm {
         flex-direction: column;
+        width: 100%;
       }
     }
 
@@ -597,17 +608,21 @@
 
       justify-content: flex-start;
       width: 100%;
+      overflow: hidden;
 
       &:hover {
         --button-color: var(--white);
+      }
+
+      @include xxmd {
+        text-align: left;
+        white-space: unset;
       }
 
       @include mmd {
         --padding: 1rem;
 
         gap: 1rem;
-        text-align: left;
-        white-space: unset;
       }
     }
   }
@@ -704,6 +719,10 @@
           font-size: 1.6rem;
         }
 
+        @include xxxmd {
+          font-size: 1.3rem;
+        }
+
         @include mmd {
           // font-size: 2.2rem;
           // font-size: calc(100vw / 19);
@@ -713,7 +732,9 @@
     }
 
     &-body {
-      background-color: var(--white);
+      background: rgba(22, 22, 22, 0.84);
+      backdrop-filter: blur(6.9px);
+      color: var(--white);
 
       @include md {
         --padding-x: 1.5rem;
@@ -721,10 +742,6 @@
 
       @include sm {
         --padding-x: 1.1rem;
-      }
-
-      @include mmd {
-        background-color: var(--page-bg);
       }
 
       li {
@@ -745,6 +762,10 @@
 
         @include md {
           font-size: 1.3rem;
+        }
+
+        &::before {
+          background-color: var(--white);
         }
       }
     }

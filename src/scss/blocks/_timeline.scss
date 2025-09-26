@@ -1,14 +1,16 @@
 @use './../mixins' as *;
 
 .timeline {
-  width: 100vw;
-  padding: 0 var(--container-padding);
-  margin-left: calc(var(--container-padding) * -1);
+  width: 100%;
+  // width: 100vw;
+  // padding: 0 var(--container-padding);
+  // margin-left: calc(var(--container-padding) * -1);
 
   &-placeholder {
     position: relative;
     height: 0;
     overflow: visible;
+    overflow: clip;
   }
 
   &-container {
@@ -19,7 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    
     width: 100%;
     height: 100vh;
 
@@ -43,7 +45,7 @@
   }
 
   &-item {
-    flex: 0 0 var(--history-item-width);
+    flex: 0 0 auto;
     flex-shrink: 0;
 
     &.timeline-active {}

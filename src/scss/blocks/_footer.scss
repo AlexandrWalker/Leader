@@ -6,6 +6,7 @@
   overflow: hidden;
   padding-top: var(--footer-padding-top);
   background-color: var(--white);
+  position: relative;
 
   @include md {
     --footer-padding-top: 8rem;
@@ -96,7 +97,7 @@
       width: 50%;
     }
 
-    @include sm {
+    @include mmd {
       width: 100%;
     }
   }
@@ -111,6 +112,13 @@
 
   .burger-menu__foot-tel {
     margin-bottom: 0;
+  }
+
+  .burger-menu__foot-btns {
+
+    @include mmd {
+      flex-direction: column;
+    }
   }
 
   .header__drop {
@@ -213,6 +221,9 @@
     }
 
     &-body {
+      background: rgba(22, 22, 22, 0.84);
+      backdrop-filter: blur(6.9px);
+      color: var(--white);
 
       @include md {
         --padding-x: 1.5rem;
@@ -244,6 +255,10 @@
 
         @include sm {
           font-size: 1.3rem;
+        }
+
+        &::before {
+          background-color: var(--white);
         }
       }
     }
@@ -322,7 +337,7 @@
       }
 
       img {
-        width: 100%;
+        width: auto;
         height: 100%;
         object-fit: cover;
       }
