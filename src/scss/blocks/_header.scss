@@ -70,46 +70,98 @@
       transition-delay: 0s;
     }
 
-    // &.accordion-active {
+    &.accordion-active {
+
+      @include domd {
+        
+        .accordion-body {
+          grid-template-rows: 0fr;
+        }
+      }
+
+      @include md {
+        border-color: var(--page-bg);
+
+        .innerPage .header & {
+          border-color: var(--gray);
+        }
+
+        legend {
+          color: var(--page-bg);
+
+          .innerPage .header & {
+            color: var(--black);
+          }
+        }
+
+        .header__drop-head {
+
+          a {
+            color: var(--accent);
+          }
+
+          i.icon-chevron {
+            transform: scale(-1, -1);
+          }
+        }
+
+        .header__drop-body {
+          padding-top: 3rem;
+          padding-bottom: 2rem;
+          grid-template-rows: 1fr;
+
+          .innerPage .header & {
+            background-color: var(--gray);
+          }
+
+          ul {
+            padding-bottom: 0.3rem;
+          }
+        }
+      }
+    }
+
     &:hover {
 
-      border-color: var(--page-bg);
+      @include domd {
 
-      .innerPage .header & {
-        border-color: var(--gray);
-      }
-
-      legend {
-        color: var(--page-bg);
+        border-color: var(--page-bg);
 
         .innerPage .header & {
-          color: var(--black);
-        }
-      }
-
-      .header__drop-head {
-
-        a {
-          color: var(--accent);
+          border-color: var(--gray);
         }
 
-        i.icon-chevron {
-          transform: scale(-1, -1);
-        }
-      }
+        legend {
+          color: var(--page-bg);
 
-      .header__drop-body {
-        padding-top: 3rem;
-        padding-bottom: 2rem;
-        grid-template-rows: 1fr;
-
-
-        .innerPage .header & {
-          background-color: var(--gray);
+          .innerPage .header & {
+            color: var(--black);
+          }
         }
 
-        ul {
-          padding-bottom: 0.3rem;
+        .header__drop-head {
+
+          a {
+            color: var(--accent);
+          }
+
+          i.icon-chevron {
+            transform: scale(-1, -1);
+          }
+        }
+
+        .header__drop-body {
+          padding-top: 3rem;
+          padding-bottom: 2rem;
+          grid-template-rows: 1fr;
+
+          .innerPage .header & {
+            background-color: var(--gray);
+          }
+
+          ul {
+            padding-bottom: 0.3rem;
+          }
         }
       }
     }

@@ -249,7 +249,7 @@
     transform: translateY(-50%);
 
     @include md {
-      flex-direction: row-reverse;
+      flex-direction: row;
       justify-content: flex-end;
       margin-top: 3rem;
 
