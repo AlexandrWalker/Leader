@@ -462,7 +462,7 @@
 
             <div class="timeline">
               <div class="timeline-wrapper">
-                <div class="timeline-item history__item">
+                <div class="timeline-item history__item timeline-active">
                   <div class="history__item-wrap">
                     <div class="history__item-head">
                       <div class="history__item-year">
@@ -1070,9 +1070,9 @@
         </div>
       </section>
       <!-- Как мы работаем -->
-      <section id="work" class="work">
+      <section id="work" class="work timeline-placeholder">
         <div class="container">
-          <div class="work__inner">
+          <div class="work__inner timeline-container">
             <div class="work__head">
               <div class="general__head" data-animation="reveal">
                 <div class="general__head-title">
@@ -1082,255 +1082,248 @@
                 </div>
               </div>
               <div class="swiper__btns">
-                <div class="swiper-button-prev work__slider-btn--prev">
+                <div class="swiper-button-prev work__slider-btn--prev timeline-button-prev">
                   <i class="icon-arrow-slider-prev"></i>
                 </div>
-                <div class="swiper-button-next work__slider-btn--next">
+                <div class="swiper-button-next work__slider-btn--next timeline-button-next">
                   <i class="icon-arrow-slider-next"></i>
                 </div>
               </div>
             </div>
-
-            <div class="work__items">
-              <div class="work__slider swiper">
-                <div class="swiper-wrapper">
-                  <div class="work__slide swiper-slide">
-                    <div class="work__item">
-                      <div class="work__item-head">
-                        <div class="work__item-count">
-                          0<span>1</span>
+            <div class="work__body timeline">
+              <div class="timeline-wrapper">
+                <div class="work__slide timeline-item timeline-active">
+                  <div class="work__item">
+                    <div class="work__item-head">
+                      <div class="work__item-count">
+                        0<span>1</span>
+                      </div>
+                      <div class="work__item-subtitle">
+                        <span>
+                          шаг
+                        </span>
+                      </div>
+                    </div>
+                    <div class="work__item-body">
+                      <div class="work__item-content">
+                        <div class="work__item-title">
+                          <h4>
+                            Подача КП с единичными расценками
+                          </h4>
                         </div>
-                        <div class="work__item-subtitle">
-                          <span>
-                            шаг
-                          </span>
+                        <div class="work__item-text">
+                          <p>
+                            После получения запроса мы формируем небольшое коммерческое предложение со стоимостью
+                            работ на 1м2. На этом этапе заказчик решает для себя приемлимые ли для него цены
+                          </p>
                         </div>
                       </div>
-                      <div class="work__item-body">
-                        <div class="work__item-content">
-                          <div class="work__item-title">
-                            <h4>
-                              Подача КП с единичными расценками
-                            </h4>
-                          </div>
-                          <div class="work__item-text">
-                            <p>
-                              После получения запроса мы формируем небольшое коммерческое предложение со стоимостью
-                              работ на 1м2. На этом этапе заказчик решает для себя приемлимые ли для него цены
-                            </p>
-                          </div>
-                        </div>
-                        <div class="work__item-icon">
-                          <img src="./images/icon/strelka.svg" alt="">
-                          <img src="./images/icon/strelka-black.svg" alt="">
-                        </div>
+                      <div class="work__item-icon">
+                        <img src="./images/icon/strelka.svg" alt="">
+                        <img src="./images/icon/strelka-black.svg" alt="">
                       </div>
                     </div>
                   </div>
-                  <div class="work__slide swiper-slide">
-                    <div class="work__item">
-                      <div class="work__item-head">
-                        <div class="work__item-count">
-                          0<span>2</span>
+                </div>
+                <div class="work__slide timeline-item">
+                  <div class="work__item">
+                    <div class="work__item-head">
+                      <div class="work__item-count">
+                        0<span>2</span>
+                      </div>
+                      <div class="work__item-subtitle">
+                        <span>
+                          шаг
+                        </span>
+                      </div>
+                    </div>
+                    <div class="work__item-body">
+                      <div class="work__item-content">
+                        <div class="work__item-title">
+                          <h4>
+                            Первичная встреча
+                          </h4>
                         </div>
-                        <div class="work__item-subtitle">
-                          <span>
-                            шаг
-                          </span>
+                        <div class="work__item-text">
+                          <p>
+                            На этой встрече мы знакомимся с заказчиком, как правило при первом знакомстве для него
+                            становится понятна наша компетенция
+                          </p>
                         </div>
                       </div>
-                      <div class="work__item-body">
-                        <div class="work__item-content">
-                          <div class="work__item-title">
-                            <h4>
-                              Первичная встреча
-                            </h4>
-                          </div>
-                          <div class="work__item-text">
-                            <p>
-                              На этой встрече мы знакомимся с заказчиком, как правило при первом знакомстве для него
-                              становится понятна наша компетенция
-                            </p>
-                          </div>
-                        </div>
-                        <div class="work__item-icon">
-                          <img src="./images/icon/strelka.svg" alt="">
-                          <img src="./images/icon/strelka-black.svg" alt="">
-                        </div>
+                      <div class="work__item-icon">
+                        <img src="./images/icon/strelka.svg" alt="">
+                        <img src="./images/icon/strelka-black.svg" alt="">
                       </div>
                     </div>
                   </div>
-                  <div class="work__slide swiper-slide">
-                    <div class="work__item">
-                      <div class="work__item-head">
-                        <div class="work__item-count">
-                          0<span>3</span>
+                </div>
+                <div class="work__slide timeline-item">
+                  <div class="work__item">
+                    <div class="work__item-head">
+                      <div class="work__item-count">
+                        0<span>3</span>
+                      </div>
+                      <div class="work__item-subtitle">
+                        <span>
+                          шаг
+                        </span>
+                      </div>
+                    </div>
+                    <div class="work__item-body">
+                      <div class="work__item-content">
+                        <div class="work__item-title">
+                          <h4>
+                            Выезд на объект
+                          </h4>
                         </div>
-                        <div class="work__item-subtitle">
-                          <span>
-                            шаг
-                          </span>
+                        <div class="work__item-text">
+                          <p>
+                            После того как заказчик убедился в нашей компетенции, мы выезжаем на объект для осмотра
+                            строительной готовности. Мы смотрим выполнены ли предшествующие работы, местонахождение
+                            точек подключения воды и электричества. Если нужно организовать какие-то во просы
+                            заказчику, мы об этом говорим перед началом работ
+                          </p>
                         </div>
                       </div>
-                      <div class="work__item-body">
-                        <div class="work__item-content">
-                          <div class="work__item-title">
-                            <h4>
-                              Выезд на объект
-                            </h4>
-                          </div>
-                          <div class="work__item-text">
-                            <p>
-                              После того как заказчик убедился в нашей компетенции, мы выезжаем на объект для осмотра
-                              строительной готовности. Мы смотрим выполнены ли предшествующие работы, местонахождение
-                              точек подключения воды и электричества. Если нужно организовать какие-то во просы
-                              заказчику, мы об этом говорим перед началом работ
-                            </p>
-                          </div>
-                        </div>
-                        <div class="work__item-icon">
-                          <img src="./images/icon/strelka.svg" alt="">
-                          <img src="./images/icon/strelka-black.svg" alt="">
-                        </div>
+                      <div class="work__item-icon">
+                        <img src="./images/icon/strelka.svg" alt="">
+                        <img src="./images/icon/strelka-black.svg" alt="">
                       </div>
                     </div>
                   </div>
-                  <div class="work__slide swiper-slide">
-                    <div class="work__item">
-                      <div class="work__item-head">
-                        <div class="work__item-count">
-                          0<span>4</span>
+                </div>
+                <div class="work__slide timeline-item">
+                  <div class="work__item">
+                    <div class="work__item-head">
+                      <div class="work__item-count">
+                        0<span>4</span>
+                      </div>
+                      <div class="work__item-subtitle">
+                        <span>
+                          шаг
+                        </span>
+                      </div>
+                    </div>
+                    <div class="work__item-body">
+                      <div class="work__item-content">
+                        <div class="work__item-title">
+                          <h4>
+                            Составление сметы
+                          </h4>
                         </div>
-                        <div class="work__item-subtitle">
-                          <span>
-                            шаг
-                          </span>
+                        <div class="work__item-text">
+                          <p>
+                            Далее мы составляем подробную калькуляцию (смету), где указываются стоимости работ и
+                            материалов, их количество с учетом норм расходов
+                          </p>
                         </div>
                       </div>
-                      <div class="work__item-body">
-                        <div class="work__item-content">
-                          <div class="work__item-title">
-                            <h4>
-                              Составление сметы
-                            </h4>
-                          </div>
-                          <div class="work__item-text">
-                            <p>
-                              Далее мы составляем подробную калькуляцию (смету), где указываются стоимости работ и
-                              материалов, их количество с учетом норм расходов
-                            </p>
-                          </div>
-                        </div>
-                        <div class="work__item-icon">
-                          <img src="./images/icon/strelka.svg" alt="">
-                          <img src="./images/icon/strelka-black.svg" alt="">
-                        </div>
+                      <div class="work__item-icon">
+                        <img src="./images/icon/strelka.svg" alt="">
+                        <img src="./images/icon/strelka-black.svg" alt="">
                       </div>
                     </div>
                   </div>
-                  <div class="work__slide swiper-slide">
-                    <div class="work__item">
-                      <div class="work__item-head">
-                        <div class="work__item-count">
-                          0<span>5</span>
+                </div>
+                <div class="work__slide timeline-item">
+                  <div class="work__item">
+                    <div class="work__item-head">
+                      <div class="work__item-count">
+                        0<span>5</span>
+                      </div>
+                      <div class="work__item-subtitle">
+                        <span>
+                          шаг
+                        </span>
+                      </div>
+                    </div>
+                    <div class="work__item-body">
+                      <div class="work__item-content">
+                        <div class="work__item-title">
+                          <h4>
+                            Заключение договора и получение авансового платежа
+                          </h4>
                         </div>
-                        <div class="work__item-subtitle">
-                          <span>
-                            шаг
-                          </span>
+                        <div class="work__item-text">
+                          <p>
+                            После согласования сметы составляем графики производства работ и заключаем договор.
+                            получаем аванс и завозим оборудование. Организовываем бытовые условия.
+                          </p>
                         </div>
                       </div>
-                      <div class="work__item-body">
-                        <div class="work__item-content">
-                          <div class="work__item-title">
-                            <h4>
-                              Заключение договора и получение авансового платежа
-                            </h4>
-                          </div>
-                          <div class="work__item-text">
-                            <p>
-                              После согласования сметы составляем графики производства работ и заключаем договор.
-                              получаем аванс и завозим оборудование. Организовываем бытовые условия.
-                            </p>
-                          </div>
-                        </div>
-                        <div class="work__item-icon">
-                          <img src="./images/icon/strelka.svg" alt="">
-                          <img src="./images/icon/strelka-black.svg" alt="">
-                        </div>
+                      <div class="work__item-icon">
+                        <img src="./images/icon/strelka.svg" alt="">
+                        <img src="./images/icon/strelka-black.svg" alt="">
                       </div>
                     </div>
                   </div>
-                  <div class="work__slide swiper-slide">
-                    <div class="work__item">
-                      <div class="work__item-head">
-                        <div class="work__item-count">
-                          0<span>6</span>
+                </div>
+                <div class="work__slide timeline-item">
+                  <div class="work__item">
+                    <div class="work__item-head">
+                      <div class="work__item-count">
+                        0<span>6</span>
+                      </div>
+                      <div class="work__item-subtitle">
+                        <span>
+                          шаг
+                        </span>
+                      </div>
+                    </div>
+                    <div class="work__item-body">
+                      <div class="work__item-content">
+                        <div class="work__item-title">
+                          <h4>
+                            Выполнение работ
+                          </h4>
                         </div>
-                        <div class="work__item-subtitle">
-                          <span>
-                            шаг
-                          </span>
+                        <div class="work__item-text">
+                          <p>
+                            Завозим материалы и приступаем к производству работ
+                          </p>
                         </div>
                       </div>
-                      <div class="work__item-body">
-                        <div class="work__item-content">
-                          <div class="work__item-title">
-                            <h4>
-                              Выполнение работ
-                            </h4>
-                          </div>
-                          <div class="work__item-text">
-                            <p>
-                              Завозим материалы и приступаем к производству работ
-                            </p>
-                          </div>
-                        </div>
-                        <div class="work__item-icon">
-                          <img src="./images/icon/strelka.svg" alt="">
-                          <img src="./images/icon/strelka-black.svg" alt="">
-                        </div>
+                      <div class="work__item-icon">
+                        <img src="./images/icon/strelka.svg" alt="">
+                        <img src="./images/icon/strelka-black.svg" alt="">
                       </div>
                     </div>
                   </div>
-                  <div class="work__slide swiper-slide">
-                    <div class="work__item">
-                      <div class="work__item-head">
-                        <div class="work__item-count">
-                          0<span>7</span>
+                </div>
+                <div class="work__slide timeline-item">
+                  <div class="work__item">
+                    <div class="work__item-head">
+                      <div class="work__item-count">
+                        0<span>7</span>
+                      </div>
+                      <div class="work__item-subtitle">
+                        <span>
+                          шаг
+                        </span>
+                      </div>
+                    </div>
+                    <div class="work__item-body">
+                      <div class="work__item-content">
+                        <div class="work__item-title">
+                          <h4>
+                            Сдача объекта, подписание актов выполненных работ
+                          </h4>
                         </div>
-                        <div class="work__item-subtitle">
-                          <span>
-                            шаг
-                          </span>
+                        <div class="work__item-text">
+                          <p>
+                            Выполняем работы поэтапно, как правило это единица приемки кратная одному этажу в одной
+                            секции. Производим внутреннюю приемку этапа работ, сдаем заказчику в соответсвии с нормами
+                            в СП, подписываем Акт внутренней приемки, готовим исполнительную документацию.
+                          </p>
                         </div>
                       </div>
-                      <div class="work__item-body">
-                        <div class="work__item-content">
-                          <div class="work__item-title">
-                            <h4>
-                              Сдача объекта, подписание актов выполненных работ
-                            </h4>
-                          </div>
-                          <div class="work__item-text">
-                            <p>
-                              Выполняем работы поэтапно, как правило это единица приемки кратная одному этажу в одной
-                              секции. Производим внутреннюю приемку этапа работ, сдаем заказчику в соответсвии с нормами
-                              в СП, подписываем Акт внутренней приемки, готовим исполнительную документацию.
-                            </p>
-                          </div>
-                        </div>
-                        <div class="work__item-icon">
-                          <img src="./images/icon/strelka.svg" alt="">
-                          <img src="./images/icon/strelka-black.svg" alt="">
-                        </div>
+                      <div class="work__item-icon">
+                        <img src="./images/icon/strelka.svg" alt="">
+                        <img src="./images/icon/strelka-black.svg" alt="">
                       </div>
                     </div>
                   </div>
-                  <div class="swiper-slide"></div>
-                  <div class="swiper-slide"></div>
-                  <div class="swiper-slide"></div>
-                  <div class="swiper-slide"></div>
                 </div>
               </div>
             </div>
