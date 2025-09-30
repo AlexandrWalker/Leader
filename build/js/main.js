@@ -203,73 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
-  const workSlider = new Swiper(".work__slider", {
-    slidesPerGroup: 1,
-    slidesPerView: 'auto',
-    spaceBetween: 0,
-    speed: 300,
-    draggable: true,
-    freeMode: true,
-    mousewheel: {
-      forceToAxis: true,
-    },
-    navigation: {
-      nextEl: ".work__slider-btn--next",
-      prevEl: ".work__slider-btn--prev",
-    },
-    breakpoints: {
-      567: {
-        slidesPerView: 'auto',
-        spaceBetween: 0,
-        speed: 300,
-      },
-      769: {
-        slidesPerView: 5,
-        spaceBetween: 20,
-        speed: 300,
-      },
-    },
-    on: {
-      slideChange: function () {
-        window.addEventListener('resize', () => {
-          if (window.innerWidth > 768) {
-            const { activeIndex } = this;
-            // const slideWidth = this.slides[activeIndex].clientWidth / 10 + 12;
-            const slideWidth = this.slides[activeIndex].offsetWidth + 20;
-            const work__items = document.querySelector('.work__items');
-            const swiperWrapper = work__items.querySelector('.swiper-wrapper');
-
-            if (this.realIndex > 2) {
-              work__items.style.transform = `translateX(${(slideWidth * (this.realIndex - 2))}px)`;
-              swiperWrapper.classList.add('done');
-              console.log(slideWidth);
-            } else {
-              work__items.style.transform = `translateX(0rem)`;
-              swiperWrapper.classList.remove('done');
-            }
-          }
-        });
-
-        if (window.innerWidth > 768) {
-          const { activeIndex } = this;
-          // const slideWidth = this.slides[activeIndex].clientWidth / 10 + 13;
-          const slideWidth = this.slides[activeIndex].offsetWidth + 20;
-          const work__items = document.querySelector('.work__items');
-          const swiperWrapper = work__items.querySelector('.swiper-wrapper');
-
-          if (this.realIndex > 2) {
-            work__items.style.transform = `translateX(${(slideWidth * (this.realIndex - 2))}px)`;
-            swiperWrapper.classList.add('done');
-            console.log(slideWidth);
-          } else {
-            work__items.style.transform = `translateX(0rem)`;
-            swiperWrapper.classList.remove('done');
-          }
-        }
-      }
-    }
-  });
-
   const customersSlider = new Swiper(".customers__slider", {
     slidesPerGroup: 1,
     slidesPerView: 'auto',
@@ -815,10 +748,10 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   const timelinePlaceholders = document.querySelectorAll('.timeline-placeholder');
   if (timelinePlaceholders.length > 0) {
-
     timelinePlaceholders.forEach(timelinePlaceholder => {
 
       const timelineContainer = timelinePlaceholder.querySelector('.timeline-container');
+      const timeline = timelinePlaceholder.querySelector('.timeline');
       const timelineWrapper = timelinePlaceholder.querySelector('.timeline-wrapper');
       const timelineItems = timelinePlaceholder.querySelectorAll('.timeline-item');
       const btnPrev = timelinePlaceholder.querySelector('.timeline-button-prev');
@@ -842,10 +775,23 @@ document.addEventListener('DOMContentLoaded', () => {
       let startScroll = 0;
       let xSwipe = false;
 
+      let scrollTimeout;
+      let isScrolling = false;
+
+      function isMobileDevice() {
+        return window.innerWidth <= 768;
+      }
+
       function calculatePlaceholderHeight() {
+
+        if (isMobileDevice()) {
+          timelinePlaceholder.style.height = 'auto';
+          return;
+        }
+
         containerHeight = timelineContainer.offsetHeight;
 
-        itemWidth = timelineItems[0].clientWidth;
+        itemWidth = timelineItems[0].offsetWidth;
         containerWidth = timelineContainer.offsetWidth;
         totalWidth = itemWidth * timelineItems.length;
         maxScroll = Math.max(0, totalWidth - containerWidth);
@@ -858,11 +804,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       function updateButtons() {
+
+        if (isMobileDevice()) return;
+
         btnPrev.disabled = currentIndex === 0;
         btnNext.disabled = currentIndex === timelineItems.length - 1;
       }
 
       function goToIndex(index) {
+
+        if (isMobileDevice()) {
+          index = Math.max(0, Math.min(index, timelineItems.length - 1));
+          const item = timelineItems[index];
+          const itemLeft = item.offsetLeft;
+          const itemWidth = item.offsetWidth;
+          const containerWidth = timeline.offsetWidth;
+
+          const scrollPosition = itemLeft - (containerWidth / 2) + (itemWidth / 2);
+
+          timeline.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+
+          updateActiveItemMobile(index);
+          return;
+        }
+
         if (isAnimating) return;
 
         index = Math.max(0, Math.min(index, timelineItems.length - 1));
@@ -884,6 +852,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       function updateTimeline(scrollY) {
+
+        if (isMobileDevice()) return;
+
         const containerTop = timelinePlaceholder.offsetTop;
 
         let scrollProgress = (scrollY - containerTop) / scrollDistance;
@@ -925,8 +896,55 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.toggle('timeline-active', index === currentIndex);
           });
 
-          // updateButtons();
+          updateButtons();
         }
+      }
+
+      function updateActiveItemMobile(index) {
+        if (index !== currentIndex) {
+          currentIndex = index;
+
+          timelineItems.forEach((item, i) => {
+            item.classList.toggle('timeline-active', i === currentIndex);
+          });
+        }
+      }
+
+      function handleMobileScroll() {
+        if (!isMobileDevice()) return;
+
+        clearTimeout(scrollTimeout);
+        isScrolling = true;
+
+        const scrollLeft = timeline.scrollLeft;
+        const containerWidth = timeline.offsetWidth;
+        const itemWidth = timelineItems[0].offsetWidth;
+
+        const center = scrollLeft + (containerWidth / 2);
+
+        let closestIndex = 0;
+        let minDistance = Infinity;
+
+        timelineItems.forEach((item, index) => {
+          const itemLeft = item.offsetLeft;
+          const itemCenter = itemLeft + (itemWidth / 2);
+          const distance = Math.abs(center - itemCenter);
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = index;
+          }
+        });
+
+        updateActiveItemMobile(closestIndex);
+
+        scrollTimeout = setTimeout(() => {
+          isScrolling = false;
+
+          if (!isScrolling) {
+            goToIndex(closestIndex);
+          }
+        }, 100);
       }
 
       btnPrev.addEventListener('click', () => {
@@ -937,83 +955,89 @@ document.addEventListener('DOMContentLoaded', () => {
         goToIndex(currentIndex + 1);
       });
 
-      function handleTouchStart(e) {
-        if (isAnimating) return;
+      // Обработчики свайпа только для планшета и больше
+      if (!isMobileDevice()) {
+        function handleTouchStart(e) {
+          if (isAnimating) return;
 
-        startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-        startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-        currentX = parseInt(gsap.getProperty(timelineWrapper, 'x') || 0, 10);
-        startScroll = lenis.scroll;
-        isDragging = true;
-        xSwipe = false;
-        timelineWrapper.classList.add('grabbing');
-      }
+          startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+          startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+          currentX = parseInt(getComputedStyle(timelineWrapper).transform.split(',')[4] || 0, 10);
+          startScroll = lenis.scroll;
+          isDragging = true;
+          xSwipe = false;
+          timelineWrapper.classList.add('grabbing');
+        }
 
-      function handleTouchMove(e) {
-        if (!isDragging) return;
-        e.preventDefault();
+        function handleTouchMove(e) {
+          if (!isDragging) return;
+          e.preventDefault();
 
-        const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-        const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+          const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+          const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
 
-        if (!xSwipe) {
-          const diffX = Math.abs(x - startX);
-          const diffY = Math.abs(y - startY);
+          if (!xSwipe) {
+            const diffX = Math.abs(x - startX);
+            const diffY = Math.abs(y - startY);
 
-          if (diffY > diffX && diffY > 10) {
-            isDragging = false;
-            timelineWrapper.classList.remove('grabbing');
-            return;
+            if (diffY > diffX && diffY > 10) {
+              isDragging = false;
+              timelineWrapper.classList.remove('grabbing');
+              return;
+            }
+
+            if (diffX > 10) {
+              xSwipe = true;
+              e.preventDefault();
+            }
           }
 
-          if (diffX > 10) {
-            xSwipe = true;
-            e.preventDefault();
+          if (xSwipe) {
+            const diff = x - startX;
+
+            let newX = currentX + diff;
+
+            newX = Math.min(Math.max(newX, -maxScroll), 0);
+
+            timelineWrapper.style.transform = `translateX(${newX}px)`;
+
+            lenis.scrollTo(startScroll, { immediate: true });
           }
         }
 
-        if (xSwipe) {
+        function handleTouchEnd(e) {
+          if (!isDragging) return;
+          isDragging = false;
+          timelineWrapper.classList.remove('grabbing');
+
+          const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
           const diff = x - startX;
+          const velocity = diff / 100;
 
-          let newX = currentX + diff;
-
-          newX = Math.min(Math.max(newX, -maxScroll), 0);
-
-          timelineWrapper.style.transform = `translateX(${newX}px)`;
-
-          lenis.scrollTo(startScroll, { immediate: true });
-        }
-      }
-
-      function handleTouchEnd(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        timelineWrapper.classList.remove('grabbing');
-
-        const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
-        const diff = x - startX;
-        const velocity = diff / 100;
-
-        if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
-          if (diff > 0) {
-            goToIndex(currentIndex - 1);
+          if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
+            if (diff > 0) {
+              goToIndex(currentIndex - 1);
+            } else {
+              goToIndex(currentIndex + 1);
+            }
           } else {
-            goToIndex(currentIndex + 1);
+            goToIndex(currentIndex);
           }
-        } else {
-          goToIndex(currentIndex);
         }
+
+        timelineWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
+        timelineWrapper.addEventListener('mousedown', handleTouchStart);
+
+        timelineWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
+        timelineWrapper.addEventListener('mousemove', handleTouchMove);
+
+        timelineWrapper.addEventListener('touchend', handleTouchEnd);
+        timelineWrapper.addEventListener('mouseup', handleTouchEnd);
+        timelineWrapper.addEventListener('mouseleave', handleTouchEnd);
       }
 
-      timelineWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
-      timelineWrapper.addEventListener('mousedown', handleTouchStart);
-
-      timelineWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
-      timelineWrapper.addEventListener('mousemove', handleTouchMove);
-
-      timelineWrapper.addEventListener('touchend', handleTouchEnd);
-      timelineWrapper.addEventListener('mouseup', handleTouchEnd);
-      timelineWrapper.addEventListener('mouseleave', handleTouchEnd);
+      // Добавляем обработчик скролла для мобильных устройств
+      timeline.addEventListener('scroll', handleMobileScroll);
 
       lenis.on('scroll', ({ scroll }) => {
         if (!isDragging) { // Не обновляем во время свайпа
@@ -1024,11 +1048,11 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', () => {
         calculatePlaceholderHeight();
         updateTimeline(lenis.scroll);
-        // updateButtons();
+        updateButtons();
       });
 
       calculatePlaceholderHeight();
-      // updateButtons();
+      updateButtons();
 
       function raf(time) {
         lenis.raf(time);

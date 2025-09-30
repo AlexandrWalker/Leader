@@ -1,10 +1,29 @@
 @use './../mixins' as *;
 
 .timeline {
+  position: relative;
   width: 100%;
-  // width: 100vw;
-  // padding: 0 var(--container-padding);
-  // margin-left: calc(var(--container-padding) * -1);
+  overflow: hidden;
+
+
+  padding: 0 var(--container-padding);
+  margin-right: calc(var(--container-padding) * -1);
+  margin-left: calc(var(--container-padding) * -1);
+  width: calc(100% + (var(--container-padding) * 2));
+
+  @include md {
+    /* На мобильных устройствах - свободный скролл */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    /* Скрываем scrollbar для лучшего UX */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
   &-placeholder {
     position: relative;
@@ -21,15 +40,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     width: 100%;
     height: 100vh;
 
-    /* hack*/
     @include md {
+      /* Мобильная версия - убираем фиксацию */
+      position: relative;
       height: auto;
-
-      top: 10rem;
+      min-height: 100vh;
     }
   }
 
@@ -38,9 +57,18 @@
     flex-direction: row;
     will-change: transform;
     cursor: grab;
+    transition: transform 0.1s linear;
+
+    @include md {
+      /* На мобильных устройствах - свободный скролл */
+      width: max-content;
+      transition: none;
+    }
+
 
     &.grabbing {
       cursor: grabbing;
+      transition: none;
     }
   }
 
@@ -64,6 +92,11 @@
     user-select: none;
     font-size: 5rem;
     transition: all 0.3s ease;
+
+    /* Скрываем кнопки на мобильных устройствах */
+    @include md {
+      display: none;
+    }
 
     &:hover {
       color: var(--white);
