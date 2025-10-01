@@ -1,27 +1,28 @@
-const html = document.documentElement;
+document.addEventListener('DOMContentLoaded', () => {
+  const preloader = document.querySelector('.preloader');
+  const removePreloader = function () {
+    preloader.classList.add("preloader-none");
+    preloader.removeEventListener('transitionend', removePreloader);
+  };
+  const hidePreloader = function () {
+    preloader.classList.add("hidden");
+    preloader.addEventListener('transitionend', removePreloader);
+  };
+  if (preloader) {
+    window.addEventListener('load', (event) => {
+      hidePreloader()
+    });
+  }
 
-const preloader = document.querySelector('.preloader');
-const removePreloader = function () {
-  preloader.classList.add("preloader-none");
-  preloader.removeEventListener('transitionend', removePreloader);
-};
-const hidePreloader = function () {
-  preloader.classList.add("hidden");
-  preloader.addEventListener('transitionend', removePreloader);
-};
-if (preloader) {
-  window.addEventListener('load', (event) => {
-    hidePreloader()
-  });
-}
+  gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+});
 
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 window.addEventListener('load', () => {
 
-  setTimeout(() => {
-    document.documentElement.classList.remove('preloaderDownload');
-  }, 800);
+  // setTimeout(() => {
+  document.documentElement.classList.remove('preloaderDownload');
+  // }, 800);
 
   const checkEditMode = document.querySelector('.bx-panel-toggle-on') ?? null;
 
