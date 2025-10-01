@@ -10,7 +10,7 @@
     "skills": "Техническая грамотность и умение находить общий язык с людьми",
     "value": "Обеспечивает качественное выполнение работ на участке, создаёт позитивную атмосферу в команде",
     
-    "photo": "./images/command/photo-1.png",
+    "photo": "./images/command/photo-1.webp",
     "quote": "Всегда мечтал быть строителем и дарить людям города! Я доволен своей карьерой и снова прошёл бы весь путь от начала до конца!"
   },
   {
@@ -24,7 +24,7 @@
     "skills": "Техническая грамотность и умение находить общий язык с людьми",
     "value": "Обеспечивает качественное выполнение работ на участке, создаёт позитивную атмосферу в команде",
     
-    "photo": "./images/command/photo-2.png",
+    "photo": "./images/command/photo-2.webp",
     "quote": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nisi est vitae ipsam quod ex. Voluptatum dolor dolore perspiciatis!"
   }
 ]
