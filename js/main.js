@@ -1,7 +1,7 @@
 const TIME_TO_WAIT = 4;
 const preloader = document.querySelector('.preloader');
 const removePreloader = function () {
-  preloader.classList.add("none");
+  preloader.classList.add("preloader-none");
   preloader.removeEventListener('transitionend', removePreloader);
 };
 const hidePreloader = function () {
