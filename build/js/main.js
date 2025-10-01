@@ -1,4 +1,5 @@
-const TIME_TO_WAIT = 4;
+const html = document.documentElement;
+
 const preloader = document.querySelector('.preloader');
 const removePreloader = function () {
   preloader.classList.add("preloader-none");
@@ -14,9 +15,13 @@ if (preloader) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
-  gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+window.addEventListener('load', () => {
+
+  setTimeout(() => {
+    document.documentElement.classList.remove('preloaderDownload');
+  }, 800);
 
   const checkEditMode = document.querySelector('.bx-panel-toggle-on') ?? null;
 
@@ -760,10 +765,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Таймлапс
+   * Таймлайн
    */
   const timelinePlaceholders = document.querySelectorAll('.timeline-placeholder');
   if (timelinePlaceholders.length > 0) {
+
     timelinePlaceholders.forEach(timelinePlaceholder => {
 
       const timelineContainer = timelinePlaceholder.querySelector('.timeline-container');
@@ -1083,126 +1089,126 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // $(window).on('resize load', function () {
 
-    // if (window.innerWidth > 768) {
+  // if (window.innerWidth > 768) {
+  const creepingBlock = document.querySelector('[data-animation="creeping"]');
+  if (creepingBlock) {
+    const wrapper = document.querySelector('.wrapper');
+    wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
+    creepingAnim(creepingBlock, wrapper)
+  }
 
-      const creepingBlock = document.querySelector('[data-animation="creeping"]');
-      if (creepingBlock) {
-        const wrapper = document.querySelector('.wrapper');
-        wrapper.style.marginBottom = (creepingBlock.offsetHeight / 2) + 'px';
-        creepingAnim(creepingBlock, wrapper)
-      }
+  if (!checkEditMode) {
+    const revealItems = document.querySelectorAll('[data-animation="reveal"]');
 
-      if (!checkEditMode) {
-        const revealItems = document.querySelectorAll('[data-animation="reveal"]');
+    revealItems.forEach(titleWord => {
+      const innerWords = document.querySelectorAll('h2');
+      innerWords.forEach(wordH2 => {
+        const wordsH2 = new SplitType(wordH2, { types: 'words, words' });
+      });
+      const wordsH3 = new SplitType(titleWord.querySelector('h3'), { types: 'words, words' });
+      const wordsH4 = new SplitType(titleWord.querySelector('h4'), { types: 'words, words' });
+    });
 
-        revealItems.forEach(titleWord => {
-          const innerWords = document.querySelectorAll('h2');
-          innerWords.forEach(wordH2 => {
-            const wordsH2 = new SplitType(wordH2, { types: 'words, words' });
-          });
-          const wordsH3 = new SplitType(titleWord.querySelector('h3'), { types: 'words, words' });
-          const wordsH4 = new SplitType(titleWord.querySelector('h4'), { types: 'words, words' });
-        });
+    revealItems.forEach(revealItem => {
+      const word = revealItem.querySelectorAll("div.word");
+      const tl = gsap.timeline({
+        paused: true
+      });
+      tl.from(word, {
+        opacity: 0,
+        y: "10",
+        duration: .3,
+        delay: .3,
+        ease: "power1.out",
+        stagger: {
+          amount: .3
+        },
+        onStart: function () {
+          revealItem.classList.add('animatedClass');
+        },
+      });
+      scrollTriggerPlayer(revealItem, tl)
+    });
 
-        revealItems.forEach(revealItem => {
-          const word = revealItem.querySelectorAll("div.word");
-          const tl = gsap.timeline({
-            paused: true
-          });
-          tl.from(word, {
-            opacity: 0,
-            y: "10",
-            duration: .3,
-            delay: .3,
-            ease: "power1.out",
-            stagger: {
-              amount: .3
-            },
-            onStart: function () {
-              revealItem.classList.add('animatedClass');
-            },
-          });
-          scrollTriggerPlayer(revealItem, tl)
-        });
+    const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
 
-        const fadeInItems = document.querySelectorAll('[data-animation="fadeIn"]');
+    fadeInItems.forEach(titleChar => {
+      const char = new SplitType(titleChar.querySelector('p'), { types: 'words, chars' });
+    });
 
-        fadeInItems.forEach(titleChar => {
-          const char = new SplitType(titleChar.querySelector('p'), { types: 'words, chars' });
-        });
+    fadeInItems.forEach(fadeInItem => {
+      const word = fadeInItem.querySelectorAll("div.char");
+      const tl = gsap.timeline({
+        paused: true
+      });
+      tl.from(word, {
+        opacity: 0,
+        duration: .3,
+        delay: .5,
+        ease: "power1.out",
+        stagger: {
+          amount: .8
+        }
+      });
+      scrollTriggerPlayer(fadeInItem, tl)
+    });
+  }
 
-        fadeInItems.forEach(fadeInItem => {
-          const word = fadeInItem.querySelectorAll("div.char");
-          const tl = gsap.timeline({
-            paused: true
-          });
-          tl.from(word, {
-            opacity: 0,
-            duration: .3,
-            ease: "power1.out",
-            stagger: {
-              amount: .8
-            }
-          });
-          scrollTriggerPlayer(fadeInItem, tl)
-        });
-      }
-
-      const parallaxBox = document.querySelector('[data-animation="parallax-box"]');
-      if (parallaxBox) {
-        const parallaxImgBoxes = document.querySelectorAll('[data-animation="parallax-box"]');
-        parallaxImgBoxes.forEach(parallaxImgBox => {
-          gsap.fromTo(parallaxImgBox,
-            { y: '15%' },
-            {
-              y: '-35%',
-              scrollTrigger: {
-                trigger: parallaxImgBox,
-                start: 'top 90%',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
-        });
-      }
-
-      const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
-      if (parallaxSection) {
-        const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
-        parallaxSections.forEach(parallaxSection => {
-          gsap.fromTo(parallaxSection,
-            { y: '0%' },
-            {
-              y: '-15%',
-              scrollTrigger: {
-                trigger: parallaxSection,
-                start: 'top 90%',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
-        });
-      }
-
-      const faqItems = document.querySelectorAll(".faq__item");
-      for (let i = 0; i < faqItems.length; i++) {
-        gsap.from(faqItems[i], {
-          opacity: 0,
-          x: -50,
-          duration: 0.3,
+  const parallaxBox = document.querySelector('[data-animation="parallax-box"]');
+  if (parallaxBox) {
+    const parallaxImgBoxes = document.querySelectorAll('[data-animation="parallax-box"]');
+    parallaxImgBoxes.forEach(parallaxImgBox => {
+      gsap.fromTo(parallaxImgBox,
+        { y: '15%' },
+        {
+          y: '-35%',
           scrollTrigger: {
-            trigger: faqItems[i],
-            start: "top 95%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
-            preventOverlaps: true,
-          }
-        })
-      }
+            trigger: parallaxImgBox,
+            start: 'top 90%',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    });
+  }
 
-    // }
+  const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
+  if (parallaxSection) {
+    const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
+    parallaxSections.forEach(parallaxSection => {
+      gsap.fromTo(parallaxSection,
+        { y: '0%' },
+        {
+          y: '-15%',
+          scrollTrigger: {
+            trigger: parallaxSection,
+            start: 'top 90%',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    });
+  }
+
+  const faqItems = document.querySelectorAll(".faq__item");
+  for (let i = 0; i < faqItems.length; i++) {
+    gsap.from(faqItems[i], {
+      opacity: 0,
+      x: -50,
+      duration: 0.3,
+      scrollTrigger: {
+        trigger: faqItems[i],
+        start: "top 95%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+        preventOverlaps: true,
+      }
+    })
+  }
+
+  // }
   // });
 
   const hero = document.getElementById("hero");
@@ -1320,37 +1326,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const btnPres = document.querySelectorAll('.btn--pres');
-  if (btnPres.length > 0) {
-    btnPres.forEach(presentation => {
-      const desk = presentation.dataset.desk;
-      const mob = presentation.dataset.mob;
-
-      window.addEventListener('resize', () => {
-        if ((window.innerWidth > 768)) {
-          presentation.setAttribute('href', desk)
-          presentation.setAttribute('download', 'Лидер_desk.pdf')
-        } else {
-          presentation.setAttribute('href', mob)
-          presentation.setAttribute('download', 'Лидер_mob.pdf')
-        }
-      });
-    });
-
-    btnPres.forEach(presentation => {
-      const desk = presentation.dataset.desk;
-      const mob = presentation.dataset.mob;
-
-      if ((window.innerWidth > 768)) {
-        presentation.setAttribute('href', desk)
-        presentation.setAttribute('download', 'Лидер_desk.pdf')
-      } else {
-        presentation.setAttribute('href', mob)
-        presentation.setAttribute('download', 'Лидер_mob.pdf')
-      }
-    });
-  }
-
   /**
    * Анимация чисел
    */
@@ -1383,8 +1358,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   counterFunc();
 
-
-
   function scrollTriggerPlayer(triggerElement, timeline, onEnterStart = "top 95%") {
     ScrollTrigger.create({
       trigger: triggerElement,
@@ -1401,9 +1374,38 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-
-
   window.addEventListener('resize scroll', ScrollTrigger.refresh());
+
+  const btnPres = document.querySelectorAll('.btn--pres');
+  if (btnPres.length > 0) {
+    btnPres.forEach(presentation => {
+      const desk = presentation.dataset.desk;
+      const mob = presentation.dataset.mob;
+
+      window.addEventListener('resize', () => {
+        if ((window.innerWidth > 768)) {
+          presentation.setAttribute('href', desk)
+          presentation.setAttribute('download', 'Лидер_desk.pdf')
+        } else {
+          presentation.setAttribute('href', mob)
+          presentation.setAttribute('download', 'Лидер_mob.pdf')
+        }
+      });
+    });
+
+    btnPres.forEach(presentation => {
+      const desk = presentation.dataset.desk;
+      const mob = presentation.dataset.mob;
+
+      if ((window.innerWidth > 768)) {
+        presentation.setAttribute('href', desk)
+        presentation.setAttribute('download', 'Лидер_desk.pdf')
+      } else {
+        presentation.setAttribute('href', mob)
+        presentation.setAttribute('download', 'Лидер_mob.pdf')
+      }
+    });
+  }
 
 });
 

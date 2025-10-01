@@ -16,7 +16,7 @@
 
   &.hidden {
     clip-path: inset(0 0 100% 0);
-    transition: clip-path 0.75s;
+    transition: clip-path 1s;
   }
 
   &.preloader-none {
