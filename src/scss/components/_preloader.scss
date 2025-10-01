@@ -1,0 +1,34 @@
+@use './../mixins' as *;
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  background: var(--accent);
+  clip-path: inset(0 0 0 0);
+  will-change: clip-path;
+
+  &.hidden {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.75s;
+  }
+
+  &.none {
+    display: none;
+  }
+
+  &__img {
+    height: 10rem;
+    object-fit: contain;
+
+    @include md {
+      height: 5rem;
+    }
+  }
+}

@@ -1,3 +1,19 @@
+const TIME_TO_WAIT = 4;
+const preloader = document.querySelector('.preloader');
+const removePreloader = function () {
+  preloader.classList.add("none");
+  preloader.removeEventListener('transitionend', removePreloader);
+};
+const hidePreloader = function () {
+  preloader.classList.add("hidden");
+  preloader.addEventListener('transitionend', removePreloader);
+};
+if (preloader) {
+  window.addEventListener('load', (event) => {
+    hidePreloader()
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
@@ -1065,9 +1081,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  $(window).on('resize load', function () {
+  // $(window).on('resize load', function () {
 
-    if (window.innerWidth > 768) {
+    // if (window.innerWidth > 768) {
 
       const creepingBlock = document.querySelector('[data-animation="creeping"]');
       if (creepingBlock) {
@@ -1097,6 +1113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             opacity: 0,
             y: "10",
             duration: .3,
+            delay: .3,
             ease: "power1.out",
             stagger: {
               amount: .3
@@ -1185,8 +1202,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       }
 
-    }
-  });
+    // }
+  // });
 
   const hero = document.getElementById("hero");
   if (hero) {
@@ -1199,6 +1216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0,
         x: -50,
         duration: 1,
+        delay: .5,
         stagger: { amount: 0.4 },
         scrollTrigger: {
           trigger: hero,
@@ -1217,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.fromTo(hero__img, { opacity: 0 }, {
       opacity: 1,
       duration: 1,
-      delay: 0.5,
+      delay: .5,
       scrollTrigger: {
         trigger: hero,
         start: "top 95%",
