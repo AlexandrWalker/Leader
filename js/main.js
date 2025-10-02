@@ -623,9 +623,9 @@ window.addEventListener('load', () => {
         let text = selectedLabel.textContent;
         let selectedDropdown = dropdown.querySelector('.dropdown__selected--js');
         selectedDropdown.querySelector('span').textContent = text;
-        selectedValue.dataset.value = text;
+        selectedValue.value = text;
 
-        if (selectedValue.dataset.value.length != 0) {
+        if (selectedValue.value.length != 0) {
           dropdown.classList.add('check');
         } else {
           dropdown.classList.remove('check');
@@ -1415,10 +1415,8 @@ window.addEventListener('load', () => {
       window.addEventListener('resize', () => {
         if ((window.innerWidth > 768)) {
           presentation.setAttribute('href', desk)
-          presentation.setAttribute('download', 'Лидер_desk.pdf')
         } else {
           presentation.setAttribute('href', mob)
-          presentation.setAttribute('download', 'Лидер_mob.pdf')
         }
       });
     });
@@ -1429,10 +1427,8 @@ window.addEventListener('load', () => {
 
       if ((window.innerWidth > 768)) {
         presentation.setAttribute('href', desk)
-        presentation.setAttribute('download', 'Лидер_desk.pdf')
       } else {
         presentation.setAttribute('href', mob)
-        presentation.setAttribute('download', 'Лидер_mob.pdf')
       }
     });
   }
