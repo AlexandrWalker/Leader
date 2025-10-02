@@ -29,6 +29,22 @@ window.addEventListener('load', () => {
   /**
    * Инициализация Lenis
    */
+  // const lenis = new Lenis({
+  //   anchors: {
+  //     offset: -60,
+  //   },
+  //   duration: 1.2,
+  //   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  //   smoothWheel: true
+  // });
+
+  // lenis.on('scroll', ScrollTrigger.update);
+
+  // gsap.ticker.add((time) => {
+  //   lenis.raf(time * 500);
+  // });
+  // gsap.ticker.lagSmoothing(0);
+
   const lenis = new Lenis({
     anchors: {
       offset: -60,
@@ -37,12 +53,6 @@ window.addEventListener('load', () => {
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true
   });
-
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 500);
-  });
-  gsap.ticker.lagSmoothing(0);
 
   /**
    * Инициализация Fancybox
@@ -1168,6 +1178,8 @@ window.addEventListener('load', () => {
             start: 'top 90%',
             end: 'bottom top',
             scrub: true,
+            preventOverlaps: true,
+            invalidateOnRefresh: true,
           },
         }
       );
@@ -1187,6 +1199,8 @@ window.addEventListener('load', () => {
             start: 'top 90%',
             end: 'bottom top',
             scrub: true,
+            preventOverlaps: true,
+            invalidateOnRefresh: true,
           },
         }
       );
@@ -1205,6 +1219,7 @@ window.addEventListener('load', () => {
         end: "bottom 20%",
         toggleActions: "play none none none",
         preventOverlaps: true,
+        invalidateOnRefresh: true,
       }
     })
   }
@@ -1231,6 +1246,7 @@ window.addEventListener('load', () => {
           end: "bottom 20%",
           toggleActions: "play none none none",
           preventOverlaps: true,
+          invalidateOnRefresh: true,
         },
         onStart: function () {
           hero.classList.add('animatedClass');
@@ -1248,6 +1264,8 @@ window.addEventListener('load', () => {
         start: "top 95%",
         end: "bottom 20%",
         toggleActions: "play none none none",
+        preventOverlaps: true,
+        invalidateOnRefresh: true,
       }
     });
   }
@@ -1265,6 +1283,8 @@ window.addEventListener('load', () => {
             start: 'top 90%',
             end: 'bottom top',
             scrub: true,
+            preventOverlaps: true,
+            invalidateOnRefresh: true,
           },
         }
       );
@@ -1285,6 +1305,8 @@ window.addEventListener('load', () => {
             start: 'top 90%',
             end: 'bottom top',
             scrub: true,
+            preventOverlaps: true,
+            invalidateOnRefresh: true,
           },
         }
       );
@@ -1305,6 +1327,8 @@ window.addEventListener('load', () => {
             start: 'top 90%',
             end: 'bottom top',
             scrub: true,
+            preventOverlaps: true,
+            invalidateOnRefresh: true,
           },
         }
       );
@@ -1322,6 +1346,7 @@ window.addEventListener('load', () => {
         end: () => `${wrapper.offsetHeight - creepingBlock.offsetHeight / 2}`,
         scrub: true,
         pinSpacing: true,
+        preventOverlaps: true,
         invalidateOnRefresh: true,
       }
     });
@@ -1351,6 +1376,8 @@ window.addEventListener('load', () => {
           scrollTrigger: {
             trigger: numbBox,
             start: `top 95%`,
+            preventOverlaps: true,
+            invalidateOnRefresh: true,
           },
           onStart: () => counter(numb, count),
         });
@@ -1371,11 +1398,13 @@ window.addEventListener('load', () => {
     ScrollTrigger.create({
       trigger: triggerElement,
       start: onEnterStart,
+      preventOverlaps: true,
+      invalidateOnRefresh: true,
       onEnter: () => timeline.play()
     })
   }
 
-  window.addEventListener('resize scroll', ScrollTrigger.refresh());
+  window.addEventListener('resize', ScrollTrigger.refresh());
 
   const btnPres = document.querySelectorAll('.btn--pres');
   if (btnPres.length > 0) {
