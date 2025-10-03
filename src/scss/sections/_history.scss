@@ -66,9 +66,14 @@
     }
 
     &:last-child {
+      --history-item-width: 42rem;
 
       .history__item-head::before {
         display: none;
+      }
+
+      .history__item-text {
+        padding: 0;
       }
     }
 

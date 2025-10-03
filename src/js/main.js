@@ -780,324 +780,450 @@ window.addEventListener('load', () => {
   /**
    * Таймлайн
    */
-  const timelinePlaceholders = document.querySelectorAll('.timeline-placeholder');
-  if (timelinePlaceholders.length > 0) {
+  // можно вынести в отдельный файл - НАЧАЛО
+  const TimelineScroll = {
 
-    timelinePlaceholders.forEach(timelinePlaceholder => {
+    defaultConfig: {
+      breakpoint: 768,
+      selectors: {
+        placeholder: '.timeline-placeholder',
+        container: '.timeline-container',
+        timeline: '.timeline',
+        wrapper: '.timeline-wrapper',
+        items: '.timeline-item',
+        btnPrev: '.timeline-button-prev',
+        btnNext: '.timeline-button-next'
+      }
+    },
 
-      const timelineContainer = timelinePlaceholder.querySelector('.timeline-container');
-      const timeline = timelinePlaceholder.querySelector('.timeline');
-      const timelineWrapper = timelinePlaceholder.querySelector('.timeline-wrapper');
-      const timelineItems = timelinePlaceholder.querySelectorAll('.timeline-item');
-      const btnPrev = timelinePlaceholder.querySelector('.timeline-button-prev');
-      const btnNext = timelinePlaceholder.querySelector('.timeline-button-next');
+    init(placeholderSelector = '.timeline-placeholder', customSelectors = {}) {
 
-      let itemWidth = 0;
-      let containerWidth = 0;
-      let totalWidth = 0;
-      let maxScroll = 0;
-      let placeholderHeight = 0;
-      let containerHeight = 0;
-      let scrollDistance = 0;
+      this.config = {
+        ...this.defaultConfig,
+        selectors: { ...this.defaultConfig.selectors, ...customSelectors }
+      };
 
-      let timelineProgress = 0;
-      let currentIndex = 0;
-      let isAnimating = false;
-      let startX = 0;
-      let startY = 0;
-      let currentX = 0;
-      let isDragging = false;
-      let startScroll = 0;
-      let xSwipe = false;
+      this.state = {
+        rootElement: null,
+        timelinePlaceholder: null,
+        timelineContainer: null,
+        timeline: null,
+        timelineWrapper: null,
+        timelineItems: null,
+        btnPrev: null,
+        btnNext: null,
 
-      let scrollTimeout;
-      let isScrolling = false;
+        itemWidth: 0,
+        containerWidth: 0,
+        totalWidth: 0,
+        maxScroll: 0,
+        placeholderHeight: 0,
+        containerHeight: 0,
+        scrollDistance: 0,
 
-      function isMobileDevice() {
-        return window.innerWidth <= 768;
+        timelineProgress: 0,
+        currentIndex: 0,
+        isAnimating: false,
+        startX: 0,
+        startY: 0,
+        currentX: 0,
+        isDragging: false,
+        startScroll: 0,
+        xSwipe: false,
+
+        scrollTimeout: null,
+        isScrolling: false
+      };
+
+      this.setRootElement(placeholderSelector);
+
+      this.cacheElements();
+      this.calculatePlaceholderHeight();
+      this.bindEvents();
+      this.updateButtons();
+      this.updateActiveItem(0);
+      return this;
+    },
+
+    setRootElement(selector) {
+      const element = typeof selector === 'string'
+        ? document.querySelector(selector)
+        : selector;
+
+      if (!element) {
+        console.warn(`TimelineScroll: Root element not found with selector "${selector}"`);
       }
 
-      function calculatePlaceholderHeight() {
+      this.state.rootElement = element;
+    },
 
-        if (isMobileDevice()) {
-          timelinePlaceholder.style.height = 'auto';
+    destroy() {
+      window.removeEventListener('resize', this.onResize.bind(this));
+    },
+
+    next() {
+      this.goToIndex(this.state.currentIndex + 1);
+    },
+
+    prev() {
+      this.goToIndex(this.state.currentIndex - 1);
+    },
+
+    goTo(index) {
+      this.goToIndex(index);
+    },
+
+    getCurrentIndex() {
+      return this.state.currentIndex;
+    },
+
+    cacheElements() {
+      const s = this.state;
+      const selectors = this.config.selectors;
+
+      s.timelinePlaceholder = s.rootElement;
+      s.timelineContainer = this.findElement(selectors.container);
+      s.timeline = this.findElement(selectors.timeline);
+      s.timelineWrapper = this.findElement(selectors.wrapper);
+      s.timelineItems = this.findElement(selectors.items, true);
+      s.btnPrev = this.findElement(selectors.btnPrev);
+      s.btnNext = this.findElement(selectors.btnNext);
+
+      this.validateRequiredElements();
+    },
+
+    findElement(selector, all = false) {
+      if (all) {
+        return this.state.rootElement.querySelectorAll(selector);
+      }
+      return this.state.rootElement.querySelector(selector);
+    },
+
+    validateRequiredElements() {
+      const s = this.state;
+      const required = [
+        { element: s.timelineContainer, name: 'container' },
+        { element: s.timeline, name: 'timeline' },
+        { element: s.timelineWrapper, name: 'wrapper' },
+        { element: s.timelineItems, name: 'items' }
+      ];
+
+      required.forEach(({ element, name }) => {
+        if (!element || (Array.isArray(element) && element.length === 0)) {
+          console.warn(`TimelineScroll: Required element "${name}" not found with selector "${this.config.selectors[name]}"`)
+        }
+      });
+    },
+
+    isMobileDevice() {
+      return window.innerWidth <= this.config.breakpoint;
+    },
+
+    calculatePlaceholderHeight() {
+      const s = this.state;
+
+      if (this.isMobileDevice()) {
+        s.timelinePlaceholder.style.height = 'auto';
+        return;
+      }
+
+      s.containerHeight = s.timelineContainer.offsetHeight;
+      s.itemWidth = s.timelineItems[0].offsetWidth;
+      s.containerWidth = s.timelineContainer.offsetWidth;
+      s.totalWidth = s.itemWidth * s.timelineItems.length;
+      s.maxScroll = Math.max(0, s.totalWidth - s.containerWidth);
+
+      const horizontalScrollSpace = (s.totalWidth / s.containerWidth) * s.containerHeight;
+      s.placeholderHeight = s.containerHeight + horizontalScrollSpace;
+      s.scrollDistance = s.placeholderHeight - s.containerHeight;
+
+      s.timelinePlaceholder.style.height = `${s.placeholderHeight}px`;
+    },
+
+    updateButtons() {
+      const s = this.state;
+      if (this.isMobileDevice() || !s.btnPrev || !s.btnNext) return;
+
+      s.btnPrev.disabled = s.currentIndex === 0;
+      s.btnNext.disabled = s.currentIndex === s.timelineItems.length - 1;
+    },
+
+    goToIndex(index) {
+      if (this.isMobileDevice()) {
+        return this.goToIndexMobile(index);
+      }
+
+      const s = this.state;
+      if (s.isAnimating) return;
+
+      index = Math.max(0, Math.min(index, s.timelineItems.length - 1));
+      if (index === s.currentIndex) return;
+
+      s.isAnimating = true;
+
+      const targetProgress = index / (s.timelineItems.length - 1);
+      const containerTop = s.timelinePlaceholder.offsetTop;
+      const targetScroll = containerTop + (targetProgress * s.scrollDistance);
+
+      lenis.scrollTo(targetScroll, {
+        duration: 0.7,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        onComplete: () => {
+          s.isAnimating = false;
+        }
+      });
+    },
+
+    goToIndexMobile(index) {
+      const s = this.state;
+      index = Math.max(0, Math.min(index, s.timelineItems.length - 1));
+      const item = s.timelineItems[index];
+      const itemLeft = item.offsetLeft;
+      const itemWidth = item.offsetWidth;
+      const containerWidth = s.timeline.offsetWidth;
+
+      const scrollPosition = itemLeft - (containerWidth / 2) + (itemWidth / 2);
+
+      s.timeline.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+
+      this.updateActiveItemMobile(index);
+    },
+
+    updateTimeline(scrollY) {
+      const s = this.state;
+      if (this.isMobileDevice()) return;
+
+      const containerTop = s.timelinePlaceholder.offsetTop;
+
+      let scrollProgress = (scrollY - containerTop) / s.scrollDistance;
+      scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+
+      if (scrollY >= containerTop && scrollY <= containerTop + s.scrollDistance) {
+        s.timelineProgress = scrollProgress;
+
+        const translateX = -s.timelineProgress * s.maxScroll;
+        s.timelineWrapper.style.transform = `translateX(${translateX}px)`;
+
+        this.updateActiveItem(s.timelineProgress);
+
+      } else {
+        if (scrollY < containerTop) {
+          s.timelineProgress = 0;
+          s.timelineWrapper.style.transform = 'translateX(0px)';
+          this.updateActiveItem(0);
+        } else if (scrollY > containerTop + s.scrollDistance) {
+          s.timelineProgress = 1;
+          s.timelineWrapper.style.transform = `translateX(${-s.maxScroll}px)`;
+          this.updateActiveItem(1);
+        }
+      }
+    },
+
+    updateActiveItem(progress) {
+      const s = this.state;
+      const newIndex = Math.min(
+        s.timelineItems.length - 1,
+        Math.floor(progress * s.timelineItems.length)
+      );
+
+      if (newIndex !== s.currentIndex) {
+        s.currentIndex = newIndex;
+
+        s.timelineItems.forEach((item, index) => {
+          item.classList.toggle('timeline-active', index === s.currentIndex);
+        });
+
+        this.updateButtons();
+      }
+    },
+
+    updateActiveItemMobile(index) {
+      const s = this.state;
+      if (index !== s.currentIndex) {
+        s.currentIndex = index;
+
+        s.timelineItems.forEach((item, i) => {
+          item.classList.toggle('timeline-active', i === s.currentIndex);
+        });
+      }
+    },
+
+    handleMobileScroll() {
+      const s = this.state;
+      if (!this.isMobileDevice()) return;
+
+      clearTimeout(s.scrollTimeout);
+      s.isScrolling = true;
+
+      const scrollLeft = s.timeline.scrollLeft;
+      const containerWidth = s.timeline.offsetWidth;
+      const itemWidth = s.timelineItems[0].offsetWidth;
+
+      const center = scrollLeft + (containerWidth / 2);
+
+      let closestIndex = 0;
+      let minDistance = Infinity;
+
+      s.timelineItems.forEach((item, index) => {
+        const itemLeft = item.offsetLeft;
+        const itemCenter = itemLeft + (itemWidth / 2);
+        const distance = Math.abs(center - itemCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      this.updateActiveItemMobile(closestIndex);
+
+      s.scrollTimeout = setTimeout(() => {
+        s.isScrolling = false;
+
+        if (!s.isScrolling) {
+          this.goToIndex(closestIndex);
+        }
+      }, 100);
+    },
+
+    handleTouchStart(e) {
+      const s = this.state;
+      if (s.isAnimating) return;
+
+      s.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+      s.startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+      s.currentX = parseInt(getComputedStyle(s.timelineWrapper).transform.split(',')[4] || 0, 10);
+      s.startScroll = lenis.scroll;
+      s.isDragging = true;
+      s.xSwipe = false;
+      s.timelineWrapper.classList.add('grabbing');
+    },
+
+    handleTouchMove(e) {
+      const s = this.state;
+      if (!s.isDragging) return;
+      e.preventDefault();
+
+      const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+      const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+
+      if (!s.xSwipe) {
+        const diffX = Math.abs(x - s.startX);
+        const diffY = Math.abs(y - s.startY);
+
+        if (diffY > diffX && diffY > 10) {
+          s.isDragging = false;
+          s.timelineWrapper.classList.remove('grabbing');
           return;
         }
 
-        containerHeight = timelineContainer.offsetHeight;
-
-        itemWidth = timelineItems[0].offsetWidth;
-        containerWidth = timelineContainer.offsetWidth;
-        totalWidth = itemWidth * timelineItems.length;
-        maxScroll = Math.max(0, totalWidth - containerWidth);
-
-        const horizontalScrollSpace = (totalWidth / containerWidth) * containerHeight;
-        placeholderHeight = containerHeight + horizontalScrollSpace;
-        scrollDistance = placeholderHeight - containerHeight;
-
-        timelinePlaceholder.style.height = `${placeholderHeight}px`;
-      }
-
-      function updateButtons() {
-
-        if (isMobileDevice()) return;
-
-        btnPrev.disabled = currentIndex === 0;
-        btnNext.disabled = currentIndex === timelineItems.length - 1;
-      }
-
-      function goToIndex(index) {
-
-        if (isMobileDevice()) {
-          index = Math.max(0, Math.min(index, timelineItems.length - 1));
-          const item = timelineItems[index];
-          const itemLeft = item.offsetLeft;
-          const itemWidth = item.offsetWidth;
-          const containerWidth = timeline.offsetWidth;
-
-          const scrollPosition = itemLeft - (containerWidth / 2) + (itemWidth / 2);
-
-          timeline.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-          });
-
-          updateActiveItemMobile(index);
-          return;
-        }
-
-        if (isAnimating) return;
-
-        index = Math.max(0, Math.min(index, timelineItems.length - 1));
-        if (index === currentIndex) return;
-
-        isAnimating = true;
-
-        const targetProgress = index / (timelineItems.length - 1);
-        const containerTop = timelinePlaceholder.offsetTop;
-        const targetScroll = containerTop + (targetProgress * scrollDistance);
-
-        lenis.scrollTo(targetScroll, {
-          duration: 0.7,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          onComplete: () => {
-            isAnimating = false;
-          }
-        });
-      }
-
-      function updateTimeline(scrollY) {
-
-        if (isMobileDevice()) return;
-
-        const containerTop = timelinePlaceholder.offsetTop;
-
-        let scrollProgress = (scrollY - containerTop) / scrollDistance;
-        scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-
-        if (scrollY >= containerTop && scrollY <= containerTop + scrollDistance) {
-          timelineProgress = scrollProgress;
-
-          const translateX = -timelineProgress * maxScroll;
-          timelineWrapper.style.transform = `translateX(${translateX}px)`;
-
-          updateActiveItem(timelineProgress);
-
-        } else {
-          if (scrollY < containerTop) {
-            timelineProgress = 0;
-            timelineWrapper.style.transform = 'translateX(0px)';
-            updateActiveItem(0);
-          }
-
-          else if (scrollY > containerTop + scrollDistance) {
-            timelineProgress = 1;
-            timelineWrapper.style.transform = `translateX(${-maxScroll}px)`;
-            updateActiveItem(1);
-          }
-        }
-      }
-
-      function updateActiveItem(progress) {
-        const newIndex = Math.min(
-          timelineItems.length - 1,
-          Math.floor(progress * timelineItems.length)
-        );
-
-        if (newIndex !== currentIndex) {
-          currentIndex = newIndex;
-
-          timelineItems.forEach((item, index) => {
-            item.classList.toggle('timeline-active', index === currentIndex);
-          });
-
-          updateButtons();
-        }
-      }
-
-      function updateActiveItemMobile(index) {
-        if (index !== currentIndex) {
-          currentIndex = index;
-
-          timelineItems.forEach((item, i) => {
-            item.classList.toggle('timeline-active', i === currentIndex);
-          });
-        }
-      }
-
-      function handleMobileScroll() {
-        if (!isMobileDevice()) return;
-
-        clearTimeout(scrollTimeout);
-        isScrolling = true;
-
-        const scrollLeft = timeline.scrollLeft;
-        const containerWidth = timeline.offsetWidth;
-        const itemWidth = timelineItems[0].offsetWidth;
-
-        const center = scrollLeft + (containerWidth / 2);
-
-        let closestIndex = 0;
-        let minDistance = Infinity;
-
-        timelineItems.forEach((item, index) => {
-          const itemLeft = item.offsetLeft;
-          const itemCenter = itemLeft + (itemWidth / 2);
-          const distance = Math.abs(center - itemCenter);
-
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestIndex = index;
-          }
-        });
-
-        updateActiveItemMobile(closestIndex);
-
-        scrollTimeout = setTimeout(() => {
-          isScrolling = false;
-
-          if (!isScrolling) {
-            goToIndex(closestIndex);
-          }
-        }, 100);
-      }
-
-      btnPrev.addEventListener('click', () => {
-        goToIndex(currentIndex - 1);
-      });
-
-      btnNext.addEventListener('click', () => {
-        goToIndex(currentIndex + 1);
-      });
-
-      // Обработчики свайпа только для планшета и больше
-      if (!isMobileDevice()) {
-        function handleTouchStart(e) {
-          if (isAnimating) return;
-
-          startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-          startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-          currentX = parseInt(getComputedStyle(timelineWrapper).transform.split(',')[4] || 0, 10);
-          startScroll = lenis.scroll;
-          isDragging = true;
-          xSwipe = false;
-          timelineWrapper.classList.add('grabbing');
-        }
-
-        function handleTouchMove(e) {
-          if (!isDragging) return;
+        if (diffX > 10) {
+          s.xSwipe = true;
           e.preventDefault();
-
-          const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-          const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-
-          if (!xSwipe) {
-            const diffX = Math.abs(x - startX);
-            const diffY = Math.abs(y - startY);
-
-            if (diffY > diffX && diffY > 10) {
-              isDragging = false;
-              timelineWrapper.classList.remove('grabbing');
-              return;
-            }
-
-            if (diffX > 10) {
-              xSwipe = true;
-              e.preventDefault();
-            }
-          }
-
-          if (xSwipe) {
-            const diff = x - startX;
-
-            let newX = currentX + diff;
-
-            newX = Math.min(Math.max(newX, -maxScroll), 0);
-
-            timelineWrapper.style.transform = `translateX(${newX}px)`;
-
-            lenis.scrollTo(startScroll, { immediate: true });
-          }
         }
-
-        function handleTouchEnd(e) {
-          if (!isDragging) return;
-          isDragging = false;
-          timelineWrapper.classList.remove('grabbing');
-
-          const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
-          const diff = x - startX;
-          const velocity = diff / 100;
-
-          if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
-            if (diff > 0) {
-              goToIndex(currentIndex - 1);
-            } else {
-              goToIndex(currentIndex + 1);
-            }
-          } else {
-            goToIndex(currentIndex);
-          }
-        }
-
-        timelineWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
-        timelineWrapper.addEventListener('mousedown', handleTouchStart);
-
-        timelineWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
-        timelineWrapper.addEventListener('mousemove', handleTouchMove);
-
-        timelineWrapper.addEventListener('touchend', handleTouchEnd);
-        timelineWrapper.addEventListener('mouseup', handleTouchEnd);
-        timelineWrapper.addEventListener('mouseleave', handleTouchEnd);
       }
 
-      // Добавляем обработчик скролла для мобильных устройств
-      timeline.addEventListener('scroll', handleMobileScroll);
+      if (s.xSwipe) {
+        const diff = x - s.startX;
 
-      lenis.on('scroll', ({ scroll }) => {
-        if (!isDragging) { // Не обновляем во время свайпа
-          updateTimeline(scroll);
+        let newX = s.currentX + diff;
+
+        newX = Math.min(Math.max(newX, -s.maxScroll), 0);
+
+        s.timelineWrapper.style.transform = `translateX(${newX}px)`;
+
+        lenis.scrollTo(s.startScroll, { immediate: true });
+      }
+    },
+
+    handleTouchEnd(e) {
+      const s = this.state;
+      if (!s.isDragging) return;
+      s.isDragging = false;
+      s.timelineWrapper.classList.remove('grabbing');
+
+      const x = e.type === 'touchend' ? (e.changedTouches ? e.changedTouches[0].clientX : 0) : e.clientX;
+      const diff = x - s.startX;
+      const velocity = diff / 100;
+
+      if (Math.abs(diff) > 50 || Math.abs(velocity) > 0.5) {
+        if (diff > 0) {
+          this.goToIndex(s.currentIndex - 1);
+        } else {
+          this.goToIndex(s.currentIndex + 1);
         }
-      });
+      } else {
+        this.goToIndex(s.currentIndex);
+      }
+    },
 
-      window.addEventListener('resize', () => {
-        calculatePlaceholderHeight();
-        updateTimeline(lenis.scroll);
-        updateButtons();
-      });
+    onLenisScroll({ scroll }) {
+      if (!this.state.isDragging) {
+        this.updateTimeline(scroll);
+      }
+    },
 
-      calculatePlaceholderHeight();
-      updateButtons();
+    onResize() {
+      this.calculatePlaceholderHeight();
+      this.updateTimeline(lenis.scroll);
+      this.updateButtons();
+    },
 
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+    bindEvents() {
+      const s = this.state;
+
+      if (s.btnPrev) {
+        s.btnPrev.addEventListener('click', () => {
+          this.goToIndex(s.currentIndex - 1);
+        });
       }
 
-      requestAnimationFrame(raf);
+      if (s.btnNext) {
+        s.btnNext.addEventListener('click', () => {
+          this.goToIndex(s.currentIndex + 1);
+        });
+      }
 
-      updateActiveItem(0);
-    });
+      if (!this.isMobileDevice()) {
+        s.timelineWrapper.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
+        s.timelineWrapper.addEventListener('mousedown', this.handleTouchStart.bind(this));
+
+        s.timelineWrapper.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+        s.timelineWrapper.addEventListener('mousemove', this.handleTouchMove.bind(this));
+
+        s.timelineWrapper.addEventListener('touchend', this.handleTouchEnd.bind(this));
+        s.timelineWrapper.addEventListener('mouseup', this.handleTouchEnd.bind(this));
+        s.timelineWrapper.addEventListener('mouseleave', this.handleTouchEnd.bind(this));
+      }
+
+      s.timeline.addEventListener('scroll', this.handleMobileScroll.bind(this));
+
+      lenis.on('scroll', this.onLenisScroll.bind(this));
+      window.addEventListener('resize', this.onResize.bind(this));
+    }
+  };
+
+  TimelineScroll.create = function (placeholderSelector = '.timeline-placeholder', customSelectors = {}) {
+    const instance = Object.create(this);
+    return instance.init(placeholderSelector, customSelectors);
+  };
+  // можно вынести в отдельный файл - КОНЕЦ
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  if (document.getElementById('timelinePlaceholder')) {
+    const timeline = TimelineScroll.create('#timelinePlaceholder');
+  }
+
+  if (document.getElementById('timelinePlaceholder2')) {
+    const timeline2 = TimelineScroll.create('#timelinePlaceholder2');
   }
 
   // $(window).on('resize load', function () {
