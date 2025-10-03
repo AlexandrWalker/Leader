@@ -102,7 +102,7 @@
 
       @include md {
         --history-head-width: 26rem;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.15s ease;
       }
 
       &::before {
@@ -162,7 +162,7 @@
         font-size: 8rem;
         left: 0;
         bottom: -1.9rem;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.15s ease;
       }
 
       span {
@@ -188,7 +188,7 @@
 
       @include md {
         padding-right: 4rem;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.15s ease;
       }
     }
   }

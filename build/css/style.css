@@ -98,14 +98,6 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
@@ -118,6 +110,14 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -1632,7 +1632,7 @@ body {
   right: 0;
   bottom: 0;
   z-index: 100000;
-  background: var(--accent);
+  background: var(--black);
   clip-path: inset(0 0 0 0);
   will-change: clip-path;
 }
@@ -6912,7 +6912,6 @@ h6 span {
     /* Мобильная версия - убираем фиксацию */
     position: relative;
     height: auto;
-    min-height: 100vh;
   }
 
   .timeline-wrapper {
@@ -7327,8 +7326,8 @@ h6 span {
 
   .history__item-head {
     --history-head-width: 26rem;
-    -webkit-transition: background-color 0.3s ease;
-    transition: background-color 0.3s ease;
+    -webkit-transition: background-color 0.15s ease;
+    transition: background-color 0.15s ease;
   }
 
   .history__item-head::before {
@@ -7341,14 +7340,14 @@ h6 span {
     font-size: 8rem;
     left: 0;
     bottom: -1.9rem;
-    -webkit-transition: opacity 0.3s ease;
-    transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.15s ease;
+    transition: opacity 0.15s ease;
   }
 
   .history__item-text {
     padding-right: 4rem;
-    -webkit-transition: opacity 0.3s ease;
-    transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.15s ease;
+    transition: opacity 0.15s ease;
   }
 
   .history .swiper__btns {
@@ -7726,6 +7725,10 @@ h6 span {
 
   .types__item-title {
     margin-bottom: 0;
+  }
+
+  .work__inner {
+    gap: 4rem;
   }
 
   .work__slide {

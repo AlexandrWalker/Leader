@@ -10,6 +10,10 @@
     display: flex;
     flex-direction: column;
     gap: 6rem;
+
+    @include md {
+      gap: 4rem;
+    }
   }
 
   &__head {

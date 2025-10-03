@@ -324,6 +324,7 @@ window.addEventListener('load', () => {
     speed: 600,
     grabCursor: true,
     effect: 'fade',
+    autoHeight: true,
     fadeEffect: {
       crossFade: true
     },
@@ -335,6 +336,7 @@ window.addEventListener('load', () => {
       prevEl: ".objects__slider-btn--prev",
     },
     567: {
+      autoHeight: false,
       speed: 300,
     },
   });
