@@ -28,10 +28,16 @@
   }
 
   &:hover {
-    --background-color: var(--accent);
+
+    @include dosm {
+      --background-color: var(--accent);
+    }
 
     .burger-icon {
-      --background-color: var(--white);
+      
+      @include dosm {
+        --background-color: var(--white);
+      }
     }
   }
 

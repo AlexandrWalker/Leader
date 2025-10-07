@@ -16,6 +16,10 @@
   opacity: 0;
   transition: opacity 0.5s, visibility 0.5s;
 
+  &--open {
+    overflow: clip;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;

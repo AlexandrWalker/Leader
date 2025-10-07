@@ -153,3 +153,31 @@
     position: static;
   }
 }
+
+ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul) {
+
+  li {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+
+    @include md {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @include sm {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &::before {
+      content: "·";
+      width: 2.4rem;
+      display: inline-block;
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+}

@@ -27,7 +27,7 @@
     overflow: visible;
   }
 
-  &__slide{
+  &__slide {
     max-width: 34.9rem;
     width: 34.9rem;
     height: auto;
@@ -119,7 +119,7 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 4rem;
-
+      width: 100%;
       padding: 1.6rem 2rem;
       background-color: var(--white);
       transition: var(--transition);
@@ -177,8 +177,8 @@
       padding: 4rem 2rem 2rem;
       background-image: none;
       transition: var(--transition);
+      width: 100%;
       height: 100%;
-
       position: relative;
 
       @include md {

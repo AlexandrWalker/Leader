@@ -271,7 +271,7 @@ window.addEventListener('load', () => {
         speed: 300,
       },
       1441: {
-        slidesPerView: 5,
+        slidesPerView: 4,
         spaceBetween: 20,
         pagination: false,
         speed: 300,
@@ -555,7 +555,8 @@ window.addEventListener('load', () => {
             document.documentElement.classList.add('popup--open');
 
             document.body.classList.add('no-scroll');
-            lenis.stop();
+            document.documentElement.classList.add('no-scroll');
+            // lenis.stop();
           } else {
             return
           }
@@ -570,7 +571,8 @@ window.addEventListener('load', () => {
               }
 
               document.body.classList.remove('no-scroll');
-              lenis.start();
+              document.documentElement.classList.remove('no-scroll');
+              // lenis.start();
             });
 
             window.addEventListener('keydown', (e) => {
@@ -583,7 +585,8 @@ window.addEventListener('load', () => {
                 }
 
                 document.body.classList.remove('no-scroll');
-                lenis.start();
+                document.documentElement.classList.remove('no-scroll');
+                // lenis.start();
               }
             });
 
@@ -601,7 +604,8 @@ window.addEventListener('load', () => {
               }
 
               document.body.classList.remove('no-scroll');
-              lenis.start();
+              document.documentElement.classList.remove('no-scroll');
+              // lenis.start();
             });
           });
         });
@@ -929,13 +933,11 @@ window.addEventListener('load', () => {
 
       s.containerHeight = s.timelineContainer.offsetHeight;
       s.itemWidth = s.timelineItems[0].offsetWidth;
-      s.containerWidth = s.timelineContainer.offsetWidth;
+      s.containerWidth = s.timeline.offsetWidth;
       s.totalWidth = s.itemWidth * s.timelineItems.length;
       s.maxScroll = Math.max(0, s.totalWidth - s.containerWidth);
-
-      const horizontalScrollSpace = (s.totalWidth / s.containerWidth) * s.containerHeight;
-      s.placeholderHeight = s.containerHeight + horizontalScrollSpace;
-      s.scrollDistance = s.placeholderHeight - s.containerHeight;
+      s.scrollDistance = s.maxScroll;
+      s.placeholderHeight = s.containerHeight + s.scrollDistance;
 
       s.timelinePlaceholder.style.height = `${s.placeholderHeight}px`;
     },
@@ -961,7 +963,8 @@ window.addEventListener('load', () => {
 
       s.isAnimating = true;
 
-      const targetProgress = index / (s.timelineItems.length - 1);
+      const maxIndex = s.timelineItems.length - 1;
+      const targetProgress = index / maxIndex;
       const containerTop = s.timelinePlaceholder.offsetTop;
       const targetScroll = containerTop + (targetProgress * s.scrollDistance);
 
@@ -1024,9 +1027,10 @@ window.addEventListener('load', () => {
 
     updateActiveItem(progress) {
       const s = this.state;
+      const maxIndex = s.timelineItems.length - 1;
       const newIndex = Math.min(
-        s.timelineItems.length - 1,
-        Math.floor(progress * s.timelineItems.length)
+        maxIndex,
+        Math.round(progress * maxIndex)
       );
 
       if (newIndex !== s.currentIndex) {
@@ -1398,26 +1402,30 @@ window.addEventListener('load', () => {
     });
   }
 
-  const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
-  if (parallaxBlock) {
-    const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
-    parallaxImgBlocks.forEach(parallaxImgBlock => {
-      gsap.fromTo(parallaxImgBlock,
-        { y: '-8%' },
-        {
-          y: '8%',
-          scrollTrigger: {
-            trigger: parallaxImgBlock,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-            preventOverlaps: true,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
-    });
-  }
+  $(window).on('resize load', function () {
+    if (window.innerWidth > 768) {
+      const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
+      if (parallaxBlock) {
+        const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
+        parallaxImgBlocks.forEach(parallaxImgBlock => {
+          gsap.fromTo(parallaxImgBlock,
+            { y: '-8%' },
+            {
+              y: '8%',
+              scrollTrigger: {
+                trigger: parallaxImgBlock,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+                preventOverlaps: true,
+                invalidateOnRefresh: true,
+              },
+            }
+          );
+        });
+      }
+    }
+  });
 
   const parallaxItem = document.querySelector('[data-animation="parallax-img"]');
   if (parallaxItem) {
