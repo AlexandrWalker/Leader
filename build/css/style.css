@@ -110,18 +110,18 @@ a {
 }
 
 @font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Micra;
   font-display: swap;
   src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -2691,14 +2691,6 @@ h6 span {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
   pointer-events: all;
-}
-
-.header.out .header__btn {
-  -webkit-transform: translateY(-101%);
-  -ms-transform: translateY(-101%);
-  transform: translateY(-101%);
-  -webkit-transition-delay: 0.3s;
-  transition-delay: 0.3s;
 }
 
 .header.opened {
@@ -6955,6 +6947,9 @@ h6 span {
     width: max-content;
     -webkit-transition: none;
     transition: none;
+    -webkit-transform: none !important;
+    -ms-transform: none !important;
+    transform: none !important;
   }
 
   .timeline-button-prev,

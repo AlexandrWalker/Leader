@@ -64,6 +64,8 @@
       /* На мобильных устройствах - свободный скролл */
       width: max-content;
       transition: none;
+
+      transform: none !important;
     }
 
     &.grabbing {

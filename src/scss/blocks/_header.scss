@@ -11,13 +11,13 @@
   transition: all 1s ease;
   pointer-events: all;
 
-  &.out {
+  // &.out {
 
-    .header__btn {
-      transform: translateY(-101%);
-      transition-delay: 0.3s;
-    }
-  }
+  //   .header__btn {
+  //     transform: translateY(-101%);
+  //     transition-delay: 0.3s;
+  //   }
+  // }
 
   &.opened {
     pointer-events: none;

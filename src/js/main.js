@@ -124,22 +124,22 @@ window.addEventListener('load', () => {
   /**
    * Управляет поведением шапки.
    */
-  function headerFunc() {
-    const header = document.getElementById('header');
-    const firstSection = document.querySelector('section');
-    let lastScrollTop = 1;
-    const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
+  // function headerFunc() {
+  //   const header = document.getElementById('header');
+  //   const firstSection = document.querySelector('section');
+  //   let lastScrollTop = 1;
+  //   const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
 
-    window.addEventListener('scroll', () => {
-      if (scrollPosition() > lastScrollTop && scrollPosition() > firstSection.offsetHeight) {
-        header.classList.add('out');
-      } else {
-        header.classList.remove('out');
-      }
-      lastScrollTop = scrollPosition();
-    })
-  }
-  headerFunc();
+  //   window.addEventListener('scroll', () => {
+  //     if (scrollPosition() > lastScrollTop && scrollPosition() > firstSection.offsetHeight) {
+  //       header.classList.add('out');
+  //     } else {
+  //       header.classList.remove('out');
+  //     }
+  //     lastScrollTop = scrollPosition();
+  //   })
+  // }
+  // headerFunc();
 
   /**
    * Управляет поведением меню-бургера.
