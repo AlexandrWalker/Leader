@@ -228,7 +228,7 @@
 
     margin-left: auto;
 
-    transition: all 0.5s ease, margin-top 0s;
+    transition: all 0.5s ease, margin-top 0s, left 0s, max-width 0s;
 
     &::before {
       content: "";

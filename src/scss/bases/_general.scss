@@ -154,7 +154,7 @@
   }
 }
 
-ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul) {
+ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul, .header__drop-body ul) {
 
   li {
     font-family: var(--font-family);

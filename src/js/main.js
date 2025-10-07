@@ -431,6 +431,7 @@ window.addEventListener('load', () => {
     spaceBetween: 100,
     speed: 300,
     loop: true,
+    autoHeight: true,
     grabCursor: true,
     mousewheel: {
       forceToAxis: true,
@@ -441,6 +442,7 @@ window.addEventListener('load', () => {
     },
     breakpoints: {
       568: {
+        autoHeight: false,
         speed: 1500,
       },
     },
@@ -1230,9 +1232,6 @@ window.addEventListener('load', () => {
     const timeline2 = TimelineScroll.create('#timelinePlaceholder2');
   }
 
-  // $(window).on('resize load', function () {
-
-  // if (window.innerWidth > 768) {
   const creepingBlock = document.querySelector('[data-animation="creeping"]');
   if (creepingBlock) {
     const wrapper = document.querySelector('.wrapper');
@@ -1355,9 +1354,6 @@ window.addEventListener('load', () => {
       }
     })
   }
-
-  // }
-  // });
 
   const hero = document.getElementById("hero");
   if (hero) {

@@ -89,8 +89,10 @@ input[type='submit'] {
   cursor: pointer;
 }
 
+input,
 input:focus,
 input:active,
+textarea,
 textarea:focus,
 textarea:active,
 button:focus,

@@ -16,7 +16,7 @@
     background-image: none;
     padding: 4rem 0 2rem;
     /* hack*/
-    min-height: unset;
+    min-height: auto;
   }
 
   @include sm {
