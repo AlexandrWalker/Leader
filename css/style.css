@@ -264,14 +264,14 @@ html.video-show .fancybox__slide.has-html {
   z-index: 10;
 }
 
-ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul) li {
+ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul, .header__drop-body ul) li {
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 1.6rem;
   margin-bottom: 2rem;
 }
 
-ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul) li::before {
+ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul, .header__drop-body ul) li::before {
   content: "·";
   width: 2.4rem;
   display: inline-block;
@@ -699,8 +699,10 @@ input[type=submit] {
   cursor: pointer;
 }
 
+input,
 input:focus,
 input:active,
+textarea,
 textarea:focus,
 textarea:active,
 button:focus,
@@ -3066,7 +3068,8 @@ h6 span {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100vh;
+  max-height: 100vh;
+  height: 100%;
   z-index: 300;
   background-color: var(--black-90);
   display: grid;
@@ -3276,6 +3279,8 @@ h6 span {
 }
 
 .popup .form-textarea:hover {
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
   border-color: unset;
 }
 
@@ -3693,8 +3698,8 @@ h6 span {
   margin-top: -21rem;
   z-index: 1;
   margin-left: auto;
-  -webkit-transition: all 0.5s ease, margin-top 0s;
-  transition: all 0.5s ease, margin-top 0s;
+  -webkit-transition: all 0.5s ease, margin-top 0s, left 0s, max-width 0s;
+  transition: all 0.5s ease, margin-top 0s, left 0s, max-width 0s;
 }
 
 .about__video::before {
@@ -5882,6 +5887,9 @@ h6 span {
 }
 
 .work__slide {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 34.9rem;
+  flex: 0 0 34.9rem;
   max-width: 34.9rem;
   width: 34.9rem;
   height: auto;
@@ -6248,7 +6256,7 @@ h6 span {
     position: static;
   }
 
-  ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul) li {
+  ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul, .header__drop-body ul) li {
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
   }
@@ -7180,7 +7188,7 @@ h6 span {
     background-image: none;
     padding: 4rem 0 2rem;
     /* hack*/
-    min-height: unset;
+    min-height: auto;
   }
 
   .command__inner {
@@ -7758,6 +7766,9 @@ h6 span {
   }
 
   .work__slide {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 38.7rem;
+    flex: 0 0 38.7rem;
     max-width: 38.7rem;
     width: 38.7rem;
     padding-right: 2rem;
@@ -7980,7 +7991,7 @@ h6 span {
     aspect-ratio: 730/410;
   }
 
-  ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul) li {
+  ul:not(.burger-menu__list, .objects__item-body ul, .services__item-list ul, .header__drop-body ul) li {
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
   }
@@ -8743,6 +8754,9 @@ h6 span {
   }
 
   .work__slide {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 27.2rem;
+    flex: 0 0 27.2rem;
     max-width: 27.2rem;
     width: 27.2rem;
     padding-right: 1rem;
