@@ -51,7 +51,7 @@ window.addEventListener('load', () => {
     },
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true
+    smoothWheel: true,
   });
 
   /**
@@ -1232,6 +1232,8 @@ window.addEventListener('load', () => {
     const timeline2 = TimelineScroll.create('#timelinePlaceholder2');
   }
 
+  
+
   const creepingBlock = document.querySelector('[data-animation="creeping"]');
   if (creepingBlock) {
     const wrapper = document.querySelector('.wrapper');
@@ -1317,27 +1319,6 @@ window.addEventListener('load', () => {
     });
   }
 
-  const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
-  if (parallaxSection) {
-    const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
-    parallaxSections.forEach(parallaxSection => {
-      gsap.fromTo(parallaxSection,
-        { y: '0%' },
-        {
-          y: '-15%',
-          scrollTrigger: {
-            trigger: parallaxSection,
-            start: 'top 90%',
-            end: 'bottom top',
-            scrub: true,
-            preventOverlaps: true,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
-    });
-  }
-
   const faqItems = document.querySelectorAll(".faq__item");
   for (let i = 0; i < faqItems.length; i++) {
     gsap.from(faqItems[i], {
@@ -1400,6 +1381,7 @@ window.addEventListener('load', () => {
 
   $(window).on('resize load', function () {
     if (window.innerWidth > 768) {
+
       const parallaxBlock = document.querySelector('[data-animation="parallax-block"]');
       if (parallaxBlock) {
         const parallaxImgBlocks = document.querySelectorAll('[data-animation="parallax-block"]');
@@ -1420,6 +1402,28 @@ window.addEventListener('load', () => {
           );
         });
       }
+
+      const parallaxSection = document.querySelector('[data-animation="parallax-section"]');
+      if (parallaxSection) {
+        const parallaxSections = document.querySelectorAll('[data-animation="parallax-section"]');
+        parallaxSections.forEach(parallaxSection => {
+          gsap.fromTo(parallaxSection,
+            { y: '0%' },
+            {
+              y: '-15%',
+              scrollTrigger: {
+                trigger: parallaxSection,
+                start: 'top 90%',
+                end: 'bottom top',
+                scrub: true,
+                preventOverlaps: true,
+                invalidateOnRefresh: true,
+              },
+            }
+          );
+        });
+      }
+
     }
   });
 

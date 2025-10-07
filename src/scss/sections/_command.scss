@@ -224,7 +224,7 @@
       }
 
       @include eesm {
-        padding: 0px 7rem 1.5rem 1.5rem;
+        padding: 0px 8rem 1.5rem 1.5rem;
       }
 
       legend {
@@ -298,9 +298,9 @@
         left: auto;
       }
 
-      @include eesm {
-        width: 24rem;
-      }
+      // @include eesm {
+      //   width: 24rem;
+      // }
 
       img {
         width: 100%;

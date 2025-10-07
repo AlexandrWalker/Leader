@@ -98,26 +98,10 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
   font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
   font-style: normal;
 }
 
@@ -132,8 +116,24 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
   src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
   font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -3445,11 +3445,7 @@ h6 span {
 .timeline {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  padding: 0 var(--container-padding);
-  margin-right: calc(var(--container-padding) * -1);
-  margin-left: calc(var(--container-padding) * -1);
-  width: calc(100% + var(--container-padding) * 2);
+  overflow: visible;
 }
 
 .timeline-placeholder {
@@ -3481,6 +3477,7 @@ h6 span {
   transition: -webkit-transform 0.1s linear;
   transition: transform 0.1s linear;
   transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+  width: 100%;
 }
 
 .timeline-wrapper.grabbing {
@@ -5882,16 +5879,11 @@ h6 span {
   width: 100%;
 }
 
-.work__body {
-  overflow: visible;
-}
-
 .work__slide {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 34.9rem;
   flex: 0 0 34.9rem;
-  max-width: 34.9rem;
-  width: 34.9rem;
+  width: 100%;
   height: auto;
   padding-right: 2rem;
 }
@@ -6931,6 +6923,10 @@ h6 span {
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    padding: 0 var(--container-padding);
+    margin-right: calc(var(--container-padding) * -1);
+    margin-left: calc(var(--container-padding) * -1);
+    width: calc(100% + var(--container-padding) * 2);
     /* Скрываем scrollbar для лучшего UX */
   }
 
@@ -7354,6 +7350,10 @@ h6 span {
     --history-item-width: 36rem;
   }
 
+  .history__item:last-child {
+    --history-item-width: 36rem;
+  }
+
   .history__item-wrap {
     gap: 2rem;
   }
@@ -7769,13 +7769,13 @@ h6 span {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 38.7rem;
     flex: 0 0 38.7rem;
-    max-width: 38.7rem;
-    width: 38.7rem;
     padding-right: 2rem;
   }
 
   .work__slide:last-child {
-    max-width: 28.7rem;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 28.7rem;
+    flex: 0 0 28.7rem;
   }
 
   .work__item {
@@ -8757,8 +8757,6 @@ h6 span {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 27.2rem;
     flex: 0 0 27.2rem;
-    max-width: 27.2rem;
-    width: 27.2rem;
     padding-right: 1rem;
   }
 
@@ -8831,11 +8829,7 @@ h6 span {
   }
 
   .command__item-quote {
-    padding: 0px 7rem 1.5rem 1.5rem;
-  }
-
-  .command__item-photo {
-    width: 24rem;
+    padding: 0px 8rem 1.5rem 1.5rem;
   }
 
   .services__item-title h4 {

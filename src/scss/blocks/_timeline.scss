@@ -3,12 +3,7 @@
 .timeline {
   position: relative;
   width: 100%;
-  overflow: hidden;
-
-  padding: 0 var(--container-padding);
-  margin-right: calc(var(--container-padding) * -1);
-  margin-left: calc(var(--container-padding) * -1);
-  width: calc(100% + (var(--container-padding) * 2));
+  overflow: visible;
 
   @include md {
     /* На мобильных устройствах - свободный скролл */
@@ -17,6 +12,13 @@
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+
+
+    padding: 0 var(--container-padding);
+    margin-right: calc(var(--container-padding) * -1);
+    margin-left: calc(var(--container-padding) * -1);
+    width: calc(100% + (var(--container-padding) * 2));
 
     /* Скрываем scrollbar для лучшего UX */
     &::-webkit-scrollbar {
@@ -56,6 +58,7 @@
   &-wrapper {
     display: flex;
     transition: transform 0.1s linear;
+    width: 100%;
 
     @include md {
       /* На мобильных устройствах - свободный скролл */

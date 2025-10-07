@@ -75,6 +75,10 @@
       .history__item-text {
         padding: 0;
       }
+
+      @include md {
+        --history-item-width: 36rem;
+      }
     }
 
     &-wrap {

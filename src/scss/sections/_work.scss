@@ -1,7 +1,7 @@
 @use './../mixins' as *;
 
 .work {
-  
+
   @include sm {
     padding: 3rem 0;
   }
@@ -23,35 +23,26 @@
     width: 100%;
   }
 
-  &__body {
-    overflow: visible;
-  }
-
   &__slide {
     flex: 0 0 34.9rem;
-    max-width: 34.9rem;
-    width: 34.9rem;
+    width: 100%;
     height: auto;
     padding-right: 2rem;
 
     @include md {
       flex: 0 0 38.7rem;
-      max-width: 38.7rem;
-      width: 38.7rem;
       padding-right: 2rem;
     }
 
     @include sm {
       flex: 0 0 27.2rem;
-      max-width: 27.2rem;
-      width: 27.2rem;
       padding-right: 1rem;
     }
 
     &:last-child {
 
       @include md {
-        max-width: 28.7rem;
+        flex: 0 0 28.7rem;
       }
     }
   }
