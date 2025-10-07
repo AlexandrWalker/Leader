@@ -52,6 +52,7 @@ window.addEventListener('load', () => {
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
+    prevent: (node) => node.id === "popup-consultation"
   });
 
   /**
@@ -321,7 +322,7 @@ window.addEventListener('load', () => {
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
-    speed: 600,
+    speed: 1000,
     grabCursor: true,
     effect: 'fade',
     autoHeight: true,
@@ -558,7 +559,8 @@ window.addEventListener('load', () => {
 
             document.body.classList.add('no-scroll');
             document.documentElement.classList.add('no-scroll');
-            // lenis.stop();
+
+            lenis.stop();
           } else {
             return
           }
@@ -574,7 +576,8 @@ window.addEventListener('load', () => {
 
               document.body.classList.remove('no-scroll');
               document.documentElement.classList.remove('no-scroll');
-              // lenis.start();
+
+              lenis.start();
             });
 
             window.addEventListener('keydown', (e) => {
@@ -588,7 +591,8 @@ window.addEventListener('load', () => {
 
                 document.body.classList.remove('no-scroll');
                 document.documentElement.classList.remove('no-scroll');
-                // lenis.start();
+
+                lenis.start();
               }
             });
 
@@ -607,7 +611,8 @@ window.addEventListener('load', () => {
 
               document.body.classList.remove('no-scroll');
               document.documentElement.classList.remove('no-scroll');
-              // lenis.start();
+
+              lenis.start();
             });
           });
         });

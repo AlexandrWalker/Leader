@@ -12,6 +12,10 @@ html {
     font-size: 62.5%;
   }
 
+  &.no-scroll {
+    overflow: clip;
+  }
+
 }
 
 body {

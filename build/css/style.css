@@ -10,6 +10,10 @@ html {
   font-size: calc(100vw / var(--refRes) * 10);
 }
 
+html.no-scroll {
+  overflow: clip;
+}
+
 body {
   min-width: 320px;
   background-color: var(--page-bg);
@@ -98,10 +102,10 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
+  font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -114,10 +118,10 @@ a {
 }
 
 @font-face {
-  font-family: Montserrat;
+  font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Montserrat-Black.woff2") format("woff2"), url("../fonts/Montserrat-Black.woff") format("woff");
-  font-weight: 900;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -5889,7 +5893,7 @@ h6 span {
 }
 
 .work__item {
-  --transition: all 0.1s ease;
+  --transition: all 0.5s ease;
   --margin-right-width: 10rem;
   display: -webkit-box;
   display: -ms-flexbox;
