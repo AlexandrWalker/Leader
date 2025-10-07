@@ -786,7 +786,6 @@ window.addEventListener('load', () => {
   /**
    * Таймлайн
    */
-  // можно вынести в отдельный файл - НАЧАЛО
   const TimelineScroll = {
 
     defaultConfig: {
@@ -838,7 +837,13 @@ window.addEventListener('load', () => {
         xSwipe: false,
 
         scrollTimeout: null,
-        isScrolling: false
+        isScrolling: false,
+
+        buttonHoldInterval: null,
+        buttonHoldDirection: null,
+        buttonHoldDelay: 300,
+        buttonHoldSpeed: 100,
+        initialButtonPress: true
       };
 
       this.setRootElement(placeholderSelector);
@@ -865,6 +870,7 @@ window.addEventListener('load', () => {
 
     destroy() {
       window.removeEventListener('resize', this.onResize.bind(this));
+      this.stopButtonHold();
     },
 
     next() {
@@ -881,6 +887,45 @@ window.addEventListener('load', () => {
 
     getCurrentIndex() {
       return this.state.currentIndex;
+    },
+
+    startButtonHold(direction) {
+      const s = this.state;
+
+      if (s.buttonHoldInterval) {
+        clearInterval(s.buttonHoldInterval);
+      }
+
+      s.buttonHoldDirection = direction;
+      s.initialButtonPress = true;
+
+      if (direction === 'next') {
+        this.next();
+      } else {
+        this.prev();
+      }
+
+      s.buttonHoldInterval = setTimeout(() => {
+        s.initialButtonPress = false;
+        s.buttonHoldInterval = setInterval(() => {
+          if (s.buttonHoldDirection === 'next') {
+            this.next();
+          } else {
+            this.prev();
+          }
+        }, s.buttonHoldSpeed);
+      }, s.buttonHoldDelay);
+    },
+
+    stopButtonHold() {
+      const s = this.state;
+
+      if (s.buttonHoldInterval) {
+        clearTimeout(s.buttonHoldInterval);
+        clearInterval(s.buttonHoldInterval);
+        s.buttonHoldInterval = null;
+        s.buttonHoldDirection = null;
+      }
     },
 
     cacheElements() {
@@ -971,7 +1016,7 @@ window.addEventListener('load', () => {
       const targetScroll = containerTop + (targetProgress * s.scrollDistance);
 
       lenis.scrollTo(targetScroll, {
-        duration: 0.7,
+        duration: 0.4, // Было 0.7, стало 0.4
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         onComplete: () => {
           s.isAnimating = false;
@@ -1185,13 +1230,61 @@ window.addEventListener('load', () => {
         s.btnPrev.addEventListener('click', () => {
           this.goToIndex(s.currentIndex - 1);
         });
+
+        s.btnPrev.addEventListener('mousedown', () => {
+          this.startButtonHold('prev');
+        });
+
+        s.btnPrev.addEventListener('touchstart', () => {
+          this.startButtonHold('prev');
+        });
+
+        s.btnPrev.addEventListener('mouseup', () => {
+          this.stopButtonHold();
+        });
+
+        s.btnPrev.addEventListener('touchend', () => {
+          this.stopButtonHold();
+        });
+
+        s.btnPrev.addEventListener('mouseleave', () => {
+          this.stopButtonHold();
+        });
       }
 
       if (s.btnNext) {
         s.btnNext.addEventListener('click', () => {
           this.goToIndex(s.currentIndex + 1);
         });
+
+        s.btnNext.addEventListener('mousedown', () => {
+          this.startButtonHold('next');
+        });
+
+        s.btnNext.addEventListener('touchstart', () => {
+          this.startButtonHold('next');
+        });
+
+        s.btnNext.addEventListener('mouseup', () => {
+          this.stopButtonHold();
+        });
+
+        s.btnNext.addEventListener('touchend', () => {
+          this.stopButtonHold();
+        });
+
+        s.btnNext.addEventListener('mouseleave', () => {
+          this.stopButtonHold();
+        });
       }
+
+      document.addEventListener('mouseup', () => {
+        this.stopButtonHold();
+      });
+
+      document.addEventListener('touchend', () => {
+        this.stopButtonHold();
+      });
 
       if (!this.isMobileDevice()) {
         s.timelineWrapper.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
@@ -1232,7 +1325,7 @@ window.addEventListener('load', () => {
     const timeline2 = TimelineScroll.create('#timelinePlaceholder2');
   }
 
-  
+
 
   const creepingBlock = document.querySelector('[data-animation="creeping"]');
   if (creepingBlock) {
