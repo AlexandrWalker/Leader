@@ -239,7 +239,7 @@ window.addEventListener('load', () => {
       forceToAxis: true,
     },
     breakpoints: {
-      567: {
+      576: {
         slidesPerView: 'auto',
         spaceBetween: 10,
         speed: 300,
@@ -272,7 +272,7 @@ window.addEventListener('load', () => {
       clickable: true
     },
     breakpoints: {
-      567: {
+      576: {
         slidesPerView: 2,
         spaceBetween: 10,
         speed: 300,
@@ -315,7 +315,7 @@ window.addEventListener('load', () => {
       clickable: true
     },
     breakpoints: {
-      567: {
+      576: {
         slidesPerView: 2,
         spaceBetween: 10,
         speed: 300,
@@ -352,9 +352,11 @@ window.addEventListener('load', () => {
       nextEl: ".objects__slider-btn--next",
       prevEl: ".objects__slider-btn--prev",
     },
-    567: {
-      autoHeight: false,
-      speed: 300,
+    breakpoints: {
+      576: {
+        autoHeight: false,
+        speed: 300,
+      }
     },
   });
 
@@ -369,7 +371,7 @@ window.addEventListener('load', () => {
     mousewheel: false,
     allowTouchMove: false,
     breakpoints: {
-      567: {
+      576: {
         speed: 300,
       },
       769: {
@@ -398,7 +400,7 @@ window.addEventListener('load', () => {
       mousewheel: false,
       watchSlidesProgress: true,
       breakpoints: {
-        567: {
+        576: {
           speed: 300,
         },
         769: {

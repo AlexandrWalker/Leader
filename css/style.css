@@ -112,22 +112,6 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-display: swap;
   src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
@@ -138,6 +122,22 @@ a {
   font-display: swap;
   src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"), url("../fonts/Montserrat-ExtraLight.woff") format("woff");
   font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -168,16 +168,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
-  font-weight: 100;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
+  font-weight: 100;
   font-style: normal;
 }
 
@@ -1187,26 +1187,6 @@ body {
   color: var(--accent);
 }
 
-.form-group--textarea:hover::before {
-  width: 100%;
-}
-
-.form-group--textarea::before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0.1rem;
-  background-color: var(--gray);
-  position: absolute;
-  bottom: 0.6rem;
-  left: 0;
-  z-index: 1;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  opacity: 1;
-  visibility: visible;
-}
-
 .form-input {
   font-weight: 500;
   font-size: 1.6rem;
@@ -1218,7 +1198,6 @@ body {
   border-radius: 0;
   width: 100%;
   padding: 0 1rem 3rem 0;
-  border-bottom: 0.1rem solid var(--gray-20);
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -1252,16 +1231,19 @@ body {
   color: var(--white-50);
 }
 
-.form-input.invalid {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.form-input.invalid + .form-label {
+.form .has-error .form-input {
   color: var(--accent);
 }
 
-.form-input.invalid ~ .form-invalid {
+.form .has-error .form-input + .form-label {
+  color: var(--accent);
+}
+
+.form .has-error .form-input + .form-label::before {
+  background-color: var(--accent);
+}
+
+.form .has-error .form-input ~ .form-invalid {
   opacity: 1;
   visibility: visible;
 }
@@ -1306,6 +1288,22 @@ body {
   position: absolute;
   bottom: -2.9rem;
   left: 0;
+  z-index: 2;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.form-label::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.1rem;
+  background-color: var(--gray-20);
+  position: absolute;
+  bottom: -2.9rem;
+  left: 0;
   z-index: 1;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -1330,144 +1328,33 @@ body {
   resize: none;
   width: 100%;
   padding: 0 1rem 3rem 0;
-  border-bottom: 0.1rem solid var(--gray-20);
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-}
-
-.form-textarea::-webkit-input-placeholder {
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 130%;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--white-50);
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-
-.form-textarea::-moz-placeholder {
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 130%;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--white-50);
-  -moz-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-
-.form-textarea:-ms-input-placeholder {
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 130%;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--white-50);
-  -ms-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-
-.form-textarea::-ms-input-placeholder {
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 130%;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--white-50);
-  -ms-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-
-.form-textarea::placeholder {
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 130%;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--white-50);
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-
-.form-textarea:hover {
-  border-color: var(--gray);
-  -webkit-transition-delay: 0.5s;
-  transition-delay: 0.5s;
-}
-
-.form-textarea:hover::-webkit-input-placeholder {
-  color: var(--white);
-}
-
-.form-textarea:hover::-moz-placeholder {
-  color: var(--white);
-}
-
-.form-textarea:hover:-ms-input-placeholder {
-  color: var(--white);
-}
-
-.form-textarea:hover::-ms-input-placeholder {
-  color: var(--white);
-}
-
-.form-textarea:hover::placeholder {
-  color: var(--white);
 }
 
 .form-textarea:hover + .form-label {
   color: var(--white);
 }
 
+.form-textarea:hover + .form-label::before {
+  width: 100%;
+}
+
 .form-textarea:hover + .form-label span {
   color: var(--accent);
 }
 
-.form-textarea.filled,
-.form-textarea:active,
-.form-textarea:focus,
-.form-textarea:target {
-  border-color: var(--gray);
-  -webkit-transition-delay: 0.5s;
-  transition-delay: 0.5s;
-}
-
-.form-textarea.filled::-webkit-input-placeholder, .form-textarea:active::-webkit-input-placeholder, .form-textarea:focus::-webkit-input-placeholder, .form-textarea:target::-webkit-input-placeholder {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.form-textarea.filled::-moz-placeholder, .form-textarea:active::-moz-placeholder, .form-textarea:focus::-moz-placeholder, .form-textarea:target::-moz-placeholder {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.form-textarea.filled:-ms-input-placeholder, .form-textarea:active:-ms-input-placeholder, .form-textarea:focus:-ms-input-placeholder, .form-textarea:target:-ms-input-placeholder {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.form-textarea.filled::-ms-input-placeholder, .form-textarea:active::-ms-input-placeholder, .form-textarea:focus::-ms-input-placeholder, .form-textarea:target::-ms-input-placeholder {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.form-textarea.filled::placeholder,
-.form-textarea:active::placeholder,
-.form-textarea:focus::placeholder,
-.form-textarea:target::placeholder {
-  opacity: 0;
-  visibility: hidden;
-}
-
 .form-textarea.filled + .form-label,
 .form-textarea:active + .form-label,
-.form-textarea:focus + .form-label,
-.form-textarea:target + .form-label {
-  opacity: 0;
+.form-textarea:focus + .form-label {
   visibility: hidden;
   pointer-events: none;
+}
+
+.form-textarea.filled + .form-label::before,
+.form-textarea:active + .form-label::before,
+.form-textarea:focus + .form-label::before {
+  width: 100%;
 }
 
 .form-textarea:not(:focus) {
@@ -3249,6 +3136,11 @@ h6 span {
   background-color: var(--black);
 }
 
+.popup .form-label::after {
+  bottom: -2.1rem;
+  background-color: var(--gray-20);
+}
+
 .popup .form-textarea {
   padding: 0 1rem 2rem 0;
   color: var(--black-50);
@@ -3272,12 +3164,6 @@ h6 span {
 
 .popup .form-textarea::placeholder {
   color: var(--black-50);
-}
-
-.popup .form-textarea:hover {
-  -webkit-transition-delay: 0s;
-  transition-delay: 0s;
-  border-color: unset;
 }
 
 .popup .form-textarea:hover::-webkit-input-placeholder {
@@ -3312,7 +3198,6 @@ h6 span {
 .popup .form-textarea:active,
 .popup .form-textarea:focus {
   color: var(--black);
-  border-color: unset;
 }
 
 .popup .form-textarea.filled + .form-label::before,
@@ -4920,6 +4805,12 @@ h6 span {
 }
 
 .join {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: var(--black);
   color: var(--white);
   padding: 7rem 0 10rem;
@@ -6414,6 +6305,10 @@ h6 span {
     bottom: -2.3rem;
   }
 
+  .form-label::after {
+    bottom: -2.3rem;
+  }
+
   .form-label {
     font-size: 1.4rem;
   }
@@ -6421,26 +6316,6 @@ h6 span {
   .form-textarea {
     font-size: 1.4rem;
     padding: 0 1rem 2rem 0;
-  }
-
-  .form-textarea::-webkit-input-placeholder {
-    font-size: 1.4rem;
-  }
-
-  .form-textarea::-moz-placeholder {
-    font-size: 1.4rem;
-  }
-
-  .form-textarea:-ms-input-placeholder {
-    font-size: 1.4rem;
-  }
-
-  .form-textarea::-ms-input-placeholder {
-    font-size: 1.4rem;
-  }
-
-  .form-textarea::placeholder {
-    font-size: 1.4rem;
   }
 
   .form-wrap {
@@ -8121,8 +7996,8 @@ h6 span {
     margin-bottom: 4rem;
   }
 
-  .form-group:nth-child(1):not(.form-group--file),
-  .form-group:nth-child(2):not(.form-group--file) {
+  .form-group:nth-child(1):not(.form-group--file, .popup .form-group),
+  .form-group:nth-child(2):not(.form-group--file, .popup .form-group) {
     width: 100%;
   }
 
@@ -8143,31 +8018,15 @@ h6 span {
     bottom: -1.9rem;
   }
 
+  .form-label::after {
+    bottom: -1.9rem;
+  }
+
   .form-label {
     font-size: 1.3rem;
   }
 
   .form-textarea {
-    font-size: 1.3rem;
-  }
-
-  .form-textarea::-webkit-input-placeholder {
-    font-size: 1.3rem;
-  }
-
-  .form-textarea::-moz-placeholder {
-    font-size: 1.3rem;
-  }
-
-  .form-textarea:-ms-input-placeholder {
-    font-size: 1.3rem;
-  }
-
-  .form-textarea::-ms-input-placeholder {
-    font-size: 1.3rem;
-  }
-
-  .form-textarea::placeholder {
     font-size: 1.3rem;
   }
 
@@ -8275,6 +8134,10 @@ h6 span {
   }
 
   .popup .form-label::before {
+    bottom: -1.9rem;
+  }
+
+  .popup .form-label::after {
     bottom: -1.9rem;
   }
 
