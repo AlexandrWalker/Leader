@@ -81,6 +81,10 @@ window.addEventListener('load', () => {
         if (html.classList.contains('burger-video-show')) {
           html.classList.remove('burger-video-show');
         }
+
+        if (html.classList.contains('object-video-show')) {
+          html.classList.remove('object-video-show');
+        }
       }
     },
   });
@@ -99,6 +103,18 @@ window.addEventListener('load', () => {
     burgerVideoBtn.addEventListener('click', () => {
       html.classList.add('burger-video-show');
     })
+  }
+
+  const objectsGalleryItems = document.querySelectorAll('.objects__gallery-item');
+  if (objectsGalleryItems.length > 0) {
+    objectsGalleryItems.forEach(objectsGalleryItem => {
+
+      if (objectsGalleryItem.getAttribute('data-type', 'iframe')) {
+        objectsGalleryItem.addEventListener('click', () => {
+          html.classList.add('object-video-show');
+        })
+      }
+    });
   }
 
   /**

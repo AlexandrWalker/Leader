@@ -142,6 +142,17 @@
   }
 }
 
+.object-video-show .f-html {
+
+  @include md {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1.13;
+  }
+}
+
 [data-animation="creeping"] {
   position: fixed;
   bottom: -100%;
