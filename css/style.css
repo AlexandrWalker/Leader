@@ -110,18 +110,18 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
-  font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Micra;
+  font-display: swap;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -168,16 +168,16 @@ a {
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
+  font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Montserrat-Thin.woff2") format("woff2"), url("../fonts/Montserrat-Thin.woff") format("woff");
-  font-weight: 100;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -6238,6 +6238,14 @@ h6 span {
 
   .general__head.animatedClass h2::before {
     width: 3rem;
+  }
+
+  .object-video-show .f-html {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/1.13;
   }
 
   [data-animation=creeping] {
