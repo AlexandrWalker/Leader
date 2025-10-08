@@ -1631,7 +1631,9 @@
                         <div class="swiper objects__gallery">
                           <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                              <div class="objects__gallery-item" data-parallax="parallax-img" data-type="iframe">
+                              <div class="objects__gallery-item" data-fancybox=""
+                                data-src="https://kinescope.io/bij8YbBb4eWb7fqA2e9C5e" data-type="iframe"
+                                data-width="80%" data-height="90%" data-parallax="parallax-img">
                                 <div class="objects__gallery-btn">
                                   <i class="icon-play"></i>
                                   <p>
@@ -2432,42 +2434,45 @@
               <form class="form" action="#">
                 <div class="form-content">
                   <div class="form-group">
-                    <input class="form-input" id="names" name="initials" type="text">
+                    <input class="form-input" id="names" name="join-initials" type="text">
                     <label class="form-label" for="names">
                       Ваше имя <span>*</span>
                     </label>
                     <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
-                    <input class="form-input" id="phone" name="tel" type="tel">
+                    <input class="form-input" id="phone" name="join-tel" type="tel">
                     <label class="form-label" for="phone">
                       телефон <span>*</span>
                     </label>
                     <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
-                    <input class="form-input" id="post" name="post" type="text">
+                    <input class="form-input" id="post" name="join-post" type="text">
                     <label class="form-label" for="post">
                       Должность <span>*</span>
                     </label>
                     <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
-                    <input class="form-input" id="experience" name="experience" type="tel">
+                    <input class="form-input" id="experience" name="join-experience" type="tel">
                     <label class="form-label" for="experience">
                       Опыт работы <span>*</span>
                     </label>
                     <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group">
-                    <input class="form-input" id="mail" name="mail" type="email">
+                    <input class="form-input" id="mail" name="join-mail" type="email">
                     <label class="form-label" for="mail">
                       эл. почта <span>*</span>
                     </label>
                     <span class="form-invalid">Данное поле неверно заполнено</span>
                   </div>
                   <div class="form-group form-group--textarea">
-                    <textarea class="form-textarea" rows="1" name="comment" placeholder="комментарий"></textarea>
+                    <textarea class="form-textarea" id="joinComments" rows="1" name="join-comment"></textarea>
+                    <label class="form-label" for="joinComments">
+                      комментарий
+                    </label>
                   </div>
                 </div>
                 <div class="form-wrap">
@@ -3605,7 +3610,10 @@
                       <span class="form-invalid">Данное поле неверно заполнено</span>
                     </div>
                     <div class="form-group form-group--textarea">
-                      <textarea class="form-textarea" rows="1" name="comment" placeholder="комментарий"></textarea>
+                      <textarea class="form-textarea" id="comments" rows="1" name="comment"></textarea>
+                      <label class="form-label" for="comments">
+                        комментарий
+                      </label>
                     </div>
                   </div>
                   <div class="form-wrap">

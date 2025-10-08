@@ -36,8 +36,8 @@
     @include sm {
       margin-bottom: 4rem;
 
-      &:nth-child(1):not(.form-group--file),
-      &:nth-child(2):not(.form-group--file) {
+      &:nth-child(1):not(.form-group--file, .popup .form-group),
+      &:nth-child(2):not(.form-group--file, .popup .form-group) {
         width: 100%;
       }
 
@@ -70,15 +70,7 @@
 
           border-radius: 50%;
           background-color: var(--white-10);
-          //   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHZpZXdCb3g9IjAgMCAzNCAzNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxnIG9wYWNpdHk9IjAuNSI+DQo8cGF0aCBkPSJNMTYuNjAyMiAxMy4wMjI5TDE3Ljk5NDQgMTEuNjMwOEMxOC4yODE2IDExLjM0MzMgMTguNjIyNyAxMS4xMTUyIDE4Ljk5ODEgMTAuOTU5NUMxOS4zNzM1IDEwLjgwMzkgMTkuNzc1OSAxMC43MjM3IDIwLjE4MjMgMTAuNzIzNkMyMC41ODg3IDEwLjcyMzUgMjAuOTkxMSAxMC44MDM1IDIxLjM2NjYgMTAuOTU5QzIxLjc0MjEgMTEuMTE0NSAyMi4wODMyIDExLjM0MjQgMjIuMzcwNiAxMS42Mjk4QzIyLjY1OCAxMS45MTcxIDIyLjg4NTkgMTIuMjU4MyAyMy4wNDE0IDEyLjYzMzhDMjMuMTk2OSAxMy4wMDkzIDIzLjI3NjggMTMuNDExNyAyMy4yNzY3IDEzLjgxODFDMjMuMjc2NiAxNC4yMjQ1IDIzLjE5NjUgMTQuNjI2OSAyMy4wNDA4IDE1LjAwMjNDMjIuODg1MiAxNS4zNzc3IDIyLjY1NzEgMTUuNzE4OCAyMi4zNjk2IDE2LjAwNkwyMC4zODA4IDE3Ljk5NDhDMjAuMDkzNiAxOC4yODIgMTkuNzUyNSAxOC41MDk5IDE5LjM3NzIgMTguNjY1NEMxOS4wMDE4IDE4LjgyMDkgMTguNTk5NSAxOC45MDA5IDE4LjE5MzIgMTguOTAwOUMxNy43ODY5IDE4LjkwMDkgMTcuMzg0NyAxOC44MjA5IDE3LjAwOTMgMTguNjY1NEMxNi42MzM5IDE4LjUwOTkgMTYuMjkyOSAxOC4yODIgMTYuMDA1NiAxNy45OTQ4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPg0KPHBhdGggZD0iTTE3LjM5NzYgMjAuOTc3NkwxNi4wMDU1IDIyLjM2OTdDMTUuNzE4MyAyMi42NTcyIDE1LjM3NzIgMjIuODg1MyAxNS4wMDE4IDIzLjA0MUMxNC42MjY0IDIzLjE5NjYgMTQuMjI0IDIzLjI3NjggMTMuODE3NiAyMy4yNzY5QzEzLjQxMTIgMjMuMjc3IDEzLjAwODggMjMuMTk3IDEyLjYzMzMgMjMuMDQxNUMxMi4yNTc4IDIyLjg4NiAxMS45MTY2IDIyLjY1ODEgMTEuNjI5MyAyMi4zNzA3QzExLjM0MTkgMjIuMDgzNCAxMS4xMTQgMjEuNzQyMiAxMC45NTg1IDIxLjM2NjdDMTAuODAzIDIwLjk5MTIgMTAuNzIzMSAyMC41ODg4IDEwLjcyMzEgMjAuMTgyNEMxMC43MjMyIDE5Ljc3NiAxMC44MDM0IDE5LjM3MzYgMTAuOTU5MSAxOC45OTgyQzExLjExNDcgMTguNjIyOCAxMS4zNDI4IDE4LjI4MTcgMTEuNjMwMyAxNy45OTQ1TDEzLjYxOSAxNi4wMDU3QzEzLjkwNjMgMTUuNzE4NSAxNC4yNDc0IDE1LjQ5MDYgMTQuNjIyNyAxNS4zMzUxQzE0Ljk5ODEgMTUuMTc5NiAxNS40MDA0IDE1LjA5OTYgMTUuODA2NyAxNS4wOTk2QzE2LjIxMjkgMTUuMDk5NiAxNi42MTUyIDE1LjE3OTYgMTYuOTkwNiAxNS4zMzUxQzE3LjM2NTkgMTUuNDkwNiAxNy43MDcgMTUuNzE4NSAxNy45OTQzIDE2LjAwNTciIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+DQo8L2c+DQo8L3N2Zz4NCg==);
-          //   background-repeat: no-repeat;
-          //   background-size: 100% 100%;
-          //   color: var(--white);
           transition: all 0.3s ease;
-
-          //   @include md {
-          //     --font-size: 2.4rem;
-          //   }
 
           g {
             transition: all 0.3s ease;
@@ -115,37 +107,12 @@
             path {
               stroke: var(--black);
             }
-
-            //   background-color: var(--white);
-            //   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHZpZXdCb3g9IjAgMCAzNCAzNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xNi42MDI1IDEzLjAyMjVMMTcuOTk0NiAxMS42MzA0QzE4LjI4MTggMTEuMzQyOSAxOC42MjI5IDExLjExNDggMTguOTk4MyAxMC45NTkyQzE5LjM3MzcgMTAuODAzNSAxOS43NzYxIDEwLjcyMzQgMjAuMTgyNSAxMC43MjMzQzIwLjU4ODkgMTAuNzIzMiAyMC45OTEzIDEwLjgwMzEgMjEuMzY2OCAxMC45NTg2QzIxLjc0MjMgMTEuMTE0MSAyMi4wODM1IDExLjM0MiAyMi4zNzA4IDExLjYyOTRDMjIuNjU4MiAxMS45MTY4IDIyLjg4NjEgMTIuMjU3OSAyMy4wNDE2IDEyLjYzMzRDMjMuMTk3MSAxMy4wMDg5IDIzLjI3NzEgMTMuNDExMyAyMy4yNzcgMTMuODE3N0MyMy4yNzY5IDE0LjIyNDEgMjMuMTk2NyAxNC42MjY1IDIzLjA0MTEgMTUuMDAxOUMyMi44ODU0IDE1LjM3NzMgMjIuNjU3MyAxNS43MTg0IDIyLjM2OTggMTYuMDA1NkwyMC4zODExIDE3Ljk5NDRDMjAuMDkzOCAxOC4yODE3IDE5Ljc1MjcgMTguNTA5NSAxOS4zNzc0IDE4LjY2NUMxOS4wMDIgMTguODIwNSAxOC41OTk3IDE4LjkwMDUgMTguMTkzNSAxOC45MDA1QzE3Ljc4NzIgMTguOTAwNSAxNy4zODQ5IDE4LjgyMDUgMTcuMDA5NSAxOC42NjVDMTYuNjM0MiAxOC41MDk1IDE2LjI5MzEgMTguMjgxNyAxNi4wMDU5IDE3Ljk5NDQiIHN0cm9rZT0iIzE2MTYxNiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjxwYXRoIGQ9Ik0xNy4zOTgxIDIwLjk3NzVMMTYuMDA2IDIyLjM2OTZDMTUuNzE4OCAyMi42NTcxIDE1LjM3NzcgMjIuODg1MiAxNS4wMDIzIDIzLjA0MDhDMTQuNjI2OSAyMy4xOTY1IDE0LjIyNDUgMjMuMjc2NyAxMy44MTgxIDIzLjI3NjdDMTMuNDExNyAyMy4yNzY4IDEzLjAwOTMgMjMuMTk2OSAxMi42MzM4IDIzLjA0MTRDMTIuMjU4MyAyMi44ODU5IDExLjkxNzEgMjIuNjU4IDExLjYyOTggMjIuMzcwNkMxMS4zNDI0IDIyLjA4MzIgMTEuMTE0NSAyMS43NDIxIDEwLjk1OSAyMS4zNjY2QzEwLjgwMzUgMjAuOTkxMSAxMC43MjM1IDIwLjU4ODcgMTAuNzIzNiAyMC4xODIzQzEwLjcyMzcgMTkuNzc1OSAxMC44MDM5IDE5LjM3MzUgMTAuOTU5NSAxOC45OTgxQzExLjExNTIgMTguNjIyNyAxMS4zNDMzIDE4LjI4MTYgMTEuNjMwOCAxNy45OTQ0TDEzLjYxOTUgMTYuMDA1NkMxMy45MDY4IDE1LjcxODMgMTQuMjQ3OSAxNS40OTA1IDE0LjYyMzIgMTUuMzM1QzE0Ljk5ODYgMTUuMTc5NSAxNS40MDA5IDE1LjA5OTUgMTUuODA3MSAxNS4wOTk1QzE2LjIxMzQgMTUuMDk5NSAxNi42MTU3IDE1LjE3OTUgMTYuOTkxMSAxNS4zMzVDMTcuMzY2NCAxNS40OTA1IDE3LjcwNzUgMTUuNzE4MyAxNy45OTQ4IDE2LjAwNTYiIHN0cm9rZT0iIzE2MTYxNiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjwvc3ZnPg0K);
           }
 
           p {
             color: var(--accent);
           }
         }
-      }
-    }
-
-    &--textarea {
-
-      &:hover::before {
-        width: 100%;
-      }
-
-      &::before {
-        content: "";
-        display: block;
-        width: 0;
-        height: 0.1rem;
-        background-color: var(--gray);
-        position: absolute;
-        bottom: 0.6rem;
-        left: 0;
-        z-index: 1;
-        transition: all 0.5s ease;
-        opacity: 1;
-        visibility: visible;
       }
     }
   }
@@ -162,7 +129,6 @@
     border-radius: 0;
     width: 100%;
     padding: 0 1rem 3rem 0;
-    border-bottom: 0.1rem solid var(--gray-20);
     transition: all 0.2s ease;
 
     @include md {
@@ -178,7 +144,6 @@
     }
 
     &:hover {
-      // border-color: var(--gray);
 
       &+.form-label {
         color: var(--white);
@@ -196,7 +161,6 @@
     &.filled,
     &:active,
     &:focus {
-      // border-color: var(--gray);
 
       &+.form-label {
         visibility: hidden;
@@ -211,13 +175,19 @@
     &:not(:focus) {
       color: var(--white-50);
     }
+  }
 
-    &.invalid {
+  .has-error {
+
+    .form-input {
       color: var(--accent);
-      border-color: var(--accent);
 
       &+.form-label {
         color: var(--accent);
+
+        &::before {
+          background-color: var(--accent);
+        }
       }
 
       &~.form-invalid {
@@ -273,6 +243,29 @@
       position: absolute;
       bottom: -2.9rem;
       left: 0;
+      z-index: 2;
+      transition: all 0.5s ease;
+      opacity: 1;
+      visibility: visible;
+
+      @include md {
+        bottom: -2.3rem;
+      }
+
+      @include sm {
+        bottom: -1.9rem;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 0.1rem;
+      background-color: var(--gray-20);
+      position: absolute;
+      bottom: -2.9rem;
+      left: 0;
       z-index: 1;
       transition: all 0.5s ease;
       opacity: 1;
@@ -314,7 +307,6 @@
 
     width: 100%;
     padding: 0 1rem 3rem 0;
-    border-bottom: 0.1rem solid var(--gray-20);
     transition: all 0.2s ease;
 
     @include md {
@@ -327,35 +319,14 @@
       font-size: 1.3rem;
     }
 
-    &::placeholder {
-      font-weight: 500;
-      font-size: 1.6rem;
-      line-height: 130%;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--white-50);
-
-      transition: all 0.2s ease;
-
-      @include md {
-        font-size: 1.4rem;
-      }
-
-      @include sm {
-        font-size: 1.3rem;
-      }
-    }
-
     &:hover {
-      border-color: var(--gray);
-      transition-delay: 0.5s;
-
-      &::placeholder {
-        color: var(--white);
-      }
 
       &+.form-label {
         color: var(--white);
+
+        &::before {
+          width: 100%;
+        }
 
         span {
           color: var(--accent);
@@ -365,20 +336,15 @@
 
     &.filled,
     &:active,
-    &:focus,
-    &:target {
-      border-color: var(--gray);
-      transition-delay: 0.5s;
-
-      &::placeholder {
-        opacity: 0;
-        visibility: hidden;
-      }
+    &:focus {
 
       &+.form-label {
-        opacity: 0;
         visibility: hidden;
         pointer-events: none;
+
+        &::before {
+          width: 100%;
+        }
       }
     }
 
@@ -473,10 +439,6 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-
-    @include md {
-      // gap: 0.5rem;
-    }
   }
 
   &-checkbox {

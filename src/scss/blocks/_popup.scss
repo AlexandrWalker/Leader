@@ -179,8 +179,6 @@
       }
 
       &:hover {
-        // border-color: var(--black);
-        // border-color: transparent;
 
         &+.form-label {
           color: var(--black);
@@ -191,8 +189,6 @@
       &:active,
       &:focus {
         color: var(--black);
-        // border-color: var(--black);
-        // border-color: transparent;
       }
     }
 
@@ -202,6 +198,15 @@
       &::before {
         bottom: -2.1rem;
         background-color: var(--black);
+
+        @include sm {
+          bottom: -1.9rem;
+        }
+      }
+
+      &::after {
+        bottom: -2.1rem;
+        background-color: var(--gray-20);
 
         @include sm {
           bottom: -1.9rem;
@@ -222,9 +227,6 @@
       }
 
       &:hover {
-        transition-delay: 0s;
-        // border-color: var(--black);
-        border-color: unset;
 
         &::placeholder {
           color: var(--black);
@@ -243,8 +245,6 @@
       &:active,
       &:focus {
         color: var(--black);
-        // border-color: var(--black);
-        border-color: unset;
 
         &+.form-label::before {
           width: 100%;
