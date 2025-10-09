@@ -222,7 +222,7 @@
     margin-top: -21rem;
     margin-left: auto;
 
-    transition: all 0.5s linear;
+    transition: all 0.3s linear, left 0s, max-width 0s;
 
     position: absolute;
     left: calc(100% - 41.5rem);
@@ -237,6 +237,7 @@
         background: var(--black);
         border-color: transparent;
         transform: scale(3) !important;
+        transition: all 0.5s linear;
 
         left: 0;
 

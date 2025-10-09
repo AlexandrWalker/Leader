@@ -110,10 +110,10 @@ a {
 }
 
 @font-face {
-  font-family: Montserrat;
+  font-family: Micra;
   font-display: swap;
-  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
-  font-weight: 800;
+  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -126,10 +126,10 @@ a {
 }
 
 @font-face {
-  font-family: Micra;
+  font-family: Montserrat;
   font-display: swap;
-  src: url("../fonts/Micra.woff2") format("woff2"), url("../fonts/Micra.woff") format("woff");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -3574,8 +3574,8 @@ h6 span {
   border: 0.3rem solid var(--white);
   margin-top: -21rem;
   margin-left: auto;
-  -webkit-transition: all 0.5s linear;
-  transition: all 0.5s linear;
+  -webkit-transition: all 0.3s linear, left 0s, max-width 0s;
+  transition: all 0.3s linear, left 0s, max-width 0s;
   position: absolute;
   left: calc(100% - 41.5rem);
   z-index: 1;
@@ -6080,6 +6080,8 @@ h6 span {
     -webkit-transform: scale(3) !important;
     -ms-transform: scale(3) !important;
     transform: scale(3) !important;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
     left: 0;
   }
 
