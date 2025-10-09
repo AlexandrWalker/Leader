@@ -98,11 +98,13 @@ window.addEventListener('load', () => {
     })
   }
 
-  const burgerVideoBtn = document.getElementById('burgerVideoBtn');
-  if (burgerVideoBtn) {
-    burgerVideoBtn.addEventListener('click', () => {
-      html.classList.add('burger-video-show');
-    })
+  const burgerVideoBtns = document.querySelectorAll('.btn--video');
+  if (burgerVideoBtns.length > 0) {
+    burgerVideoBtns.forEach(burgerVideoBtn => {
+      burgerVideoBtn.addEventListener('click', () => {
+        html.classList.add('burger-video-show');
+      })
+    });
   }
 
   const objectsGalleryItems = document.querySelectorAll('.objects__gallery-item');
