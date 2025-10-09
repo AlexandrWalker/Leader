@@ -214,14 +214,15 @@
   &__video {
     max-width: 41.5rem;
     width: 100%;
-    max-height: 80dvh;
+    max-height: 100dvh;
     height: auto;
     aspect-ratio: 415/731;
     overflow: hidden;
     border: 0.3rem solid var(--white);
     margin-top: -21rem;
     margin-left: auto;
-    transition: all 0.5s ease;
+
+    transition: all 0.5s linear;
 
     position: absolute;
     left: calc(100% - 41.5rem);
@@ -231,18 +232,17 @@
 
       @include domd {
         max-width: 100dvw;
-        max-height: 100dvh;
         height: 100%;
-        left: 0;
-        margin-top: unset;
+        margin-top: 0;
         background: var(--black);
         border-color: transparent;
         transform: scale(3) !important;
-        transition: all 0.5s ease;
+
+        left: 0;
 
         iframe {
           opacity: 0;
-          transition: opacity 0.5s ease;
+          transition: opacity 0.5s linear;
         }
       }
     }
@@ -290,7 +290,7 @@
       z-index: 1;
       filter: grayscale(1);
 
-      transition: opacity 0.5s ease;
+      transition: opacity 0.5s linear 0.5s;
 
       @include sm {
         display: none;
@@ -305,7 +305,7 @@
       gap: 5rem;
       cursor: pointer;
       padding: 9rem 0 13rem;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.5s linear;
 
       position: absolute;
       top: 0;
