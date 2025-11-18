@@ -21,10 +21,16 @@
 
   &.opened {
     pointer-events: none;
+
+    .innerPage & {
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
   }
 
   .innerPage & {
     background-color: var(--white);
+    transition: background-color 0.3s ease 0.5s;
   }
 
   &__inner {
@@ -73,7 +79,7 @@
     &.accordion-active {
 
       @include domd {
-        
+
         .accordion-body {
           grid-template-rows: 0fr;
         }
