@@ -469,6 +469,24 @@ window.addEventListener('load', () => {
     },
   });
 
+  const specialistsSlider = new Swiper(".specialists__slider", {
+    slidesPerGroup: 1,
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    loop: true,
+    speed: 300,
+    mousewheel: {
+      forceToAxis: true,
+    },
+    breakpoints: {
+      769: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        speed: 300,
+      },
+    },
+  });
+
   /**
    * Аккордион
    */
