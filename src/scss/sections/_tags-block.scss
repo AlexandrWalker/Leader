@@ -1,0 +1,35 @@
+@use './../mixins' as *;
+
+.tags-block {
+  background-color: #D9D9D9;
+  padding: 4rem 0;
+  min-height: unset;
+
+  @include md {
+    padding: 2rem 0;
+  }
+
+  &__inner {
+
+  }
+
+  &__tags {
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    li {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+      &:after {
+        content: "/";
+      }
+    }
+  }
+}

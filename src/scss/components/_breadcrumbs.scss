@@ -1,0 +1,46 @@
+@use './../mixins' as *;
+
+.breadcrumbs {
+  margin-bottom: 3rem;
+
+  @include md {
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+
+    @include md {
+      font-size: 1.2rem;
+    }
+
+    &::after {
+      content: "/";
+    }
+
+    &:last-child {
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  a {
+    color: var(--accent);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

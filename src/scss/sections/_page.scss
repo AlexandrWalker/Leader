@@ -1,0 +1,45 @@
+@use './../mixins' as *;
+
+.page {
+  padding-top: 3.5rem;
+  min-height: unset;
+
+  @include md {
+    padding-top: 2rem;
+  }
+
+  &__seo {}
+
+  &__inner {}
+
+  &__head {
+    margin-bottom: 2rem;
+
+    & * {
+      margin-left: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &__body {}
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include md {
+      gap: 1.5rem;
+    }
+
+    p {
+
+      @include md {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
