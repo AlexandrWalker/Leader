@@ -1,5 +1,6 @@
 @use './../mixins' as *;
 
+.hero .title>div,
 h1 {
   font-family: var(--second-family);
   font-weight: 400;

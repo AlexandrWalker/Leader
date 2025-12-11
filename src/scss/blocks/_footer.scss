@@ -441,22 +441,9 @@
         font-size: 1.4rem;
         position: relative;
 
-        &::before {
-          content: "";
-          position: absolute;
-          bottom: 0.3rem;
-          width: 0;
-          height: 0.1rem;
-          background-color: var(--accent);
-          transition: all 0.3s ease;
-        }
-
         &:hover {
+          text-decoration: underline;
           color: var(--accent);
-
-          &::before {
-            width: 100%;
-          }
         }
       }
     }

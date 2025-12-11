@@ -13,13 +13,39 @@
   &__inner {}
 
   &__head {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 
-    & * {
+    @include md {
+      margin-bottom: 2rem;
+    }
+
+    * {
       margin-left: 0;
 
       &::before {
         display: none;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 3rem;
+
+    @include md {
+      margin-bottom: 2rem;
+    }
+
+    * {
+
+      @include md {
+        margin-left: 0;
+      }
+
+      &::before {
+
+        @include md {
+          display: none;
+        }
       }
     }
   }
@@ -29,7 +55,25 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
+
+    @include md {
+      gap: 1.5rem;
+    }
+
+    p {
+
+      @include md {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-left: var(--title-margin-left);
 
     @include md {
       gap: 1.5rem;
