@@ -1476,7 +1476,7 @@ window.addEventListener('load', () => {
   if (hero) {
 
     if (!checkEditMode) {
-      const target = hero.querySelector('h1');
+      const target = hero.querySelector('h1') || hero.querySelector('.title');
       const span = target.querySelector('span');
       const text = new SplitType(target, { types: 'chars, words' })
       gsap.from(text.words, {
