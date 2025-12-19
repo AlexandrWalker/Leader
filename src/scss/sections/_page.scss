@@ -3,28 +3,36 @@
 .page {
   padding-top: 3.5rem;
   min-height: unset;
+  background-color: var(--page-bg);
+  z-index: 1;
 
   @include md {
     padding-top: 2rem;
   }
 
-  &__seo {}
+  &--second {
 
-  &__inner {}
+    .page__title {
+
+      * {
+        margin-left: 0;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    .page__text {
+      margin-left: 0;
+    }
+  }
 
   &__head {
     margin-bottom: 3rem;
 
     @include md {
       margin-bottom: 2rem;
-    }
-
-    * {
-      margin-left: 0;
-
-      &::before {
-        display: none;
-      }
     }
   }
 

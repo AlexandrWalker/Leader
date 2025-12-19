@@ -1,11 +1,6 @@
 @use './../mixins' as *;
 
 .breadcrumbs {
-  margin-bottom: 3rem;
-
-  @include md {
-    margin-bottom: 2rem;
-  }
 
   ul {
     display: flex;

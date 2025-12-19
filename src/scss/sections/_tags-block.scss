@@ -10,9 +10,7 @@
     padding: 2rem 0;
   }
 
-  &__inner {
-
-  }
+  &__inner {}
 
   &__tags {
 
@@ -30,8 +28,19 @@
 
       color: var(--gray);
 
-      &:after {
+      @include md {
+        font-size: 1.2rem;
+      }
+
+      &::after {
         content: "/";
+      }
+
+      &:last-child {
+
+        &::after {
+          display: none;
+        }
       }
     }
   }
